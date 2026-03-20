@@ -1,0 +1,20 @@
+{
+  "name": "css-base",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "exports": {
+    ".": "./dist/app.css",
+    "./base": "./dist/base.css",
+    "./theme": "./dist/theme.css",
+    "./utilities": "./dist/utilities.css",
+    "./workspace": "./dist/workspace.css"
+  },
+  "keywords": [],
+  "author": "Lebrun Meddy",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.0"
+}
