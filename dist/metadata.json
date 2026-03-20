@@ -1,0 +1,55 @@
+{
+  "name": "css-base",
+  "version": "1.0.0",
+  "description": "Modern CSS design system library",
+  "files": [
+    {
+      "file": "app.css",
+      "description": "Entry point — imports all layers in order",
+      "layers": ["base", "theme", "components"]
+    },
+    {
+      "file": "base.css",
+      "description": "HTML resets and font defaults",
+      "layer": "base"
+    },
+    {
+      "file": "theme.css",
+      "description": "Design tokens, typography, palette, and base components",
+      "layer": "theme",
+      "sublayers": [
+        "theme.reset",
+        "theme.variables",
+        "theme.tokens",
+        "theme.typography",
+        "theme.palette",
+        "theme.components"
+      ]
+    },
+    {
+      "file": "workspace.css",
+      "description": "Application shell layout and UI components (app-shell, cards, menus)",
+      "layer": "components"
+    },
+    {
+      "file": "utilities.css",
+      "description": "Utility classes for layout, spacing, typography, color, and hover variants",
+      "layer": "utilities"
+    }
+  ],
+  "compatibility": {
+    "browsers": ["Chrome >= 125", "Edge >= 125"],
+    "features": [
+      "@layer",
+      "CSS Nesting",
+      "color-mix()",
+      "light-dark()",
+      "relative color syntax (hsl/oklch from)",
+      "CSS Anchor Positioning",
+      "text-box-trim / text-box-edge",
+      "subgrid",
+      "text-wrap: balance",
+      "@function (CSS Values Level 5)"
+    ]
+  }
+}

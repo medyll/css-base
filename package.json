@@ -1,5 +1,5 @@
 {
-  "name": "css-base",
+  "name": "@medyll/css-base",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",

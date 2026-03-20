@@ -390,7 +390,7 @@
 	}
 
 	& .item-info-tip {
-		position-anchor: menu-item-anchor;
+		position-anchor: --menu-item-anchor;
 		position: absolute;
 		z-index: 1000;
 		left: anchor(right);
