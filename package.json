@@ -1,6 +1,6 @@
 {
   "name": "@medyll/css-base",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "private": false,
@@ -14,7 +14,12 @@
     "./utilities": "./dist/utilities.css",
     "./workspace": "./dist/workspace.css"
   },
-  "keywords": ["css", "base", "theme", "css-utilities"],
+  "keywords": [
+    "css",
+    "base",
+    "theme",
+    "css-utilities"
+  ],
   "author": "Lebrun Meddy",
   "license": "ISC",
   "packageManager": "pnpm@10.28.0"
