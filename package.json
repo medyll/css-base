@@ -16,5 +16,8 @@
   "keywords": [],
   "author": "Lebrun Meddy",
   "license": "ISC",
-  "packageManager": "pnpm@10.28.0"
+  "packageManager": "pnpm@10.28.0",
+  "devDependencies": {
+    "@medyll/idae-pnpm-release": "^1.0.33"
+  }
 }
