@@ -21,12 +21,6 @@ jobs:
         with:
           version: 10.28.0
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          registry-url: https://npm.pkg.github.com
-          scope: "@medyll"
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -34,7 +28,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          npm version patch --no-git-tag-version
+          pnpm version patch --no-git-tag-version
           VERSION=$(node -p "require('./package.json').version")
           git add package.json
           git commit -m "chore: release v$VERSION [skip ci]"
@@ -43,4 +37,5 @@ jobs:
       - name: Publish
         run: pnpm publish --no-git-checks --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
