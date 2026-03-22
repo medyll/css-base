@@ -116,7 +116,7 @@
 
 /* ── Background ── */
 .bg-white        { background-color: #fff; }
-.bg-gray-50      { background-color: var(--color-surface-2); }
+.bg-gray-50      { background-color: var(--color-surface-alt); }
 .bg-blue-50      { background-color: color-mix(in srgb, var(--color-primary) 8%, transparent); }
 .bg-blue-100     { background-color: color-mix(in srgb, var(--color-primary) 15%, transparent); }
 .bg-orange-100   { background-color: color-mix(in srgb, #f97316 15%, transparent); }

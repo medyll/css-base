@@ -279,7 +279,7 @@
 										font-weight: var(--font-semibold);
 									}
 									&:hover:not(.selected) {
-										background: var(--color-surface-2);
+										background: var(--color-surface-alt);
 									}
 								}
 							}
@@ -437,7 +437,7 @@
 input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']),
 textarea,
 select {
-	background-color: var(--color-surface-2);
+	background-color: var(--color-surface-alt);
 	color: var(--color-text);
 	border: var(--border-width) solid var(--color-border);
 	border-radius: var(--radius-md);
