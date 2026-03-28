@@ -8,6 +8,8 @@ Built exclusively with cutting-edge CSS features — no preprocessor, no build s
 - Chrome 125+
 - Edge 125+
 
+**Note:** CSS `@function` and `attr()` features require Chrome 139+
+
 ## File structure
 
 ```

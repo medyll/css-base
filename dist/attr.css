@@ -27,11 +27,12 @@
     transition: opacity var(--transition-normal);
   }
   
-  /* ─── Elevation ── 
+  /* ─── Elevation ──
    * Usage: data-elevation="xs|sm|md|lg|xl|2xl"
    * Example: data-elevation="lg" → large shadow elevation
-   * Default: md (via shadow layer in palette.css)
+   * Default: md
    */
+  [data-elevation] { box-shadow: var(--shadow-md); }
   [data-elevation="xs"] { box-shadow: var(--shadow-xs); }
   [data-elevation="sm"] { box-shadow: var(--shadow-sm); }
   [data-elevation="md"] { box-shadow: var(--shadow-md); }

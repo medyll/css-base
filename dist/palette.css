@@ -37,7 +37,9 @@
 		/* Secondary color: computed from primary using harmony function (+30 hue rotation) */
 		--color-secondary: --harmony-secondary(var(--color-primary));
 
-		/* Complementary color: computed from primary (180 hue rotation) */
+		/* Complementary color: computed from primary (180 hue rotation)
+		 * Available for custom usage: color: var(--color-complementary);
+		 */
 		--color-complementary: --harmony-complementary(var(--color-primary));
 		
 		/* ─── Color Variants ──
@@ -134,8 +136,8 @@
 		 * Uses OKLCH for consistent shadow appearance
 		 */
 
-		/* Shadow color base: desaturated blue-gray / black (OKLCH) */
-		--shadow-color: oklch(0.2 0.02 265);
+		/* Shadow color base: desaturated blue-gray in light mode, pure black in dark mode */
+		--shadow-color: light-dark(oklch(0.2 0.02 265), oklch(0 0 0));
 
 		/* Extra small shadow: 1px offset, 2px blur, 5% opacity - subtle elevation */
 		--shadow-xs: 0 1px 2px oklch(var(--shadow-color) / 0.05);

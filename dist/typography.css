@@ -51,14 +51,14 @@
 		--leading-loose: calc(var(--default-leading) * 1.333);  /* 2.0 - very loose, poetry */
 		
 		/* ─── Font Weights ──
-		 * Numeric weight values calculated from --default-font-weight (400 base)
-		 * Usage: font-weight: calc(var(--default-font-weight) * 1.5);
+		 * Standard numeric weight values
+		 * Usage: font-weight: var(--font-semibold);
 		 */
 
-		--font-normal: var(--default-font-weight);    /* 400 - regular text */
-		--font-medium: calc(var(--default-font-weight) * 1.25); /* 500 - emphasis, labels */
-		--font-semibold: calc(var(--default-font-weight) * 1.5);  /* 600 - strong emphasis, headings */
-		--font-bold: calc(var(--default-font-weight) * 1.75);     /* 700 - maximum emphasis */
+		--font-normal: 400;   /* regular text */
+		--font-medium: 500;   /* emphasis, labels */
+		--font-semibold: 600; /* strong emphasis, headings */
+		--font-bold: 700;     /* maximum emphasis */
 		
 		/* ─── Letter Spacing (Tracking) ──
 		 * Horizontal letter spacing adjustments calculated from --default-tracking

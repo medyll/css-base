@@ -1,16 +1,16 @@
 /* base.css
  * Layer: base
  * Base HTML element defaults and font feature settings
- * 
+ *
  * This file provides:
- * - Root font size for rem-based scaling (11px base)
+ * - Root font size for rem-based scaling (0.875rem/14px base)
  * - Font feature settings for improved typography
  */
 
 @layer base {
 	/* ─── Root Font Size ──
-	 * Set base font size to 11px for consistent rem calculations
-	 * Note: This makes 1rem = 11px instead of the browser default 16px
+	 * Set base font size to 0.875rem (14px) for consistent rem calculations
+	 * Note: This makes 1rem = 14px instead of the browser default 16px
 	 */
 	html {
 		font-size: var(--default-font-size);

@@ -11,11 +11,6 @@
 
 @layer theme.variables {
 	:root {
-
-		/* Default text colors for light/dark modes */
-		--default-color-text-light: #0f172a;  /* dark slate for light mode */
-		--default-color-text-dark: #f1f5f9;   /* light slate for dark mode */ 
-		
 		/* ─── Default Font Size ──
 		 * Base font size for the design system
 		 * All text sizes are calculated relative to this value
