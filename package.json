@@ -1,6 +1,6 @@
 {
   "name": "@medyll/css-base",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "Modern CSS design system library using cutting-edge CSS features",
   "main": "dist/app.css",
   "private": false,
@@ -22,10 +22,11 @@
     "./variables": "./dist/variables.css",
     "./tokens": "./dist/tokens.css",
     "./typography": "./dist/typography.css",
+    "./functions": "./dist/functions.css",
     "./palette": "./dist/palette.css",
     "./components": "./dist/components.css",
     "./utilities": "./dist/utilities.css",
-    "./workspace": "./dist/workspace.css"
+    "./attr": "./dist/attr.css"
   },
   "keywords": [
     "css",
