@@ -182,4 +182,17 @@
 		--scrollbar-width: calc(var(--gutter-xs) * 1.5); /* 6px */
 		--scrollbar-height: calc(var(--gutter-xs) * 1.5); /* 6px */
 	}
+
+	/* ─── Manual Theme Override ──
+	 * Allow apps to force light or dark mode via data-theme attribute
+	 * Usage: <html data-theme="dark"> or <html data-theme="light">
+	 * JavaScript controls this attribute based on user preference
+	 */
+	[data-theme="light"] {
+		color-scheme: light;
+	}
+
+	[data-theme="dark"] {
+		color-scheme: dark;
+	}
 }

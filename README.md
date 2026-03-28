@@ -143,10 +143,31 @@ Override these variables in `theme.css` to customize the design system:
 ## Dark mode
 
 Dark mode is handled automatically via `light-dark()` and `color-scheme`. No class toggle required.
-To force a mode, set `color-scheme` on the root element:
 
-```css
-:root { color-scheme: dark; }
+**Manual override:** Set `data-theme` attribute on `<html>` or `<body>` to force a specific mode:
+
+```html
+<!-- Force light mode -->
+<html data-theme="light">
+
+<!-- Force dark mode -->
+<html data-theme="dark">
+
+<!-- Auto (default) - follows system preference -->
+<html>
+```
+
+Your app's JavaScript controls the attribute based on user preference:
+
+```js
+// Toggle dark mode
+document.documentElement.setAttribute('data-theme', 'dark');
+
+// Toggle light mode
+document.documentElement.setAttribute('data-theme', 'light');
+
+// Reset to auto (system preference)
+document.documentElement.removeAttribute('data-theme');
 ```
 
 ## Utilities
