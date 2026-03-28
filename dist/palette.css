@@ -1,14 +1,16 @@
 /* theme/palette.css
  * Layer: theme.palette
  * Colors, surfaces, shadows, technical dimensions
- * 
+ *
  * This file defines the complete color system including:
  * - Base colors (text, primary, secondary)
- * - Surface variants (surface, surface-alt, surface-raised, etc.)
+ * - Surface variants (surface, surface-alt, surface-raised, etc.) - computed from defaults
  * - Status colors (success, warning, critical, info)
  * - Border colors
  * - Shadow scale (xs to 2xl)
- * - Technical dimensions (borders, focus rings, scrollbars, layout)
+ * - Technical dimensions (borders, focus rings, scrollbars)
+ *
+ * Note: CSS functions (--shade, --tint, --alpha, etc.) are defined in functions.css
  */
 
 @layer theme.palette {
@@ -50,29 +52,49 @@
 
 		/* ─── Surfaces ──
 		 * Background layers for different UI elevations
+		 * Computed from --default-color-surface-base using functions
 		 * All use light-dark() for automatic theme support
 		 */
 
-		/* Main page background: white / dark */
-		--color-surface: light-dark(oklch(1 0 0), oklch(0.1 0 0));
+		/* Default surface colors for light/dark modes (OKLCH) */
+		--default-color-surface-light: oklch(1 0 0);              /* white */
+		--default-color-surface-dark: oklch(0.1 0 0);             /* dark */
 
-		/* Alternate surfaces (sidebars, panels): light gray / dark gray */
-		--color-surface-alt: light-dark(oklch(0.967 0.003 264.542), oklch(0.145 0 0));
+		/* Base surface color: uses light-dark() */
+		--color-surface: light-dark(var(--default-color-surface-light), var(--default-color-surface-dark));
 
-		/* Raised surfaces (cards, modals): white / dark gray */
-		--color-surface-raised: light-dark(oklch(1 0 0), oklch(0.18 0 0));
+		/* Alternate surfaces: surface with shade (darker) */
+		--color-surface-alt: light-dark(
+			--shade(var(--default-color-surface-light), 3%),
+			--shade(var(--default-color-surface-dark), 5%)
+		);
 
-		/* Overlay surfaces (drawers, popovers): semi-transparent with backdrop-filter */
-		--color-surface-overlay: light-dark(oklch(1 0 0 / 0.85), oklch(0.114 0 0 / 0.85));
+		/* Raised surfaces: same as base (for cards, modals) */
+		--color-surface-raised: var(--color-surface);
 
-		/* Sunken surfaces (inputs, inset zones): light gray / very dark */
-		--color-surface-sunken: light-dark(oklch(0.933 0.002 264.542), oklch(0.078 0 0));
+		/* Overlay surfaces: surface with alpha */
+		--color-surface-overlay: light-dark(
+			oklch(from var(--default-color-surface-light) l c h / 0.85),
+			oklch(from var(--default-color-surface-dark) l c h / 0.85)
+		);
 
-		/* Hover state for list items: light gray / dark gray */
-		--color-surface-hover: light-dark(oklch(0.941 0.003 264.542), oklch(0.165 0 0));
+		/* Sunken surfaces: surface with more shade (inputs, inset zones) */
+		--color-surface-sunken: light-dark(
+			--shade(var(--default-color-surface-light), 7%),
+			--shade(var(--default-color-surface-dark), 25%)
+		);
 
-		/* Active/selected state: primary tint / dark blue */
-		--color-surface-active: light-dark(oklch(0.929 0.034 260.695), oklch(0.173 0.032 265.755));
+		/* Hover state: surface with slight shade */
+		--color-surface-hover: light-dark(
+			--shade(var(--default-color-surface-light), 6%),
+			--shade(var(--default-color-surface-dark), 40%)
+		);
+
+		/* Active/selected state: surface with primary tint */
+		--color-surface-active: light-dark(
+			color-mix(in srgb, var(--color-primary) 8%, var(--default-color-surface-light)),
+			color-mix(in srgb, var(--color-primary) 15%, var(--default-color-surface-dark))
+		);
 
 		/* ─── Status Colors ──
 		 * Semantic colors for feedback states (OKLCH)

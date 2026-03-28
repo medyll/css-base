@@ -1,0 +1,152 @@
+/* functions.css
+ * CSS Functions (CSS Values Level 5)
+ * Browser support: Chromium 139+ only
+ * 
+ * Advanced color manipulation functions for dynamic color transformations.
+ * These functions are used throughout the design system to compute colors
+ * from base values, ensuring consistency and enabling theming.
+ */
+
+@supports (function(--fn(--x) returns <number> { result: 0; })) {
+  
+  /* ─── Blending Functions ── */
+  
+  /* Shade: mix color with black by intensity percentage
+   * Usage: --shade(var(--color-primary), 20%)
+   */
+  @function --shade(--color <color>, --intensity <percentage>) returns <color> {
+    result: color-mix(in srgb, var(--color), black var(--intensity));
+  }
+
+  /* Tint: mix color with white by intensity percentage
+   * Usage: --tint(var(--color-primary), 30%)
+   */
+  @function --tint(--color <color>, --intensity <percentage>) returns <color> {
+    result: color-mix(in srgb, var(--color), white var(--intensity));
+  }
+
+  /* Alpha: apply opacity to color using OKLCH
+   * Usage: --alpha(var(--color-primary), 0.5)
+   */
+  @function --alpha(--color <color>, --opacity <number>) returns <color> {
+    result: oklch(from var(--color) l c h / var(--opacity));
+  }
+
+  /* Surface tint: 12% color overlay for elevation effects
+   * Usage: --surface-tint(var(--color-primary))
+   */
+  @function --surface-tint(--color <color>) returns <color> {
+    result: color-mix(in srgb, var(--color) 12%, transparent);
+  }
+
+  /* Border: darken color by 15% for border variants
+   * Usage: --border-from(var(--color-primary))
+   */
+  @function --border-from(--color <color>) returns <color> {
+    result: color-mix(in srgb, var(--color), black 15%);
+  }
+
+  /* ─── Color State Functions ── */
+
+  /* Hover state: darken color by 10% lightness
+   * Usage: --hover-state(var(--color-primary))
+   */
+  @function --hover-state(--color <color>) returns <color> {
+    result: oklch(from var(--color) calc(l - 0.1) c h);
+  }
+
+  /* ─── Color Harmonies (OKLCH) ──
+   * Generate harmonious colors using OKLCH color space
+   */
+
+  /* Secondary: +30 hue rotation from primary
+   * Usage: --harmony-secondary(var(--color-primary))
+   */
+  @function --harmony-secondary(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 30));
+  }
+
+  /* Secondary soft: lighter, desaturated secondary
+   * Usage: --harmony-secondary-soft(var(--color-secondary))
+   */
+  @function --harmony-secondary-soft(--color <color>) returns <color> {
+    result: oklch(from var(--color) calc(l + 0.1) calc(c * 0.5) h);
+  }
+
+  /* Complementary: +180 hue rotation (opposite on color wheel)
+   * Usage: --harmony-complementary(var(--color-primary))
+   */
+  @function --harmony-complementary(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 180));
+  }
+
+  /* Analogous: adjacent colors (+30 degrees)
+   * Usage: --harmony-analogous-plus(var(--color-primary))
+   */
+  @function --harmony-analogous-plus(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 30));
+  }
+
+  /* Analogous: adjacent colors (-30 degrees)
+   * Usage: --harmony-analogous-minus(var(--color-primary))
+   */
+  @function --harmony-analogous-minus(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h - 30));
+  }
+
+  /* Split-complementary: +150 degrees
+   * Usage: --harmony-split-1(var(--color-primary))
+   */
+  @function --harmony-split-1(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 150));
+  }
+
+  /* Split-complementary: +210 degrees
+   * Usage: --harmony-split-2(var(--color-primary))
+   */
+  @function --harmony-split-2(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 210));
+  }
+
+  /* Triadic: equilateral triangle (+120 degrees)
+   * Usage: --harmony-triad-1(var(--color-primary))
+   */
+  @function --harmony-triad-1(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 120));
+  }
+
+  /* Triadic: equilateral triangle (+240 degrees)
+   * Usage: --harmony-triad-2(var(--color-primary))
+   */
+  @function --harmony-triad-2(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 240));
+  }
+
+  /* Square: square harmony (+90 degrees)
+   * Usage: --harmony-square-1(var(--color-primary))
+   */
+  @function --harmony-square-1(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 90));
+  }
+
+  /* Square: square harmony (+180 degrees)
+   * Usage: --harmony-square-2(var(--color-primary))
+   */
+  @function --harmony-square-2(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 180));
+  }
+
+  /* Square: square harmony (+270 degrees)
+   * Usage: --harmony-square-3(var(--color-primary))
+   */
+  @function --harmony-square-3(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 270));
+  }
+
+  /* Tetradic: rectangular harmony (+60 degrees)
+   * Usage: --harmony-tetradic-2(var(--color-primary))
+   */
+  @function --harmony-tetradic-2(--color <color>) returns <color> {
+    result: oklch(from var(--color) l c calc(h + 60));
+  }
+}

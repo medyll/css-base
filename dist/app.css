@@ -9,6 +9,7 @@
 @import './variables.css';
 @import './tokens.css';
 @import './typography.css';
+@import './functions.css';
 @import './palette.css';
 @import './components.css';
 @import './utilities.css';

@@ -14,10 +14,11 @@ Built exclusively with cutting-edge CSS features — no preprocessor, no build s
 dist/
   app.css          Entry point — import this file only
   base.css         HTML resets and font defaults
-  variables.css    Default font size and spacing scale
+  variables.css    Default font size, line height, weight, tracking + spacing scale
   tokens.css       Semantic tokens (padding, margin, radius, motion, z-index)
-  typography.css   Font families, sizes, weights, line heights
-  palette.css      Colors, surfaces, shadows
+  typography.css   Font families, sizes (calculated), weights (calculated), line heights
+  functions.css    CSS @functions for color manipulation (Chrome 139+)
+  palette.css      Colors, surfaces (computed), shadows (OKLCH)
   components.css   Base components (headings, buttons, inputs, cards, alerts)
   utilities.css    Utility classes for layout, spacing, color
   attr.css         Dynamic styling via attr() (Chrome 139+)
