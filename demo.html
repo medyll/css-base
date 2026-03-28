@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@medyll/css-base — Demo</title>
+	<link rel="stylesheet" href="./dist/app.css">
+	<style>
+		/* Demo-specific styles */
+		.demo-section {
+			padding: var(--pad-lg);
+			border-bottom: var(--border-width) solid var(--color-border);
+		}
+		.demo-title {
+			font-size: var(--text-lg);
+			font-weight: var(--font-semibold);
+			margin-bottom: var(--gutter-md);
+			color: var(--color-text);
+		}
+		.demo-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: var(--gutter-lg);
+		}
+		.demo-stack {
+			display: flex;
+			flex-direction: column;
+			gap: var(--gutter-md);
+		}
+		.demo-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--gutter-sm);
+			align-items: center;
+		}
+		body {
+			background: var(--color-surface);
+		}
+		.demo-container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo-container">
+		<!-- Header -->
+		<header class="demo-section">
+			<h1 class="demo-title" style="font-size: var(--text-2xl);">@medyll/css-base</h1>
+			<p class="text-gray-500">Modern CSS design system — Chrome/Edge 125+</p>
+			<div class="demo-row" style="margin-top: var(--gutter-md);">
+				<button class="btn btn-primary">Primary</button>
+				<button class="btn">Default</button>
+				<button class="btn btn-ghost">Ghost</button>
+				<button class="btn btn-danger">Danger</button>
+			</div>
+		</header>
+
+		<!-- Typography -->
+		<section class="demo-section">
+			<h2 class="demo-title">Typography</h2>
+			<div class="demo-stack">
+				<h1>Heading 1 — The quick brown fox</h1>
+				<h2>Heading 2 — The quick brown fox</h2>
+				<h3>Heading 3 — The quick brown fox</h3>
+				<h4>Heading 4 — The quick brown fox</h4>
+				<h5>Heading 5 — The quick brown fox</h5>
+				<h6>Heading 6 — The quick brown fox</h6>
+				<p>This is a paragraph. The quick brown fox jumps over the lazy dog. <strong>Strong text</strong> and <em>emphasized text</em> are supported.</p>
+				<p class="text-gray-500">Muted text — color: var(--color-text-muted)</p>
+				<code>inline code</code>
+				<pre><pre style="margin:0"><code>/* Code block */
+function hello() {
+  console.log("Hello, world!");
+}</code></pre></pre>
+			</div>
+		</section>
+
+		<!-- Badges -->
+		<section class="demo-section">
+			<h2 class="demo-title">Badges</h2>
+			<div class="demo-row">
+				<span class="badge">Default</span>
+				<span class="badge badge-primary">Primary</span>
+				<span class="badge badge-success">Success</span>
+				<span class="badge badge-warning">Warning</span>
+				<span class="badge badge-error">Error</span>
+				<span class="badge badge-neutral">Neutral</span>
+			</div>
+		</section>
+
+		<!-- Alerts -->
+		<section class="demo-section">
+			<h2 class="demo-title">Alerts</h2>
+			<div class="demo-stack">
+				<div class="alert alert-info">
+					<svg class="alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+					<div class="alert-content">
+						<div class="alert-title">Information</div>
+						<div class="alert-description">This is an informational message.</div>
+					</div>
+					<button class="alert-close" aria-label="Close">✕</button>
+				</div>
+				<div class="alert alert-success">
+					<svg class="alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+					<div class="alert-content">
+						<div class="alert-title">Success</div>
+						<div class="alert-description">Your changes have been saved.</div>
+					</div>
+					<button class="alert-close" aria-label="Close">✕</button>
+				</div>
+				<div class="alert alert-warning">
+					<svg class="alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+					<div class="alert-content">
+						<div class="alert-title">Warning</div>
+						<div class="alert-description">Please review before continuing.</div>
+					</div>
+					<button class="alert-close" aria-label="Close">✕</button>
+				</div>
+				<div class="alert alert-error">
+					<svg class="alert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+					<div class="alert-content">
+						<div class="alert-title">Error</div>
+						<div class="alert-description">Something went wrong. Please try again.</div>
+					</div>
+					<button class="alert-close" aria-label="Close">✕</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Cards -->
+		<section class="demo-section">
+			<h2 class="demo-title">Cards</h2>
+			<div class="demo-grid">
+				<div class="card">
+					<div class="card-header">
+						<span>Card Title</span>
+						<button class="btn-icon" aria-label="More">⋮</button>
+					</div>
+					<div class="card-body">
+						<p class="text-gray-500">Card content goes here. This is a sample card component.</p>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-ghost">Cancel</button>
+						<button class="btn btn-primary">Save</button>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header">
+						<span>Another Card</span>
+					</div>
+					<div class="card-body">
+						<p class="text-gray-500">Cards can contain any content. They support headers, bodies, and footers.</p>
+						<div class="demo-row" style="margin-top: var(--gutter-md);">
+							<span class="badge badge-primary">New</span>
+							<span class="badge badge-success">Active</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Forms -->
+		<section class="demo-section">
+			<h2 class="demo-title">Form Elements</h2>
+			<div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+				<div>
+					<label for="input-text">Text Input</label>
+					<input type="text" id="input-text" placeholder="Enter text...">
+				</div>
+				<div>
+					<label for="input-email">Email</label>
+					<input type="email" id="input-email" placeholder="you@example.com">
+				</div>
+				<div>
+					<label for="select">Select</label>
+					<select id="select">
+						<option>Option 1</option>
+						<option>Option 2</option>
+						<option>Option 3</option>
+					</select>
+				</div>
+				<div>
+					<label for="textarea">Textarea</label>
+					<textarea id="textarea" rows="3" placeholder="Enter message..."></textarea>
+				</div>
+			</div>
+			<div class="demo-row" style="margin-top: var(--gutter-md);">
+				<label><input type="checkbox"> Checkbox</label>
+				<label><input type="radio" name="radio"> Radio</label>
+				<label><input type="range" style="width: 150px;"> Range</label>
+			</div>
+		</section>
+
+		<!-- Table -->
+		<section class="demo-section">
+			<h2 class="demo-title">Table</h2>
+			<div class="table-container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Role</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>John Doe</td>
+							<td>john@example.com</td>
+							<td>Admin</td>
+							<td><span class="badge badge-success">Active</span></td>
+						</tr>
+						<tr>
+							<td>Jane Smith</td>
+							<td>jane@example.com</td>
+							<td>Editor</td>
+							<td><span class="badge badge-warning">Pending</span></td>
+						</tr>
+						<tr>
+							<td>Bob Wilson</td>
+							<td>bob@example.com</td>
+							<td>Viewer</td>
+							<td><span class="badge badge-error">Inactive</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- Utilities -->
+		<section class="demo-section">
+			<h2 class="demo-title">Utility Classes</h2>
+			<div class="demo-stack">
+				<div>
+					<strong>Display:</strong>
+					<div class="demo-row">
+						<span class="badge">.flex</span>
+						<span class="badge">.grid</span>
+						<span class="badge">.hidden</span>
+						<span class="badge">.block</span>
+					</div>
+				</div>
+				<div>
+					<strong>Flex:</strong>
+					<div class="demo-row">
+						<span class="badge">.flex-col</span>
+						<span class="badge">.items-center</span>
+						<span class="badge">.justify-between</span>
+					</div>
+				</div>
+				<div>
+					<strong>Spacing:</strong>
+					<div class="demo-row">
+						<span class="badge">.p-4</span>
+						<span class="badge">.gap-4</span>
+						<span class="badge">.mt-2</span>
+					</div>
+				</div>
+				<div>
+					<strong>Colors:</strong>
+					<div class="demo-row">
+						<span class="text-blue-600">.text-blue-600</span>
+						<span class="text-red-600">.text-red-600</span>
+						<span class="text-green-700">.text-green-700</span>
+						<span class="text-gray-500">.text-gray-500</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Responsive -->
+		<section class="demo-section">
+			<h2 class="demo-title">Responsive Utilities</h2>
+			<p class="text-gray-500 mb-4">Resize the window to see responsive classes in action.</p>
+			<div class="demo-row">
+				<span class="badge sm:bg-blue-100">sm:</span>
+				<span class="badge md:bg-green-100">md:</span>
+				<span class="badge lg:bg-orange-100">lg:</span>
+				<span class="badge xl:bg-purple-100">xl:</span>
+			</div>
+			<div class="demo-row" style="margin-top: var(--gutter-md);">
+				<div class="hidden sm:block"><span class="badge">Visible sm+</span></div>
+				<div class="hidden md:block"><span class="badge">Visible md+</span></div>
+				<div class="hidden lg:block"><span class="badge">Visible lg+</span></div>
+				<div class="hidden xl:block"><span class="badge">Visible xl+</span></div>
+			</div>
+		</section>
+
+		<!-- attr() Dynamic Styling -->
+		<section class="demo-section">
+			<h2 class="demo-title">attr() — Dynamic Styling</h2>
+			<p class="text-gray-500 mb-4">Chrome 139+ (CSS Values &amp; Units Level 5). No classes needed — just data attributes.</p>
+			
+			<div class="demo-grid">
+				<!-- Rotation -->
+				<div class="card">
+					<div class="card-header">
+						<span>Rotation</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-row" style="gap: var(--gutter-lg);">
+							<div data-rotate="0" data-pad="md" data-bg="surface-alt" data-radius="md">0°</div>
+							<div data-rotate="15" data-pad="md" data-bg="surface-alt" data-radius="md">15°</div>
+							<div data-rotate="30" data-pad="md" data-bg="surface-alt" data-radius="md">30°</div>
+							<div data-rotate="45" data-pad="md" data-bg="surface-alt" data-radius="md">45°</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Opacity -->
+				<div class="card">
+					<div class="card-header">
+						<span>Opacity</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-row" style="gap: var(--gutter-lg);">
+							<div data-opacity="1" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">1.0</div>
+							<div data-opacity="0.75" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">0.75</div>
+							<div data-opacity="0.5" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">0.5</div>
+							<div data-opacity="0.25" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">0.25</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Elevation -->
+				<div class="card">
+					<div class="card-header">
+						<span>Elevation</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-row" style="gap: var(--gutter-lg);">
+							<div data-elevation="xs" data-pad="md" data-bg="surface" data-radius="md">xs</div>
+							<div data-elevation="sm" data-pad="md" data-bg="surface" data-radius="md">sm</div>
+							<div data-elevation="md" data-pad="md" data-bg="surface" data-radius="md">md</div>
+							<div data-elevation="lg" data-pad="md" data-bg="surface" data-radius="md">lg</div>
+							<div data-elevation="xl" data-pad="md" data-bg="surface" data-radius="md">xl</div>
+							<div data-elevation="2xl" data-pad="md" data-bg="surface" data-radius="md">2xl</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Inset -->
+				<div class="card">
+					<div class="card-header">
+						<span>Inset (Sunken)</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-row" style="gap: var(--gutter-lg);">
+							<div data-inset="xs" data-pad="md" data-bg="surface" data-radius="md">xs</div>
+							<div data-inset="sm" data-pad="md" data-bg="surface" data-radius="md">sm</div>
+							<div data-inset="md" data-pad="md" data-bg="surface" data-radius="md">md</div>
+							<div data-inset="lg" data-pad="md" data-bg="surface" data-radius="md">lg</div>
+							<div data-inset="xl" data-pad="md" data-bg="surface" data-radius="md">xl</div>
+							<div data-inset="2xl" data-pad="md" data-bg="surface" data-radius="md">2xl</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Z-Index -->
+				<div class="card">
+					<div class="card-header">
+						<span>Z-Index</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-row">
+							<div data-zindex="dropdown" data-pad="md" data-bg="surface-alt" data-radius="md">dropdown</div>
+							<div data-zindex="overlay" data-pad="md" data-bg="surface-alt" data-radius="md">overlay</div>
+							<div data-zindex="modal" data-pad="md" data-bg="surface-alt" data-radius="md">modal</div>
+							<div data-zindex="toast" data-pad="md" data-bg="surface-alt" data-radius="md">toast</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Typography -->
+				<div class="card">
+					<div class="card-header">
+						<span>Typography</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-stack">
+							<div data-text="xs" data-weight="normal">xs normal</div>
+							<div data-text="sm" data-weight="medium">sm medium</div>
+							<div data-text="base" data-weight="semibold">base semibold</div>
+							<div data-text="lg" data-weight="bold">lg bold</div>
+							<div data-text="xl" data-color="primary">xl primary</div>
+							<div data-text="2xl" data-color="error">2xl error</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Spacing -->
+				<div class="card">
+					<div class="card-header">
+						<span>Spacing</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-stack">
+							<div data-pad="xs" data-bg="surface-alt" data-radius="md">pad-xs</div>
+							<div data-pad="sm" data-bg="surface-alt" data-radius="md">pad-sm</div>
+							<div data-pad="md" data-bg="surface-alt" data-radius="md">pad-md</div>
+							<div data-pad="lg" data-bg="surface-alt" data-radius="md">pad-lg</div>
+							<div data-margin="lg" data-pad="md" data-bg="surface-alt" data-radius="md">margin-lg</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Scale -->
+				<div class="card">
+					<div class="card-header">
+						<span>Scale</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-row" style="gap: var(--gutter-lg);">
+							<div data-scale="0.9" data-pad="md" data-bg="surface-alt" data-radius="md">0.9</div>
+							<div data-scale="0.95" data-pad="md" data-bg="surface-alt" data-radius="md">0.95</div>
+							<div data-scale="1" data-pad="md" data-bg="surface-alt" data-radius="md">1</div>
+							<div data-scale="1.05" data-pad="md" data-bg="surface-alt" data-radius="md">1.05</div>
+							<div data-scale="1.1" data-pad="md" data-bg="surface-alt" data-radius="md">1.1</div>
+							<div data-scale="1.2" data-pad="md" data-bg="surface-alt" data-radius="md">1.2</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Ratio -->
+				<div class="card">
+					<div class="card-header">
+						<span>Aspect Ratio</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-grid" style="grid-template-columns: repeat(3, 1fr);">
+							<div data-ratio="square" data-bg="primary" data-radius="md"></div>
+							<div data-ratio="portrait" data-bg="success" data-radius="md"></div>
+							<div data-ratio="landscape" data-bg="warning" data-radius="md"></div>
+							<div data-ratio="video" data-bg="info" data-radius="md"></div>
+							<div data-ratio="ultrawide" data-bg="error" data-radius="md"></div>
+							<div data-ratio="golden" data-bg="surface-alt" data-radius="md"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Grid Columns & Rows -->
+				<div class="card">
+					<div class="card-header">
+						<span>Grid Columns & Rows</span>
+					</div>
+					<div class="card-body">
+						<div class="grid" data-columns="1" data-gap="md" style="margin-bottom: var(--gutter-md);">
+							<div data-bg="primary" data-pad="md" data-radius="md" style="color: white;">1 column</div>
+						</div>
+						<div class="grid" data-columns="2" data-gap="md" style="margin-bottom: var(--gutter-md);">
+							<div data-bg="success" data-pad="md" data-radius="md" style="color: white;">2 columns</div>
+							<div data-bg="success" data-pad="md" data-radius="md" style="color: white;">2 columns</div>
+						</div>
+						<div class="grid" data-columns="3" data-rows="2" data-gap="md" style="margin-bottom: var(--gutter-md);">
+							<div data-bg="warning" data-pad="md" data-radius="md" style="color: white;">3 cols × 2 rows</div>
+							<div data-bg="warning" data-pad="md" data-radius="md" style="color: white;">3 cols × 2 rows</div>
+							<div data-bg="warning" data-pad="md" data-radius="md" style="color: white;">3 cols × 2 rows</div>
+							<div data-bg="warning" data-pad="md" data-radius="md" style="color: white;">3 cols × 2 rows</div>
+							<div data-bg="warning" data-pad="md" data-radius="md" style="color: white;">3 cols × 2 rows</div>
+							<div data-bg="warning" data-pad="md" data-radius="md" style="color: white;">3 cols × 2 rows</div>
+						</div>
+						<div class="grid" data-columns="4" data-gap="md">
+							<div data-bg="info" data-pad="md" data-radius="md" style="color: white;">4 cols</div>
+							<div data-bg="info" data-pad="md" data-radius="md" style="color: white;">4 cols</div>
+							<div data-bg="info" data-pad="md" data-radius="md" style="color: white;">4 cols</div>
+							<div data-bg="info" data-pad="md" data-radius="md" style="color: white;">4 cols</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Subgrid -->
+				<div class="card">
+					<div class="card-header">
+						<span>Subgrid</span>
+					</div>
+					<div class="card-body">
+						<p class="text-gray-500 mb-4">Nested grids align with parent columns.</p>
+						<div class="grid" data-columns="3" data-gap="md">
+							<div class="card" data-subgrid data-gap="sm">
+								<div class="card-header">Card 1</div>
+								<div class="card-body">Content aligned</div>
+								<div class="card-footer">Footer</div>
+							</div>
+							<div class="card" data-subgrid data-gap="sm">
+								<div class="card-header">Card 2</div>
+								<div class="card-body">Content aligned</div>
+								<div class="card-footer">Footer</div>
+							</div>
+							<div class="card" data-subgrid data-gap="sm">
+								<div class="card-header">Card 3</div>
+								<div class="card-body">Content aligned</div>
+								<div class="card-footer">Footer</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Blur -->
+				<div class="card">
+					<div class="card-header">
+						<span>Blur</span>
+					</div>
+					<div class="card-body">
+						<div class="demo-row" style="gap: var(--gutter-md);">
+							<div data-blur="sm" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">sm</div>
+							<div data-blur="md" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">md</div>
+							<div data-blur="lg" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">lg</div>
+							<div data-blur="xl" data-pad="md" data-bg="primary" data-radius="md" style="color: white;">xl</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Combined -->
+				<div class="card">
+					<div class="card-header">
+						<span>Combined</span>
+					</div>
+					<div class="card-body">
+						<div data-rotate="6" data-opacity="0.95" data-elevation="lg" data-pad="lg" data-radius="xl" data-bg="surface">
+							<div data-text="lg" data-weight="semibold" data-color="primary">Dynamic Card</div>
+							<div data-text="sm" data-color="muted" style="margin-top: var(--gutter-xs);">
+								rotate + opacity + elevation + pad + radius + bg
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="demo-section" style="border-bottom: none;">
+			<p class="text-gray-500 text-sm">
+				@medyll/css-base — Built with modern CSS features
+			</p>
+			<p class="text-xs text-gray-400">
+				Browser support: Chrome 125+ (attr(): Chrome 139+)
+			</p>
+		</footer>
+	</div>
+</body>
+</html>

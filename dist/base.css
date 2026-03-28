@@ -1,10 +1,30 @@
+/* base.css
+ * Layer: base
+ * Base HTML element defaults and font feature settings
+ * 
+ * This file provides:
+ * - Root font size for rem-based scaling (11px base)
+ * - Font feature settings for improved typography
+ */
+
 @layer base {
+	/* ─── Root Font Size ──
+	 * Set base font size to 11px for consistent rem calculations
+	 * Note: This makes 1rem = 11px instead of the browser default 16px
+	 */
 	html {
-		font-size: 11px;
+		font-size: var(--default-font-size);
 	}
+	
+	/* ─── Font Features ──
+	 * Enable advanced OpenType typography features:
+	 * - 'rlig' (required ligatures): Mandatory character combinations
+	 * - 'calt' (contextual alternates): Context-aware glyph substitution
+	 * Similar to Shadcn typography optimization
+	 */
 	body {
 		font-feature-settings:
 			'rlig' 1,
-			'calt' 1; /* Optionnel : optimisation typo type Shadcn */
+			'calt' 1;
 	}
 }

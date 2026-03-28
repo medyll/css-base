@@ -1,0 +1,113 @@
+/* theme/tokens.css
+ * Layer: theme.tokens
+ * Semantic tokens derived from variables
+ * 
+ * This file maps raw spacing values to semantic token names:
+ * - Padding tokens (--pad-*)
+ * - Margin tokens (--marg-*)
+ * - Border radius tokens (--radius-*)
+ * - Motion tokens (duration, easing, transitions)
+ * - Icon sizes
+ * - Z-index scale
+ * - Breakpoints
+ */
+
+@layer theme.tokens {
+  :root {
+    /* ─── Semantic Padding ──
+		 * Derived from --gutter-* spacing scale in variables.css
+		 * Usage: padding: var(--pad-md);
+		 */
+    --pad-xs: var(--gutter-xs); /* 4px */
+    --pad-sm: var(--gutter-sm); /* 8px */
+    --pad-md: var(--gutter-md); /* 16px */
+    --pad-lg: var(--gutter-lg); /* 24px */
+    --pad-xl: var(--gutter-xl); /* 32px */
+    --pad-2xl: var(--gutter-2xl); /* 48px */
+    --pad-3xl: var(--gutter-3xl); /* 64px */
+
+    /* ─── Semantic Margin ──
+		 * Derived from --gutter-* spacing scale in variables.css
+		 * Usage: margin: var(--marg-lg);
+		 */
+    --marg-xs: var(--gutter-xs); /* 4px */
+    --marg-sm: var(--gutter-sm); /* 8px */
+    --marg-md: var(--gutter-md); /* 16px */
+    --marg-lg: var(--gutter-lg); /* 24px */
+    --marg-xl: var(--gutter-xl); /* 32px */
+    --marg-2xl: var(--gutter-2xl); /* 48px */
+    --marg-3xl: var(--gutter-3xl); /* 64px */
+
+    /* ─── Border Radius ──
+		 * Corner rounding scale
+		 * Usage: border-radius: var(--radius-lg);
+		 */
+    --radius-xs: var(--size-xs); /* 4px - extra small panels, buttons */
+    --radius-sm: var(--size-sm); /* 8px - small panels, buttons */
+    --radius-md: var(--size-md); /* 16px - default panels, cards */
+    --radius-lg: var(--size-lg); /* 24px - medium panels, inputs */
+    --radius-xl: var(--size-xl); /* 32px - large panels */
+    --radius-full: 9999px; /* circle/pill shape */
+
+    /* ─── Motion / Duration ──
+		 * Time-based animation tokens
+		 * Usage: transition-duration: var(--duration-fast);
+		 */
+    --duration-fast: 100ms; /* quick interactions (hover, focus) */
+    --duration-normal: 150ms; /* standard UI transitions */
+    --duration-slow: 200ms; /* deliberate animations */
+    --duration-slower: 300ms; /* complex transitions */
+    --duration-shimmer: 1.5s; /* skeleton loading shimmer */
+    --duration-spin: 1s; /* loading spinner rotation */
+
+    /* ─── Easing Functions ──
+		 * Cubic bezier curves for animation timing
+		 * Usage: transition-timing-function: var(--ease-out);
+		 */
+    --ease-in: cubic-bezier(0.4, 0, 1, 1); /* accelerates from rest */
+    --ease-out: cubic-bezier(0, 0, 0.2, 1); /* decelerates to rest */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); /* smooth start and end */
+    --ease-bounce: cubic-bezier(0.16, 1, 0.3, 1); /* elastic overshoot */
+
+    /* ─── Transition Presets ──
+		 * Combined duration + easing for common transitions
+		 * Usage: transition: opacity var(--transition-fast);
+		 */
+    --transition-fast: var(--duration-fast) var(--ease-out);
+    --transition-normal: var(--duration-normal) var(--ease-in-out);
+    --transition-slow: var(--duration-slow) var(--ease-in-out);
+
+    /* ─── Icon Sizes ──
+		 * Standard icon dimensions
+		 * Usage: width: var(--icon-size-md);
+		 */
+    --icon-size-xs: 0.5rem; /* 8px - inline icons */
+    --icon-size-sm: 1.25rem; /* 20px - button icons */
+    --icon-size-md: 2rem; /* 32px - feature icons */
+    --icon-size-lg: 3rem; /* 48px - hero icons */
+
+    /* ─── Z-Index Scale ──
+		 * Stacking order for layered UI elements
+		 * Usage: z-index: var(--z-modal);
+		 */
+    --z-dropdown: 100; /* dropdown menus, popovers */
+    --z-overlay: 200; /* modal backdrops, scrim overlays */
+    --z-modal: 500; /* modal dialogs */
+    --z-toast: 600; /* toast notifications */
+
+    /* ─── Default Easing ──
+		 * Standard easing for general use
+		 */
+    --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ─── Breakpoints ──
+		 * Responsive design breakpoints (min-width)
+		 * Usage: @media (min-width: --breakpoint-lg) { ... }
+		 */
+    --breakpoint-sm: 640px; /* small devices (landscape phones) */
+    --breakpoint-md: 768px; /* medium devices (tablets) */
+    --breakpoint-lg: 1024px; /* large devices (laptops) */
+    --breakpoint-xl: 1280px; /* extra large (desktops) */
+    --breakpoint-2xl: 1536px; /* 2XL (large desktops) */
+  }
+}

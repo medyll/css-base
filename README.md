@@ -14,22 +14,52 @@ Built exclusively with cutting-edge CSS features — no preprocessor, no build s
 dist/
   app.css          Entry point — import this file only
   base.css         HTML resets and font defaults
-  theme.css        Design tokens, typography, palette, base components
-  workspace.css    Application shell layout and UI components
-  utilities.css    Utility classes for layout, spacing, color, and hover variants
+  variables.css    Default font size and spacing scale
+  tokens.css       Semantic tokens (padding, margin, radius, motion, z-index)
+  typography.css   Font families, sizes, weights, line heights
+  palette.css      Colors, surfaces, shadows
+  components.css   Base components (headings, buttons, inputs, cards, alerts)
+  utilities.css    Utility classes for layout, spacing, color
+  attr.css         Dynamic styling via attr() (Chrome 139+)
   metadata.json    Machine-readable index for IDE tooling
+```
+
+## Installation
+
+```bash
+pnpm add @medyll/css-base
+# or
+npm install @medyll/css-base
+# or
+yarn add @medyll/css-base
 ```
 
 ## Usage
 
-```html
-<link rel="stylesheet" href="dist/app.css">
-```
-
-Or import in CSS:
+In your CSS entry point:
 
 ```css
-@import "dist/app.css";
+@import "@medyll/css-base";
+```
+
+Or in HTML:
+
+```html
+<link rel="stylesheet" href="node_modules/@medyll/css-base/dist/app.css">
+```
+
+Import specific layers:
+
+```css
+@import "@medyll/css-base/base";
+@import "@medyll/css-base/reset";
+@import "@medyll/css-base/variables";
+@import "@medyll/css-base/tokens";
+@import "@medyll/css-base/typography";
+@import "@medyll/css-base/palette";
+@import "@medyll/css-base/components";
+@import "@medyll/css-base/utilities";
+@import "@medyll/css-base/workspace";
 ```
 
 ## Layer architecture
@@ -90,7 +120,7 @@ To force a mode, set `color-scheme` on the root element:
 
 ## Utilities
 
-The utility layer provides single-purpose classes for common needs:
+The utility layer provides single-purpose classes for layout, spacing, typography, color, and hover variants:
 
 - Layout: `flex`, `grid`, `block`, `hidden`, and alignment helpers
 - Spacing: margin and padding scale matching the token system
@@ -98,3 +128,124 @@ The utility layer provides single-purpose classes for common needs:
 - Color: background and text color variants via `color-mix()`
 - Interactive: `hover:bg-*`, `hover:text-*`, group hover support
 - Ring / focus: `ring-*` classes for focus indicators
+
+### Responsive utilities
+
+Use breakpoint prefixes for responsive styles:
+
+| Prefix | Min-width |
+|--------|-----------|
+| `sm:`  | 640px     |
+| `md:`  | 768px     |
+| `lg:`  | 1024px    |
+| `xl:`  | 1280px    |
+| `2xl:` | 1536px    |
+
+Example: `<div class="flex md:grid lg:flex">`
+
+## Components
+
+Pre-styled components available out of the box:
+
+- **Cards**: `.card`, `.card-header`, `.card-body`, `.card-footer`
+- **Alerts**: `.alert`, `.alert-info`, `.alert-success`, `.alert-warning`, `.alert-error`
+- **Badges**: `.badge`, `.badge-primary`, `.badge-success`, `.badge-warning`, `.badge-error`, `.badge-neutral`
+- **Tables**: `.table`, `.table-striped`, `.table-compact` (wrapped in `.table-container`)
+
+## Dynamic Styling with attr() (Chrome 139+)
+
+The `attr.css` layer enables dynamic styling directly via HTML attributes — no classes needed. These **attr-utilities** leverage the CSS `attr()` function for runtime property values.
+
+### attr-utilities reference
+
+| Attribute | Values | Default |
+|-----------|--------|---------|
+| `data-rotate` | Any number (deg) | `0deg` |
+| `data-opacity` | 0–1 (number) | `1` |
+| `data-scale` | Any number | `1` |
+| `data-columns` | Any integer | `1` |
+| `data-rows` | Any integer | `1` |
+| `data-subgrid` | (boolean) | — |
+| `data-elevation` | `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | `md` |
+| `data-inset` | `xs`, `sm`, `md`, `lg`, `xl`, `2xl` | — |
+| `data-ratio` | `square`, `portrait`, `landscape`, `video`, `ultrawide`, `golden` | — |
+| `data-zindex` | `dropdown`, `overlay`, `modal`, `toast` | — |
+| `data-pad` | `xs` to `3xl` | — |
+| `data-margin` | `xs` to `3xl` | — |
+| `data-radius` | `sm`, `md`, `lg`, `xl`, `full` | — |
+| `data-text` | `xs` to `2xl` | — |
+| `data-weight` | `normal`, `medium`, `semibold`, `bold` | — |
+| `data-color` | `primary`, `secondary`, `success`, `warning`, `error`, `info`, `muted` | — |
+| `data-bg` | `surface`, `surface-alt`, `surface-raised`, `primary`, `secondary`, `success`, `warning`, `error`, `info` | — |
+| `data-gap` | `xs` to `3xl` | — |
+| `data-blur` | `sm`, `md`, `lg`, `xl` | — |
+| `data-border` | `none`, `sm`, `md`, `lg` | — |
+| `data-translate-x` | Any number (px) | `0px` |
+| `data-translate-y` | Any number (px) | `0px` |
+
+### Examples
+
+```html
+<!-- Rotation -->
+<div data-rotate="45">Rotated 45°</div>
+
+<!-- Opacity -->
+<div data-opacity="0.5">50% opaque</div>
+
+<!-- Elevation -->
+<div data-elevation="lg">Large elevation</div>
+
+<!-- Inset (sunken) -->
+<div data-inset="md">Sunken element</div>
+
+<!-- Scale -->
+<div data-scale="1.1">Scaled 110%</div>
+
+<!-- Grid Columns & Rows -->
+<div class="grid" data-columns="3" data-rows="2">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+  <div>Item 5</div>
+  <div>Item 6</div>
+</div>
+
+<!-- Subgrid (nested grids align with parent) -->
+<div class="grid" data-columns="3">
+  <div class="card" data-subgrid>
+    <div>Header</div>
+    <div>Content</div>
+    <div>Footer</div>
+  </div>
+</div>
+
+<!-- Aspect Ratio -->
+<div data-ratio="video">16:9 video container</div>
+<div data-ratio="square">1:1 square</div>
+<div data-ratio="golden">Golden ratio</div>
+
+<!-- Combined -->
+<div data-rotate="6" data-opacity="0.95" data-elevation="lg" data-scale="1.05">
+  Dynamic card
+</div>
+```
+
+## Accessibility
+
+- `:focus-visible` for keyboard focus indicators
+- `prefers-reduced-motion` support
+- `prefers-contrast: more` support for high contrast mode
+
+## Dark mode
+
+Dark mode is handled automatically via `light-dark()` and `color-scheme`. No class toggle required.
+To force a mode, set `color-scheme` on the root element:
+
+```css
+:root { color-scheme: dark; }
+```
+  
+---  
+  
+**Author:** Lebrun Meddy ([@medyll](https://github.com/medyll)) 

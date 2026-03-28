@@ -1,5 +1,15 @@
+/* app.css
+ * Entry point — imports all layers in order
+ */
+
+@layer base, theme.reset, theme.variables, theme.tokens, theme.typography, theme.palette, theme.components, utilities, attr;
 
 @import './base.css';
-@import './theme.css';
+@import './reset.css';
+@import './variables.css';
+@import './tokens.css';
+@import './typography.css';
+@import './palette.css';
+@import './components.css';
 @import './utilities.css';
-@import './workspace.css';
+@import './attr.css';

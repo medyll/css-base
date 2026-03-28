@@ -1,0 +1,287 @@
+/* attr.css
+ * Dynamic styling via HTML attributes using attr()
+ * Browser support: Chrome 139+ (CSS Values & Units Level 5)
+ * 
+ * Usage: <div data-rotate="45" data-opacity="0.8" data-shadow="lg">
+ */
+
+@supports (rotate: attr(x deg)) {
+  
+  /* ─── Rotation ── 
+   * Usage: data-rotate="<degrees>"
+   * Example: data-rotate="45" → rotates element 45 degrees clockwise
+   * Default: 0deg
+   */
+  [data-rotate] {
+    rotate: attr(data-rotate deg, 0deg);
+    transition: rotate var(--transition-normal);
+  }
+  
+  /* ─── Opacity ── 
+   * Usage: data-opacity="<0-1>"
+   * Example: data-opacity="0.5" → 50% transparent
+   * Default: 1 (fully opaque)
+   */
+  [data-opacity] {
+    opacity: attr(data-opacity number, 1);
+    transition: opacity var(--transition-normal);
+  }
+  
+  /* ─── Elevation ── 
+   * Usage: data-elevation="xs|sm|md|lg|xl|2xl"
+   * Example: data-elevation="lg" → large shadow elevation
+   * Default: md (via shadow layer in palette.css)
+   */
+  [data-elevation="xs"] { box-shadow: var(--shadow-xs); }
+  [data-elevation="sm"] { box-shadow: var(--shadow-sm); }
+  [data-elevation="md"] { box-shadow: var(--shadow-md); }
+  [data-elevation="lg"] { box-shadow: var(--shadow-lg); }
+  [data-elevation="xl"] { box-shadow: var(--shadow-xl); }
+  [data-elevation="2xl"] { box-shadow: var(--shadow-2xl); }
+  
+  /* ─── Inset Shadow ── 
+   * Usage: data-inset="xs|sm|md|lg|xl|2xl"
+   * Example: data-inset="md" → inner shadow (sunken effect)
+   * Creates inset/inner shadows for sunken elements
+   */
+  [data-inset="xs"] { box-shadow: inset var(--shadow-xs); }
+  [data-inset="sm"] { box-shadow: inset var(--shadow-sm); }
+  [data-inset="md"] { box-shadow: inset var(--shadow-md); }
+  [data-inset="lg"] { box-shadow: inset var(--shadow-lg); }
+  [data-inset="xl"] { box-shadow: inset var(--shadow-xl); }
+  [data-inset="2xl"] { box-shadow: inset var(--shadow-2xl); }
+  
+  /* ─── Z-Index ── 
+   * Usage: data-zindex="dropdown|overlay|modal|toast"
+   * Example: data-zindex="modal" → z-index: 500
+   * Values from tokens.css: --z-dropdown(100), --z-overlay(200), --z-modal(500), --z-toast(600)
+   */
+  [data-zindex="dropdown"] { z-index: var(--z-dropdown); }
+  [data-zindex="overlay"] { z-index: var(--z-overlay); }
+  [data-zindex="modal"] { z-index: var(--z-modal); }
+  [data-zindex="toast"] { z-index: var(--z-toast); }
+  
+  /* ─── Padding ── 
+   * Usage: data-pad="xs|sm|md|lg|xl|2xl|3xl"
+   * Example: data-pad="lg" → padding: 1.5rem (24px)
+   * Scale: xs(4px) → 3xl(64px)
+   */
+  [data-pad="xs"] { padding: var(--pad-xs); }
+  [data-pad="sm"] { padding: var(--pad-sm); }
+  [data-pad="md"] { padding: var(--pad-md); }
+  [data-pad="lg"] { padding: var(--pad-lg); }
+  [data-pad="xl"] { padding: var(--pad-xl); }
+  [data-pad="2xl"] { padding: var(--pad-2xl); }
+  [data-pad="3xl"] { padding: var(--pad-3xl); }
+  
+  /* ─── Margin ── 
+   * Usage: data-margin="xs|sm|md|lg|xl|2xl|3xl"
+   * Example: data-margin="lg" → margin: 1.5rem (24px)
+   * Scale: xs(4px) → 3xl(64px)
+   */
+  [data-margin="xs"] { margin: var(--marg-xs); }
+  [data-margin="sm"] { margin: var(--marg-sm); }
+  [data-margin="md"] { margin: var(--marg-md); }
+  [data-margin="lg"] { margin: var(--marg-lg); }
+  [data-margin="xl"] { margin: var(--marg-xl); }
+  [data-margin="2xl"] { margin: var(--marg-2xl); }
+  [data-margin="3xl"] { margin: var(--marg-3xl); }
+  
+  /* ─── Border Radius ── 
+   * Usage: data-radius="sm|md|lg|xl|full"
+   * Example: data-radius="lg" → border-radius: 0.5rem (8px)
+   * Special: full → 9999px (circle/pill)
+   */
+  [data-radius="sm"] { border-radius: var(--radius-sm); }
+  [data-radius="md"] { border-radius: var(--radius-md); }
+  [data-radius="lg"] { border-radius: var(--radius-lg); }
+  [data-radius="xl"] { border-radius: var(--radius-xl); }
+  [data-radius="full"] { border-radius: var(--radius-full); }
+  
+  /* ─── Font Size ── 
+   * Usage: data-text="xs|sm|base|md|lg|xl|2xl"
+   * Example: data-text="xl" → font-size: 1.25rem (20px)
+   * Scale: xs(12px) → 2xl(24px)
+   */
+  [data-text="xs"] { font-size: var(--text-xs); }
+  [data-text="sm"] { font-size: var(--text-sm); }
+  [data-text="base"] { font-size: var(--text-base); }
+  [data-text="md"] { font-size: var(--text-md); }
+  [data-text="lg"] { font-size: var(--text-lg); }
+  [data-text="xl"] { font-size: var(--text-xl); }
+  [data-text="2xl"] { font-size: var(--text-2xl); }
+  
+  /* ─── Font Weight ── 
+   * Usage: data-weight="normal|medium|semibold|bold"
+   * Example: data-weight="semibold" → font-weight: 600
+   * Values: normal(400), medium(500), semibold(600), bold(700)
+   */
+  [data-weight="normal"] { font-weight: var(--font-normal, 400); }
+  [data-weight="medium"] { font-weight: var(--font-medium, 500); }
+  [data-weight="semibold"] { font-weight: var(--font-semibold, 600); }
+  [data-weight="bold"] { font-weight: var(--font-bold, 700); }
+  
+  /* ─── Color ── 
+   * Usage: data-color="primary|secondary|success|warning|error|info|muted"
+   * Example: data-color="error" → red error state color
+   * Maps to semantic color tokens from palette.css
+   */
+  [data-color="primary"] { color: var(--color-primary); }
+  [data-color="secondary"] { color: var(--color-secondary); }
+  [data-color="success"] { color: var(--color-success); }
+  [data-color="warning"] { color: var(--color-warning); }
+  [data-color="error"] { color: var(--color-critical); }
+  [data-color="info"] { color: var(--color-info); }
+  [data-color="muted"] { color: var(--color-text-muted); }
+  
+  /* ─── Background ── 
+   * Usage: data-bg="surface|surface-alt|surface-raised|primary|secondary|success|warning|error|info"
+   * Example: data-bg="primary" → blue primary background
+   * Surfaces: surface(white/dark), surface-alt(gray panel), surface-raised(elevated)
+   */
+  [data-bg="surface"] { background: var(--color-surface); }
+  [data-bg="surface-alt"] { background: var(--color-surface-alt); }
+  [data-bg="surface-raised"] { background: var(--color-surface-raised); }
+  [data-bg="primary"] { background: var(--color-primary); }
+  [data-bg="secondary"] { background: var(--color-secondary); }
+  [data-bg="success"] { background: var(--color-success); }
+  [data-bg="warning"] { background: var(--color-warning); }
+  [data-bg="error"] { background: var(--color-critical); }
+  [data-bg="info"] { background: var(--color-info); }
+  
+  /* ─── Gap (for flex/grid) ── 
+   * Usage: data-gap="xs|sm|md|lg|xl|2xl|3xl"
+   * Example: data-gap="lg" → gap: 1.5rem (24px)
+   * Applies to flex and grid containers for child spacing
+   */
+  [data-gap="xs"] { gap: var(--gutter-xs); }
+  [data-gap="sm"] { gap: var(--gutter-sm); }
+  [data-gap="md"] { gap: var(--gutter-md); }
+  [data-gap="lg"] { gap: var(--gutter-lg); }
+  [data-gap="xl"] { gap: var(--gutter-xl); }
+  [data-gap="2xl"] { gap: var(--gutter-2xl); }
+  [data-gap="3xl"] { gap: var(--gutter-3xl); }
+  
+  /* ─── Grid Columns ── 
+   * Usage: data-columns="<integer>"
+   * Example: data-columns="3" → grid-template-columns: repeat(3, 1fr)
+   * Works with class="grid"
+   * Default: 1 column
+   */
+  [data-columns] {
+    grid-template-columns: repeat(attr(data-columns integer, 1), 1fr);
+  }
+  
+  /* ─── Grid Rows ── 
+   * Usage: data-rows="<integer>"
+   * Example: data-rows="2" → grid-template-rows: repeat(2, 1fr)
+   * Works with class="grid"
+   * Default: auto (1 row)
+   */
+  [data-rows] {
+    grid-template-rows: repeat(attr(data-rows integer, 1), 1fr);
+  }
+  
+  /* ─── Subgrid ── 
+   * Usage: data-subgrid (boolean attribute)
+   * Example: data-subgrid → enables CSS subgrid for nested grids
+   * Requires parent grid container
+   * Browser support: Chrome 117+, Firefox 110+, Safari 16.2+
+   */
+  [data-subgrid] {
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+  }
+  
+  /* ─── Duration ── 
+   * Usage: data-duration="fast|normal|slow|slower"
+   * Example: data-duration="slow" → 200ms transition
+   * Values: fast(100ms), normal(150ms), slow(200ms), slower(300ms)
+   */
+  [data-duration="fast"] { transition-duration: var(--duration-fast); }
+  [data-duration="normal"] { transition-duration: var(--duration-normal); }
+  [data-duration="slow"] { transition-duration: var(--duration-slow); }
+  [data-duration="slower"] { transition-duration: var(--duration-slower); }
+  
+  /* ─── Scale ── 
+   * Usage: data-scale="<number>"
+   * Example: data-scale="1.1" → scales element to 110%
+   * Default: 1 (original size)
+   * Note: Uses CSS scale property (not transform)
+   */
+  [data-scale] {
+    scale: attr(data-scale number, 1);
+    transition: scale var(--transition-normal);
+  }
+  
+  /* ─── Ratio (aspect-ratio) ── 
+   * Usage: data-ratio="square|portrait|landscape|video|ultrawide|golden"
+   * Example: data-ratio="video" → aspect-ratio: 16/9
+   * Ratios: square(1:1), portrait(3:4), landscape(4:3), video(16:9), ultrawide(21:9), golden(1.618:1)
+   */
+  [data-ratio="square"] { aspect-ratio: 1 / 1; }
+  [data-ratio="portrait"] { aspect-ratio: 3 / 4; }
+  [data-ratio="landscape"] { aspect-ratio: 4 / 3; }
+  [data-ratio="video"] { aspect-ratio: 16 / 9; }
+  [data-ratio="ultrawide"] { aspect-ratio: 21 / 9; }
+  [data-ratio="golden"] { aspect-ratio: 1.618 / 1; }
+  
+  /* ─── Translate ── 
+   * Usage: data-translate-x="<px>" | data-translate-y="<px>" | data-translate (both)
+   * Example: data-translate-x="100" → translates 100px on X axis
+   * Default: 0px (no translation)
+   * Note: Uses CSS translate property (not transform), unit is px
+   */
+  [data-translate-x] {
+    translate: attr(data-translate-x px, 0px) 0;
+    transition: translate var(--transition-normal);
+  }
+  [data-translate-y] {
+    translate: 0 attr(data-translate-y px, 0px);
+    transition: translate var(--transition-normal);
+  }
+  [data-translate] {
+    translate: attr(data-translate-x px, 0px) attr(data-translate-y px, 0px);
+    transition: translate var(--transition-normal);
+  }
+  
+  /* ─── Blur (backdrop-filter) ── 
+   * Usage: data-blur="sm|md|lg|xl"
+   * Example: data-blur="lg" → backdrop-filter: blur(16px)
+   * Creates frosted glass effect on semi-transparent backgrounds
+   * Values: sm(4px), md(8px), lg(16px), xl(24px)
+   */
+  [data-blur="sm"] { backdrop-filter: blur(4px); }
+  [data-blur="md"] { backdrop-filter: blur(8px); }
+  [data-blur="lg"] { backdrop-filter: blur(16px); }
+  [data-blur="xl"] { backdrop-filter: blur(24px); }
+  
+  /* ─── Border Width ── 
+   * Usage: data-border="none|sm|md|lg"
+   * Example: data-border="lg" → border-width: 4px
+   * Values: none(0), sm(1px), md(2px), lg(4px)
+   */
+  [data-border="none"] { border-width: 0; }
+  [data-border="sm"] { border-width: var(--border-width, 1px); }
+  [data-border="md"] { border-width: 2px; }
+  [data-border="lg"] { border-width: 4px; }
+  
+  /* ─── Combined transition for transform properties ── 
+   * Applies smooth transitions to all transform-like properties
+   * Ensures consistent animation timing across rotate, scale, translate, opacity, elevation
+   */
+  [data-rotate],
+  [data-opacity],
+  [data-elevation],
+  [data-scale],
+  [data-translate-x],
+  [data-translate-y],
+  [data-translate] {
+    transition:
+      rotate var(--transition-normal),
+      scale var(--transition-normal),
+      translate var(--transition-normal),
+      opacity var(--transition-normal),
+      box-shadow var(--transition-slow);
+  }
+}

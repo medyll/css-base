@@ -5,8 +5,8 @@
   "files": [
     {
       "file": "app.css",
-      "description": "Entry point — imports all layers in order",
-      "layers": ["base", "theme", "components"]
+      "description": "Entry point — declares all layers and imports everything",
+      "layers": ["base", "theme.reset", "theme.variables", "theme.tokens", "theme.typography", "theme.palette", "theme.components", "utilities", "workspace"]
     },
     {
       "file": "base.css",
@@ -14,27 +14,44 @@
       "layer": "base"
     },
     {
-      "file": "theme.css",
-      "description": "Design tokens, typography, palette, and base components",
-      "layer": "theme",
-      "sublayers": [
-        "theme.reset",
-        "theme.variables",
-        "theme.tokens",
-        "theme.typography",
-        "theme.palette",
-        "theme.components"
-      ]
+      "file": "reset.css",
+      "description": "HTML resets and base styles",
+      "layer": "theme.reset"
     },
     {
-      "file": "workspace.css",
-      "description": "Application shell layout and UI components (app-shell, cards, menus)",
-      "layer": "components"
+      "file": "variables.css",
+      "description": "Base spacing scale",
+      "layer": "theme.variables"
+    },
+    {
+      "file": "tokens.css",
+      "description": "Semantic tokens (padding, margins, radius, motion, z-index)",
+      "layer": "theme.tokens"
+    },
+    {
+      "file": "typography.css",
+      "description": "Font families, sizes, weights, line heights, letter spacing",
+      "layer": "theme.typography"
+    },
+    {
+      "file": "palette.css",
+      "description": "Colors, surfaces, shadows, technical dimensions",
+      "layer": "theme.palette"
+    },
+    {
+      "file": "components.css",
+      "description": "Base components (headings, inputs, buttons) and @function declarations",
+      "layer": "theme.components"
     },
     {
       "file": "utilities.css",
       "description": "Utility classes for layout, spacing, typography, color, and hover variants",
       "layer": "utilities"
+    },
+    {
+      "file": "workspace.css",
+      "description": "Application shell layout and UI components (app-shell, cards, menus)",
+      "layer": "workspace"
     }
   ],
   "compatibility": {
@@ -49,7 +66,9 @@
       "text-box-trim / text-box-edge",
       "subgrid",
       "text-wrap: balance",
-      "@function (CSS Values Level 5)"
+      "@function (CSS Values Level 5) — Chromium 139+",
+      "prefers-contrast",
+      "prefers-reduced-motion"
     ]
   }
 }

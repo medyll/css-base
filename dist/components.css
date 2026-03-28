@@ -1,0 +1,616 @@
+/* theme/components.css
+ * Layer: theme.components
+ * Base component styles: headings, body text, inputs, buttons
+ * 
+ * This file defines styled HTML elements and base components:
+ * - Typography (headings h1-h6, paragraphs, inline text)
+ * - Code blocks (code, kbd, samp, pre)
+ * - Form elements (inputs, buttons, labels)
+ * - Cards (header, body, footer)
+ * - Alerts (info, success, warning, error)
+ * - Badges (default and status variants)
+ * - Tables (striped, compact)
+ */
+
+@layer theme.components {
+	/* ─── Headings ──
+	 * h1-h6 with text-box-trim for precise vertical alignment
+	 * Uses CSS logical properties and design tokens
+	 */
+	h1, h2, h3, h4, h5, h6 {
+		text-box-trim: trim-both; /* Remove leading/trailing half-leading space */
+		text-box-edge: cap alphabetic; /* Align to cap height and baseline */
+	}
+	h1 {
+		font-size: var(--text-2xl);    /* 24px */
+		font-weight: var(--font-bold); /* 700 */
+		line-height: var(--leading-tight); /* 1.25 */
+		letter-spacing: var(--tracking-tight); /* -0.01em */
+	}
+	h2 {
+		font-size: var(--text-xl);     /* 20px */
+		font-weight: var(--font-semibold); /* 600 */
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+	}
+	h3 {
+		font-size: var(--text-lg);     /* 18px */
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-snug); /* 1.375 */
+	}
+	h4 {
+		font-size: var(--text-md);     /* 16px */
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-snug);
+	}
+	h5 {
+		font-size: var(--text-base);   /* 14px */
+		font-weight: var(--font-medium); /* 500 */
+		line-height: var(--leading-normal); /* 1.5 */
+	}
+	h6 {
+		font-size: var(--text-sm);     /* 13px */
+		font-weight: var(--font-medium);
+		line-height: var(--leading-normal);
+		letter-spacing: var(--tracking-wide); /* 0.03em */
+		text-transform: uppercase;
+	}
+
+	/* ─── Body Text ──
+	 * Paragraphs and inline text elements
+	 */
+	p {
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed); /* 1.625 for readability */
+		color: var(--color-text);
+		text-box-trim: trim-both;
+		text-box-edge: cap alphabetic;
+	}
+	small {
+		font-size: var(--text-xs); /* 11px - captions, metadata */
+		color: var(--color-text-muted);
+	}
+	strong {
+		font-weight: var(--font-semibold);
+	}
+	
+	/* ─── Code Elements ──
+	 * Inline code and code blocks with monospace font
+	 */
+	code,
+	kbd,
+	samp,
+	pre {
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+	}
+	code {
+		background: var(--color-surface-alt);
+		padding: 0.1em 0.35em;
+		border-radius: var(--radius-sm);
+		border: var(--border-width) solid var(--color-border);
+	}
+	pre {
+		padding: var(--pad-md);
+		border-radius: var(--radius-md);
+		background: var(--color-surface-alt);
+		overflow-x: auto; /* Horizontal scroll for long lines */
+		& code {
+			background: none;
+			padding: 0;
+			border: none;
+		}
+	}
+	hr {
+		border: none;
+		border-top: var(--border-width) solid var(--color-border);
+	}
+
+	/* ─── Label ──
+	 * Form labels with muted color
+	 */
+	label {
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		color: var(--color-text-muted);
+	}
+
+	/* ─── Inputs ──
+	 * Text inputs, textareas, and select dropdowns
+	 * Full width, with focus ring and hover states
+	 */
+	input,
+	textarea,
+	select {
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+		color: var(--color-text);
+		background: var(--color-surface-alt);
+		border: var(--border-width) solid var(--color-border);
+		border-radius: var(--radius-md);
+		padding: var(--pad-xs) var(--pad-sm);
+		width: 100%;
+		outline: none;
+		transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+		&::placeholder {
+			color: var(--color-text-muted);
+			opacity: 1;
+		}
+		&:hover {
+			border-color: var(--color-border-strong);
+		}
+		&:focus-visible {
+			border-color: var(--color-primary);
+			box-shadow: 0 0 0 var(--focus-ring-gap) var(--color-surface),
+						0 0 0 calc(var(--focus-ring-gap) + var(--focus-ring-width)) var(--color-primary);
+		}
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+		&[readonly] {
+			background: var(--color-surface);
+			cursor: default;
+		}
+	}
+
+	/* ─── Buttons ──
+	 * Base button styles with variants (primary, ghost, danger)
+	 * Supports <button> elements and .btn class
+	 */
+	button,
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--gutter-xs);
+		font-size: var(--text-sm);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-none);
+		color: var(--color-text);
+		background: var(--color-surface-alt);
+		border: var(--border-width) solid var(--color-border);
+		border-radius: var(--radius-md);
+		padding: var(--pad-xs) var(--pad-sm);
+		cursor: pointer;
+		outline: none;
+		transition:
+			background var(--transition-fast),
+			border-color var(--transition-fast),
+			color var(--transition-fast),
+			box-shadow var(--transition-fast);
+
+		&:hover {
+			background: var(--color-surface);
+			border-color: var(--color-border-strong);
+		}
+		&:focus-visible {
+			border-color: var(--color-primary);
+			box-shadow: 0 0 0 var(--focus-ring-gap) var(--color-surface),
+						0 0 0 calc(var(--focus-ring-gap) + var(--focus-ring-width)) var(--color-primary);
+		}
+		&:active {
+			scale: 0.97; /* Subtle press effect */
+		}
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+
+		/* ─── Button Variants ── */
+		
+		/* Primary: filled blue button for main actions */
+		&.btn-primary {
+			background: var(--color-primary);
+			border-color: var(--color-primary);
+			color: #fff;
+			&:hover {
+				background: var(--color-primary-hover);
+				border-color: var(--color-primary-hover);
+			}
+		}
+		
+		/* Ghost: transparent button for secondary actions */
+		&.btn-ghost {
+			background: transparent;
+			border-color: transparent;
+			&:hover {
+				background: color-mix(in srgb, var(--color-text) 5%, transparent);
+				border-color: transparent;
+			}
+		}
+		
+		/* Danger: red text button for destructive actions */
+		&.btn-danger {
+			color: var(--color-critical);
+			&:hover {
+				background: color-mix(in srgb, var(--color-critical) 10%, transparent);
+				border-color: var(--color-critical);
+			}
+		}
+	}
+
+	/* ─── Specific Input Overrides ──
+	 * Checkbox, radio, and range inputs have special styling
+	 */
+	input[type='checkbox'],
+	input[type='radio'] {
+		width: auto;
+		padding: 0;
+		accent-color: var(--color-primary);
+	}
+	input[type='range'] {
+		padding: 0;
+		accent-color: var(--color-primary);
+	}
+	select {
+		cursor: pointer;
+	}
+}
+
+/* ─── CSS Functions (CSS Values Level 5) ──
+ * Advanced color manipulation functions
+ * Browser support: Chromium 139+ only
+ * These functions enable dynamic color transformations
+ */
+@supports (function(--fn(--x) returns <number> { result: 0; })) {
+	/* Hover state: darken color by 10% lightness */
+	@function --hover-state(--color <color>) returns <color> {
+		result: hsl(from var(--color) h s calc(l - 10%));
+	}
+
+	/* Alpha: apply opacity to color */
+	@function --alpha(--color <color>, --opacity <number>) returns <color> {
+		result: hsl(from var(--color) h s l / var(--opacity));
+	}
+
+	/* ─── Blending Functions ── */
+
+	/* Shade: mix color with black by intensity percentage */
+	@function --shade(--color <color>, --intensity <percentage>) returns <color> {
+		result: color-mix(in srgb, var(--color), black var(--intensity));
+	}
+
+	/* Tint: mix color with white by intensity percentage */
+	@function --tint(--color <color>, --intensity <percentage>) returns <color> {
+		result: color-mix(in srgb, var(--color), white var(--intensity));
+	}
+
+	/* Surface tint: 12% color overlay for elevation effects */
+	@function --surface-tint(--color <color>) returns <color> {
+		result: color-mix(in srgb, var(--color) 12%, transparent);
+	}
+
+	/* Border: darken color by 15% for border variants */
+	@function --border-from(--color <color>) returns <color> {
+		result: color-mix(in srgb, var(--color), black 15%);
+	}
+
+	/* ─── Color Harmonies (oklch) ──
+	 * Generate harmonious colors using OKLCH color space
+	 */
+
+	/* Secondary: +30 hue rotation from primary */
+	@function --harmony-secondary(--color <color>) returns <color> {
+		result: oklch(from var(--color-primary) l c calc(h + 30));
+	}
+	
+	/* Secondary soft: lighter, desaturated secondary */
+	@function --harmony-secondary-soft(--color <color>) returns <color> {
+		result: oklch(from var(--color-secondary) calc(l + 0.1) calc(c * 0.5) h);
+	}
+
+	/* Complementary: +180 hue rotation (opposite on color wheel) */
+	@function --harmony-complementary(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 180));
+	}
+
+	/* Analogous: adjacent colors (+/- 30 degrees) */
+	@function --harmony-analogous-plus(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 30));
+	}
+	@function --harmony-analogous-minus(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h - 30));
+	}
+
+	/* Split-complementary: +150 and +210 degrees */
+	@function --harmony-split-1(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 150));
+	}
+	@function --harmony-split-2(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 210));
+	}
+
+	/* Triadic: equilateral triangle on color wheel (+120, +240) */
+	@function --harmony-triad-1(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 120));
+	}
+	@function --harmony-triad-2(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 240));
+	}
+
+	/* Square: square harmony (+90, +180, +270) */
+	@function --harmony-square-1(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 90));
+	}
+	@function --harmony-square-2(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 180));
+	}
+	@function --harmony-square-3(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 270));
+	}
+
+	/* Tetradic: rectangular harmony (+60) */
+	@function --harmony-tetradic-2(--color <color>) returns <color> {
+		result: oklch(from var(--color) l c calc(h + 60));
+	}
+}
+
+/* ─── Cards ────────────────────────────────────────────
+ * Container component with header, body, and footer
+ * Usage: <div class="card"><div class="card-header">...</div><div class="card-body">...</div></div>
+ */
+
+.card {
+	background: var(--color-surface);
+	border: var(--border-width) solid var(--color-border);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-md);
+	overflow: hidden;
+
+	& .card-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--pad-sm) var(--pad-md);
+		border-bottom: var(--border-width) solid var(--color-border);
+		font-weight: var(--font-semibold);
+		font-size: var(--text-sm);
+	}
+
+	& .card-body {
+		padding: var(--pad-md);
+	}
+
+	& .card-footer {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: var(--gutter-sm);
+		padding: var(--pad-sm) var(--pad-md);
+		border-top: var(--border-width) solid var(--color-border);
+		background: var(--color-surface-alt);
+	}
+}
+
+/* ─── Alerts ───────────────────────────────────────────
+ * Notification banners with icon, title, description, and close button
+ * Variants: info, success, warning, error
+ * Usage: <div class="alert alert-info">...</div>
+ */
+
+.alert {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--gutter-md);
+	padding: var(--pad-md);
+	border-radius: var(--radius-md);
+	border: var(--border-width) solid var(--color-border);
+	background: var(--color-surface);
+
+	& .alert-icon {
+		flex-shrink: 0;
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	& .alert-content {
+		flex: 1;
+		min-width: 0;
+
+		& .alert-title {
+			font-weight: var(--font-semibold);
+			font-size: var(--text-sm);
+			margin-bottom: 0.25rem;
+		}
+
+		& .alert-description {
+			font-size: var(--text-sm);
+			color: var(--color-text-muted);
+		}
+	}
+
+	& .alert-close {
+		flex-shrink: 0;
+		padding: 0.25rem;
+		background: transparent;
+		border: none;
+		border-radius: var(--radius-sm);
+		color: var(--color-text-muted);
+		cursor: pointer;
+
+		&:hover {
+			background: color-mix(in srgb, var(--color-text) 5%, transparent);
+			color: var(--color-text);
+		}
+	}
+
+	/* ─── Alert Variants ──
+	 * Each variant tints the background and border with its status color
+	 */
+	
+	/* Info: blue informational message */
+	&.alert-info {
+		border-color: color-mix(in srgb, var(--color-info) 30%, var(--color-border));
+		background: color-mix(in srgb, var(--color-info) 8%, var(--color-surface));
+
+		& .alert-icon {
+			color: var(--color-info);
+		}
+		& .alert-title {
+			color: var(--color-info);
+		}
+	}
+
+	/* Success: green confirmation message */
+	&.alert-success {
+		border-color: color-mix(in srgb, var(--color-success) 30%, var(--color-border));
+		background: color-mix(in srgb, var(--color-success) 8%, var(--color-surface));
+
+		& .alert-icon {
+			color: var(--color-success);
+		}
+		& .alert-title {
+			color: var(--color-success);
+		}
+	}
+
+	/* Warning: amber caution message */
+	&.alert-warning {
+		border-color: color-mix(in srgb, var(--color-warning) 30%, var(--color-border));
+		background: color-mix(in srgb, var(--color-warning) 8%, var(--color-surface));
+
+		& .alert-icon {
+			color: var(--color-warning);
+		}
+		& .alert-title {
+			color: var(--color-warning);
+		}
+	}
+
+	/* Error: red error message */
+	&.alert-error {
+		border-color: color-mix(in srgb, var(--color-critical) 30%, var(--color-border));
+		background: color-mix(in srgb, var(--color-critical) 8%, var(--color-surface));
+
+		& .alert-icon {
+			color: var(--color-critical);
+		}
+		& .alert-title {
+			color: var(--color-critical);
+		}
+	}
+}
+
+/* ─── Badges ───────────────────────────────────────────
+ * Small status indicators and labels
+ * Pill-shaped with border
+ * Usage: <span class="badge badge-primary">New</span>
+ */
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.125rem 0.5rem;
+	font-size: 0.75rem;
+	font-weight: var(--font-medium);
+	line-height: 1;
+	border-radius: var(--radius-full);
+	border: var(--border-width) solid var(--color-border);
+	background: var(--color-surface-alt);
+	color: var(--color-text);
+
+	/* ─── Badge Variants ── */
+	
+	/* Primary: blue highlight */
+	&.badge-primary {
+		background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+		border-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+		color: var(--color-primary);
+	}
+
+	/* Success: green highlight */
+	&.badge-success {
+		background: color-mix(in srgb, var(--color-success) 10%, var(--color-surface));
+		border-color: color-mix(in srgb, var(--color-success) 30%, var(--color-border));
+		color: var(--color-success);
+	}
+
+	/* Warning: amber highlight */
+	&.badge-warning {
+		background: color-mix(in srgb, var(--color-warning) 10%, var(--color-surface));
+		border-color: color-mix(in srgb, var(--color-warning) 30%, var(--color-border));
+		color: var(--color-warning);
+	}
+
+	/* Error: red highlight */
+	&.badge-error {
+		background: color-mix(in srgb, var(--color-critical) 10%, var(--color-surface));
+		border-color: color-mix(in srgb, var(--color-critical) 30%, var(--color-border));
+		color: var(--color-critical);
+	}
+
+	/* Neutral: gray default */
+	&.badge-neutral {
+		background: var(--color-surface-alt);
+		border-color: var(--color-border);
+		color: var(--color-text-muted);
+	}
+}
+
+/* ─── Tables ───────────────────────────────────────────
+ * Data tables with optional striped rows and compact mode
+ * Must be wrapped in .table-container for horizontal scrolling
+ * Usage: <div class="table-container"><table class="table table-striped">...</table></div>
+ */
+
+.table-container {
+	overflow-x: auto; /* Enable horizontal scroll for wide tables */
+	border: var(--border-width) solid var(--color-border);
+	border-radius: var(--radius-md);
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--text-sm);
+
+	& th,
+	& td {
+		padding: var(--pad-sm) var(--pad-md);
+		text-align: left;
+		border-bottom: var(--border-width) solid var(--color-border);
+	}
+
+	& th {
+		font-weight: var(--font-semibold);
+		background: var(--color-surface-alt);
+		color: var(--color-text);
+	}
+
+	& td {
+		color: var(--color-text);
+	}
+
+	& tbody tr {
+		&:hover {
+			background: var(--color-surface-hover);
+		}
+		&:last-child td {
+			border-bottom: none;
+		}
+	}
+
+	/* ─── Table Variants ── */
+	
+	/* Striped: alternating row colors for readability */
+	&.table-striped {
+		& tbody tr:nth-child(even) {
+			background: var(--color-surface-alt);
+			&:hover {
+				background: var(--color-surface-hover);
+			}
+		}
+	}
+
+	/* Compact: reduced padding for dense data display */
+	&.table-compact {
+		& th,
+		& td {
+			padding: var(--pad-xs) var(--pad-sm);
+		}
+	}
+}

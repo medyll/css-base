@@ -1,16 +1,29 @@
 {
   "name": "@medyll/css-base",
   "version": "0.1.4",
-  "description": "",
-  "main": "index.js",
+  "description": "Modern CSS design system library using cutting-edge CSS features",
+  "main": "dist/app.css",
   "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medyll/css-base"
+  },
+  "bugs": {
+    "url": "https://github.com/medyll/css-base/issues"
+  },
+  "homepage": "https://github.com/medyll/css-base#readme",
   "exports": {
     ".": "./dist/app.css",
     "./base": "./dist/base.css",
-    "./theme": "./dist/theme.css",
+    "./reset": "./dist/reset.css",
+    "./variables": "./dist/variables.css",
+    "./tokens": "./dist/tokens.css",
+    "./typography": "./dist/typography.css",
+    "./palette": "./dist/palette.css",
+    "./components": "./dist/components.css",
     "./utilities": "./dist/utilities.css",
     "./workspace": "./dist/workspace.css"
   },

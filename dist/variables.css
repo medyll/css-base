@@ -1,0 +1,73 @@
+/* theme/variables.css
+ * Layer: theme.variables
+ * Base spacing scale and default font size
+ *
+ * This file defines the foundational spacing scale used throughout the design system.
+ * All spacing tokens (--pad-*, --marg-*, --gap-*) derive from these base values.
+ * The --default-font-size is used as the base for calculating heading sizes.
+ *
+ * Scale: 0.25rem (4px) increments following a 4px grid system
+ */
+
+@layer theme.variables {
+	:root {
+
+		/* Default text colors for light/dark modes */
+		--default-color-text-light: #0f172a;  /* dark slate for light mode */
+		--default-color-text-dark: #f1f5f9;   /* light slate for dark mode */ 
+		
+		/* ─── Default Font Size ──
+		 * Base font size for the design system
+		 * All text sizes are calculated relative to this value
+		 * Default: 0.875rem (14px)
+		 * Usage: font-size: calc(var(--default-font-size) * 1.5);
+		 */
+		--default-font-size: 0.875rem; /* 14px */
+
+		/* ─── Default Line Height ──
+		 * Base line height for the design system
+		 * All line heights are calculated relative to this value
+		 * Default: 1.5 (150%)
+		 * Usage: line-height: calc(var(--default-leading) * 0.833);
+		 */
+		--default-leading: 1.5; /* 150% */
+
+		/* ─── Default Font Weight ──
+		 * Base font weight for the design system
+		 * All font weights are calculated relative to this value
+		 * Default: 400 (normal)
+		 * Usage: font-weight: calc(var(--default-font-weight) * 1.5);
+		 */
+		--default-font-weight: 400; /* normal */
+
+		/* ─── Default Letter Spacing (Tracking) ──
+		 * Base letter spacing for the design system
+		 * All letter spacings are calculated relative to this value
+		 * Default: 0 (normal)
+		 * Usage: letter-spacing: calc(var(--default-tracking) * 0.05em);
+		 */
+		--default-tracking: 0; /* normal */
+
+		/* ─── Spacing Scale (Gutter) ──
+		 * Base spacing values in rem units with pixel equivalents
+		 * Usage: gap: var(--gutter-md); or padding: var(--gutter-lg);
+		 */
+		--gutter-xs: 0.25rem;  /* 4px  - tight spacing, inline elements */
+		--gutter-sm: 0.5rem;   /* 8px  - compact spacing, icon gaps */
+		--gutter-md: 1rem;     /* 16px - default spacing, standard gaps */
+		--gutter-lg: 1.5rem;   /* 24px - comfortable spacing, section gaps */
+		--gutter-xl: 2rem;     /* 32px - generous spacing, layout sections */
+		--gutter-2xl: 3rem;    /* 48px - large spacing, page sections */
+		--gutter-3xl: 4rem;    /* 64px - maximum spacing, hero sections */
+
+
+		/* ───── Default size scale ───── */
+		--size-xs: 0.25rem;   /* 4px - extra small elements */
+		--size-sm: 0.5rem;    /* 8px - small elements */
+		--size-md: 1rem;      /* 16px - default size, standard elements */
+		--size-lg: 1.5rem;    /* 24px - large size, large elements */
+		--size-xl: 2rem;      /* 32px - extra large size, hero elements */	
+		--size-2xl: 3rem;     /* 48px - huge size, special elements */
+		--size-3xl: 4rem;     /* 64px - maximum size, hero elements */
+	}
+}

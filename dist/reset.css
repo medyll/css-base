@@ -1,0 +1,139 @@
+/* theme/reset.css
+ * Layer: theme.reset
+ * HTML resets and base styles
+ * 
+ * This file provides:
+ * - Box-sizing reset (border-box everywhere)
+ * - Margin/padding reset
+ * - HTML text and tab size settings
+ * - Custom scrollbar styling
+ * - Body defaults (background, font, smoothing)
+ * - Media element resets
+ * - Form element inheritance
+ * - Link styling
+ * - Accessibility media queries (reduced motion, high contrast)
+ */
+
+@layer theme.reset {
+	/* ─── Universal Reset ──
+	 * Apply border-box sizing and remove default margins/padding
+	 */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* ─── HTML Defaults ──
+	 * Text sizing, tab width, scrollbar gutter
+	 */
+	html {
+		-webkit-text-size-adjust: 100%; /* Prevent iOS text zoom on orientation change */
+		text-size-adjust: 100%;
+		tab-size: 4; /* Consistent tab width for <pre> and code */
+		scrollbar-gutter: stable; /* Prevent layout shift from scrollbar */
+		
+		/* Custom scrollbar styling (Firefox) */
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-border-strong) transparent;
+	}
+
+	/* ─── Body Defaults ──
+	 * Full viewport height, background, typography
+	 */
+	body {
+		min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+		background-color: var(--color-surface);
+		color: var(--color-text);
+		font-family: var(--font-sans);
+		font-size: var(--text-base);
+		line-height: var(--leading-normal);
+		-webkit-font-smoothing: antialiased; /* Smoother fonts on macOS */
+	}
+
+	/* ─── Media Elements ──
+	 * Responsive images, videos, and SVGs
+	 */
+	img,
+	video {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+	svg {
+		max-width: 100%;
+	}
+	
+	/* ─── Form Elements ──
+	 * Inherit font properties for consistent styling
+	 */
+	input,
+	button,
+	textarea,
+	select {
+		font: inherit;
+	}
+	button {
+		cursor: pointer;
+	}
+	textarea {
+		resize: vertical; /* Allow vertical resize only */
+	}
+	
+	/* ─── Text Wrapping ──
+	 * Prevent overflow from long words
+	 */
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		overflow-wrap: break-word;
+	}
+
+	/* ─── Links ──
+	 * Primary color, no underline by default
+	 */
+	a {
+		color: var(--color-primary);
+		text-decoration: none;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	/* ─── Accessibility: Reduced Motion ──
+	 * Respect user preference for reduced motion
+	 * Disables animations and transitions
+	 */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+
+	/* ─── Accessibility: High Contrast ──
+	 * Enhanced contrast mode support
+	 * Forces borders to currentColor for visibility
+	 */
+	@media (prefers-contrast: more) {
+		*,
+		*::before,
+		*::after {
+			border-color: currentColor !important;
+		}
+		:root {
+			--color-border: currentColor;
+			--color-border-strong: currentColor;
+		}
+	}
+}

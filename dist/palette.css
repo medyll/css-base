@@ -1,0 +1,151 @@
+/* theme/palette.css
+ * Layer: theme.palette
+ * Colors, surfaces, shadows, technical dimensions
+ * 
+ * This file defines the complete color system including:
+ * - Base colors (text, primary, secondary)
+ * - Surface variants (surface, surface-alt, surface-raised, etc.)
+ * - Status colors (success, warning, critical, info)
+ * - Border colors
+ * - Shadow scale (xs to 2xl)
+ * - Technical dimensions (borders, focus rings, scrollbars, layout)
+ */
+
+@layer theme.palette {
+	:root {
+		/* Color scheme: automatic light/dark mode via light-dark() */
+		color-scheme: light dark;
+		accent-color: var(--color-primary);
+
+		/* ─── Base Colors ──
+		 * Core color tokens used throughout the design system
+		 * Uses OKLCH for better color manipulation and consistency
+		 */
+
+		/* Default text colors for light/dark modes (OKLCH) */
+		--default-color-text-light: oklch(0.141 0.005 285.823);  /* #0f172a - dark slate */
+		--default-color-text-dark: oklch(0.962 0.003 264.542);   /* #f1f5f9 - light slate */
+
+		/* Text color: uses light-dark() for automatic theme switching */
+		--color-text: light-dark(var(--default-color-text-light), var(--default-color-text-dark));
+
+		/* Primary brand color: blue (OKLCH) - used for buttons, links, focus states */
+		--color-primary: oklch(0.546 0.245 262.881);  /* #3b82f6 */
+
+		/* Secondary color: computed from primary using harmony function (+30 hue rotation) */
+		--color-secondary: --harmony-secondary(var(--color-primary));
+
+		/* Complementary color: computed from primary (180 hue rotation) */
+		--color-complementary: --harmony-complementary(var(--color-primary));
+		
+		/* ─── Color Variants ──
+		 * Derived colors for interactive states
+		 */
+
+		/* Hover state: primary with 8% less lightness (darker) */
+		--color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+
+		/* Muted state: primary with 28% more lightness (lighter) */
+		--color-primary-muted: oklch(from var(--color-primary) calc(l + 0.28) c h);
+
+		/* ─── Surfaces ──
+		 * Background layers for different UI elevations
+		 * All use light-dark() for automatic theme support
+		 */
+
+		/* Main page background: white / dark */
+		--color-surface: light-dark(oklch(1 0 0), oklch(0.1 0 0));
+
+		/* Alternate surfaces (sidebars, panels): light gray / dark gray */
+		--color-surface-alt: light-dark(oklch(0.967 0.003 264.542), oklch(0.145 0 0));
+
+		/* Raised surfaces (cards, modals): white / dark gray */
+		--color-surface-raised: light-dark(oklch(1 0 0), oklch(0.18 0 0));
+
+		/* Overlay surfaces (drawers, popovers): semi-transparent with backdrop-filter */
+		--color-surface-overlay: light-dark(oklch(1 0 0 / 0.85), oklch(0.114 0 0 / 0.85));
+
+		/* Sunken surfaces (inputs, inset zones): light gray / very dark */
+		--color-surface-sunken: light-dark(oklch(0.933 0.002 264.542), oklch(0.078 0 0));
+
+		/* Hover state for list items: light gray / dark gray */
+		--color-surface-hover: light-dark(oklch(0.941 0.003 264.542), oklch(0.165 0 0));
+
+		/* Active/selected state: primary tint / dark blue */
+		--color-surface-active: light-dark(oklch(0.929 0.034 260.695), oklch(0.173 0.032 265.755));
+
+		/* ─── Status Colors ──
+		 * Semantic colors for feedback states (OKLCH)
+		 */
+
+		/* Success: green - confirmations, completed states */
+		--color-success: oklch(0.627 0.194 149.214);  /* #10b981 */
+
+		/* Warning: amber - cautions, pending states */
+		--color-warning: oklch(0.705 0.213 79.98);    /* #f59e0b */
+
+		/* Critical/Error: red - errors, destructive actions */
+		--color-critical: oklch(0.637 0.237 25.331);  /* #ef4444 */
+
+		/* Info: blue - informational messages */
+		--color-info: var(--color-primary);
+
+		/* ─── Borders ──
+		 * Border colors for dividers and outlines (OKLCH)
+		 */
+
+		/* Default border: light gray / medium gray */
+		--color-border: light-dark(oklch(0.898 0.025 264.542), oklch(0.251 0 0));
+
+		/* Strong border (hover, focus): lighter gray / darker gray */
+		--color-border-strong: light-dark(oklch(0.843 0.032 264.542), oklch(0.333 0 0));
+		
+		/* ─── Text Variants ──
+		 * Additional text colors (OKLCH)
+		 */
+
+		/* Muted text: gray / blue-gray - secondary text, captions */
+		--color-text-muted: light-dark(oklch(0.551 0.045 264.364), oklch(0.696 0.044 265.755));
+
+		/* ─── Shadows ──
+		 * Elevation shadows with adaptive color for light/dark mode
+		 * Uses OKLCH for consistent shadow appearance
+		 */
+
+		/* Shadow color base: desaturated blue-gray / black (OKLCH) */
+		--shadow-color: oklch(0.2 0.02 265);
+
+		/* Extra small shadow: 1px offset, 2px blur, 5% opacity - subtle elevation */
+		--shadow-xs: 0 1px 2px oklch(var(--shadow-color) / 0.05);
+
+		/* Small shadow: 2px offset, 4px blur, 8% opacity - cards, buttons */
+		--shadow-sm: 0 2px 4px oklch(var(--shadow-color) / 0.08);
+
+		/* Medium shadow: 4px offset, 8px blur, 12% opacity - default elevation */
+		--shadow-md: 0 4px 8px oklch(var(--shadow-color) / 0.12);
+
+		/* Large shadow: 8px offset, 24px blur, 16% opacity - dropdowns, modals */
+		--shadow-lg: 0 8px 24px oklch(var(--shadow-color) / 0.16);
+
+		/* Extra large shadow: 12px offset, 32px blur, 20% opacity - floating panels */
+		--shadow-xl: 0 12px 32px oklch(var(--shadow-color) / 0.20);
+
+		/* 2XL shadow: 16px offset, 48px blur, 25% opacity - maximum elevation */
+		--shadow-2xl: 0 16px 48px oklch(var(--shadow-color) / 0.25);
+		
+		/* ─── Technical Dimensions ──
+		 * Precise measurements for UI elements
+		 */
+
+		/* Default border width: 1px */
+		--border-width: 1px;
+
+		/* Focus ring: 2px visible ring with 3px gap from element */
+		--focus-ring-width: 0.125rem; /* 2px */
+		--focus-ring-gap: 0.1875rem; /* 3px */
+
+		/* Custom scrollbar dimensions */
+		--scrollbar-width: 6px;
+		--scrollbar-height: 6px;
+	}
+}
