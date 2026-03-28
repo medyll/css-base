@@ -1,6 +1,6 @@
 {
   "name": "@medyll/css-base",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "description": "Modern CSS design system library using cutting-edge CSS features",
   "main": "dist/app.css",
   "private": false,
