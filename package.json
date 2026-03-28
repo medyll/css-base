@@ -17,6 +17,7 @@
   "homepage": "https://github.com/medyll/css-base#readme",
   "exports": {
     ".": "./dist/app.css",
+    "./theme": "./dist/theme.css",
     "./base": "./dist/base.css",
     "./reset": "./dist/reset.css",
     "./variables": "./dist/variables.css",

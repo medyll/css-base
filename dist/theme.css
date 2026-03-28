@@ -1,0 +1,43 @@
+/* theme/theme.css
+ * Layer: theme.theme
+ * Default theme values for font, spacing, and colors
+ *
+ * This file defines the base theme configuration:
+ * - Default font properties (size, line height, weight, tracking)
+ * - Default color values (text, surface)
+ *
+ * These values are used by other theme files to compute derived tokens.
+ */
+
+@layer theme.theme {
+	:root {
+		/* ─── Default Font Properties ──
+		 * Base typography values used throughout the design system
+		 */
+
+		/* Base font size: 0.875rem (14px) - used for rem calculations */
+		--default-font-size: 0.875rem;
+
+		/* Base line height: 1.5 (150%) - used for vertical rhythm */
+		--default-leading: 1.5;
+
+		/* Base font weight: 400 (normal) - reference for weight scale */
+		--default-font-weight: 400;
+
+		/* Base letter spacing: 0 (normal) - reference for tracking scale */
+		--default-tracking: 0;
+
+		/* ─── Default Color Values ──
+		 * Base color values for light/dark mode
+		 * Used by palette.css to compute theme colors
+		 */
+
+		/* Text colors for light/dark modes */
+		--default-color-text-light: oklch(0.141 0.005 285.823);  /* #0f172a */
+		--default-color-text-dark: oklch(0.962 0.003 264.542);   /* #f1f5f9 */
+
+		/* Surface colors for light/dark modes */
+		--default-color-surface-light: oklch(1 0 0);             /* white */
+		--default-color-surface-dark: oklch(0.1 0 0);            /* dark */
+	}
+}

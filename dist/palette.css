@@ -22,11 +22,8 @@
 		/* ─── Base Colors ──
 		 * Core color tokens used throughout the design system
 		 * Uses OKLCH for better color manipulation and consistency
+		 * Note: --default-color-text-* are defined in theme.css
 		 */
-
-		/* Default text colors for light/dark modes (OKLCH) */
-		--default-color-text-light: oklch(0.141 0.005 285.823);  /* #0f172a - dark slate */
-		--default-color-text-dark: oklch(0.962 0.003 264.542);   /* #f1f5f9 - light slate */
 
 		/* Text color: uses light-dark() for automatic theme switching */
 		--color-text: light-dark(var(--default-color-text-light), var(--default-color-text-dark));
@@ -58,11 +55,9 @@
 		 * All use light-dark() for automatic theme support
 		 */
 
-		/* Default surface colors for light/dark modes (OKLCH) */
-		--default-color-surface-light: oklch(1 0 0);              /* white */
-		--default-color-surface-dark: oklch(0.1 0 0);             /* dark */
-
-		/* Base surface color: uses light-dark() */
+		/* Base surface color: uses light-dark()
+		 * Note: --default-color-surface-* are defined in theme.css
+		 */
 		--color-surface: light-dark(var(--default-color-surface-light), var(--default-color-surface-dark));
 
 		/* Alternate surfaces: surface with shade (darker) */
@@ -115,14 +110,22 @@
 		--color-info: var(--color-primary);
 
 		/* ─── Borders ──
-		 * Border colors for dividers and outlines (OKLCH)
+		 * Border colors derived from primary color with transparency
+		 * Light mode: primary with alpha on light background
+		 * Dark mode: primary with alpha on dark background
 		 */
 
-		/* Default border: light gray / medium gray */
-		--color-border: light-dark(oklch(0.898 0.025 264.542), oklch(0.251 0 0));
+		/* Default border: primary color with transparency (subtle border) */
+		--color-border: light-dark(
+			oklch(from var(--color-primary) 0.85 0.04 265 / 0.35),
+			oklch(from var(--color-primary) 0.55 0.15 265 / 0.5)
+		);
 
-		/* Strong border (hover, focus): lighter gray / darker gray */
-		--color-border-strong: light-dark(oklch(0.843 0.032 264.542), oklch(0.333 0 0));
+		/* Strong border (hover, focus): darker and less transparent */
+		--color-border-strong: light-dark(
+			oklch(from var(--color-primary) 0.75 0.06 265 / 0.6),
+			oklch(from var(--color-primary) 0.45 0.18 265 / 0.7)
+		);
 		
 		/* ─── Text Variants ──
 		 * Additional text colors (OKLCH)
@@ -132,12 +135,15 @@
 		--color-text-muted: light-dark(oklch(0.551 0.045 264.364), oklch(0.696 0.044 265.755));
 
 		/* ─── Shadows ──
-		 * Elevation shadows with adaptive color for light/dark mode
-		 * Uses OKLCH for consistent shadow appearance
+		 * Elevation shadows derived from text color for natural appearance
+		 * Uses OKLCH relative color syntax to compute shadow from --color-text
 		 */
 
-		/* Shadow color base: desaturated blue-gray in light mode, pure black in dark mode */
-		--shadow-color: light-dark(oklch(0.2 0.02 265), oklch(0 0 0));
+		/* Shadow color base: derived from text color with low lightness and desaturated */
+		--shadow-color: light-dark(
+			oklch(from var(--color-text) 0.25 0.01 h),
+			oklch(from var(--color-text) 0.15 0 h)
+		);
 
 		/* Extra small shadow: 1px offset, 2px blur, 5% opacity - subtle elevation */
 		--shadow-xs: 0 1px 2px oklch(var(--shadow-color) / 0.05);
@@ -159,17 +165,21 @@
 		
 		/* ─── Technical Dimensions ──
 		 * Precise measurements for UI elements
+		 * Derived from spacing scale where possible
 		 */
 
 		/* Default border width: 1px */
 		--border-width: 1px;
 
-		/* Focus ring: 2px visible ring with 3px gap from element */
-		--focus-ring-width: 0.125rem; /* 2px */
-		--focus-ring-gap: 0.1875rem; /* 3px */
+		/* Focus ring: derived from spacing scale
+		 * --focus-ring-width: 2px visible ring (half of gutter-xs)
+		 * --focus-ring-gap: 3px gap from element
+		 */
+		--focus-ring-width: calc(var(--gutter-xs) / 2); /* 2px */
+		--focus-ring-gap: calc(var(--gutter-xs) * 0.75); /* 3px */
 
-		/* Custom scrollbar dimensions */
-		--scrollbar-width: 6px;
-		--scrollbar-height: 6px;
+		/* Custom scrollbar dimensions: derived from spacing scale */
+		--scrollbar-width: calc(var(--gutter-xs) * 1.5); /* 6px */
+		--scrollbar-height: calc(var(--gutter-xs) * 1.5); /* 6px */
 	}
 }

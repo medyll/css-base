@@ -2,10 +2,11 @@
  * Entry point — imports all layers in order
  */
 
-@layer base, theme.reset, theme.variables, theme.tokens, theme.typography, theme.palette, theme.components, utilities, attr;
+@layer base, theme.reset, theme.theme, theme.variables, theme.tokens, theme.typography, theme.palette, theme.components, utilities, attr;
 
 @import './base.css';
 @import './reset.css';
+@import './theme.css';
 @import './variables.css';
 @import './tokens.css';
 @import './typography.css';

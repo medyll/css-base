@@ -15,15 +15,17 @@ Built exclusively with cutting-edge CSS features — no preprocessor, no build s
 ```
 dist/
   app.css          Entry point — import this file only
+  theme.css        Default theme values (font, colors)
   base.css         HTML resets and font defaults
-  variables.css    Default font size, line height, weight, tracking + spacing scale
+  variables.css    Spacing scale and size scale
   tokens.css       Semantic tokens (padding, margin, radius, motion, z-index)
-  typography.css   Font families, sizes (calculated), weights (calculated), line heights
+  typography.css   Font families, sizes, weights, line heights
   functions.css    CSS @functions for color manipulation (Chrome 139+)
   palette.css      Colors, surfaces (computed), shadows (OKLCH)
   components.css   Base components (headings, buttons, inputs, cards, alerts)
   utilities.css    Utility classes for layout, spacing, color
   attr.css         Dynamic styling via attr() (Chrome 139+)
+  reset.css        HTML resets and base styles
   metadata.json    Machine-readable index for IDE tooling
 ```
 
@@ -54,6 +56,7 @@ Or in HTML:
 Import specific layers:
 
 ```css
+@import "@medyll/css-base/theme";
 @import "@medyll/css-base/base";
 @import "@medyll/css-base/reset";
 @import "@medyll/css-base/variables";
@@ -62,7 +65,7 @@ Import specific layers:
 @import "@medyll/css-base/palette";
 @import "@medyll/css-base/components";
 @import "@medyll/css-base/utilities";
-@import "@medyll/css-base/workspace";
+@import "@medyll/css-base/attr";
 ```
 
 ## Layer architecture
@@ -72,6 +75,7 @@ The library uses `@layer` to enforce a strict cascade order:
 ```
 base
 theme.reset
+theme.theme
 theme.variables
 theme.tokens
 theme.typography
@@ -100,7 +104,31 @@ outside or above these layers to override without specificity hacks.
 
 ## Token system
 
-Design tokens are defined as CSS custom properties on `:root` inside `theme.css`.
+Design tokens are defined as CSS custom properties on `:root` inside the theme files.
+
+### Theme variables (customization)
+
+Override these variables in `theme.css` to customize the design system:
+
+```css
+:root {
+  /* Font properties */
+  --default-font-size: 1rem;        /* Base font size (default: 0.875rem) */
+  --default-leading: 1.6;           /* Base line height (default: 1.5) */
+  --default-font-weight: 400;       /* Base font weight (default: 400) */
+  --default-tracking: 0.02em;       /* Base letter spacing (default: 0) */
+
+  /* Text colors (OKLCH format) */
+  --default-color-text-light: oklch(0.2 0.02 265);  /* Light mode text */
+  --default-color-text-dark: oklch(0.95 0.01 265);  /* Dark mode text */
+
+  /* Surface colors (OKLCH format) */
+  --default-color-surface-light: oklch(0.98 0.01 265);  /* Light mode background */
+  --default-color-surface-dark: oklch(0.15 0.01 265);   /* Dark mode background */
+}
+```
+
+### Spacing tokens
 
 **Spacing** — `--gutter-xs` through `--gutter-3xl`, with semantic aliases `--pad-*` and `--marg-*`
 

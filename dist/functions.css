@@ -46,6 +46,15 @@
     result: color-mix(in srgb, var(--color), black 15%);
   }
 
+  /* Border alpha: create border color from primary with transparency
+   * Usage: --border-alpha(var(--color-primary), 0.3)
+   * Light mode: primary with alpha on white
+   * Dark mode: primary with alpha on black
+   */
+  @function --border-alpha(--color <color>, --opacity <number>) returns <color> {
+    result: oklch(from var(--color) l c h / var(--opacity));
+  }
+
   /* ─── Color State Functions ── */
 
   /* Hover state: darken color by 10% lightness
