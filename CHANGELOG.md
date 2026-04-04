@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.24] - 2026-04-04
+**Chores:**
+- release v0.1.23 [skip ci]
+
+**Other:**
+- Add shared navigation and theme toggle functionality
+
+
+
 ## [0.1.22] - 2026-03-31
 **Chores:**
 - release v0.1.21 [skip ci]
