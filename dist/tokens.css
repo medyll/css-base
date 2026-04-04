@@ -26,6 +26,18 @@
     --pad-2xl: var(--gutter-2xl); /* 48px */
     --pad-3xl: var(--gutter-3xl); /* 64px */
 
+    /* ─── Semantic Gap ──
+		 * Derived from --gutter-* spacing scale in variables.css
+		 * Usage: gap: var(--gap-md); (inline styles, flex/grid containers)
+		 */
+    --gap-xs: var(--gutter-xs); /* 4px */
+    --gap-sm: var(--gutter-sm); /* 8px */
+    --gap-md: var(--gutter-md); /* 16px */
+    --gap-lg: var(--gutter-lg); /* 24px */
+    --gap-xl: var(--gutter-xl); /* 32px */
+    --gap-2xl: var(--gutter-2xl); /* 48px */
+    --gap-3xl: var(--gutter-3xl); /* 64px */
+
     /* ─── Semantic Margin ──
 		 * Derived from --gutter-* spacing scale in variables.css
 		 * Usage: margin: var(--marg-lg);
