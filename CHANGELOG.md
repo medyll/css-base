@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.30] - 2026-04-04
+**Documentation:**
+- add brand skins section to css-base skill
+
+**Chores:**
+- release v0.1.29 [skip ci]
+
+
+
 ## [0.1.28] - 2026-04-04
 **Documentation:**
 - publish demo skinning overview
