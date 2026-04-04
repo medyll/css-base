@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
 /* Slack skin — css-base token overrides
  * Dark-first: Slack aubergine sidebar, purple primary
+ * Font: Lato — the actual font used by Slack's web interface
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: Lato — the actual font Slack uses */
+  --font-sans: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+
   /* Brand: Slack purple */
   --color-primary:       oklch(0.52 0.18 285);  /* #4A154B aubergine */
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);

@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap');
+
 /* Amazon skin — css-base token overrides
  * Light-first: white surface, Amazon orange primary, navy accents
+ * Font: Source Sans 3 — humanist sans-serif, similar to Amazon Ember
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: Source Sans 3 — humanist sans, close to Amazon Ember */
+  --font-sans: 'Source Sans 3', 'Amazon Ember', Arial, sans-serif;
+
   /* Brand: Amazon orange */
   --color-primary:       oklch(0.72 0.18 65);   /* #FF9900 */
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);

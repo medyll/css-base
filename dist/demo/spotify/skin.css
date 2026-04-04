@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
 /* Spotify skin — css-base token overrides
  * Dark-first: near-black, Spotify green primary, pill buttons
+ * Font: Nunito — rounded geometric, close to Spotify's Circular typeface
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: Nunito — rounded geometric, close to Spotify Circular */
+  --font-sans: 'Nunito', 'Circular', sans-serif;
+
   /* Brand: Spotify green */
   --color-primary:       oklch(0.72 0.22 148);  /* #1DB954 */
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);

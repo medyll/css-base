@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+
 /* Netflix skin — css-base token overrides
  * Dark-first: near-black surface, Netflix red primary
  * light-dark() is driven by color-scheme, triggered by [data-theme]
+ * Font: Barlow — geometric, slightly condensed, similar to Netflix Sans
  */
 
 /* Connect data-theme toggle → native color-scheme */
@@ -8,6 +11,9 @@
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: Barlow — geometric sans, similar to Netflix Sans */
+  --font-sans: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+
   /* Brand: Netflix red */
   --color-primary:       oklch(0.52 0.24 27);   /* #E50914 */
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);

@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 /* WhatsApp skin — css-base token overrides
  * Light-first: white chat bg, WA green primary, rounded bubbles
+ * Font: Roboto — Android system font, used by WhatsApp on Android
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: Roboto — Android/WhatsApp system font */
+  --font-sans: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
   /* Brand: WhatsApp green */
   --color-primary:       oklch(0.52 0.18 148);  /* #25D366 */
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);

@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* Dashboard Analytics skin — css-base token overrides
  * Dark-first: deep navy, blue primary, semantic status colors active
+ * Font: Inter — the universal standard for analytics and data interfaces
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: Inter — industry standard for dashboards and data interfaces */
+  --font-sans: 'Inter', system-ui, sans-serif;
+
   /* Brand: dashboard blue */
   --color-primary:       oklch(0.62 0.20 255);
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);

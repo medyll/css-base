@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 /* Terminal / CLI skin — css-base token overrides
  * Dark-first: black bg, green text as primary, monospace font
+ * Font: JetBrains Mono — coding font with ligatures, used in modern terminals
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: JetBrains Mono — coding font with ligatures */
+  --font-sans: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+
   /* Primary = terminal green */
   --color-primary:       oklch(0.72 0.22 148);  /* #00FF41 style */
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
@@ -18,9 +25,6 @@
   /* Text = green on black */
   --default-color-text-light: oklch(0.72 0.22 148);   /* green text */
   --default-color-text-dark:  oklch(0.72 0.22 148);
-
-  /* Monospace font */
-  --font-family-base: 'Courier New', Courier, monospace;
 
   /* Minimal radius — hard edges */
   --radius-sm: 1px;

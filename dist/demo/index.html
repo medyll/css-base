@@ -13,19 +13,117 @@
   <button class="btn btn-ghost" onclick="toggleTheme()">🌓 Theme</button>
 </nav>
 <div style="max-width:1200px;margin:0 auto;padding:var(--pad-xl);">
-  <h1>@medyll/css-base — Skin Demos</h1>
-  <p class="text-gray-500" style="margin:var(--marg-sm) 0 var(--marg-xl);">10 demos proving css-base works as a skinnable design system. Each uses only <code>app.css</code> + a <code>skin.css</code> variable override file.</p>
-  <div class="grid" data-columns="3" data-gap="lg">
-    <a href="netflix/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Netflix</span><span class="badge badge-error">Dark</span></div><div class="card-body"><p class="text-gray-500">Hero banner, card carousels, dark UI with red accent.</p></div></a>
-    <a href="amazon/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Amazon</span><span class="badge badge-warning">E-commerce</span></div><div class="card-body"><p class="text-gray-500">Product grid, search bar, filters, deal banners.</p></div></a>
-    <a href="whatsapp/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">WhatsApp</span><span class="badge badge-success">Messaging</span></div><div class="card-body"><p class="text-gray-500">Contact list, chat bubbles, green accent.</p></div></a>
-    <a href="windows/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Windows 11</span><span class="badge badge-primary">Desktop</span></div><div class="card-body"><p class="text-gray-500">Taskbar, start menu, windows, Mica blur.</p></div></a>
-    <a href="macos/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">macOS</span><span class="badge badge-neutral">Desktop</span></div><div class="card-body"><p class="text-gray-500">Menu bar, dock, Finder windows, traffic lights.</p></div></a>
-    <a href="spotify/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Spotify</span><span class="badge badge-success">Music</span></div><div class="card-body"><p class="text-gray-500">Playlist sidebar, album grid, player bar.</p></div></a>
-    <a href="slack/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Slack</span><span class="badge badge-primary">Workspace</span></div><div class="card-body"><p class="text-gray-500">Aubergine sidebar, channels, message threads.</p></div></a>
-    <a href="github/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">GitHub</span><span class="badge badge-neutral">Dev</span></div><div class="card-body"><p class="text-gray-500">Repo page, file tree, issues, README panel.</p></div></a>
-    <a href="dashboard/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Dashboard</span><span class="badge badge-primary">Analytics</span></div><div class="card-body"><p class="text-gray-500">KPI cards, charts, data tables, sidebar nav.</p></div></a>
-    <a href="terminal/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Terminal</span><span class="badge badge-error">CLI</span></div><div class="card-body"><p class="text-gray-500">Command prompt, file manager, system monitor.</p></div></a>
+  <h1 style="font-size:2rem;font-weight:700;margin-bottom:var(--marg-sm);">@medyll/css-base — Skin Demos</h1>
+  <p style="font-size:1rem;color:var(--color-text-muted);margin-bottom:var(--marg-xl);">10 demos proving css-base works as a skinnable design system. Each uses only <code>app.css</code> + a <code>skin.css</code> variable override file.</p>
+  <div class="grid" data-columns="3" data-gap="lg" style="grid-template-columns:repeat(3,1fr);">
+
+    <a href="netflix/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.08 0 0) 0%,oklch(0.25 0.2 27) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.4rem;font-weight:900;color:oklch(0.52 0.24 27);letter-spacing:-1px;">NETFLIX</span>
+        <span class="badge badge-error" style="margin-left:auto;">Dark</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Hero banner, card carousels, dark UI with red accent.</p>
+      </div>
+    </a>
+
+    <a href="amazon/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.15 0.02 220) 0%,oklch(0.2 0.04 220) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.2rem;font-weight:700;color:oklch(0.85 0.18 80);">amazon</span>
+        <span class="badge badge-warning" style="margin-left:auto;">E-commerce</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Product grid, search bar, filters, deal banners.</p>
+      </div>
+    </a>
+
+    <a href="whatsapp/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.25 0.12 160) 0%,oklch(0.35 0.18 160) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.2rem;font-weight:700;color:white;">WhatsApp</span>
+        <span class="badge badge-success" style="margin-left:auto;">Messaging</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Contact list, chat bubbles, green accent.</p>
+      </div>
+    </a>
+
+    <a href="windows/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.45 0.15 240) 0%,oklch(0.60 0.18 230) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.5rem;">⊞</span>
+        <span style="font-size:1.1rem;font-weight:600;color:white;">Windows 11</span>
+        <span class="badge badge-primary" style="margin-left:auto;">Desktop</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Taskbar, start menu, windows, Mica blur.</p>
+      </div>
+    </a>
+
+    <a href="macos/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.45 0.12 200) 0%,oklch(0.60 0.10 185) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.5rem;">🍎</span>
+        <span style="font-size:1.1rem;font-weight:600;color:white;">macOS</span>
+        <span class="badge badge-neutral" style="margin-left:auto;">Desktop</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Menu bar, dock, Finder windows, traffic lights.</p>
+      </div>
+    </a>
+
+    <a href="spotify/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.08 0 0) 0%,oklch(0.15 0.08 150) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.5rem;">🎵</span>
+        <span style="font-size:1.1rem;font-weight:700;color:oklch(0.72 0.25 150);">Spotify</span>
+        <span class="badge badge-success" style="margin-left:auto;">Music</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Playlist sidebar, album grid, player bar.</p>
+      </div>
+    </a>
+
+    <a href="slack/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.25 0.12 310) 0%,oklch(0.35 0.15 295) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.5rem;">#</span>
+        <span style="font-size:1.1rem;font-weight:700;color:white;">Slack</span>
+        <span class="badge badge-primary" style="margin-left:auto;">Workspace</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Aubergine sidebar, channels, message threads.</p>
+      </div>
+    </a>
+
+    <a href="github/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.12 0.01 250) 0%,oklch(0.20 0.02 250) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.5rem;">⬡</span>
+        <span style="font-size:1.1rem;font-weight:700;color:white;">GitHub</span>
+        <span class="badge badge-neutral" style="margin-left:auto;">Dev</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Repo page, file tree, issues, README panel.</p>
+      </div>
+    </a>
+
+    <a href="dashboard/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.12 0.02 250) 0%,oklch(0.18 0.08 260) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.5rem;">📊</span>
+        <span style="font-size:1.1rem;font-weight:700;color:white;">Dashboard</span>
+        <span class="badge badge-primary" style="margin-left:auto;">Analytics</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">KPI cards, charts, data tables, sidebar nav.</p>
+      </div>
+    </a>
+
+    <a href="terminal/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
+      <div style="height:80px;background:linear-gradient(135deg,oklch(0.08 0 0) 0%,oklch(0.15 0.04 160) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
+        <span style="font-size:1.1rem;font-family:monospace;color:oklch(0.72 0.25 150);">$_</span>
+        <span style="font-size:1.1rem;font-weight:700;color:white;">Terminal</span>
+        <span class="badge badge-error" style="margin-left:auto;">CLI</span>
+      </div>
+      <div class="card-body" style="padding:var(--pad-md);">
+        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Command prompt, file manager, system monitor.</p>
+      </div>
+    </a>
+
   </div>
 </div>
 </body>

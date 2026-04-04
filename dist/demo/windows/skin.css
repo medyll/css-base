@@ -6,6 +6,9 @@
 [data-theme="light"] { color-scheme: light; }
 
 :root {
+  /* Font: Segoe UI Variable — Windows 11 native Fluent typography */
+  --font-sans: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+
   /* Brand: Fluent blue */
   --color-primary:       oklch(0.55 0.20 250);
   --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
