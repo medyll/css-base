@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.28] - 2026-04-04
+**Documentation:**
+- publish demo skinning overview
+
+**Chores:**
+- release v0.1.27 [skip ci]
+
+
+
 ## [Unreleased]
 **Features:**
 - finalize the 10 demo skins as a complete skinnable showcase in `dist/demo/`
