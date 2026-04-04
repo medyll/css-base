@@ -1,0 +1,29 @@
+project: css-base-demo-skins
+description: 10 demo pages showcasing @medyll/css-base as a skinnable design system
+phase: planning
+progress: 10
+active_role: pm
+next_action: "Architecture plan — define shared HTML template, folder structure, and skin override strategy"
+next_command: "bmad continue"
+next_role: architect
+
+artifacts:
+  - plan-prd.md
+
+sprints:
+  sprint-1:
+    goal: "Deliver all 10 demo skins + skin system extraction"
+    stories:
+      - S1-01  # Demo scaffold & shared layout
+      - S1-02  # Netflix skin
+      - S1-03  # Amazon skin
+      - S1-04  # WhatsApp skin
+      - S1-05  # Windows 11 skin
+      - S1-06  # macOS skin
+      - S1-08  # Spotify skin
+      - S1-09  # Slack skin
+      - S1-10  # GitHub skin
+      - S1-11  # Dashboard Analytics skin
+      - S1-12  # Terminal / CLI skin
+      - S1-07  # Skin system extraction (last)
+    status: not_started

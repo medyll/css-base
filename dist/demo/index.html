@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@medyll/css-base — Demo Hub</title>
+<link rel="stylesheet" href="../app.css">
+<script src="shared/theme-toggle.js"></script>
+</head>
+<body style="background:var(--color-surface);color:var(--color-text);">
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <span class="font-semibold">css-base demos</span>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓 Theme</button>
+</nav>
+<div style="max-width:1200px;margin:0 auto;padding:var(--pad-xl);">
+  <h1>@medyll/css-base — Skin Demos</h1>
+  <p class="text-gray-500" style="margin:var(--marg-sm) 0 var(--marg-xl);">10 demos proving css-base works as a skinnable design system. Each uses only <code>app.css</code> + a <code>skin.css</code> variable override file.</p>
+  <div class="grid" data-columns="3" data-gap="lg">
+    <a href="netflix/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Netflix</span><span class="badge badge-error">Dark</span></div><div class="card-body"><p class="text-gray-500">Hero banner, card carousels, dark UI with red accent.</p></div></a>
+    <a href="amazon/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Amazon</span><span class="badge badge-warning">E-commerce</span></div><div class="card-body"><p class="text-gray-500">Product grid, search bar, filters, deal banners.</p></div></a>
+    <a href="whatsapp/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">WhatsApp</span><span class="badge badge-success">Messaging</span></div><div class="card-body"><p class="text-gray-500">Contact list, chat bubbles, green accent.</p></div></a>
+    <a href="windows/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Windows 11</span><span class="badge badge-primary">Desktop</span></div><div class="card-body"><p class="text-gray-500">Taskbar, start menu, windows, Mica blur.</p></div></a>
+    <a href="macos/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">macOS</span><span class="badge badge-neutral">Desktop</span></div><div class="card-body"><p class="text-gray-500">Menu bar, dock, Finder windows, traffic lights.</p></div></a>
+    <a href="spotify/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Spotify</span><span class="badge badge-success">Music</span></div><div class="card-body"><p class="text-gray-500">Playlist sidebar, album grid, player bar.</p></div></a>
+    <a href="slack/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Slack</span><span class="badge badge-primary">Workspace</span></div><div class="card-body"><p class="text-gray-500">Aubergine sidebar, channels, message threads.</p></div></a>
+    <a href="github/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">GitHub</span><span class="badge badge-neutral">Dev</span></div><div class="card-body"><p class="text-gray-500">Repo page, file tree, issues, README panel.</p></div></a>
+    <a href="dashboard/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Dashboard</span><span class="badge badge-primary">Analytics</span></div><div class="card-body"><p class="text-gray-500">KPI cards, charts, data tables, sidebar nav.</p></div></a>
+    <a href="terminal/" class="card" style="text-decoration:none;color:var(--color-text);"><div class="card-header"><span class="font-semibold">Terminal</span><span class="badge badge-error">CLI</span></div><div class="card-body"><p class="text-gray-500">Command prompt, file manager, system monitor.</p></div></a>
+  </div>
+</div>
+</body>
+</html>
