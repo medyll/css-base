@@ -706,6 +706,60 @@ Override variables **after** the import in `:root`:
 
 All other tokens (surfaces, borders, shadows, hover states) recalculate automatically from these base values.
 
+### Brand Skins (skin.css pattern)
+
+A **skin** is a standalone `skin.css` file that overrides the design system to reproduce a recognizable brand identity — without touching the base library or HTML structure.
+
+**Critical rule: override seed tokens only, never computed tokens.**
+
+`palette.css` uses `light-dark()` to derive all surface, border, and text variants from a small set of seed tokens. If you override `--color-surface` directly, your value gets silently replaced by the cascade. Override the seeds instead:
+
+```css
+/* ✅ Correct — override seeds */
+:root {
+  --default-color-surface-light: oklch(0.98 0 0);    /* near-white */
+  --default-color-surface-dark:  oklch(0.13 0.01 0); /* near-black */
+  --default-color-text-light:    oklch(0.15 0.01 0);
+  --default-color-text-dark:     oklch(0.95 0.01 0);
+}
+
+/* ❌ Wrong — computed token, overridden by light-dark() */
+:root { --color-surface: #fff; }
+```
+
+**5-step skin.css template:**
+
+```css
+/* Step 1 — map data-theme to color-scheme (required for light-dark()) */
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
+/* Step 2 — brand primary */
+:root { --color-primary: oklch(0.65 0.25 280); }
+
+/* Step 3 — surface seeds */
+:root {
+  --default-color-surface-light: oklch(0.97 0.005 265);
+  --default-color-surface-dark:  oklch(0.14 0.01 265);
+}
+
+/* Step 4 — text seeds */
+:root {
+  --default-color-text-light: oklch(0.18 0.015 265);
+  --default-color-text-dark:  oklch(0.93 0.01 265);
+}
+
+/* Step 5 — optional: radius, font, brand-specific tokens */
+:root {
+  --radius-md: 0.25rem;
+  --default-font-family: 'Inter', sans-serif;
+}
+```
+
+All 10 reference skins live in `dist/demo/{netflix,amazon,whatsapp,windows,macos,spotify,slack,github,dashboard,terminal}/skin.css`. A starter template with inline comments is at `dist/demo/skin-template.css`. The full guide with override matrix is at `dist/demo/SKINNING.md`.
+
+**`--color-critical` is the correct token for error/danger states** — `--color-error` does not exist.
+
 ---
 
 ## 10. Authoring Rules
