@@ -1,32 +1,34 @@
 project: css-base-demo-skins
 description: 10 demo pages showcasing @medyll/css-base as a skinnable design system
 phase: development
-progress: 40
-active_role: dev
-next_action: "S1-02 thru S1-12: CSS skins needed — each skin.css has stub variables, needs real design tokens per brand"
+progress: 100
+active_role: scrum
+next_action: "Sprint 1 delivered, QA screenshots captured, docs published. Next: release prep or pause."
 next_command: "bmad continue"
-next_role: designer
+next_role: scrum
 
 artifacts:
   - plan-prd.md
   - plan-arch.md
   - sprint-2026-04-04.md
+  - skin-system.md
+  - demo-qa.md
 
 sprints:
   sprint-1:
     goal: "Deliver all 10 demo skins + skin system extraction"
-    status: active
-    active_story: S1-02
+    status: complete
+    active_story: ~
     stories:
-      - S1-01  # ✓ DONE — scaffold, index.html hub, shared nav, theme toggle, all 10 demo stubs
-      - S1-02  # Netflix skin
-      - S1-03  # Amazon skin
-      - S1-04  # WhatsApp skin
-      - S1-05  # Windows 11 skin
-      - S1-06  # macOS skin
-      - S1-08  # Spotify skin
-      - S1-09  # Slack skin
-      - S1-10  # GitHub skin
-      - S1-11  # Dashboard Analytics skin
-      - S1-12  # Terminal / CLI skin
-      - S1-07  # Skin system extraction (last)
+      - S1-01  # ✓ scaffold, hub, nav, theme toggle, 10 demo pages
+      - S1-02  # ✓ Netflix skin
+      - S1-03  # ✓ Amazon skin
+      - S1-04  # ✓ WhatsApp skin
+      - S1-05  # ✓ Windows 11 skin
+      - S1-06  # ✓ macOS skin
+      - S1-07  # ✓ Skin system extraction → skin-system.md + dist/demo/SKINNING.md + dist/demo/skin-template.css
+      - S1-08  # ✓ Spotify skin
+      - S1-09  # ✓ Slack skin
+      - S1-10  # ✓ GitHub skin
+      - S1-11  # ✓ Dashboard skin
+      - S1-12  # ✓ Terminal skin

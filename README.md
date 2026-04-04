@@ -29,6 +29,17 @@ dist/
   metadata.json    Machine-readable index for IDE tooling
 ```
 
+## Demo skins
+
+The repository ships 10 static demo pages in `dist/demo/` to prove that `@medyll/css-base` can be re-skinned with token overrides only.
+
+- Demo hub: `dist/demo/index.html`
+- Included skins: Netflix, Amazon, WhatsApp, Windows 11, macOS, Spotify, Slack, GitHub, Dashboard, Terminal
+- Skin authoring guide: `dist/demo/SKINNING.md`
+- Starter template: `dist/demo/skin-template.css`
+
+Each demo loads only `app.css` plus a local `skin.css`. No component markup forks and no library source changes are required.
+
 ## Installation
 
 ```bash

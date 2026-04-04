@@ -1,13 +1,25 @@
 # Changelog
 
+## [Unreleased]
+**Features:**
+- finalize the 10 demo skins as a complete skinnable showcase in `dist/demo/`
+- add `dist/demo/SKINNING.md` and `dist/demo/skin-template.css`
+
+**Fixes:**
+- align demo semantic status colors on `--color-critical`
+
+**Docs:**
+- expose demo skinning in the README
+
+**QA:**
+- add smoke screenshots and validation report for all demos in `bmad/artifacts/screenshots/`
+
 ## [0.1.26] - 2026-04-04
 **Chores:**
 - release v0.1.25 [skip ci]
 
 **Other:**
 - Merge branch 'main' of https://github.com/medyll/css-base
-
-
 
 ## [0.1.24] - 2026-04-04
 **Chores:**
