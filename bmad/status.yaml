@@ -3,7 +3,7 @@ description: 10 demo pages showcasing @medyll/css-base as a skinnable design sys
 phase: development
 progress: 100
 active_role: scrum
-next_action: "Sprint 1 delivered, QA screenshots captured, docs published. Next: release prep or pause."
+next_action: "Sprint 1 fully complete. At decision point — awaiting user direction for Sprint 2 (new features), Polish, Test, or Pause."
 next_command: "bmad continue"
 next_role: scrum
 
@@ -13,6 +13,7 @@ artifacts:
   - sprint-2026-04-04.md
   - skin-system.md
   - demo-qa.md
+  - dist/skill/css-base/SKILL.md (updated)
 
 sprints:
   sprint-1:

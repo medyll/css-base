@@ -38,7 +38,7 @@
       </div>
 
       <p class="font-semibold text-sm text-muted mb-sm">Pinned</p>
-      <div class="grid" data-columns="6" data-gap="sm" style="margin-bottom:var(--marg-lg);">
+      <div class="grid" data-columns="6" data-gap="sm" style="grid-template-columns:repeat(6,1fr);margin-bottom:var(--marg-lg);">
         <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
           <div style="font-size:2rem;">📁</div><p class="text-sm">Explorer</p>
         </div>
@@ -60,7 +60,7 @@
       </div>
 
       <p class="font-semibold text-sm text-muted mb-sm">Recommended</p>
-      <div class="grid" data-columns="2" data-gap="sm">
+      <div class="grid" data-columns="2" data-gap="sm" style="grid-template-columns:repeat(2,1fr);">
         <div class="flex items-center gap-sm p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
           <span style="font-size:1.4rem;">📄</span>
           <div><p class="text-sm font-semibold">Report_Q4.docx</p><p class="text-muted text-sm">2 hours ago</p></div>

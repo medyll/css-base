@@ -40,7 +40,7 @@
 </div>
 
 <!-- Desktop -->
-<div style="background:linear-gradient(160deg,oklch(0.45 0.10 255),oklch(0.65 0.12 200));min-height:50vh;position:relative;">
+<div style="background:linear-gradient(160deg,oklch(0.45 0.10 255),oklch(0.65 0.12 200));height:calc(100vh - 168px);position:relative;">
   <!-- Finder window -->
   <div class="card" data-elevation="lg" style="position:absolute;top:40px;left:60px;width:680px;overflow:hidden;border-radius:var(--radius-xl);">
     <!-- Window chrome -->
@@ -76,7 +76,7 @@
       </aside>
       <!-- Files grid -->
       <main style="flex:1;padding:var(--pad-md);">
-        <div class="grid" data-columns="4" data-gap="sm">
+        <div class="grid" data-columns="4" data-gap="sm" style="grid-template-columns:repeat(4,1fr);">
           <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
             <div style="font-size:2.5rem;">📄</div><p class="text-sm">Report.pages</p>
           </div>
@@ -88,6 +88,18 @@
           </div>
           <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;background:var(--color-primary);color:white;">
             <div style="font-size:2.5rem;">📁</div><p class="text-sm">Projects</p>
+          </div>
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+            <div style="font-size:2.5rem;">📝</div><p class="text-sm">Notes.txt</p>
+          </div>
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+            <div style="font-size:2.5rem;">🎞️</div><p class="text-sm">Demo.key</p>
+          </div>
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+            <div style="font-size:2.5rem;">🗜️</div><p class="text-sm">Archive.zip</p>
+          </div>
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+            <div style="font-size:2.5rem;">🎬</div><p class="text-sm">Screen.mp4</p>
           </div>
         </div>
       </main>

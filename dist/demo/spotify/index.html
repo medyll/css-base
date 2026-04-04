@@ -52,19 +52,21 @@
     <h2 style="margin-bottom:var(--marg-lg);">Good Evening 🌙</h2>
 
     <!-- Quick picks -->
-    <div class="grid" data-columns="3" data-gap="sm" style="margin-bottom:var(--marg-xl);">
-      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
+    <div class="grid" data-columns="3" data-gap="sm" style="grid-template-columns:repeat(3,1fr);margin-bottom:var(--marg-xl);">
+      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;height:56px;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
         <div style="width:56px;height:56px;background:oklch(0.45 0.2 285);flex-shrink:0;"></div>
-        <span class="font-semibold text-sm">Liked Songs</span>
-        <button class="btn btn-primary" style="margin-left:auto;margin-right:var(--marg-sm);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">▶</button>
+        <span class="font-semibold text-sm" style="flex:1;">Liked Songs</span>
+        <button class="btn btn-primary" style="margin-right:var(--marg-sm);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">▶</button>
       </div>
-      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
+      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;height:56px;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
         <div style="width:56px;height:56px;background:oklch(0.45 0.15 148);flex-shrink:0;"></div>
-        <span class="font-semibold text-sm">Morning Vibes</span>
+        <span class="font-semibold text-sm" style="flex:1;">Morning Vibes</span>
+        <button class="btn btn-primary" style="margin-right:var(--marg-sm);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">▶</button>
       </div>
-      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
+      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;height:56px;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
         <div style="width:56px;height:56px;background:oklch(0.45 0.12 60);flex-shrink:0;"></div>
-        <span class="font-semibold text-sm">Focus — Deep Work</span>
+        <span class="font-semibold text-sm" style="flex:1;">Focus — Deep Work</span>
+        <button class="btn btn-primary" style="margin-right:var(--marg-sm);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">▶</button>
       </div>
     </div>
 
@@ -102,6 +104,36 @@
         <div style="width:40px;height:40px;background:oklch(0.28 0.18 285);border-radius:var(--radius-sm);"></div>
         <div style="flex:1;"><p class="font-semibold text-sm">Nekfeu — Etoiles</p><p class="text-muted text-sm">Nekfeu</p></div>
         <span class="text-muted text-sm">4:28</span>
+      </div>
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-raised)'" onmouseout="this.style.background=''">
+        <span class="text-muted text-sm" style="width:16px;">4</span>
+        <div style="width:40px;height:40px;background:oklch(0.3 0.15 60);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">Orelsan — Basique</p><p class="text-muted text-sm">Orelsan</p></div>
+        <span class="text-muted text-sm">3:41</span>
+      </div>
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-raised)'" onmouseout="this.style.background=''">
+        <span class="text-muted text-sm" style="width:16px;">5</span>
+        <div style="width:40px;height:40px;background:oklch(0.25 0.10 150);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">Jul — Bande Organisée</p><p class="text-muted text-sm">Jul, SCH, Gambi</p></div>
+        <span class="text-muted text-sm">3:58</span>
+      </div>
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-raised)'" onmouseout="this.style.background=''">
+        <span class="text-muted text-sm" style="width:16px;">6</span>
+        <div style="width:40px;height:40px;background:oklch(0.2 0.05 0);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">Booba — DKR</p><p class="text-muted text-sm">Booba</p></div>
+        <span class="text-muted text-sm">4:15</span>
+      </div>
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-raised)'" onmouseout="this.style.background=''">
+        <span class="text-muted text-sm" style="width:16px;">7</span>
+        <div style="width:40px;height:40px;background:oklch(0.28 0.14 320);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">SCH — JVLIVS</p><p class="text-muted text-sm">SCH</p></div>
+        <span class="text-muted text-sm">3:33</span>
+      </div>
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-raised)'" onmouseout="this.style.background=''">
+        <span class="text-muted text-sm" style="width:16px;">8</span>
+        <div style="width:40px;height:40px;background:oklch(0.32 0.12 220);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">Koba LaD — Ramenez la coupe</p><p class="text-muted text-sm">Koba LaD</p></div>
+        <span class="text-muted text-sm">2:58</span>
       </div>
     </div>
   </main>

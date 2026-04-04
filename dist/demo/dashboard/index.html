@@ -50,26 +50,34 @@
     </div>
 
     <!-- KPI cards -->
-    <div class="grid" data-columns="4" data-gap="md" style="margin-bottom:var(--marg-xl);">
-      <div class="card p-md" data-elevation="sm">
-        <p class="text-muted text-sm">Total Revenue</p>
-        <p style="font-size:1.8rem;font-weight:bold;color:var(--color-success);">$84,210</p>
-        <p class="text-sm" style="color:var(--color-success);">▲ 12.4% vs last month</p>
+    <div class="grid" data-columns="4" data-gap="md" style="grid-template-columns:repeat(4,1fr);margin-bottom:var(--marg-xl);">
+      <div class="card" style="padding:var(--pad-lg);border-left:3px solid var(--color-success);" data-elevation="sm">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-muted);">Total Revenue</span>
+          <span style="font-size:1.9rem;font-weight:700;line-height:1;color:var(--color-success);">$84,210</span>
+          <span style="font-size:0.8rem;color:var(--color-success);">▲ 12.4% vs last month</span>
+        </div>
       </div>
-      <div class="card p-md" data-elevation="sm">
-        <p class="text-muted text-sm">Active Users</p>
-        <p style="font-size:1.8rem;font-weight:bold;">24,891</p>
-        <p class="text-sm" style="color:var(--color-success);">▲ 8.1%</p>
+      <div class="card" style="padding:var(--pad-lg);border-left:3px solid var(--color-primary);" data-elevation="sm">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-muted);">Active Users</span>
+          <span style="font-size:1.9rem;font-weight:700;line-height:1;">24,891</span>
+          <span style="font-size:0.8rem;color:var(--color-success);">▲ 8.1%</span>
+        </div>
       </div>
-      <div class="card p-md" data-elevation="sm">
-        <p class="text-muted text-sm">Conversion Rate</p>
-        <p style="font-size:1.8rem;font-weight:bold;color:var(--color-warning);">3.24%</p>
-        <p class="text-sm text-muted">▼ 0.3% vs last month</p>
+      <div class="card" style="padding:var(--pad-lg);border-left:3px solid var(--color-warning);" data-elevation="sm">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-muted);">Conversion Rate</span>
+          <span style="font-size:1.9rem;font-weight:700;line-height:1;color:var(--color-warning);">3.24%</span>
+          <span style="font-size:0.8rem;color:var(--color-text-muted);">▼ 0.3% vs last month</span>
+        </div>
       </div>
-      <div class="card p-md" data-elevation="sm">
-        <p class="text-muted text-sm">Avg. Session</p>
-        <p style="font-size:1.8rem;font-weight:bold;">4m 32s</p>
-        <p class="text-sm" style="color:var(--color-success);">▲ 6.2%</p>
+      <div class="card" style="padding:var(--pad-lg);border-left:3px solid var(--color-info);" data-elevation="sm">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-muted);">Avg. Session</span>
+          <span style="font-size:1.9rem;font-weight:700;line-height:1;">4m 32s</span>
+          <span style="font-size:0.8rem;color:var(--color-success);">▲ 6.2%</span>
+        </div>
       </div>
     </div>
 
