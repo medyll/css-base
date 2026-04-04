@@ -3,9 +3,85 @@ description: 10 demo pages showcasing @medyll/css-base as a skinnable design sys
 phase: development
 progress: 100
 active_role: scrum
-next_action: "Sprint 1 fully complete. At decision point — awaiting user direction for Sprint 2 (new features), Polish, Test, or Pause."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# IMPORTANT CONTEXT — READ BEFORE CONTINUING
+# ─────────────────────────────────────────────────────────────────────────────
+# These demos are NOT decorative. They are the validation test suite for
+# @medyll/css-base itself. Every visual defect found in a demo indicates a
+# potential bug or missing token in the BASE CSS (app.css, variables.css,
+# typography.css, components.css, attr.css) — not just in the skin.
+#
+# KNOWN OPEN ISSUE (user-reported, screenshot provided):
+#   → The hub page and demos look cramped/tight — "pas de padding, tout est serré"
+#   → Root cause suspected: default-font-size is 14px (too small), and padding
+#     tokens (--pad-*, --gap-*) may be too tight for a demo-quality presentation.
+#   → FIX STRATEGY: audit variables.css default spacing scale, increase
+#     --default-font-size to 16px or adjust --pad-md/--gap-md upward, then
+#     verify all 10 demos reflect the fix.
+#
+# DUAL-FIX RULE: when a demo looks wrong, always check:
+#   1. Is this a base CSS token problem? → fix dist/variables.css or dist/tokens.css
+#   2. Is this skin-specific? → fix dist/demo/SKIN/skin.css
+#   Never fix only one side without checking the other.
+# ─────────────────────────────────────────────────────────────────────────────
+
+next_action: >
+  Sprint 1 complete. At decision point. See IMPORTANT CONTEXT above before acting.
+
+  Options:
+    1. Fix — audit and fix the padding/font-size tightness issue in the base CSS
+             (variables.css default-font-size, --pad-*, --gap-*) → re-screenshot all 10 demos
+    2. Test — continue automated QA + visual regression on all 10 skins
+    3. Polish — iterate pixel-perfect on existing skins
+    4. Sprint 2 — implement new demo skins (see backlog_demos below)
+    5. Pause
+
 next_command: "bmad continue"
 next_role: scrum
+
+backlog_demos:
+  # 10 new skin ideas for Sprint 2
+  - id: B-01
+    name: "Linear"
+    badge: "Productivity"
+    description: "Issue tracker with kanban board, roadmap timeline, dark minimal aesthetic, violet accent. Linear-style compact density."
+  - id: B-02
+    name: "Figma"
+    badge: "Design Tool"
+    description: "Left panel with layers/components/assets tabs, canvas area, right inspect panel. Toolbar icons row at top."
+  - id: B-03
+    name: "Discord"
+    badge: "Community"
+    description: "Server list far-left, channel sidebar, chat area, member list right. Dark with blurple (#5865F2) accent."
+  - id: B-04
+    name: "VS Code"
+    badge: "IDE"
+    description: "Activity bar, sidebar file explorer, editor with syntax highlighting, status bar. JetBrains Mono, dark theme."
+  - id: B-05
+    name: "Notion"
+    badge: "Docs"
+    description: "Wiki-style page with sidebar hierarchy, breadcrumb, emoji titles, toggle blocks, inline database table."
+  - id: B-06
+    name: "Stripe"
+    badge: "Fintech"
+    description: "Dashboard with revenue chart, payments table, customer profiles. Clean white + violet, monospace amounts."
+  - id: B-07
+    name: "Airbnb"
+    badge: "Travel"
+    description: "Search with map split view, listing cards with photo, price badge, host avatar. Coral (#FF5A5F) accent."
+  - id: B-08
+    name: "Vercel"
+    badge: "DevOps"
+    description: "Project deployment dashboard, build logs terminal, domain config table. Black/white, monospace, minimal."
+  - id: B-09
+    name: "Duolingo"
+    badge: "Education"
+    description: "Streak counter, lesson path with nodes, XP progress bar, owl mascot. Bright greens, rounded corners, gamified."
+  - id: B-10
+    name: "Dribbble"
+    badge: "Creative"
+    description: "Portfolio grid with hover overlays, shot detail view, designer profile card. Pink/purple gradient accent."
 
 artifacts:
   - plan-prd.md
