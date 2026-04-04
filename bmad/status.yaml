@@ -13,12 +13,9 @@ active_role: scrum
 # typography.css, components.css, attr.css) — not just in the skin.
 #
 # KNOWN OPEN ISSUE (user-reported, screenshot provided):
-#   → The hub page and demos look cramped/tight — "pas de padding, tout est serré"
-#   → Root cause suspected: default-font-size is 14px (too small), and padding
-#     tokens (--pad-*, --gap-*) may be too tight for a demo-quality presentation.
-#   → FIX STRATEGY: audit variables.css default spacing scale, increase
-#     --default-font-size to 16px or adjust --pad-md/--gap-md upward, then
-#     verify all 10 demos reflect the fix.
+#   → RESOLVED: default-font-size was 0.875rem (14px) — changed to 1rem (16px)
+#   → All 10 demos verified visually after the fix — text readable, spacing natural
+#   → --gap-* tokens audit: OK — handled via attr.css [data-gap="*"] and utilities.css .gap-*
 #
 # DUAL-FIX RULE: when a demo looks wrong, always check:
 #   1. Is this a base CSS token problem? → fix dist/variables.css or dist/tokens.css
@@ -27,15 +24,13 @@ active_role: scrum
 # ─────────────────────────────────────────────────────────────────────────────
 
 next_action: >
-  Sprint 1 complete. At decision point. See IMPORTANT CONTEXT above before acting.
+  Sprint 1 complete. Font-size fix applied (14px → 16px). At decision point.
 
   Options:
-    1. Fix — audit and fix the padding/font-size tightness issue in the base CSS
-             (variables.css default-font-size, --pad-*, --gap-*) → re-screenshot all 10 demos
-    2. Test — continue automated QA + visual regression on all 10 skins
-    3. Polish — iterate pixel-perfect on existing skins
-    4. Sprint 2 — implement new demo skins (see backlog_demos below)
-    5. Pause
+    1. Test — automated QA + visual regression on all 10 skins
+    2. Polish — iterate pixel-perfect on existing skins
+    3. Sprint 2 — implement new demo skins (see backlog_demos below)
+    4. Pause
 
 next_command: "bmad continue"
 next_role: scrum

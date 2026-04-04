@@ -15,8 +15,8 @@
 		 * Base typography values used throughout the design system
 		 */
 
-		/* Base font size: 0.875rem (14px) - used for rem calculations */
-		--default-font-size: 0.875rem;
+		/* Base font size: 1rem (16px) - used for rem calculations */
+		--default-font-size: 1rem;
 
 		/* Base line height: 1.5 (150%) - used for vertical rhythm */
 		--default-leading: 1.5;
