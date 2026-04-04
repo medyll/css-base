@@ -1,20 +1,24 @@
-/* Spotify skin */
+/* Spotify skin — css-base token overrides
+ * Dark-first: near-black, Spotify green primary, pill buttons
+ */
+
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
 :root {
-  --color-primary: oklch(0.72 0.22 148);        /* Spotify green */
-  --color-primary-hover: oklch(0.65 0.22 148);
-  --color-surface: oklch(0.07 0 0);
-  --color-surface-alt: oklch(0.12 0 0);
-  --color-surface-raised: oklch(0.17 0 0);
-  --color-border: oklch(0.22 0 0);
-  --color-text: oklch(0.97 0 0);
-  --color-text-muted: oklch(0.65 0 0);
-  --radius-xl: 500px;  /* pill buttons */
-}
-[data-theme="light"] {
-  --color-surface: oklch(1 0 0);
-  --color-surface-alt: oklch(0.93 0 0);
-  --color-surface-raised: oklch(0.97 0 0);
-  --color-border: oklch(0.85 0 0);
-  --color-text: oklch(0.10 0 0);
-  --color-text-muted: oklch(0.48 0 0);
+  /* Brand: Spotify green */
+  --color-primary:       oklch(0.72 0.22 148);  /* #1DB954 */
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.18) c h);
+
+  /* Surface seeds — dark default */
+  --default-color-surface-light: oklch(0.07 0 0);   /* #121212 Spotify black */
+  --default-color-surface-dark:  oklch(0.05 0 0);
+
+  /* Text seeds */
+  --default-color-text-light: oklch(0.97 0 0);      /* white on dark */
+  --default-color-text-dark:  oklch(0.97 0 0);
+
+  /* Pill-shaped play buttons */
+  --radius-xl: 500px;
 }

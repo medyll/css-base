@@ -1,24 +1,27 @@
-/* Windows 11 skin — Fluent Design */
+/* Windows 11 skin — css-base token overrides
+ * Fluent Design: light default, blue primary, generous radius, acrylic shadows
+ */
+
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
 :root {
-  --color-primary: oklch(0.55 0.20 250);        /* Fluent blue */
-  --color-primary-hover: oklch(0.48 0.20 250);
-  --color-surface: oklch(0.98 0 0);
-  --color-surface-alt: oklch(0.94 0.01 240);
-  --color-surface-raised: oklch(1 0 0);
-  --color-border: oklch(0.88 0.01 240);
-  --color-text: oklch(0.13 0 0);
-  --color-text-muted: oklch(0.48 0 0);
+  /* Brand: Fluent blue */
+  --color-primary:       oklch(0.55 0.20 250);
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.28) c h);
+
+  /* Surface seeds */
+  --default-color-surface-light: oklch(0.98 0 0);          /* near-white */
+  --default-color-surface-dark:  oklch(0.14 0.01 255);     /* Fluent dark */
+
+  /* Text seeds */
+  --default-color-text-light: oklch(0.13 0 0);
+  --default-color-text-dark:  oklch(0.96 0 0);
+
+  /* Fluent rounded corners */
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
   --radius-xl: 12px;
-  --shadow-md: 0 8px 32px oklch(0 0 0 / 0.12);
-}
-[data-theme="dark"] {
-  --color-surface: oklch(0.14 0.01 255);
-  --color-surface-alt: oklch(0.19 0.01 255);
-  --color-surface-raised: oklch(0.22 0.02 255);
-  --color-border: oklch(0.30 0.02 255);
-  --color-text: oklch(0.96 0 0);
-  --color-text-muted: oklch(0.65 0 0);
 }

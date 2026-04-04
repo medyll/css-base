@@ -1,25 +1,29 @@
-/* Terminal / CLI skin */
+/* Terminal / CLI skin — css-base token overrides
+ * Dark-first: black bg, green text as primary, monospace font
+ */
+
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
 :root {
-  --color-primary: oklch(0.72 0.22 148);        /* terminal green */
-  --color-primary-hover: oklch(0.65 0.22 148);
-  --color-surface: oklch(0.06 0 0);
-  --color-surface-alt: oklch(0.10 0 0);
-  --color-surface-raised: oklch(0.14 0 0);
-  --color-border: oklch(0.20 0 0);
-  --color-text: oklch(0.72 0.22 148);           /* green text */
-  --color-text-muted: oklch(0.55 0.10 148);
-  --color-error: oklch(0.62 0.22 27);
-  --color-warning: oklch(0.75 0.18 75);
+  /* Primary = terminal green */
+  --color-primary:       oklch(0.72 0.22 148);  /* #00FF41 style */
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.10) c h);
+
+  /* Surface seeds — black terminal */
+  --default-color-surface-light: oklch(0.06 0 0);   /* pure black */
+  --default-color-surface-dark:  oklch(0.04 0 0);
+
+  /* Text = green on black */
+  --default-color-text-light: oklch(0.72 0.22 148);   /* green text */
+  --default-color-text-dark:  oklch(0.72 0.22 148);
+
+  /* Monospace font */
+  --font-family-base: 'Courier New', Courier, monospace;
+
+  /* Minimal radius — hard edges */
   --radius-sm: 1px;
   --radius-md: 2px;
   --radius-lg: 3px;
-  --font-family-base: 'Courier New', Courier, monospace;
-}
-[data-theme="light"] {
-  --color-surface: oklch(0.98 0 0);
-  --color-surface-alt: oklch(0.93 0 0);
-  --color-surface-raised: oklch(1 0 0);
-  --color-border: oklch(0.82 0 0);
-  --color-text: oklch(0.14 0.02 148);
-  --color-text-muted: oklch(0.42 0.06 148);
 }

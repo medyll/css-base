@@ -1,21 +1,25 @@
-/* WhatsApp skin */
+/* WhatsApp skin — css-base token overrides
+ * Light-first: white chat bg, WA green primary, rounded bubbles
+ */
+
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
 :root {
-  --color-primary: oklch(0.52 0.18 148);        /* WA green */
-  --color-primary-hover: oklch(0.45 0.18 148);
-  --color-surface: oklch(0.97 0 0);
-  --color-surface-alt: oklch(0.93 0.01 148);    /* light green tint */
-  --color-surface-raised: oklch(1 0 0);
-  --color-border: oklch(0.85 0.01 148);
-  --color-text: oklch(0.14 0 0);
-  --color-text-muted: oklch(0.50 0 0);
+  /* Brand: WhatsApp green */
+  --color-primary:       oklch(0.52 0.18 148);  /* #25D366 */
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.28) c h);
+
+  /* Surface seeds — light default with subtle green tint */
+  --default-color-surface-light: oklch(0.97 0.01 148);  /* faint green tint */
+  --default-color-surface-dark:  oklch(0.13 0.02 200);  /* WA dark teal */
+
+  /* Text seeds */
+  --default-color-text-light: oklch(0.14 0 0);
+  --default-color-text-dark:  oklch(0.92 0 0);
+
+  /* Pill-shaped bubbles */
   --radius-lg: 18px;
   --radius-xl: 24px;
-}
-[data-theme="dark"] {
-  --color-surface: oklch(0.14 0.01 200);
-  --color-surface-alt: oklch(0.18 0.01 200);
-  --color-surface-raised: oklch(0.22 0.02 200);
-  --color-border: oklch(0.28 0.01 200);
-  --color-text: oklch(0.92 0 0);
-  --color-text-muted: oklch(0.60 0 0);
 }

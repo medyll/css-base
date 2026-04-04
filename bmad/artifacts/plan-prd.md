@@ -24,7 +24,7 @@ Create 5 demo pages in `dist/demo/`, each reproducing a recognizable UI style us
 As a developer, I want a shared HTML template and index page so that all demos are discoverable and consistent.
 
 Acceptance Criteria:
-- [ ] `dist/demo/index.html` lists all 5 demos with links and thumbnails
+- [ ] `dist/demo/index.html` lists all 10 demos with links and thumbnails
 - [ ] Each demo loads `../../dist/app.css` (the library) + its own `skin.css`
 - [ ] Each demo page has a consistent nav bar with links to other demos
 - [ ] Pages work offline (no external CDN dependencies except optional fonts)
@@ -149,7 +149,7 @@ Acceptance Criteria:
 ### Epic 3: Skin System Discovery
 
 **S1-07 — Skin system extraction (optional, after demos)**
-As a library maintainer, I want to identify common variable override patterns across the 5 demos and potentially extract a `skin.css` template or guide.
+As a library maintainer, I want to identify common variable override patterns across the 10 demos and potentially extract a `skin.css` template or guide.
 
 Acceptance Criteria:
 - [ ] Document which CSS custom properties each demo overrides (comparison table)
@@ -218,7 +218,7 @@ Ceci transforme les demos en **boucle de feedback** pour la qualite de la skill 
 
 ## Success Metrics
 
-- All 5 demos load correctly with `app.css` + their `skin.css`
+- All 10 demos load correctly with `app.css` + their `skin.css`
 - Each demo is visually recognizable as its target style
 - No demo modifies `dist/app.css` or any library source file
 - Skinning guide (S1-07) documents the override pattern

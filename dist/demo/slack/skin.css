@@ -1,20 +1,24 @@
-/* Slack skin */
+/* Slack skin — css-base token overrides
+ * Dark-first: Slack aubergine sidebar, purple primary
+ */
+
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
 :root {
-  --color-primary: oklch(0.52 0.18 285);        /* Slack purple */
-  --color-primary-hover: oklch(0.45 0.18 285);
-  --color-surface: oklch(0.16 0.02 285);
-  --color-surface-alt: oklch(0.21 0.02 285);
-  --color-surface-raised: oklch(0.26 0.02 285);
-  --color-border: oklch(0.32 0.02 285);
-  --color-text: oklch(0.95 0 0);
-  --color-text-muted: oklch(0.68 0 0);
+  /* Brand: Slack purple */
+  --color-primary:       oklch(0.52 0.18 285);  /* #4A154B aubergine */
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.28) c h);
+
+  /* Surface seeds — dark default (Slack dark mode) */
+  --default-color-surface-light: oklch(0.17 0.02 285);   /* #1A1D21 */
+  --default-color-surface-dark:  oklch(0.11 0.02 285);
+
+  /* Text seeds */
+  --default-color-text-light: oklch(0.95 0 0);
+  --default-color-text-dark:  oklch(0.95 0 0);
+
+  /* Slack standard radius */
   --radius-md: 6px;
-}
-[data-theme="light"] {
-  --color-surface: oklch(0.99 0 0);
-  --color-surface-alt: oklch(0.94 0.01 285);
-  --color-surface-raised: oklch(1 0 0);
-  --color-border: oklch(0.86 0 0);
-  --color-text: oklch(0.12 0 0);
-  --color-text-muted: oklch(0.48 0 0);
 }

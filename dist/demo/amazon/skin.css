@@ -1,22 +1,29 @@
-/* Amazon skin */
+/* Amazon skin — css-base token overrides
+ * Light-first: white surface, Amazon orange primary, navy accents
+ */
+
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
 :root {
-  --color-primary: oklch(0.72 0.18 65);         /* Amazon orange */
-  --color-primary-hover: oklch(0.65 0.18 65);
-  --color-surface: oklch(1 0 0);
-  --color-surface-alt: oklch(0.96 0 0);
-  --color-surface-raised: oklch(0.99 0 0);
-  --color-border: oklch(0.82 0 0);
-  --color-text: oklch(0.12 0 0);
-  --color-text-muted: oklch(0.45 0 0);
-  --color-secondary: oklch(0.22 0.05 240);       /* Amazon navy */
+  /* Brand: Amazon orange */
+  --color-primary:       oklch(0.72 0.18 65);   /* #FF9900 */
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.20) c h);
+
+  /* Amazon navy for header/sidebar — accessed via --color-secondary */
+  --color-secondary: oklch(0.22 0.05 240);
+
+  /* Surface seeds — light default */
+  --default-color-surface-light: oklch(1 0 0);          /* white */
+  --default-color-surface-dark:  oklch(0.12 0.01 240);  /* dark navy tint */
+
+  /* Text seeds */
+  --default-color-text-light: oklch(0.12 0 0);
+  --default-color-text-dark:  oklch(0.95 0 0);
+
+  /* Amazon uses tight corners */
   --radius-sm: 3px;
   --radius-md: 4px;
-}
-[data-theme="dark"] {
-  --color-surface: oklch(0.12 0 0);
-  --color-surface-alt: oklch(0.17 0 0);
-  --color-surface-raised: oklch(0.20 0 0);
-  --color-border: oklch(0.28 0 0);
-  --color-text: oklch(0.95 0 0);
-  --color-text-muted: oklch(0.62 0 0);
+  --radius-lg: 6px;
 }

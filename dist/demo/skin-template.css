@@ -1,0 +1,31 @@
+/* Skin template for @medyll/css-base demo skins */
+
+/* Connect data-theme toggle to native color-scheme so light-dark() resolves. */
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
+:root {
+  /* Brand identity */
+  --color-primary:       oklch(0.62 0.18 255);
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
+  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.24) c h);
+
+  /* Surface seeds consumed by light-dark() in palette.css */
+  --default-color-surface-light: oklch(0.98 0 0);
+  --default-color-surface-dark:  oklch(0.12 0 0);
+
+  /* Text seeds */
+  --default-color-text-light: oklch(0.12 0 0);
+  --default-color-text-dark:  oklch(0.95 0 0);
+
+  /* Optional brand shaping */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* Optional typography override */
+  /* --font-family-base: 'Your Font', sans-serif; */
+
+  /* Optional secondary hue when the brand really needs one */
+  /* --color-secondary: oklch(0.32 0.08 250); */
+}
