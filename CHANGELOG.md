@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.32] - 2026-04-04
+**Chores:**
+- release v0.1.31 [skip ci]
+
+**Other:**
+- Merge branch 'main' of https://github.com/medyll/css-base
+
+
+
 ## [0.1.30] - 2026-04-04
 **Documentation:**
 - add brand skins section to css-base skill
