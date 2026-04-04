@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge badge-primary">Netflix</a>
+    <a href="../amazon/" class="badge">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge">macOS</a>
+    <a href="../spotify/" class="badge">Spotify</a>
+    <a href="../slack/" class="badge">Slack</a>
+    <a href="../github/" class="badge">GitHub</a>
+    <a href="../dashboard/" class="badge">Dashboard</a>
+    <a href="../terminal/" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<!-- Top nav -->
+<header style="background:linear-gradient(to bottom,var(--color-surface),transparent);padding:var(--pad-md) var(--pad-xl);">
+  <div class="flex items-center justify-between">
+    <span class="font-bold" style="color:var(--color-primary);font-size:1.8rem;letter-spacing:-1px;">NETFLIX</span>
+    <div class="flex items-center gap-md">
+      <span class="badge">Home</span>
+      <span class="badge">TV Shows</span>
+      <span class="badge">Movies</span>
+      <span class="badge">New &amp; Popular</span>
+    </div>
+    <div class="flex items-center gap-sm">
+      <button class="btn btn-ghost">🔍</button>
+      <div class="btn btn-primary" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;">U</div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section style="position:relative;min-height:420px;background:linear-gradient(135deg,var(--color-surface) 0%,oklch(0.18 0.06 27) 100%);padding:var(--pad-xl);display:flex;align-items:center;">
+  <div style="max-width:480px;">
+    <h1 style="font-size:3rem;font-weight:900;margin:0 0 var(--marg-sm);">Stranger Things</h1>
+    <p class="text-muted" style="margin-bottom:var(--marg-md);">When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.</p>
+    <div class="flex gap-sm">
+      <button class="btn btn-primary">▶ Play</button>
+      <button class="btn btn-secondary">ℹ More Info</button>
+    </div>
+  </div>
+</section>
+
+<!-- Row: Trending -->
+<section style="padding:var(--pad-lg) var(--pad-xl);">
+  <h2 style="margin-bottom:var(--marg-md);">Trending Now</h2>
+  <div class="flex gap-md" style="overflow-x:auto;padding-bottom:var(--pad-sm);">
+    <div class="card" data-elevation="md" style="min-width:180px;cursor:pointer;" data-scale="1.05">
+      <div style="height:100px;background:linear-gradient(135deg,oklch(0.3 0.1 27),oklch(0.15 0.05 270));border-radius:var(--radius-md);"></div>
+      <div class="card-body"><p class="font-semibold">The Crown</p><span class="badge badge-error">Drama</span></div>
+    </div>
+    <div class="card" data-elevation="md" style="min-width:180px;cursor:pointer;" data-scale="1.05">
+      <div style="height:100px;background:linear-gradient(135deg,oklch(0.25 0.12 140),oklch(0.12 0.04 200));border-radius:var(--radius-md);"></div>
+      <div class="card-body"><p class="font-semibold">Squid Game</p><span class="badge badge-success">Thriller</span></div>
+    </div>
+    <div class="card" data-elevation="md" style="min-width:180px;cursor:pointer;" data-scale="1.05">
+      <div style="height:100px;background:linear-gradient(135deg,oklch(0.3 0.15 60),oklch(0.15 0.08 30));border-radius:var(--radius-md);"></div>
+      <div class="card-body"><p class="font-semibold">Wednesday</p><span class="badge">Comedy</span></div>
+    </div>
+    <div class="card" data-elevation="md" style="min-width:180px;cursor:pointer;" data-scale="1.05">
+      <div style="height:100px;background:linear-gradient(135deg,oklch(0.25 0.08 240),oklch(0.12 0.04 280));border-radius:var(--radius-md);"></div>
+      <div class="card-body"><p class="font-semibold">Ozark</p><span class="badge badge-warning">Crime</span></div>
+    </div>
+    <div class="card" data-elevation="md" style="min-width:180px;cursor:pointer;" data-scale="1.05">
+      <div style="height:100px;background:linear-gradient(135deg,oklch(0.22 0.05 0),oklch(0.12 0.02 340));border-radius:var(--radius-md);"></div>
+      <div class="card-body"><p class="font-semibold">Dark</p><span class="badge badge-neutral">Sci-Fi</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Row: Continue Watching -->
+<section style="padding:0 var(--pad-xl) var(--pad-lg);">
+  <h2 style="margin-bottom:var(--marg-md);">Continue Watching</h2>
+  <div class="flex gap-md" style="overflow-x:auto;">
+    <div class="card" style="min-width:200px;">
+      <div style="height:110px;background:oklch(0.18 0.03 200);border-radius:var(--radius-md);position:relative;">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--color-border);border-radius:0 0 var(--radius-md) var(--radius-md);">
+          <div style="width:65%;height:100%;background:var(--color-primary);"></div>
+        </div>
+      </div>
+      <div class="card-body"><p class="font-semibold">Breaking Bad</p><p class="text-muted text-sm">S4 E8 • 65% watched</p></div>
+    </div>
+    <div class="card" style="min-width:200px;">
+      <div style="height:110px;background:oklch(0.18 0.05 60);border-radius:var(--radius-md);position:relative;">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--color-border);">
+          <div style="width:30%;height:100%;background:var(--color-primary);"></div>
+        </div>
+      </div>
+      <div class="card-body"><p class="font-semibold">Peaky Blinders</p><p class="text-muted text-sm">S2 E3 • 30% watched</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding:var(--pad-xl);border-top:var(--border-width) solid var(--color-border);margin-top:var(--marg-xl);">
+  <div class="grid" data-columns="4" data-gap="md">
+    <div><p class="font-semibold mb-sm">Company</p><p class="text-muted text-sm">About</p><p class="text-muted text-sm">Jobs</p><p class="text-muted text-sm">Press</p></div>
+    <div><p class="font-semibold mb-sm">Help</p><p class="text-muted text-sm">FAQ</p><p class="text-muted text-sm">Account</p><p class="text-muted text-sm">Contact</p></div>
+    <div><p class="font-semibold mb-sm">Legal</p><p class="text-muted text-sm">Privacy</p><p class="text-muted text-sm">Terms</p><p class="text-muted text-sm">Cookies</p></div>
+    <div><p class="font-semibold mb-sm">Language</p><button class="btn btn-ghost btn-sm">English</button></div>
+  </div>
+  <p class="text-muted text-sm" style="margin-top:var(--marg-lg);">© 2024 css-base skin demo — Not affiliated with Netflix, Inc.</p>
+</footer>
+</body>
+</html>

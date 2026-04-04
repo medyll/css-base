@@ -1,0 +1,24 @@
+/* macOS skin — Apple HIG */
+:root {
+  --color-primary: oklch(0.55 0.20 255);        /* macOS blue */
+  --color-primary-hover: oklch(0.48 0.20 255);
+  --color-surface: oklch(0.96 0 0);
+  --color-surface-alt: oklch(0.91 0 0);
+  --color-surface-raised: oklch(1 0 0);
+  --color-border: oklch(0.84 0 0);
+  --color-text: oklch(0.10 0 0);
+  --color-text-muted: oklch(0.50 0 0);
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --shadow-md: 0 2px 16px oklch(0 0 0 / 0.10);
+}
+[data-theme="dark"] {
+  --color-surface: oklch(0.16 0 0);
+  --color-surface-alt: oklch(0.22 0 0);
+  --color-surface-raised: oklch(0.26 0 0);
+  --color-border: oklch(0.33 0 0);
+  --color-text: oklch(0.95 0 0);
+  --color-text-muted: oklch(0.62 0 0);
+}

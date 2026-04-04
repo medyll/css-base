@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge">Netflix</a>
+    <a href="../amazon/" class="badge badge-primary">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge">macOS</a>
+    <a href="../spotify/" class="badge">Spotify</a>
+    <a href="../slack/" class="badge">Slack</a>
+    <a href="../github/" class="badge">GitHub</a>
+    <a href="../dashboard/" class="badge">Dashboard</a>
+    <a href="../terminal/" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<!-- Amazon header -->
+<header style="background:var(--color-secondary,oklch(0.22 0.05 240));color:oklch(0.96 0 0);padding:var(--pad-sm) var(--pad-xl);">
+  <div class="flex items-center gap-md">
+    <span class="font-bold" style="font-size:1.4rem;color:var(--color-primary);">amazon</span>
+    <div class="flex-grow" style="max-width:600px;">
+      <div class="flex" style="border:2px solid var(--color-primary);border-radius:var(--radius-md);overflow:hidden;">
+        <input type="text" placeholder="Search Amazon..." class="input" style="flex:1;border:none;border-radius:0;" value="mechanical keyboard">
+        <button class="btn btn-primary" style="border-radius:0;">🔍</button>
+      </div>
+    </div>
+    <div class="flex items-center gap-sm" style="color:oklch(0.96 0 0);">
+      <button class="btn btn-ghost" style="color:oklch(0.96 0 0);">Account</button>
+      <button class="btn btn-ghost" style="color:oklch(0.96 0 0);">Returns</button>
+      <button class="btn btn-ghost" style="color:var(--color-primary);">🛒 Cart (3)</button>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div style="padding:var(--pad-sm) var(--pad-xl);font-size:0.85rem;">
+  <span style="color:var(--color-primary);cursor:pointer;">Electronics</span> &rsaquo;
+  <span style="color:var(--color-primary);cursor:pointer;">Computer Accessories</span> &rsaquo;
+  <span>Keyboards</span>
+</div>
+
+<div class="flex gap-lg" style="padding:0 var(--pad-xl) var(--pad-xl);align-items:flex-start;">
+  <!-- Filters -->
+  <aside style="min-width:200px;max-width:220px;">
+    <div class="card p-md">
+      <p class="font-semibold mb-sm">Department</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Electronics</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Computers</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Office Products</p>
+    </div>
+    <div class="card p-md" style="margin-top:var(--marg-sm);">
+      <p class="font-semibold mb-sm">Avg. Customer Review</p>
+      <p class="text-sm">⭐⭐⭐⭐ &amp; Up</p>
+      <p class="text-sm">⭐⭐⭐ &amp; Up</p>
+    </div>
+    <div class="card p-md" style="margin-top:var(--marg-sm);">
+      <p class="font-semibold mb-sm">Price</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Under $25</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">$25 – $50</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">$50 – $100</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">$100 &amp; Above</p>
+    </div>
+  </aside>
+
+  <!-- Results -->
+  <main style="flex:1;">
+    <p class="text-muted text-sm mb-md">1–16 of over 2,000 results for <strong>"mechanical keyboard"</strong></p>
+    <div class="grid" data-columns="3" data-gap="md">
+      <div class="card" data-elevation="sm">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
+        <div class="card-body">
+          <p class="font-semibold text-sm">Keychron K2 Wireless Mechanical Keyboard</p>
+          <p style="color:var(--color-primary);font-weight:bold;">$89.99</p>
+          <p class="text-sm">⭐⭐⭐⭐⭐ (4,521)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+        </div>
+      </div>
+      <div class="card" data-elevation="sm">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
+        <div class="card-body">
+          <p class="font-semibold text-sm">Logitech MX Keys Advanced Wireless</p>
+          <p style="color:var(--color-primary);font-weight:bold;">$109.99</p>
+          <p class="text-sm">⭐⭐⭐⭐ (2,891)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+        </div>
+      </div>
+      <div class="card" data-elevation="sm">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
+        <div class="card-body">
+          <p class="font-semibold text-sm">Das Keyboard 4 Professional</p>
+          <span class="badge badge-error text-sm">Best Seller</span>
+          <p style="color:var(--color-primary);font-weight:bold;">$169.00</p>
+          <p class="text-sm">⭐⭐⭐⭐⭐ (1,204)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

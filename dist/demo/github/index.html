@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge">Netflix</a>
+    <a href="../amazon/" class="badge">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge">macOS</a>
+    <a href="../spotify/" class="badge">Spotify</a>
+    <a href="../slack/" class="badge">Slack</a>
+    <a href="../github/" class="badge badge-primary">GitHub</a>
+    <a href="../dashboard/" class="badge">Dashboard</a>
+    <a href="../terminal/" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<!-- GitHub header -->
+<header style="background:var(--color-surface-alt);padding:var(--pad-sm) var(--pad-xl);border-bottom:var(--border-width) solid var(--color-border);">
+  <div class="flex items-center gap-md">
+    <span class="font-bold" style="font-size:1.3rem;">⬡ GitHub</span>
+    <input type="text" placeholder="Search or jump to..." class="input input-sm" style="width:220px;">
+    <nav class="flex gap-md text-sm">
+      <a href="#" class="btn btn-ghost btn-sm">Pull requests</a>
+      <a href="#" class="btn btn-ghost btn-sm">Issues</a>
+      <a href="#" class="btn btn-ghost btn-sm">Codespaces</a>
+      <a href="#" class="btn btn-ghost btn-sm">Marketplace</a>
+      <a href="#" class="btn btn-ghost btn-sm">Explore</a>
+    </nav>
+    <div class="flex items-center gap-sm" style="margin-left:auto;">
+      <button class="btn btn-primary btn-sm">+ New</button>
+      <div style="width:30px;height:30px;border-radius:50%;background:var(--color-primary);display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem;">U</div>
+    </div>
+  </div>
+</header>
+
+<!-- Repo header -->
+<div style="padding:var(--pad-md) var(--pad-xl);border-bottom:var(--border-width) solid var(--color-border);">
+  <div class="flex items-center gap-sm mb-sm">
+    <span class="text-muted">📁</span>
+    <a href="#" style="color:var(--color-primary);">medyll</a>
+    <span class="text-muted">/</span>
+    <a href="#" style="color:var(--color-primary);font-weight:bold;">css-base</a>
+    <span class="badge badge-neutral text-sm">Public</span>
+  </div>
+  <p class="text-muted text-sm" style="margin-bottom:var(--marg-md);">A modern CSS design system with utility classes, design tokens, and component primitives.</p>
+  <div class="flex items-center gap-md text-sm">
+    <button class="btn btn-secondary btn-sm">⭐ Star 142</button>
+    <button class="btn btn-secondary btn-sm">🍴 Fork 28</button>
+    <button class="btn btn-secondary btn-sm">👁 Watch 12</button>
+    <span class="text-muted">MIT License</span>
+    <span class="badge badge-success">npm 0.1.21</span>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div class="flex gap-xs" style="padding:0 var(--pad-xl);border-bottom:var(--border-width) solid var(--color-border);">
+  <a href="#" class="btn btn-ghost btn-sm" style="border-bottom:2px solid var(--color-primary);border-radius:0;">💻 Code</a>
+  <a href="#" class="btn btn-ghost btn-sm">🐛 Issues <span class="badge badge-neutral text-sm" style="margin-left:4px;">3</span></a>
+  <a href="#" class="btn btn-ghost btn-sm">🔀 Pull requests <span class="badge badge-neutral text-sm" style="margin-left:4px;">1</span></a>
+  <a href="#" class="btn btn-ghost btn-sm">⚙️ Actions</a>
+  <a href="#" class="btn btn-ghost btn-sm">📊 Insights</a>
+</div>
+
+<div class="flex gap-lg" style="padding:var(--pad-lg) var(--pad-xl);align-items:flex-start;">
+  <!-- File tree -->
+  <main style="flex:1;">
+    <div class="card" style="margin-bottom:var(--marg-md);">
+      <div class="flex items-center justify-between p-sm card-header">
+        <div class="flex items-center gap-sm">
+          <div style="width:24px;height:24px;border-radius:50%;background:var(--color-primary);flex-shrink:0;"></div>
+          <span class="text-sm font-semibold">medyll</span>
+          <span class="text-muted text-sm">chore(release): publish packages</span>
+        </div>
+        <div class="flex items-center gap-sm text-muted text-sm">
+          <span>bc2147e</span>
+          <span>2 days ago</span>
+          <span>234 commits</span>
+        </div>
+      </div>
+      <!-- File list -->
+      <div style="font-family:monospace;font-size:0.85rem;">
+        <div class="flex items-center gap-sm p-sm" style="border-top:var(--border-width) solid var(--color-border);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+          <span>📁</span><a href="#" style="color:var(--color-primary);flex:1;">src</a><span class="text-muted text-sm" style="margin-left:auto;">Design system source</span><span class="text-muted text-sm" style="min-width:80px;text-align:right;">2 days ago</span>
+        </div>
+        <div class="flex items-center gap-sm p-sm" style="border-top:var(--border-width) solid var(--color-border);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+          <span>📁</span><a href="#" style="color:var(--color-primary);flex:1;">dist</a><span class="text-muted text-sm" style="margin-left:auto;">Built CSS output</span><span class="text-muted text-sm" style="min-width:80px;text-align:right;">2 days ago</span>
+        </div>
+        <div class="flex items-center gap-sm p-sm" style="border-top:var(--border-width) solid var(--color-border);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+          <span>📄</span><a href="#" style="color:var(--color-primary);flex:1;">package.json</a><span class="text-muted text-sm" style="min-width:80px;text-align:right;">5 days ago</span>
+        </div>
+        <div class="flex items-center gap-sm p-sm" style="border-top:var(--border-width) solid var(--color-border);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+          <span>📄</span><a href="#" style="color:var(--color-primary);flex:1;">README.md</a><span class="text-muted text-sm" style="min-width:80px;text-align:right;">1 week ago</span>
+        </div>
+        <div class="flex items-center gap-sm p-sm" style="border-top:var(--border-width) solid var(--color-border);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+          <span>📄</span><a href="#" style="color:var(--color-primary);flex:1;">CHANGELOG.md</a><span class="text-muted text-sm" style="min-width:80px;text-align:right;">2 days ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- README -->
+    <div class="card p-lg">
+      <h1 style="display:flex;align-items:center;gap:var(--gap-sm);margin-bottom:var(--marg-md);">
+        📄 README.md
+      </h1>
+      <h2>@medyll/css-base</h2>
+      <p>A modern, token-driven CSS design system. Override CSS custom properties to create themes without changing HTML structure.</p>
+      <div style="background:var(--color-surface-alt);border-left:3px solid var(--color-primary);padding:var(--pad-md);border-radius:0 var(--radius-md) var(--radius-md) 0;margin:var(--marg-md) 0;font-family:monospace;font-size:0.85rem;">
+        npm install @medyll/css-base
+      </div>
+      <div class="flex gap-sm">
+        <span class="badge badge-success">v0.1.21</span>
+        <span class="badge badge-primary">MIT</span>
+        <span class="badge">Tree-shakable</span>
+        <span class="badge">Zero dependencies</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sidebar -->
+  <aside style="width:280px;">
+    <div class="card p-md mb-sm">
+      <p class="font-semibold mb-sm">About</p>
+      <p class="text-muted text-sm mb-sm">A modern CSS design system with utility classes, design tokens, and component primitives.</p>
+      <div class="flex flex-wrap gap-xs">
+        <span class="badge">css</span>
+        <span class="badge">design-system</span>
+        <span class="badge">tokens</span>
+        <span class="badge">tailwind-like</span>
+      </div>
+    </div>
+    <div class="card p-md">
+      <p class="font-semibold mb-sm">Releases</p>
+      <div class="flex items-center gap-sm"><span class="badge badge-success">Latest</span><a href="#" style="color:var(--color-primary);">v0.1.21</a><span class="text-muted text-sm">2 days ago</span></div>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

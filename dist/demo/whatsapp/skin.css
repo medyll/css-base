@@ -1,0 +1,21 @@
+/* WhatsApp skin */
+:root {
+  --color-primary: oklch(0.52 0.18 148);        /* WA green */
+  --color-primary-hover: oklch(0.45 0.18 148);
+  --color-surface: oklch(0.97 0 0);
+  --color-surface-alt: oklch(0.93 0.01 148);    /* light green tint */
+  --color-surface-raised: oklch(1 0 0);
+  --color-border: oklch(0.85 0.01 148);
+  --color-text: oklch(0.14 0 0);
+  --color-text-muted: oklch(0.50 0 0);
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+[data-theme="dark"] {
+  --color-surface: oklch(0.14 0.01 200);
+  --color-surface-alt: oklch(0.18 0.01 200);
+  --color-surface-raised: oklch(0.22 0.02 200);
+  --color-border: oklch(0.28 0.01 200);
+  --color-text: oklch(0.92 0 0);
+  --color-text-muted: oklch(0.60 0 0);
+}

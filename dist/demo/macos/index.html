@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>macOS — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge">Netflix</a>
+    <a href="../amazon/" class="badge">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge badge-primary">macOS</a>
+    <a href="../spotify/" class="badge">Spotify</a>
+    <a href="../slack/" class="badge">Slack</a>
+    <a href="../github/" class="badge">GitHub</a>
+    <a href="../dashboard/" class="badge">Dashboard</a>
+    <a href="../terminal/" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<!-- Menu bar -->
+<div class="flex items-center justify-between" style="background:oklch(1 0 0 / 0.80);backdrop-filter:blur(20px);padding:var(--pad-xs) var(--pad-md);border-bottom:var(--border-width) solid var(--color-border);">
+  <div class="flex items-center gap-md">
+    <span>🍎</span>
+    <span class="font-semibold text-sm">Finder</span>
+    <span class="text-sm">File</span><span class="text-sm">Edit</span><span class="text-sm">View</span><span class="text-sm">Go</span><span class="text-sm">Window</span>
+  </div>
+  <div class="flex items-center gap-sm text-sm">
+    <span>🔋 100%</span><span>📶</span><span>🔊</span><span>12:34</span>
+  </div>
+</div>
+
+<!-- Desktop -->
+<div style="background:linear-gradient(160deg,oklch(0.45 0.10 255),oklch(0.65 0.12 200));min-height:50vh;position:relative;">
+  <!-- Finder window -->
+  <div class="card" data-elevation="lg" style="position:absolute;top:40px;left:60px;width:680px;overflow:hidden;border-radius:var(--radius-xl);">
+    <!-- Window chrome -->
+    <div class="flex items-center gap-sm" style="padding:var(--pad-sm) var(--pad-md);background:var(--color-surface-alt);border-bottom:var(--border-width) solid var(--color-border);">
+      <div style="width:12px;height:12px;border-radius:50%;background:#FF5F57;"></div>
+      <div style="width:12px;height:12px;border-radius:50%;background:#FFBD2E;"></div>
+      <div style="width:12px;height:12px;border-radius:50%;background:#28CA41;"></div>
+      <span class="font-semibold text-sm" style="margin:0 auto;">Documents</span>
+    </div>
+    <!-- Toolbar -->
+    <div class="flex items-center gap-sm p-sm" style="background:var(--color-surface-alt);border-bottom:var(--border-width) solid var(--color-border);">
+      <button class="btn btn-ghost btn-sm">‹</button>
+      <button class="btn btn-ghost btn-sm">›</button>
+      <div class="flex gap-xs">
+        <button class="btn btn-ghost btn-sm">⊞</button>
+        <button class="btn btn-ghost btn-sm">☰</button>
+        <button class="btn btn-ghost btn-sm">⋮⋮</button>
+      </div>
+      <input type="text" placeholder="Search" class="input input-sm" style="margin-left:auto;width:160px;">
+    </div>
+    <!-- Finder content -->
+    <div class="flex" style="height:320px;">
+      <!-- Sidebar -->
+      <aside style="width:180px;border-right:var(--border-width) solid var(--color-border);padding:var(--pad-sm);">
+        <p class="text-muted text-sm font-semibold mb-xs">FAVORITES</p>
+        <p class="text-sm p-xs" style="border-radius:var(--radius-sm);cursor:pointer;background:var(--color-primary);color:white;">📁 Documents</p>
+        <p class="text-sm p-xs" style="border-radius:var(--radius-sm);cursor:pointer;">🖥️ Desktop</p>
+        <p class="text-sm p-xs" style="border-radius:var(--radius-sm);cursor:pointer;">⬇️ Downloads</p>
+        <p class="text-sm p-xs" style="border-radius:var(--radius-sm);cursor:pointer;">🏠 Home</p>
+        <p class="text-muted text-sm font-semibold mb-xs mt-sm">LOCATIONS</p>
+        <p class="text-sm p-xs" style="cursor:pointer;">💻 Macbook Pro</p>
+        <p class="text-sm p-xs" style="cursor:pointer;">☁️ iCloud Drive</p>
+      </aside>
+      <!-- Files grid -->
+      <main style="flex:1;padding:var(--pad-md);">
+        <div class="grid" data-columns="4" data-gap="sm">
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+            <div style="font-size:2.5rem;">📄</div><p class="text-sm">Report.pages</p>
+          </div>
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+            <div style="font-size:2.5rem;">📊</div><p class="text-sm">Budget.numbers</p>
+          </div>
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-alt)'" onmouseout="this.style.background=''">
+            <div style="font-size:2.5rem;">🖼️</div><p class="text-sm">Design.sketch</p>
+          </div>
+          <div style="text-align:center;padding:var(--pad-sm);border-radius:var(--radius-md);cursor:pointer;background:var(--color-primary);color:white;">
+            <div style="font-size:2.5rem;">📁</div><p class="text-sm">Projects</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- Dock -->
+<div class="flex items-end justify-center gap-sm" style="padding:var(--pad-sm);background:oklch(1 0 0 / 0.30);backdrop-filter:blur(20px);border-top:var(--border-width) solid var(--color-border);">
+  <div style="text-align:center"><span style="font-size:2.2rem;cursor:pointer;">🍎</span><div style="width:4px;height:4px;border-radius:50%;background:var(--color-text);margin:2px auto;"></div></div>
+  <div style="text-align:center"><span style="font-size:2.2rem;cursor:pointer;">🌐</span><div style="width:4px;height:4px;border-radius:50%;background:var(--color-text);margin:2px auto;"></div></div>
+  <div style="text-align:center"><span style="font-size:2.2rem;cursor:pointer;">📧</span></div>
+  <div style="text-align:center"><span style="font-size:2.2rem;cursor:pointer;">📷</span></div>
+  <div style="text-align:center"><span style="font-size:2.2rem;cursor:pointer;">🎵</span></div>
+  <div style="text-align:center"><span style="font-size:2.2rem;cursor:pointer;">💬</span></div>
+  <div style="width:1px;height:40px;background:var(--color-border);align-self:center;"></div>
+  <div style="text-align:center"><span style="font-size:2.2rem;cursor:pointer;">🗑️</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge">Netflix</a>
+    <a href="../amazon/" class="badge">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge">macOS</a>
+    <a href="../spotify/" class="badge">Spotify</a>
+    <a href="../slack/" class="badge">Slack</a>
+    <a href="../github/" class="badge">GitHub</a>
+    <a href="../dashboard/" class="badge">Dashboard</a>
+    <a href="../terminal/" class="badge badge-primary">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<!-- Terminal window -->
+<div style="max-width:900px;margin:var(--marg-xl) auto;padding:0 var(--pad-xl);">
+  <div class="card" data-elevation="lg" style="border-radius:var(--radius-lg);overflow:hidden;">
+    <!-- Window chrome -->
+    <div class="flex items-center gap-sm p-sm" style="background:var(--color-surface-alt);border-bottom:var(--border-width) solid var(--color-border);">
+      <div style="width:12px;height:12px;border-radius:50%;background:#FF5F57;"></div>
+      <div style="width:12px;height:12px;border-radius:50%;background:#FFBD2E;"></div>
+      <div style="width:12px;height:12px;border-radius:50%;background:#28CA41;"></div>
+      <span class="text-sm text-muted" style="margin:0 auto;">bash — ~</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex" style="background:var(--color-surface-alt);border-bottom:var(--border-width) solid var(--color-border);">
+      <div class="p-sm text-sm" style="background:var(--color-surface);border-right:var(--border-width) solid var(--color-border);cursor:pointer;color:var(--color-primary);">bash ×</div>
+      <div class="p-sm text-sm text-muted" style="cursor:pointer;">zsh</div>
+      <div class="p-sm text-sm text-muted" style="cursor:pointer;">node</div>
+      <button class="btn btn-ghost btn-sm" style="margin-left:auto;">+</button>
+    </div>
+
+    <!-- Terminal output -->
+    <div style="padding:var(--pad-lg);min-height:500px;font-family:var(--font-family-base,'Courier New',monospace);font-size:0.875rem;line-height:1.6;">
+
+      <div style="margin-bottom:var(--marg-sm);">
+        <span style="color:var(--color-primary);">medyll@macbook</span>:<span style="color:oklch(0.62 0.12 255);">~/projects/css-base</span> <span style="color:var(--color-text);">$</span>
+        <span> git status</span>
+      </div>
+      <div style="color:var(--color-text-muted);margin-bottom:var(--marg-md);">
+        On branch main<br>
+        Your branch is up to date with 'origin/main'.<br>
+        <br>
+        Changes not staged for commit:<br>
+        &nbsp;&nbsp;(use "git add &lt;file&gt;..." to update what will be committed)<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--color-error);">modified:   dist/app.css</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--color-error);">modified:   bmad/status.yaml</span><br>
+      </div>
+
+      <div style="margin-bottom:var(--marg-sm);">
+        <span style="color:var(--color-primary);">medyll@macbook</span>:<span style="color:oklch(0.62 0.12 255);">~/projects/css-base</span> <span>$</span>
+        <span> git add -A && git commit -m "feat: add demo skins"</span>
+      </div>
+      <div style="color:var(--color-text-muted);margin-bottom:var(--marg-md);">
+        [main bc2147e] feat: add demo skins<br>
+        &nbsp;22 files changed, 1847 insertions(+), 3 deletions(-)<br>
+        &nbsp;create mode 100644 dist/demo/netflix/index.html<br>
+        &nbsp;create mode 100644 dist/demo/netflix/skin.css<br>
+        &nbsp;<span style="color:var(--color-success);">... 20 more files</span><br>
+      </div>
+
+      <div style="margin-bottom:var(--marg-sm);">
+        <span style="color:var(--color-primary);">medyll@macbook</span>:<span style="color:oklch(0.62 0.12 255);">~/projects/css-base</span> <span>$</span>
+        <span> ls dist/demo/</span>
+      </div>
+      <div style="margin-bottom:var(--marg-md);">
+        <span style="color:oklch(0.62 0.12 255);">amazon/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">dashboard/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">github/</span>&nbsp;&nbsp;
+        <span style="color:var(--color-primary);">index.html</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">macos/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">netflix/</span><br>
+        <span style="color:oklch(0.62 0.12 255);">shared/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">slack/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">spotify/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">terminal/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">whatsapp/</span>&nbsp;&nbsp;
+        <span style="color:oklch(0.62 0.12 255);">windows/</span>
+      </div>
+
+      <div style="margin-bottom:var(--marg-sm);">
+        <span style="color:var(--color-primary);">medyll@macbook</span>:<span style="color:oklch(0.62 0.12 255);">~/projects/css-base</span> <span>$</span>
+        <span> npm run build</span>
+      </div>
+      <div style="color:var(--color-text-muted);margin-bottom:var(--marg-md);">
+        <br>
+        <span style="color:var(--color-success);">✓</span> Building CSS layers...<br>
+        <span style="color:var(--color-success);">✓</span> Processing design tokens<br>
+        <span style="color:var(--color-success);">✓</span> Generating utilities<br>
+        <span style="color:var(--color-success);">✓</span> Dist written to ./dist/<br>
+        <br>
+        <span style="color:var(--color-success);">Build complete</span> in 1.2s
+      </div>
+
+      <div style="margin-bottom:var(--marg-sm);">
+        <span style="color:var(--color-primary);">medyll@macbook</span>:<span style="color:oklch(0.62 0.12 255);">~/projects/css-base</span> <span>$</span>
+        <span> cat dist/demo/netflix/skin.css</span>
+      </div>
+      <div style="background:var(--color-surface-raised);padding:var(--pad-md);border-radius:var(--radius-md);margin-bottom:var(--marg-md);border-left:3px solid var(--color-primary);color:var(--color-text-muted);">
+        <span style="color:var(--color-text-muted);">/* Netflix skin — variable overrides only */</span><br>
+        <span style="color:oklch(0.62 0.15 255);">:root</span> {<br>
+        &nbsp;&nbsp;<span style="color:oklch(0.62 0.12 255);">--color-primary</span>: <span style="color:var(--color-warning);">oklch(0.52 0.24 27)</span>;<br>
+        &nbsp;&nbsp;<span style="color:oklch(0.62 0.12 255);">--color-surface</span>: <span style="color:var(--color-warning);">oklch(0.08 0 0)</span>;<br>
+        &nbsp;&nbsp;...<br>
+        }
+      </div>
+
+      <!-- Blinking cursor -->
+      <div>
+        <span style="color:var(--color-primary);">medyll@macbook</span>:<span style="color:oklch(0.62 0.12 255);">~/projects/css-base</span> <span>$</span>
+        <span style="display:inline-block;width:8px;height:1em;background:var(--color-primary);animation:blink 1s step-end infinite;vertical-align:text-bottom;margin-left:2px;"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+</style>
+</body>
+</html>

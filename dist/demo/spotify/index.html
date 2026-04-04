@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge">Netflix</a>
+    <a href="../amazon/" class="badge">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge">macOS</a>
+    <a href="../spotify/" class="badge badge-primary">Spotify</a>
+    <a href="../slack/" class="badge">Slack</a>
+    <a href="../github/" class="badge">GitHub</a>
+    <a href="../dashboard/" class="badge">Dashboard</a>
+    <a href="../terminal/" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<div class="flex" style="height:calc(100vh - 140px);">
+  <!-- Sidebar -->
+  <aside style="width:240px;border-right:var(--border-width) solid var(--color-border);padding:var(--pad-md);display:flex;flex-direction:column;gap:var(--gap-md);">
+    <p class="font-bold" style="font-size:1.4rem;color:var(--color-primary);">Spotify</p>
+    <nav style="display:flex;flex-direction:column;gap:var(--gap-xs);">
+      <a href="#" class="btn btn-ghost" style="justify-content:flex-start;">🏠 Home</a>
+      <a href="#" class="btn btn-ghost" style="justify-content:flex-start;">🔍 Search</a>
+      <a href="#" class="btn btn-ghost" style="justify-content:flex-start;">📚 Your Library</a>
+    </nav>
+    <hr style="border-color:var(--color-border);">
+    <p class="text-muted text-sm font-semibold">PLAYLISTS</p>
+    <div style="display:flex;flex-direction:column;gap:var(--gap-xs);">
+      <a href="#" class="text-sm" style="color:var(--color-text-muted);cursor:pointer;">Liked Songs</a>
+      <a href="#" class="text-sm" style="color:var(--color-text-muted);cursor:pointer;">Morning Vibes</a>
+      <a href="#" class="text-sm" style="color:var(--color-text-muted);cursor:pointer;">Focus — Deep Work</a>
+      <a href="#" class="text-sm" style="color:var(--color-primary);cursor:pointer;">Rap Français 🔥</a>
+      <a href="#" class="text-sm" style="color:var(--color-text-muted);cursor:pointer;">Late Night Drive</a>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main style="flex:1;overflow-y:auto;padding:var(--pad-xl);">
+    <h2 style="margin-bottom:var(--marg-lg);">Good Evening 🌙</h2>
+
+    <!-- Quick picks -->
+    <div class="grid" data-columns="3" data-gap="sm" style="margin-bottom:var(--marg-xl);">
+      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
+        <div style="width:56px;height:56px;background:oklch(0.45 0.2 285);flex-shrink:0;"></div>
+        <span class="font-semibold text-sm">Liked Songs</span>
+        <button class="btn btn-primary" style="margin-left:auto;margin-right:var(--marg-sm);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">▶</button>
+      </div>
+      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
+        <div style="width:56px;height:56px;background:oklch(0.45 0.15 148);flex-shrink:0;"></div>
+        <span class="font-semibold text-sm">Morning Vibes</span>
+      </div>
+      <div class="flex items-center gap-sm" style="background:var(--color-surface-raised);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;" onmouseover="this.style.background='var(--color-border)'" onmouseout="this.style.background='var(--color-surface-raised)'">
+        <div style="width:56px;height:56px;background:oklch(0.45 0.12 60);flex-shrink:0;"></div>
+        <span class="font-semibold text-sm">Focus — Deep Work</span>
+      </div>
+    </div>
+
+    <!-- Featured playlist -->
+    <h3 style="margin-bottom:var(--marg-md);">Rap Français 🔥</h3>
+    <div style="background:linear-gradient(135deg,oklch(0.3 0.18 27),var(--color-surface));padding:var(--pad-lg);border-radius:var(--radius-lg);margin-bottom:var(--marg-xl);">
+      <div class="flex items-end justify-between">
+        <div>
+          <span class="badge badge-primary text-sm">PLAYLIST</span>
+          <h2 style="margin:var(--marg-sm) 0;">Rap Français 🔥</h2>
+          <p class="text-muted text-sm">Les meilleurs titres du rap français</p>
+          <p class="text-muted text-sm">142 songs • 8h 24min</p>
+        </div>
+        <button class="btn btn-primary" style="border-radius:50%;width:56px;height:56px;font-size:1.2rem;display:flex;align-items:center;justify-content:center;">▶</button>
+      </div>
+    </div>
+
+    <!-- Track list -->
+    <div style="display:flex;flex-direction:column;gap:var(--gap-xs);">
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;background:var(--color-surface-alt);">
+        <span class="text-muted text-sm" style="width:16px;">1</span>
+        <div style="width:40px;height:40px;background:oklch(0.3 0.15 27);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">PNL — Au DD</p><p class="text-muted text-sm">PNL</p></div>
+        <span class="badge badge-success text-sm">♥</span>
+        <span class="text-muted text-sm">3:54</span>
+      </div>
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-raised)'" onmouseout="this.style.background=''">
+        <span class="text-muted text-sm" style="width:16px;">2</span>
+        <div style="width:40px;height:40px;background:oklch(0.25 0.12 200);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">Ninho — Millions</p><p class="text-muted text-sm">Ninho</p></div>
+        <span class="text-muted text-sm">3:12</span>
+      </div>
+      <div class="flex items-center gap-md p-sm" style="border-radius:var(--radius-md);cursor:pointer;" onmouseover="this.style.background='var(--color-surface-raised)'" onmouseout="this.style.background=''">
+        <span class="text-muted text-sm" style="width:16px;">3</span>
+        <div style="width:40px;height:40px;background:oklch(0.28 0.18 285);border-radius:var(--radius-sm);"></div>
+        <div style="flex:1;"><p class="font-semibold text-sm">Nekfeu — Etoiles</p><p class="text-muted text-sm">Nekfeu</p></div>
+        <span class="text-muted text-sm">4:28</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Player -->
+<div class="flex items-center justify-between p-sm" style="border-top:var(--border-width) solid var(--color-border);background:var(--color-surface-raised);position:fixed;bottom:0;left:0;right:0;">
+  <div class="flex items-center gap-sm" style="width:25%;">
+    <div style="width:40px;height:40px;background:oklch(0.3 0.15 27);border-radius:var(--radius-sm);"></div>
+    <div><p class="text-sm font-semibold">PNL — Au DD</p><p class="text-muted text-sm">PNL</p></div>
+    <button class="btn btn-ghost text-muted">♥</button>
+  </div>
+  <div style="width:50%;text-align:center;">
+    <div class="flex items-center justify-center gap-md mb-xs">
+      <button class="btn btn-ghost">⇄</button>
+      <button class="btn btn-ghost">⏮</button>
+      <button class="btn btn-primary" style="border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">▶</button>
+      <button class="btn btn-ghost">⏭</button>
+      <button class="btn btn-ghost">↺</button>
+    </div>
+    <div class="flex items-center gap-sm text-sm text-muted">
+      <span>1:24</span>
+      <div style="flex:1;height:4px;background:var(--color-border);border-radius:2px;"><div style="width:35%;height:100%;background:var(--color-text-muted);border-radius:2px;"></div></div>
+      <span>3:54</span>
+    </div>
+  </div>
+  <div class="flex items-center gap-sm" style="width:25%;justify-content:flex-end;">
+    <button class="btn btn-ghost">🔊</button>
+    <div style="width:80px;height:4px;background:var(--color-border);border-radius:2px;"><div style="width:75%;height:100%;background:var(--color-text);border-radius:2px;"></div></div>
+  </div>
+</div>
+</body>
+</html>

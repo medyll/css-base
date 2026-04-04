@@ -1,0 +1,22 @@
+/* Netflix skin — variable overrides only */
+:root {
+  --color-primary: oklch(0.52 0.24 27);         /* #E50914 red */
+  --color-primary-hover: oklch(0.45 0.24 27);
+  --color-surface: oklch(0.08 0 0);              /* near-black */
+  --color-surface-alt: oklch(0.12 0 0);
+  --color-surface-raised: oklch(0.16 0 0);
+  --color-border: oklch(0.22 0 0);
+  --color-text: oklch(0.96 0 0);
+  --color-text-muted: oklch(0.65 0 0);
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+}
+[data-theme="light"] {
+  --color-surface: oklch(0.96 0 0);
+  --color-surface-alt: oklch(0.90 0 0);
+  --color-surface-raised: oklch(1 0 0);
+  --color-border: oklch(0.82 0 0);
+  --color-text: oklch(0.10 0 0);
+  --color-text-muted: oklch(0.45 0 0);
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge">Netflix</a>
+    <a href="../amazon/" class="badge">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge">macOS</a>
+    <a href="../spotify/" class="badge">Spotify</a>
+    <a href="../slack/" class="badge">Slack</a>
+    <a href="../github/" class="badge">GitHub</a>
+    <a href="../dashboard/" class="badge badge-primary">Dashboard</a>
+    <a href="../terminal/" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<div class="flex" style="height:calc(100vh - 80px);">
+  <!-- Sidebar nav -->
+  <aside style="width:220px;border-right:var(--border-width) solid var(--color-border);padding:var(--pad-md);display:flex;flex-direction:column;gap:var(--gap-xs);">
+    <p class="font-bold mb-md" style="font-size:1.1rem;">Analytics Pro</p>
+    <a href="#" class="btn btn-primary btn-sm" style="justify-content:flex-start;">📊 Overview</a>
+    <a href="#" class="btn btn-ghost btn-sm" style="justify-content:flex-start;">👥 Users</a>
+    <a href="#" class="btn btn-ghost btn-sm" style="justify-content:flex-start;">💰 Revenue</a>
+    <a href="#" class="btn btn-ghost btn-sm" style="justify-content:flex-start;">📈 Growth</a>
+    <a href="#" class="btn btn-ghost btn-sm" style="justify-content:flex-start;">🔔 Alerts</a>
+    <a href="#" class="btn btn-ghost btn-sm" style="justify-content:flex-start;">⚙️ Settings</a>
+  </aside>
+
+  <!-- Main -->
+  <main style="flex:1;overflow-y:auto;padding:var(--pad-xl);">
+    <div class="flex items-center justify-between mb-lg">
+      <div><h1>Overview</h1><p class="text-muted text-sm">April 2026 • Last updated now</p></div>
+      <div class="flex gap-sm">
+        <button class="btn btn-secondary btn-sm">Export</button>
+        <button class="btn btn-primary btn-sm">+ New Report</button>
+      </div>
+    </div>
+
+    <!-- KPI cards -->
+    <div class="grid" data-columns="4" data-gap="md" style="margin-bottom:var(--marg-xl);">
+      <div class="card p-md" data-elevation="sm">
+        <p class="text-muted text-sm">Total Revenue</p>
+        <p style="font-size:1.8rem;font-weight:bold;color:var(--color-success);">$84,210</p>
+        <p class="text-sm" style="color:var(--color-success);">▲ 12.4% vs last month</p>
+      </div>
+      <div class="card p-md" data-elevation="sm">
+        <p class="text-muted text-sm">Active Users</p>
+        <p style="font-size:1.8rem;font-weight:bold;">24,891</p>
+        <p class="text-sm" style="color:var(--color-success);">▲ 8.1%</p>
+      </div>
+      <div class="card p-md" data-elevation="sm">
+        <p class="text-muted text-sm">Conversion Rate</p>
+        <p style="font-size:1.8rem;font-weight:bold;color:var(--color-warning);">3.24%</p>
+        <p class="text-sm text-muted">▼ 0.3% vs last month</p>
+      </div>
+      <div class="card p-md" data-elevation="sm">
+        <p class="text-muted text-sm">Avg. Session</p>
+        <p style="font-size:1.8rem;font-weight:bold;">4m 32s</p>
+        <p class="text-sm" style="color:var(--color-success);">▲ 6.2%</p>
+      </div>
+    </div>
+
+    <!-- Chart placeholder + breakdown -->
+    <div class="flex gap-lg" style="margin-bottom:var(--marg-xl);align-items:flex-start;">
+      <div class="card p-lg" style="flex:2;">
+        <div class="flex items-center justify-between mb-md">
+          <h3>Revenue over time</h3>
+          <div class="flex gap-xs">
+            <button class="btn btn-ghost btn-sm">7d</button>
+            <button class="btn btn-primary btn-sm">30d</button>
+            <button class="btn btn-ghost btn-sm">90d</button>
+          </div>
+        </div>
+        <!-- Fake chart bars -->
+        <div class="flex items-end gap-xs" style="height:140px;padding-top:var(--pad-md);">
+          <div style="flex:1;background:var(--color-primary);opacity:0.6;height:60%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+          <div style="flex:1;background:var(--color-primary);opacity:0.7;height:75%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+          <div style="flex:1;background:var(--color-primary);opacity:0.65;height:55%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+          <div style="flex:1;background:var(--color-primary);opacity:0.8;height:85%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+          <div style="flex:1;background:var(--color-primary);opacity:0.7;height:70%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+          <div style="flex:1;background:var(--color-primary);opacity:0.9;height:90%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+          <div style="flex:1;background:var(--color-primary);height:100%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+          <div style="flex:1;background:var(--color-primary);opacity:0.85;height:80%;border-radius:var(--radius-sm) var(--radius-sm) 0 0;"></div>
+        </div>
+        <div class="flex justify-between text-muted text-sm" style="margin-top:var(--marg-xs);">
+          <span>Mar 8</span><span>Mar 15</span><span>Mar 22</span><span>Apr 1</span>
+        </div>
+      </div>
+
+      <div class="card p-lg" style="flex:1;">
+        <h3 class="mb-md">Traffic Sources</h3>
+        <div style="display:flex;flex-direction:column;gap:var(--gap-sm);">
+          <div>
+            <div class="flex justify-between text-sm mb-xs"><span>Organic Search</span><span>42%</span></div>
+            <div style="height:6px;background:var(--color-border);border-radius:3px;"><div style="width:42%;height:100%;background:var(--color-primary);border-radius:3px;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-xs"><span>Direct</span><span>28%</span></div>
+            <div style="height:6px;background:var(--color-border);border-radius:3px;"><div style="width:28%;height:100%;background:var(--color-success);border-radius:3px;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-xs"><span>Social Media</span><span>18%</span></div>
+            <div style="height:6px;background:var(--color-border);border-radius:3px;"><div style="width:18%;height:100%;background:var(--color-warning);border-radius:3px;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-xs"><span>Referral</span><span>12%</span></div>
+            <div style="height:6px;background:var(--color-border);border-radius:3px;"><div style="width:12%;height:100%;background:var(--color-error);border-radius:3px;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent activity table -->
+    <div class="card">
+      <div class="card-header flex items-center justify-between">
+        <h3>Recent Transactions</h3>
+        <a href="#" style="color:var(--color-primary);font-size:0.85rem;">View all</a>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+        <thead>
+          <tr style="border-bottom:var(--border-width) solid var(--color-border);">
+            <th style="padding:var(--pad-sm);text-align:left;color:var(--color-text-muted);font-weight:500;">Customer</th>
+            <th style="padding:var(--pad-sm);text-align:left;color:var(--color-text-muted);font-weight:500;">Product</th>
+            <th style="padding:var(--pad-sm);text-align:left;color:var(--color-text-muted);font-weight:500;">Amount</th>
+            <th style="padding:var(--pad-sm);text-align:left;color:var(--color-text-muted);font-weight:500;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:var(--border-width) solid var(--color-border);">
+            <td style="padding:var(--pad-sm);">Marie Dupont</td>
+            <td style="padding:var(--pad-sm);color:var(--color-text-muted);">Pro Plan</td>
+            <td style="padding:var(--pad-sm);">$99.00</td>
+            <td style="padding:var(--pad-sm);"><span class="badge badge-success">Paid</span></td>
+          </tr>
+          <tr style="border-bottom:var(--border-width) solid var(--color-border);">
+            <td style="padding:var(--pad-sm);">Thomas Martin</td>
+            <td style="padding:var(--pad-sm);color:var(--color-text-muted);">Enterprise</td>
+            <td style="padding:var(--pad-sm);">$499.00</td>
+            <td style="padding:var(--pad-sm);"><span class="badge badge-success">Paid</span></td>
+          </tr>
+          <tr style="border-bottom:var(--border-width) solid var(--color-border);">
+            <td style="padding:var(--pad-sm);">Sarah Chen</td>
+            <td style="padding:var(--pad-sm);color:var(--color-text-muted);">Starter</td>
+            <td style="padding:var(--pad-sm);">$29.00</td>
+            <td style="padding:var(--pad-sm);"><span class="badge badge-warning">Pending</span></td>
+          </tr>
+          <tr>
+            <td style="padding:var(--pad-sm);">Alex Johnson</td>
+            <td style="padding:var(--pad-sm);color:var(--color-text-muted);">Pro Plan</td>
+            <td style="padding:var(--pad-sm);">$99.00</td>
+            <td style="padding:var(--pad-sm);"><span class="badge badge-error">Failed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

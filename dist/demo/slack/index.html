@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slack — css-base skin demo</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./skin.css">
+</head>
+<body>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="../netflix/" class="badge">Netflix</a>
+    <a href="../amazon/" class="badge">Amazon</a>
+    <a href="../whatsapp/" class="badge">WhatsApp</a>
+    <a href="../windows/" class="badge">Windows</a>
+    <a href="../macos/" class="badge">macOS</a>
+    <a href="../spotify/" class="badge">Spotify</a>
+    <a href="../slack/" class="badge badge-primary">Slack</a>
+    <a href="../github/" class="badge">GitHub</a>
+    <a href="../dashboard/" class="badge">Dashboard</a>
+    <a href="../terminal/" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+</nav>
+
+<div class="flex" style="height:calc(100vh - 100px);">
+  <!-- Workspace sidebar -->
+  <aside style="width:56px;background:oklch(0.22 0.08 285);display:flex;flex-direction:column;align-items:center;padding:var(--pad-sm) 0;gap:var(--gap-sm);border-right:1px solid oklch(0.15 0.08 285);">
+    <div style="width:36px;height:36px;background:var(--color-primary);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:0.75rem;">AC</div>
+    <div style="width:36px;height:36px;background:oklch(0.55 0.15 200);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:white;font-size:0.75rem;">+</div>
+  </aside>
+
+  <!-- Channel sidebar -->
+  <aside style="width:240px;background:var(--color-surface-alt);display:flex;flex-direction:column;border-right:var(--border-width) solid var(--color-border);">
+    <div class="flex items-center justify-between p-md" style="border-bottom:var(--border-width) solid var(--color-border);">
+      <span class="font-bold">Acme Corp</span>
+      <button class="btn btn-ghost btn-sm">⊕</button>
+    </div>
+    <div style="overflow-y:auto;flex:1;padding:var(--pad-sm);">
+      <p class="text-muted text-sm font-semibold p-xs mb-xs">CHANNELS</p>
+      <div class="p-xs text-sm" style="border-radius:var(--radius-sm);cursor:pointer;background:var(--color-primary);color:white;"># general</div>
+      <div class="p-xs text-sm" style="border-radius:var(--radius-sm);cursor:pointer;color:var(--color-text-muted);"># random</div>
+      <div class="p-xs text-sm" style="border-radius:var(--radius-sm);cursor:pointer;color:var(--color-text-muted);"># engineering</div>
+      <div class="flex items-center justify-between p-xs text-sm" style="cursor:pointer;color:var(--color-text-muted);">
+        <span># design</span><span class="badge badge-error" style="font-size:0.7rem;padding:1px 5px;">5</span>
+      </div>
+      <div class="p-xs text-sm" style="cursor:pointer;color:var(--color-text-muted);"># standup</div>
+      <p class="text-muted text-sm font-semibold p-xs mt-md mb-xs">DIRECT MESSAGES</p>
+      <div class="flex items-center gap-xs p-xs text-sm" style="cursor:pointer;color:var(--color-text-muted);">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--color-success,oklch(0.65 0.18 148));"></div> Marie
+      </div>
+      <div class="flex items-center gap-xs p-xs text-sm" style="cursor:pointer;color:var(--color-text-muted);">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--color-border);"></div> Thomas
+      </div>
+    </div>
+  </aside>
+
+  <!-- Messages -->
+  <main style="flex:1;display:flex;flex-direction:column;">
+    <header class="flex items-center gap-sm p-sm" style="border-bottom:var(--border-width) solid var(--color-border);">
+      <span class="font-bold"># general</span>
+      <span class="text-muted text-sm">— 12 members</span>
+      <div class="flex gap-sm" style="margin-left:auto;">
+        <button class="btn btn-ghost btn-sm">🔍</button>
+        <button class="btn btn-ghost btn-sm">@</button>
+        <button class="btn btn-ghost btn-sm">⋮</button>
+      </div>
+    </header>
+
+    <div style="flex:1;overflow-y:auto;padding:var(--pad-md);display:flex;flex-direction:column;gap:var(--gap-md);">
+      <div class="flex gap-sm">
+        <div style="width:36px;height:36px;border-radius:var(--radius-md);background:var(--color-primary);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;">M</div>
+        <div>
+          <div class="flex items-baseline gap-sm"><span class="font-semibold text-sm">Marie</span><span class="text-muted text-sm">10:14 AM</span></div>
+          <p class="text-sm">Hey team! Sprint review is at 3pm today 🎉</p>
+        </div>
+      </div>
+      <div class="flex gap-sm">
+        <div style="width:36px;height:36px;border-radius:var(--radius-md);background:oklch(0.55 0.15 148);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;">T</div>
+        <div>
+          <div class="flex items-baseline gap-sm"><span class="font-semibold text-sm">Thomas</span><span class="text-muted text-sm">10:16 AM</span></div>
+          <p class="text-sm">🙌 Can't wait! All stories are done</p>
+          <div class="flex gap-xs" style="margin-top:4px;">
+            <span style="font-size:0.8rem;padding:2px 6px;border:1px solid var(--color-border);border-radius:12px;cursor:pointer;">👏 3</span>
+            <span style="font-size:0.8rem;padding:2px 6px;border:1px solid var(--color-border);border-radius:12px;cursor:pointer;">🎉 5</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-sm">
+        <div style="width:36px;height:36px;border-radius:var(--radius-md);background:oklch(0.55 0.15 60);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;">L</div>
+        <div>
+          <div class="flex items-baseline gap-sm"><span class="font-semibold text-sm">Laura</span><span class="text-muted text-sm">10:18 AM</span></div>
+          <p class="text-sm">Also — the new designs are ready in Figma ✅</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message input -->
+    <div style="padding:var(--pad-sm) var(--pad-md);border-top:var(--border-width) solid var(--color-border);">
+      <div style="border:var(--border-width) solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;">
+        <div class="flex p-xs" style="border-bottom:var(--border-width) solid var(--color-border);gap:var(--gap-xs);">
+          <button class="btn btn-ghost btn-sm">B</button>
+          <button class="btn btn-ghost btn-sm"><em>I</em></button>
+          <button class="btn btn-ghost btn-sm" style="text-decoration:line-through;">S</button>
+          <button class="btn btn-ghost btn-sm">🔗</button>
+        </div>
+        <input type="text" placeholder="Message #general" class="input" style="border:none;border-radius:0;width:100%;" value="Awesome work everyone!">
+        <div class="flex items-center justify-between p-xs">
+          <div class="flex gap-xs">
+            <button class="btn btn-ghost btn-sm">➕</button>
+            <button class="btn btn-ghost btn-sm">😊</button>
+            <button class="btn btn-ghost btn-sm">📎</button>
+          </div>
+          <button class="btn btn-primary btn-sm">Send</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
