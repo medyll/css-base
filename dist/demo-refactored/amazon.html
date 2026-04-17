@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./amazon.css">
+</head>
+<body class="amazon-demo">
+<!-- Header -->
+<header class="amazon-header">
+  <div class="header-top">
+    <a href="../index.html" class="logo">amazon<span>.demo</span></a>
+    
+    <div class="search-bar">
+      <input type="text" placeholder="Search products...">
+      <button>🔍</button>
+    </div>
+    
+    <div class="header-actions">
+      <a href="#" class="text-link">Hello, Sign in</a>
+      <a href="#" class="text-link">Returns & Orders</a>
+      <a href="#" class="cart-link">
+        🛒 Cart
+        <span class="cart-count">3</span>
+      </a>
+    </div>
+  </div>
+  
+  <nav class="nav-categories">
+    <a href="#">Today's Deals</a>
+    <a href="#">Customer Service</a>
+    <a href="#">Registry</a>
+    <a href="#">Gift Cards</a>
+    <a href="#">Sell</a>
+    <a href="#">Electronics</a>
+    <a href="#">Computers</a>
+    <a href="#">Home & Kitchen</a>
+  </nav>
+</header>
+
+<!-- Deal Banner -->
+<section class="amazon-deals">
+  <div class="deals-content">
+    <h3>⚡ Lightning Deals — Up to 60% off</h3>
+    <div class="countdown">
+      <div class="time-unit">
+        <span class="value">04</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="time-unit">
+        <span class="value">23</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="time-unit">
+        <span class="value">45</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+  </div>
+  <div class="deals-cta">
+    <button class="btn">Shop All Deals</button>
+  </div>
+</section>
+
+<!-- Products Grid -->
+<main class="amazon-products">
+  <h2 class="section-title">Recommended for You</h2>
+  
+  <div class="product-grid">
+    <!-- Product 1 -->
+    <article class="product-card">
+      <div class="product-image">📱</div>
+      <div class="product-info">
+        <a href="#" class="product-title">Wireless Bluetooth Earbuds with Charging Case, 30H Playtime</a>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span>12,453</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$29.99</span>
+          <span class="price-original">$59.99</span>
+          <span class="discount-badge">-50%</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+    
+    <!-- Product 2 -->
+    <article class="product-card">
+      <div class="product-image">💻</div>
+      <div class="product-info">
+        <a href="#" class="product-title">USB-C Hub Multiport Adapter, 7-in-1 HDMI 4K, USB 3.0, SD/TF Card Reader</a>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span>8,921</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$35.99</span>
+          <span class="price-original">$49.99</span>
+          <span class="discount-badge">-28%</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+    
+    <!-- Product 3 -->
+    <article class="product-card">
+      <div class="product-image">⌨️</div>
+      <div class="product-info">
+        <a href="#" class="product-title">Mechanical Gaming Keyboard RGB Backlit, Blue Switches, Anti-ghosting</a>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span>5,234</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$45.99</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+    
+    <!-- Product 4 -->
+    <article class="product-card">
+      <div class="product-image">🖱️</div>
+      <div class="product-info">
+        <a href="#" class="product-title">Wireless Gaming Mouse, 16000 DPI, RGB Lighting, 8 Programmable Buttons</a>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span>3,892</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$24.99</span>
+          <span class="price-original">$39.99</span>
+          <span class="discount-badge">-38%</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+    
+    <!-- Product 5 -->
+    <article class="product-card">
+      <div class="product-image">🖥️</div>
+      <div class="product-info">
+        <a href="#" class="product-title">27" 4K UHD Monitor, IPS Panel, HDR10, USB-C, Built-in Speakers</a>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span>2,156</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$299.99</span>
+          <span class="price-original">$449.99</span>
+          <span class="discount-badge">-33%</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+    
+    <!-- Product 6 -->
+    <article class="product-card">
+      <div class="product-image">🎧</div>
+      <div class="product-info">
+        <a href="#" class="product-title">Over-Ear Headphones, Active Noise Cancelling, 40H Battery, Hi-Res Audio</a>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span>7,654</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$89.99</span>
+          <span class="price-original">$149.99</span>
+          <span class="discount-badge">-40%</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+    
+    <!-- Product 7 -->
+    <article class="product-card">
+      <div class="product-image">⌚</div>
+      <div class="product-info">
+        <a href="#" class="product-title">Smart Watch Fitness Tracker, Heart Rate Monitor, GPS, Waterproof IP68</a>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span>4,321</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$59.99</span>
+          <span class="price-original">$99.99</span>
+          <span class="discount-badge">-40%</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+    
+    <!-- Product 8 -->
+    <article class="product-card">
+      <div class="product-image">📷</div>
+      <div class="product-info">
+        <a href="#" class="product-title">Action Camera 4K 60fps, Waterproof 40m, Image Stabilization, WiFi</a>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span>1,987</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">$129.99</span>
+          <span class="price-original">$199.99</span>
+          <span class="discount-badge">-35%</span>
+        </div>
+        <div class="product-prime">prime FREE Delivery</div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add-cart">Add to Cart</button>
+        <button class="btn-buy-now">Buy Now</button>
+      </div>
+    </article>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="amazon-footer">
+  <div class="footer-back-top">
+    <a href="#">Back to top</a>
+  </div>
+  
+  <div class="footer-links">
+    <div class="footer-column">
+      <h4>Get to Know Us</h4>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+      <a href="#">About Amazon</a>
+      <a href="#">Investor Relations</a>
+    </div>
+    <div class="footer-column">
+      <h4>Make Money with Us</h4>
+      <a href="#">Sell products</a>
+      <a href="#">Sell on Business</a>
+      <a href="#">Sell apps</a>
+      <a href="#">Become an Affiliate</a>
+    </div>
+    <div class="footer-column">
+      <h4>Payment Products</h4>
+      <a href="#">Business Card</a>
+      <a href="#">Shop with Points</a>
+      <a href="#">Reload Your Balance</a>
+    </div>
+    <div class="footer-column">
+      <h4>Let Us Help You</h4>
+      <a href="#">Your Account</a>
+      <a href="#">Your Orders</a>
+      <a href="#">Shipping Rates</a>
+      <a href="#">Returns & Replacements</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+  
+  <div class="footer-legal">
+    <p>© 2024 css-base refactored demo — Not affiliated with Amazon.com, Inc.</p>
+    <p style="margin-top: var(--marg-sm);">
+      <strong>Modern CSS Features:</strong> @layer, @container, :has(), color-mix(), subgrid, content-visibility, CSS nesting
+    </p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./whatsapp.css">
+</head>
+<body class="whatsapp-demo">
+<div class="whatsapp-app">
+  <!-- Header -->
+  <header class="wa-header">
+    <div class="avatar">JD</div>
+    <div class="contact-info">
+      <p class="contact-name">John Doe</p>
+      <p class="contact-status">Online</p>
+    </div>
+    <div class="header-actions">
+      <button title="Video call">📹</button>
+      <button title="Voice call">📞</button>
+      <button title="Search">🔍</button>
+      <button title="More">⋮</button>
+    </div>
+  </header>
+  
+  <!-- Chat Area -->
+  <main class="wa-chat">
+    <div class="wa-date-divider">Today</div>
+    
+    <!-- Message In -->
+    <article class="wa-message message-in">
+      <div class="avatar-small">JD</div>
+      <div class="message-bubble">
+        <input type="checkbox" class="message-checkbox" id="msg1">
+        <p class="message-text">Hey! How are you doing? 👋</p>
+        <div class="message-meta">
+          <span>10:30 AM</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Message Out -->
+    <article class="wa-message message-out">
+      <div class="message-bubble">
+        <input type="checkbox" class="message-checkbox" id="msg2">
+        <p class="message-text">I'm great, thanks! Working on a new CSS project. How about you?</p>
+        <div class="message-meta">
+          <span>10:32 AM</span>
+          <span class="read-receipt">✓✓</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Message In -->
+    <article class="wa-message message-in">
+      <div class="avatar-small">JD</div>
+      <div class="message-bubble">
+        <input type="checkbox" class="message-checkbox" id="msg3">
+        <p class="message-text">Nice! What kind of project? Anything with those new CSS features you mentioned?</p>
+        <div class="message-meta">
+          <span>10:33 AM</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Message Out -->
+    <article class="wa-message message-out">
+      <div class="message-bubble">
+        <input type="checkbox" class="message-checkbox" id="msg4">
+        <p class="message-text">Yes! Refactoring demos with @layer, @container, :has(), color-mix(), and subgrid. It's amazing how much cleaner the code is! 🎨</p>
+        <div class="message-meta">
+          <span>10:35 AM</span>
+          <span class="read-receipt">✓✓</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Message In -->
+    <article class="wa-message message-in">
+      <div class="avatar-small">JD</div>
+      <div class="message-bubble">
+        <input type="checkbox" class="message-checkbox" id="msg5">
+        <p class="message-text">That sounds awesome! Can you show me some examples? Especially curious about :has() - I've heard it's a game changer!</p>
+        <div class="message-meta">
+          <span>10:36 AM</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Message Out -->
+    <article class="wa-message message-out">
+      <div class="message-bubble">
+        <input type="checkbox" class="message-checkbox" id="msg6">
+        <p class="message-text">Absolutely! In this chat, I'm using :has() to style message bubbles when they're selected. No JavaScript needed for the visual state! Check the CSS 😉</p>
+        <div class="message-meta">
+          <span>10:38 AM</span>
+          <span class="read-receipt">✓✓</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Message In -->
+    <article class="wa-message message-in">
+      <div class="avatar-small">JD</div>
+      <div class="message-bubble">
+        <input type="checkbox" class="message-checkbox" id="msg7">
+        <p class="message-text">🤯 Mind blown! CSS is getting so powerful. What about container queries?</p>
+        <div class="message-meta">
+          <span>10:39 AM</span>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Typing Indicator -->
+    <div class="wa-typing">
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    </div>
+  </main>
+  
+  <!-- Input Area -->
+  <footer class="wa-input-area">
+    <div class="input-actions">
+      <button title="Emoji">😊</button>
+      <button title="Attach">📎</button>
+    </div>
+    <input type="text" class="message-input" placeholder="Type a message">
+    <button class="send-button">➤</button>
+  </footer>
+</div>
+
+<script>
+  // Simple demo: toggle message selection on click
+  document.querySelectorAll('.message-bubble').forEach(bubble => {
+    bubble.addEventListener('click', (e) => {
+      if (!e.target.closest('input')) {
+        const checkbox = bubble.querySelector('.message-checkbox');
+        if (checkbox) checkbox.checked = !checkbox.checked;
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Demo footer note */
+  body::after {
+    content: 'Modern CSS: @layer, @container, :has(), color-mix(), scroll-behavior';
+    position: fixed;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: #666;
+    background: rgba(255,255,255,0.9);
+    padding: 4px 12px;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+</style>
+</body>
+</html>

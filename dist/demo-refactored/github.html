@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./github.css">
+</head>
+<body class="github-demo">
+<div class="gh-app">
+  <header class="header">
+    <span class="logo">🐙 GitHub</span>
+    <div class="search">
+      <input type="text" placeholder="Search or jump to...">
+    </div>
+    <nav class="nav-links">
+      <a href="#">Pull requests</a>
+      <a href="#">Issues</a>
+      <a href="#">Codespaces</a>
+      <a href="#">Marketplace</a>
+    </nav>
+  </header>
+  
+  <div class="repo-header">
+    <div class="repo-title">
+      <a href="#">medyll</a>
+      <span>/</span>
+      <a href="#">css-base</a>
+      <span class="badge" style="border: 1px solid var(--gh-border); border-radius: var(--radius-full); padding: 2px 8px; font-size: var(--text-xs);">Public</span>
+    </div>
+    
+    <div class="repo-tabs">
+      <a href="#" class="tab"><span>📄</span> Code <span class="counter">234</span></a>
+      <a href="#" class="tab"><span>📋</span> Issues <span class="counter">12</span></a>
+      <a href="#" class="tab"><span>🔀</span> Pull requests <span class="counter">5</span></a>
+      <a href="#" class="tab"><span>💬</span> Discussions</a>
+      <a href="#" class="tab"><span>📊</span> Actions</a>
+      <a href="#" class="tab"><span>📦</span> Projects</a>
+      <a href="#" class="tab"><span>🎯</span> Security</a>
+    </div>
+  </div>
+  
+  <div class="repo-content">
+    <div class="main-col">
+      <div class="file-browser">
+        <div class="file-header">
+          <span>📁 css-base — Modern CSS design system with tokens, layers, and utilities</span>
+          <button class="btn btn-sm">Go to file</button>
+        </div>
+        <div class="file-list">
+          <div class="file-row">
+            <div class="file-info">
+              <span class="file-icon">📁</span>
+              <a href="#" class="file-name">dist</a>
+            </div>
+            <span class="commit-msg text-muted">Latest commit to main 2 days ago</span>
+          </div>
+          <div class="file-row">
+            <div class="file-info">
+              <span class="file-icon">📁</span>
+              <a href="#" class="file-name">src</a>
+            </div>
+            <span class="commit-msg text-muted">Add container query utilities 3 days ago</span>
+          </div>
+          <div class="file-row">
+            <div class="file-info">
+              <span class="file-icon">📄</span>
+              <a href="#" class="file-name">README.md</a>
+            </div>
+            <span class="commit-msg text-muted">Update documentation 1 day ago</span>
+          </div>
+          <div class="file-row">
+            <div class="file-info">
+              <span class="file-icon">🎨</span>
+              <a href="#" class="file-name">app.css</a>
+            </div>
+            <span class="commit-msg text-muted">Main stylesheet with @layer architecture</span>
+          </div>
+          <div class="file-row">
+            <div class="file-info">
+              <span class="file-icon">📦</span>
+              <a href="#" class="file-name">package.json</a>
+            </div>
+            <span class="commit-msg text-muted">Bump version to 0.1.30</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="readme">
+        <div class="readme-header">📖 README.md</div>
+        <div class="readme-body">
+          <h1>@medyll/css-base</h1>
+          <p>A modern CSS design system built with Chrome/Edge 125+ features:</p>
+          <ul>
+            <li><code>@layer</code> for cascade management</li>
+            <li><code>@container</code> for component queries</li>
+            <li><code>:has()</code> for parent selection</li>
+            <li><code>color-mix()</code> and <code>oklch()</code> for colors</li>
+            <li><code>subgrid</code> for nested layouts</li>
+          </ul>
+          <h2>Installation</h2>
+          <pre><code>npm install @medyll/css-base</code></pre>
+          <h2>Usage</h2>
+          <pre><code>import '@medyll/css-base/dist/app.css';</code></pre>
+        </div>
+      </div>
+    </div>
+    
+    <aside class="sidebar">
+      <div class="about-section">
+        <h3>About</h3>
+        <p>Modern CSS design system with semantic tokens and cascade layers.</p>
+        <div class="tags">
+          <a href="#" class="tag">css</a>
+          <a href="#" class="tag">design-system</a>
+          <a href="#" class="tag">modern-css</a>
+          <a href="#" class="tag">container-queries</a>
+        </div>
+        <div class="meta">
+          <div class="meta-item">⭐ <strong>1.2k</strong> stars</div>
+          <div class="meta-item">🍴 <strong>89</strong> forks</div>
+          <div class="meta-item">👁️ <strong>23</strong> watching</div>
+        </div>
+      </div>
+      
+      <div class="languages">
+        <h3>Languages</h3>
+        <div class="language-bar">
+          <div class="lang-segment"></div>
+          <div class="lang-segment"></div>
+          <div class="lang-segment"></div>
+        </div>
+        <div class="language-list">
+          <div class="lang-item">
+            <span class="lang-dot" style="background: #f1e05a;"></span>
+            <span>JavaScript 60%</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-dot" style="background: #3572A5;"></span>
+            <span>CSS 25%</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-dot" style="background: #e34c26;"></span>
+            <span>HTML 15%</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<style>
+  body::after {
+    content: 'Modern CSS: @layer, :has(), @container, subgrid';
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 12px;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+</style>
+</body>
+</html>

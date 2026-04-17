@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./terminal.css">
+</head>
+<body class="terminal-demo">
+<div class="terminal-app">
+  <div class="terminal-window">
+    <header class="terminal-header">
+      <div class="window-controls">
+        <div class="control close"></div>
+        <div class="control minimize"></div>
+        <div class="control maximize"></div>
+      </div>
+      <div class="terminal-title">user@css-base: ~</div>
+      <div class="terminal-actions">
+        <button>➕</button>
+        <button>⬇️</button>
+        <button>⚙️</button>
+      </div>
+    </header>
+    
+    <main class="terminal-body">
+      <div class="output">
+        <div class="line prompt-line">
+          <span class="prompt">
+            <span class="user">user</span><span class="at">@</span><span class="host">css-base</span><span class="colon">:</span><span class="path">~</span><span>$</span>
+          </span>
+          <span class="command">npm install @medyll/css-base</span>
+        </div>
+        <div class="line output-line info">⠋ Installing @medyll/css-base@0.1.30...</div>
+        <div class="line output-line">
+          <div class="progress">
+            <span>📦</span>
+            <div class="bar"><div class="fill" style="width: 100%;"></div></div>
+            <span class="percent">100%</span>
+          </div>
+        </div>
+        <div class="line output-line success">✓ Added 1 package in 1.2s</div>
+      </div>
+      
+      <div class="output">
+        <div class="line prompt-line">
+          <span class="prompt">
+            <span class="user">user</span><span class="at">@</span><span class="host">css-base</span><span class="colon">:</span><span class="path">~/demo</span><span>$</span>
+          </span>
+          <span class="command">cat package.json</span>
+        </div>
+        <div class="code-block">
+          <pre><code><span class="punctuation">{</span>
+  <span class="string">"name"</span><span class="punctuation">:</span> <span class="string">"my-project"</span><span class="punctuation">,</span>
+  <span class="string">"version"</span><span class="punctuation">:</span> <span class="string">"1.0.0"</span><span class="punctuation">,</span>
+  <span class="string">"dependencies"</span><span class="punctuation">:</span> <span class="punctuation">{</span>
+    <span class="string">"@medyll/css-base"</span><span class="punctuation">:</span> <span class="string">"^0.1.30"</span>
+  <span class="punctuation">}</span>
+<span class="punctuation">}</span></code></pre>
+        </div>
+      </div>
+      
+      <div class="output">
+        <div class="line prompt-line">
+          <span class="prompt">
+            <span class="user">user</span><span class="at">@</span><span class="host">css-base</span><span class="colon">:</span><span class="path">~/demo</span><span>$</span>
+          </span>
+          <span class="command">bmad status</span>
+        </div>
+        <div class="line output-line">
+          <pre style="margin:0">
+Phase: <span class="success">development</span>
+Progress: <span class="info">90%</span>
+Next: Refactor Terminal demo
+
+<span class="comment"># CSS-001 Mission Status</span>
+✅ Netflix    ✅ Amazon     ✅ WhatsApp
+✅ Windows    ✅ macOS      ✅ Spotify
+✅ Slack      ✅ GitHub     ✅ Dashboard
+🔄 Terminal  <span class="warning">(in progress)</span></pre>
+          </div>
+      </div>
+      
+      <div class="output">
+        <div class="line prompt-line">
+          <span class="prompt">
+            <span class="user">user</span><span class="at">@</span><span class="host">css-base</span><span class="colon">:</span><span class="path">~/demo</span><span>$</span>
+          </span>
+          <span class="command">echo "Modern CSS features used:"</span>
+        </div>
+        <div class="line output-line success">✓ @layer - Cascade management</div>
+        <div class="line output-line success">✓ @container - Component queries</div>
+        <div class="line output-line success">✓ :has() - Parent selection</div>
+        <div class="line output-line success">✓ color-mix() - Color manipulation</div>
+        <div class="line output-line success">✓ subgrid - Nested layouts</div>
+        <div class="line output-line success">✓ content-visibility - Performance</div>
+        <div class="line output-line success">✓ CSS nesting - Cleaner syntax</div>
+      </div>
+      
+      <div class="input-line">
+        <span class="prompt">
+          <span class="user">user</span><span class="at">@</span><span class="host">css-base</span><span class="colon">:</span><span class="path">~/demo</span><span>$</span>
+        </span>
+        <input type="text" autofocus>
+        <span class="cursor"></span>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  // Simple terminal input echo
+  const input = document.querySelector('input');
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const command = input.value;
+      const output = document.querySelector('.output:last-of-type');
+      const newLine = document.createElement('div');
+      newLine.className = 'line output-line';
+      newLine.textContent = `> ${command}`;
+      output.parentNode.insertBefore(newLine, document.querySelector('.input-line'));
+      input.value = '';
+    }
+  });
+</script>
+
+<style>
+  body::after {
+    content: 'Modern CSS: @layer, CSS nesting, animations, color-mix()';
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 12px;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+</style>
+</body>
+</html>

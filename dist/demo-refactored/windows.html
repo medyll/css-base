@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows 11 — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./windows.css">
+</head>
+<body class="windows-demo">
+<!-- Desktop -->
+<div class="win-desktop">
+  <div class="desktop-icon">
+    <div class="icon-graphic">🗑️</div>
+    <span class="icon-label">Recycle Bin</span>
+  </div>
+  <div class="desktop-icon">
+    <div class="icon-graphic">📁</div>
+    <span class="icon-label">File Explorer</span>
+  </div>
+  <div class="desktop-icon">
+    <div class="icon-graphic">🌐</div>
+    <span class="icon-label">Edge</span>
+  </div>
+  <div class="desktop-icon">
+    <div class="icon-graphic">📝</div>
+    <span class="icon-label">Notes</span>
+  </div>
+</div>
+
+<!-- Window: Settings -->
+<div class="win-window" style="top: 100px; left: 200px; width: 480px; height: 360px;">
+  <div class="window-header">
+    <div class="window-title">
+      <span class="window-icon">⚙️</span>
+      <span>Settings</span>
+    </div>
+    <div class="window-controls">
+      <button title="Minimize">─</button>
+      <button title="Maximize">□</button>
+      <button class="btn-close" title="Close">✕</button>
+    </div>
+  </div>
+  <div class="window-content">
+    <h2 style="margin-top: 0;">System</h2>
+    <div class="form-grid">
+      <label>Display</label>
+      <select>
+        <option>1920 x 1080 (Recommended)</option>
+        <option>2560 x 1440</option>
+        <option>3840 x 2160</option>
+      </select>
+      
+      <label>Scale</label>
+      <select>
+        <option>100%</option>
+        <option>125%</option>
+        <option>150%</option>
+      </select>
+      
+      <label>Night light</label>
+      <label style="display: flex; align-items: center; gap: var(--gutter-sm);">
+        <input type="checkbox"> Off
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- Window: Browser -->
+<div class="win-window" style="top: 150px; left: 250px; width: 560px; height: 400px; z-index: 10;">
+  <div class="window-header">
+    <div class="window-title">
+      <span class="window-icon">🌐</span>
+      <span>New Tab - Edge</span>
+    </div>
+    <div class="window-controls">
+      <button title="Minimize">─</button>
+      <button title="Maximize">□</button>
+      <button class="btn-close" title="Close">✕</button>
+    </div>
+  </div>
+  <div class="window-content">
+    <div style="text-align: center; padding: var(--pad-xl);">
+      <h1 style="color: var(--win-blue);">Microsoft Edge</h1>
+      <p class="text-secondary">Fast, secure, and built for AI</p>
+      <input type="text" placeholder="Search the web" style="width: 100%; max-width: 400px; padding: var(--pad-md); border: 1px solid var(--win-border); border-radius: var(--win-radius-lg); margin-top: var(--marg-lg);">
+    </div>
+  </div>
+</div>
+
+<!-- Taskbar -->
+<footer class="win-taskbar">
+  <div class="taskbar-center">
+    <button class="taskbar-icon" id="start-btn" title="Start">🪟</button>
+    <button class="taskbar-icon" title="Search">🔍</button>
+    <button class="taskbar-icon" title="Task View">▢</button>
+    <button class="taskbar-icon" title="Chat">💬</button>
+    <button class="taskbar-icon running active" title="File Explorer">📁</button>
+    <button class="taskbar-icon running" title="Edge">🌐</button>
+  </div>
+  <div class="taskbar-right">
+    <div class="system-tray">
+      <span class="tray-icon">📶</span>
+      <span class="tray-icon">🔊</span>
+      <span class="tray-icon">🔋</span>
+    </div>
+    <div class="clock">
+      <div>4:20 PM</div>
+      <div>4/7/2026</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Start Menu -->
+<div class="win-start-menu" id="start-menu">
+  <div class="start-search">
+    <input type="text" placeholder="Type here to search">
+  </div>
+  <div class="pinned-apps">
+    <h3>Pinned</h3>
+    <div class="app-grid">
+      <div class="app-item">
+        <div class="app-icon">🌐</div>
+        <span class="app-name">Edge</span>
+      </div>
+      <div class="app-item">
+        <div class="app-icon">📧</div>
+        <span class="app-name">Mail</span>
+      </div>
+      <div class="app-item">
+        <div class="app-icon">📅</div>
+        <span class="app-name">Calendar</span>
+      </div>
+      <div class="app-item">
+        <div class="app-icon">📷</div>
+        <span class="app-name">Photos</span>
+      </div>
+      <div class="app-item">
+        <div class="app-icon">🎵</div>
+        <span class="app-name">Spotify</span>
+      </div>
+      <div class="app-item">
+        <div class="app-icon">⚙️</div>
+        <span class="app-name">Settings</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Start menu toggle
+  const startBtn = document.getElementById('start-btn');
+  const startMenu = document.getElementById('start-menu');
+  
+  startBtn.addEventListener('click', () => {
+    startMenu.classList.toggle('open');
+  });
+  
+  // Close start menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!startMenu.contains(e.target) && !startBtn.contains(e.target)) {
+      startMenu.classList.remove('open');
+    }
+  });
+</script>
+
+<style>
+  body::after {
+    content: 'Modern CSS: @layer, :has(), backdrop-filter, content-visibility';
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 12px;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+</style>
+</body>
+</html>

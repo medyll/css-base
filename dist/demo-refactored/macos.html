@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>macOS — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./macos.css">
+</head>
+<body class="macos-demo">
+<!-- Menu Bar -->
+<header class="mac-menubar">
+  <div class="menubar-left">
+    <span class="apple-logo">🍎</span>
+    <span class="menu-item">Finder</span>
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Go</span>
+    <span class="menu-item">Window</span>
+    <span class="menu-item">Help</span>
+  </div>
+  <div class="menubar-right">
+    <div class="control-center">
+      <span class="control-icon">📶</span>
+      <span class="control-icon">🔊</span>
+      <span class="control-icon">🔋</span>
+      <span class="control-icon">🔍</span>
+      <span class="control-icon">⚙️</span>
+    </div>
+    <div class="clock">
+      <span>Tue 7 Apr</span>
+      <span style="margin-left: 8px;">4:20 PM</span>
+    </div>
+  </div>
+</header>
+
+<!-- Finder Window -->
+<div class="mac-window" style="top: 80px; left: 150px; width: 700px; height: 450px;">
+  <div class="window-header">
+    <div class="window-controls">
+      <button class="control-btn btn-close"></button>
+      <button class="control-btn btn-minimize"></button>
+      <button class="control-btn btn-maximize"></button>
+    </div>
+    <div class="window-title">Finder</div>
+  </div>
+  <div class="window-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <p class="sidebar-title">Favorites</p>
+        <div class="sidebar-item">
+          <span class="item-icon">🏠</span>
+          <span class="selected">Home</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="item-icon">🖥️</span>
+          <span>Desktop</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="item-icon">📄</span>
+          <span>Documents</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="item-icon">⬇️</span>
+          <span>Downloads</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="item-icon">☁️</span>
+          <span>iCloud Drive</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-title">Locations</p>
+        <div class="sidebar-item">
+          <span class="item-icon">💾</span>
+          <span>Macintosh HD</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="item-icon">🌐</span>
+          <span>Network</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-title">Tags</p>
+        <div class="sidebar-item">
+          <span class="item-icon" style="color: #ff5f57;">🔴</span>
+          <span>Red</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="item-icon" style="color: #28c840;">🟢</span>
+          <span>Green</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="item-icon" style="color: #5f57ff;">🔵</span>
+          <span>Blue</span>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Content -->
+    <main class="content">
+      <div class="toolbar">
+        <div class="nav-buttons">
+          <button>←</button>
+          <button>→</button>
+        </div>
+        <div class="search-field">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search Home">
+        </div>
+        <div style="display: flex; gap: var(--gutter-sm);">
+          <button class="btn btn-sm">View</button>
+          <button class="btn btn-sm">Sort</button>
+        </div>
+      </div>
+      
+      <div class="file-grid">
+        <div class="file-item">
+          <span class="file-icon">📁</span>
+          <span class="file-name">Projects</span>
+        </div>
+        <div class="file-item">
+          <span class="file-icon">📁</span>
+          <span class="file-name">Photos</span>
+        </div>
+        <div class="file-item">
+          <span class="file-icon">📁</span>
+          <span class="file-name">Music</span>
+        </div>
+        <div class="file-item">
+          <span class="file-icon">📁</span>
+          <span class="file-name">Movies</span>
+        </div>
+        <div class="file-item">
+          <span class="file-icon">📄</span>
+          <span class="file-name">Resume.pdf</span>
+        </div>
+        <div class="file-item">
+          <span class="file-icon">📊</span>
+          <span class="file-name">Budget.xlsx</span>
+        </div>
+        <div class="file-item">
+          <span class="file-icon">🎵</span>
+          <span class="file-name">Song.mp3</span>
+        </div>
+        <div class="file-item">
+          <span class="file-icon">🖼️</span>
+          <span class="file-name">Photo.jpg</span>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Dock -->
+<footer class="mac-dock">
+  <div class="dock-item">😊</div>
+  <div class="dock-item">🧭</div>
+  <div class="dock-item">📧</div>
+  <div class="dock-item">🗺️</div>
+  <div class="dock-item">🎵</div>
+  <div class="dock-item">📷</div>
+  <div class="dock-separator"></div>
+  <div class="dock-item running">📁</div>
+  <div class="dock-item">🌐</div>
+  <div class="dock-item">📝</div>
+  <div class="dock-separator"></div>
+  <div class="dock-item">🗑️</div>
+</footer>
+
+<style>
+  body::after {
+    content: 'Modern CSS: @layer, backdrop-filter, :has(), @container, subgrid';
+    position: fixed;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 12px;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+</style>
+</body>
+</html>

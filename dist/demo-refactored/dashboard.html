@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./dashboard.css">
+</head>
+<body class="dashboard-demo">
+<div class="dashboard-app">
+  <aside class="sidebar">
+    <div class="logo">📊 Analytics</div>
+    <nav class="nav-menu">
+      <a href="#" class="nav-item">
+        <span>🏠</span>
+        <span class="nav-text active">Overview</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span>📈</span>
+        <span class="nav-text">Reports</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span>👥</span>
+        <span class="nav-text">Customers</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span>⚙️</span>
+        <span class="nav-text">Settings</span>
+      </a>
+    </nav>
+  </aside>
+  
+  <main class="main-content">
+    <header class="dashboard-header">
+      <h1>Dashboard Overview</h1>
+      <div class="date-range">📅 Last 30 days</div>
+    </header>
+    
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-header">
+          <span>💰 Revenue</span>
+          <div class="stat-icon" style="background: color-mix(in oklch, var(--dash-success), transparent 80%);">📈</div>
+        </div>
+        <p class="stat-value">$45,234</p>
+        <p class="stat-label">Total revenue</p>
+        <span class="stat-change positive">↑ 12.5%</span>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-header">
+          <span>👥 Users</span>
+          <div class="stat-icon" style="background: color-mix(in oklch, var(--dash-primary), transparent 80%);">👤</div>
+        </div>
+        <p class="stat-value">2,345</p>
+        <p class="stat-label">Active users</p>
+        <span class="stat-change positive">↑ 8.2%</span>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-header">
+          <span>🛒 Orders</span>
+          <div class="stat-icon" style="background: color-mix(in oklch, var(--dash-warning), transparent 80%);">📦</div>
+        </div>
+        <p class="stat-value">1,234</p>
+        <p class="stat-label">Total orders</p>
+        <span class="stat-change negative">↓ 3.1%</span>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-header">
+          <span>⭐ Rating</span>
+          <div class="stat-icon" style="background: color-mix(in oklch, #fbbf24, transparent 80%);">⭐</div>
+        </div>
+        <p class="stat-value">4.8</p>
+        <p class="stat-label">Average rating</p>
+        <span class="stat-change positive">↑ 0.3</span>
+      </div>
+    </div>
+    
+    <!-- Charts Grid -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>Traffic Overview</h3>
+          <button class="btn btn-sm">Export</button>
+        </div>
+        <div class="chart-body">
+          <div class="bar" style="height: 40%;"></div>
+          <div class="bar" style="height: 65%;"></div>
+          <div class="bar" style="height: 45%;"></div>
+          <div class="bar" style="height: 80%;"></div>
+          <div class="bar" style="height: 55%;"></div>
+          <div class="bar" style="height: 90%;"></div>
+          <div class="bar" style="height: 70%;"></div>
+          <div class="bar" style="height: 85%;"></div>
+          <div class="bar" style="height: 60%;"></div>
+          <div class="bar" style="height: 75%;"></div>
+          <div class="bar" style="height: 50%;"></div>
+          <div class="bar" style="height: 95%;"></div>
+        </div>
+      </div>
+      
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>Device Split</h3>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+          <div style="width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(var(--dash-primary) 0% 60%, var(--dash-success) 60% 85%, var(--dash-warning) 85% 100%);"></div>
+        </div>
+        <div style="display: flex; justify-content: center; gap: var(--gutter-md); margin-top: var(--marg-md);">
+          <span style="display: flex; align-items: center; gap: var(--gutter-xs);"><span style="width: 12px; height: 12px; background: var(--dash-primary); border-radius: 2px;"></span> Desktop 60%</span>
+          <span style="display: flex; align-items: center; gap: var(--gutter-xs);"><span style="width: 12px; height: 12px; background: var(--dash-success); border-radius: 2px;"></span> Mobile 25%</span>
+          <span style="display: flex; align-items: center; gap: var(--gutter-xs);"><span style="width: 12px; height: 12px; background: var(--dash-warning); border-radius: 2px;"></span> Tablet 15%</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Activity Table -->
+    <div class="activity-table">
+      <div class="table-header">
+        <h3>Recent Activity</h3>
+        <button class="btn btn-sm">View All</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Action</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>john@example.com</td>
+            <td>Purchased Premium Plan</td>
+            <td>2 minutes ago</td>
+            <td><span class="status-badge success">Completed</span></td>
+          </tr>
+          <tr>
+            <td>sarah@example.com</td>
+            <td>Updated Profile</td>
+            <td>15 minutes ago</td>
+            <td><span class="status-badge success">Completed</span></td>
+          </tr>
+          <tr>
+            <td>mike@example.com</td>
+            <td>Subscription Renewal</td>
+            <td>1 hour ago</td>
+            <td><span class="status-badge pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td>emma@example.com</td>
+            <td>Payment Failed</td>
+            <td>2 hours ago</td>
+            <td><span class="status-badge error">Failed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<style>
+  body::after {
+    content: 'Modern CSS: @layer, @container, color-mix(), subgrid, grid';
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 12px;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+</style>
+</body>
+</html>

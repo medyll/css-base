@@ -1,0 +1,237 @@
+/**
+ * Terminal Demo — Refactored with Modern CSS (2024)
+ * Features: @layer, CSS nesting, color-mix(), animations, monospace styling
+ */
+
+@layer term-reset, term-tokens, term-components, term-utilities;
+
+@layer term-tokens {
+  .terminal-demo {
+    --term-bg: oklch(0.15 0 0);
+    --term-surface: oklch(0.18 0 0);
+    --term-green: oklch(0.65 0.18 150);
+    --term-blue: oklch(0.55 0.2 250);
+    --term-yellow: oklch(0.75 0.18 85);
+    --term-red: oklch(0.55 0.2 25);
+    --term-purple: oklch(0.55 0.25 300);
+    --term-cyan: oklch(0.65 0.15 200);
+    --term-text: oklch(0.85 0 0);
+    --term-text-dim: oklch(0.55 0 0);
+    --term-transition: 150ms ease;
+  }
+}
+
+@layer term-reset {
+  .terminal-demo {
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    color-scheme: dark;
+    body { margin: 0; background: #0a0a0a; color: var(--term-text); }
+  }
+}
+
+@layer term-components {
+  .terminal-app {
+    min-height: 100vh;
+    padding: var(--pad-lg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    & .terminal-window {
+      width: 100%;
+      max-width: 900px;
+      background: var(--term-bg);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      
+      & .terminal-header {
+        background: var(--term-surface);
+        padding: var(--pad-sm) var(--pad-md);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid color-mix(in oklch, white, transparent 90%);
+        
+        & .window-controls {
+          display: flex;
+          gap: 8px;
+          
+          & .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            
+            &.close { background: var(--term-red); }
+            &.minimize { background: var(--term-yellow); }
+            &.maximize { background: var(--term-green); }
+          }
+        }
+        
+        & .terminal-title {
+          font-size: var(--text-sm);
+          color: var(--term-text-dim);
+        }
+        
+        & .terminal-actions {
+          display: flex;
+          gap: var(--gutter-sm);
+          
+          & button {
+            background: none;
+            border: none;
+            color: var(--term-text-dim);
+            cursor: pointer;
+            font-size: var(--text-base);
+            
+            &:hover { color: var(--term-text); }
+          }
+        }
+      }
+      
+      & .terminal-body {
+        padding: var(--pad-md);
+        min-height: 400px;
+        font-size: var(--text-sm);
+        line-height: 1.6;
+        
+        & .output {
+          margin-bottom: var(--marg-md);
+          
+          & .line {
+            display: flex;
+            gap: var(--gutter-sm);
+            
+            &.prompt-line {
+              & .prompt {
+                color: var(--term-green);
+                font-weight: var(--font-semibold);
+                
+                & .user { color: var(--term-blue); }
+                & .at { color: var(--term-text-dim); }
+                & .host { color: var(--term-purple); }
+                & .colon { color: var(--term-text-dim); }
+                & .path { color: var(--term-cyan); }
+              }
+            }
+            
+            & .command {
+              color: var(--term-text);
+              white-space: pre-wrap;
+              word-break: break-all;
+            }
+            
+            & .output-line {
+              color: var(--term-text);
+              padding-left: 20px;
+            }
+            
+            & .success { color: var(--term-green); }
+            & .error { color: var(--term-red); }
+            & .warning { color: var(--term-yellow); }
+            & .info { color: var(--term-blue); }
+          }
+        }
+        
+        & .input-line {
+          display: flex;
+          align-items: center;
+          gap: var(--gutter-sm);
+          
+          & .prompt {
+            color: var(--term-green);
+            font-weight: var(--font-semibold);
+          }
+          
+          & input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--term-text);
+            font-family: inherit;
+            font-size: inherit;
+            caret-color: var(--term-green);
+          }
+          
+          & .cursor {
+            width: 8px;
+            height: 18px;
+            background: var(--term-green);
+            animation: blink 1s step-end infinite;
+          }
+        }
+        
+        /* Syntax highlighting for code output */
+        & .code-block {
+          background: var(--term-surface);
+          padding: var(--pad-md);
+          border-radius: var(--radius-md);
+          margin: var(--marg-md) 0;
+          overflow-x: auto;
+          
+          & .keyword { color: var(--term-purple); }
+          & .string { color: var(--term-green); }
+          & .number { color: var(--term-yellow); }
+          & .function { color: var(--term-blue); }
+          & .comment { color: var(--term-text-dim); font-style: italic; }
+        }
+        
+        /* Progress bar */
+        & .progress {
+          display: flex;
+          align-items: center;
+          gap: var(--gutter-md);
+          margin: var(--marg-md) 0;
+          
+          & .bar {
+            flex: 1;
+            height: 8px;
+            background: var(--term-surface);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            
+            & .fill {
+              height: 100%;
+              background: linear-gradient(90deg, var(--term-blue), var(--term-purple));
+              border-radius: var(--radius-full);
+              transition: width var(--term-transition);
+            }
+          }
+          
+          & .percent {
+            color: var(--term-text-dim);
+            font-size: var(--text-xs);
+            min-width: 40px;
+          }
+        }
+        
+        /* Spinner animation */
+        & .spinner {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          border: 2px solid var(--term-surface);
+          border-top-color: var(--term-green);
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+      }
+    }
+  }
+}
+
+@layer term-utilities {
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .terminal-demo {
+    & .text-dim { color: var(--term-text-dim); }
+  }
+}

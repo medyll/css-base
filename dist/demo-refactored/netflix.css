@@ -1,0 +1,310 @@
+/**
+ * Netflix Demo — Refactored with Modern CSS (2024)
+ * 
+ * Features demonstrated:
+ * - @layer for cascade management
+ * - @container for container queries
+ * - :has() for parent selection
+ * - color-mix() for color variations
+ * - CSS nesting
+ * - subgrid
+ * - content-visibility for performance
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Cascade Layers - organized specificity
+ * ──────────────────────────────────────────────────────────────────────────── */
+@layer netflix-reset, netflix-tokens, netflix-components, netflix-utilities;
+
+@layer netflix-tokens {
+  .netflix-demo {
+    /* Brand colors with color-mix() */
+    --netflix-red: oklch(0.52 0.24 27);
+    --netflix-red-hover: color-mix(in oklch, var(--netflix-red), black 15%);
+    --netflix-red-glow: color-mix(in oklch, var(--netflix-red), white 40%);
+    
+    /* Dark surface palette */
+    --netflix-black: oklch(0.08 0 0);
+    --netflix-charcoal: oklch(0.14 0 0);
+    --netflix-gray: oklch(0.35 0 0);
+    
+    /* Typography */
+    --netflix-font: 'Barlow', system-ui, sans-serif;
+    
+    /* Animation */
+    --netflix-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer netflix-reset {
+  .netflix-demo {
+    font-family: var(--netflix-font);
+    color-scheme: dark;
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      background: var(--netflix-black);
+      color: white;
+    }
+  }
+}
+
+@layer netflix-components {
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Navigation - uses :has() for active state
+   * ──────────────────────────────────────────────────────────────────────── */
+  .netflix-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--pad-sm) var(--pad-xl);
+    background: linear-gradient(to bottom, var(--netflix-black) 0%, transparent 100%);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    
+    & .nav-links {
+      display: flex;
+      gap: var(--gutter-md);
+      align-items: center;
+      
+      & a {
+        text-decoration: none;
+        color: var(--color-text);
+        transition: color var(--netflix-transition);
+        
+        &:hover {
+          color: var(--netflix-red);
+        }
+        
+        /* :has() for active section highlighting */
+        &:has(+ .nav-section-active) {
+          color: var(--netflix-red);
+          font-weight: var(--font-semibold);
+        }
+      }
+      
+      & .nav-section-active {
+        color: var(--netflix-red);
+        font-weight: var(--font-semibold);
+      }
+    }
+    
+    & .nav-actions {
+      display: flex;
+      gap: var(--gutter-sm);
+      align-items: center;
+    }
+  }
+  
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Hero Section - container query responsive
+   * ──────────────────────────────────────────────────────────────────────── */
+  .netflix-hero {
+    position: relative;
+    min-height: 420px;
+    background: linear-gradient(135deg, var(--netflix-charcoal) 0%, oklch(0.18 0.06 27) 100%);
+    padding: var(--pad-xl);
+    display: flex;
+    align-items: center;
+    content-visibility: auto;
+    contain: layout style;
+    
+    & .hero-content {
+      max-width: 480px;
+      
+      /* Container query for responsive typography */
+      container-type: inline-size;
+      
+      & h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        margin: 0 0 var(--marg-sm);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      }
+      
+      & p {
+        color: var(--color-text-muted);
+        margin-bottom: var(--marg-md);
+        line-height: 1.6;
+      }
+      
+      /* @container for button layout */
+      @container (max-width: 400px) {
+        & .hero-actions {
+          flex-direction: column;
+          
+          & .btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      }
+    }
+    
+    & .hero-actions {
+      display: flex;
+      gap: var(--gutter-sm);
+    }
+  }
+  
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Content Row - subgrid for card alignment
+   * ──────────────────────────────────────────────────────────────────────── */
+  .netflix-row {
+    padding: var(--pad-lg) var(--pad-xl);
+    content-visibility: auto;
+    contain: layout;
+    
+    & h2 {
+      margin-bottom: var(--marg-md);
+      font-size: var(--text-xl);
+    }
+    
+    & .row-scroll {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(180px, 1fr);
+      gap: var(--gutter-md);
+      overflow-x: auto;
+      padding-bottom: var(--pad-sm);
+      scrollbar-width: thin;
+      scrollbar-color: var(--netflix-gray) transparent;
+      
+      /* Subgrid for nested card content */
+      & .card-grid {
+        display: grid;
+        grid-template-rows: subgrid;
+      }
+    }
+  }
+  
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Cards - :has() for hover states, color-mix for overlays
+   * ──────────────────────────────────────────────────────────────────────── */
+  .netflix-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--netflix-transition);
+    background: var(--netflix-charcoal);
+    
+    /* GPU acceleration for smooth hover */
+    will-change: transform;
+    
+    /* :has() for parent hover effect */
+    &:has(.card-progress) {
+      background: color-mix(in oklch, var(--netflix-charcoal), var(--netflix-red) 5%);
+    }
+    
+    &:hover {
+      transform: scale(1.05);
+      z-index: 10;
+    }
+    
+    & .card-thumbnail {
+      height: 100px;
+      background: linear-gradient(135deg, oklch(0.3 0.1 27), oklch(0.15 0.05 270));
+      position: relative;
+      
+      /* Gradient overlay with color-mix */
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 60%, color-mix(in oklch, var(--netflix-black), transparent 20%));
+      }
+    }
+    
+    & .card-body {
+      padding: var(--pad-sm);
+      
+      & p {
+        margin: 0;
+        font-weight: var(--font-semibold);
+      }
+    }
+    
+    /* Progress bar for "continue watching" */
+    & .card-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--color-border);
+      
+      & .progress-fill {
+        height: 100%;
+        background: var(--netflix-red);
+        /* Dynamic width via custom property */
+        width: var(--progress, 0%);
+      }
+    }
+  }
+  
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Footer - subgrid for columns
+   * ──────────────────────────────────────────────────────────────────────── */
+  .netflix-footer {
+    padding: var(--pad-xl);
+    border-top: var(--border-width) solid var(--color-border);
+    margin-top: var(--marg-xl);
+    
+    & .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--gutter-lg);
+      
+      /* Subgrid for nested items */
+      & .footer-column {
+        display: grid;
+        grid-template-rows: subgrid;
+        gap: var(--gutter-sm);
+        
+        & .footer-title {
+          font-weight: var(--font-semibold);
+          margin-bottom: var(--marg-sm);
+        }
+        
+        & .footer-link {
+          color: var(--color-text-muted);
+          text-decoration: none;
+          font-size: var(--text-sm);
+          transition: color var(--netflix-transition);
+          
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+    
+    & .footer-legal {
+      margin-top: var(--marg-lg);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+  }
+}
+
+@layer netflix-utilities {
+  /* Utility classes for common patterns */
+  .netflix-demo {
+    & .text-gradient {
+      background: linear-gradient(135deg, var(--netflix-red), var(--netflix-red-glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    & .glow-red {
+      box-shadow: 0 0 20px color-mix(in oklch, var(--netflix-red), transparent 50%);
+    }
+  }
+}

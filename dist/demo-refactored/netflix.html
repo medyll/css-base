@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix — css-base Refactored Demo (Modern CSS 2024)</title>
+<script src="../shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./netflix.css">
+</head>
+<body class="netflix-demo">
+<!-- Navigation with :has() active states -->
+<nav class="netflix-nav">
+  <div class="nav-links">
+    <a href="../index.html" class="font-semibold">css-base demos</a>
+    <span style="color:var(--color-text-muted);">|</span>
+    <a href="./netflix.html" class="nav-section-active">Netflix</a>
+    <a href="../amazon/">Amazon</a>
+    <a href="../whatsapp/">WhatsApp</a>
+    <a href="../windows/">Windows</a>
+    <a href="../macos/">macOS</a>
+    <a href="../spotify/">Spotify</a>
+    <a href="../slack/">Slack</a>
+    <a href="../github/">GitHub</a>
+    <a href="../dashboard/">Dashboard</a>
+    <a href="../terminal/">Terminal</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+  </div>
+</nav>
+
+<!-- Hero Section with container queries -->
+<header class="netflix-hero">
+  <div class="hero-content">
+    <h1 class="text-gradient">Stranger Things</h1>
+    <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary glow-red">▶ Play</button>
+      <button class="btn btn-secondary">ℹ More Info</button>
+    </div>
+  </div>
+</header>
+
+<!-- Content Row: Trending -->
+<section class="netflix-row">
+  <h2>Trending Now</h2>
+  <div class="row-scroll">
+    <!-- Card 1 -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:linear-gradient(135deg,oklch(0.3 0.1 27),oklch(0.15 0.05 270));"></div>
+      <div class="card-body">
+        <p>The Crown</p>
+        <span class="badge badge-error">Drama</span>
+      </div>
+    </article>
+    <!-- Card 2 -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:linear-gradient(135deg,oklch(0.25 0.12 140),oklch(0.12 0.04 200));"></div>
+      <div class="card-body">
+        <p>Squid Game</p>
+        <span class="badge badge-success">Thriller</span>
+      </div>
+    </article>
+    <!-- Card 3 -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:linear-gradient(135deg,oklch(0.3 0.15 60),oklch(0.15 0.08 30));"></div>
+      <div class="card-body">
+        <p>Wednesday</p>
+        <span class="badge">Comedy</span>
+      </div>
+    </article>
+    <!-- Card 4 -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:linear-gradient(135deg,oklch(0.25 0.08 240),oklch(0.12 0.04 280));"></div>
+      <div class="card-body">
+        <p>Ozark</p>
+        <span class="badge badge-warning">Crime</span>
+      </div>
+    </article>
+    <!-- Card 5 -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:linear-gradient(135deg,oklch(0.22 0.05 0),oklch(0.12 0.02 340));"></div>
+      <div class="card-body">
+        <p>Dark</p>
+        <span class="badge badge-neutral">Sci-Fi</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Content Row: Continue Watching (with progress bars) -->
+<section class="netflix-row">
+  <h2>Continue Watching</h2>
+  <div class="row-scroll">
+    <!-- Card with progress -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:oklch(0.18 0.03 200);"></div>
+      <div class="card-progress">
+        <div class="progress-fill" style="--progress: 65%;"></div>
+      </div>
+      <div class="card-body">
+        <p>Breaking Bad</p>
+        <p class="text-muted text-sm">S4 E8 • 65% watched</p>
+      </div>
+    </article>
+    <!-- Card with progress -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:oklch(0.18 0.05 60);"></div>
+      <div class="card-progress">
+        <div class="progress-fill" style="--progress: 30%;"></div>
+      </div>
+      <div class="card-body">
+        <p>Peaky Blinders</p>
+        <p class="text-muted text-sm">S2 E3 • 30% watched</p>
+      </div>
+    </article>
+    <!-- Card with progress -->
+    <article class="netflix-card">
+      <div class="card-thumbnail" style="background:oklch(0.2 0.08 30);"></div>
+      <div class="card-progress">
+        <div class="progress-fill" style="--progress: 85%;"></div>
+      </div>
+      <div class="card-body">
+        <p>Money Heist</p>
+        <p class="text-muted text-sm">S5 E2 • 85% watched</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Footer with subgrid -->
+<footer class="netflix-footer">
+  <div class="footer-grid">
+    <div class="footer-column">
+      <p class="footer-title">Company</p>
+      <a href="#" class="footer-link">About</a>
+      <a href="#" class="footer-link">Jobs</a>
+      <a href="#" class="footer-link">Press</a>
+    </div>
+    <div class="footer-column">
+      <p class="footer-title">Help</p>
+      <a href="#" class="footer-link">FAQ</a>
+      <a href="#" class="footer-link">Account</a>
+      <a href="#" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-column">
+      <p class="footer-title">Legal</p>
+      <a href="#" class="footer-link">Privacy</a>
+      <a href="#" class="footer-link">Terms</a>
+      <a href="#" class="footer-link">Cookies</a>
+    </div>
+    <div class="footer-column">
+      <p class="footer-title">Language</p>
+      <button class="btn btn-ghost btn-sm">English</button>
+    </div>
+  </div>
+  <p class="footer-legal">© 2024 css-base refactored demo — Not affiliated with Netflix, Inc.</p>
+  <p class="footer-legal" style="margin-top: var(--marg-md);">
+    <strong>Modern CSS Features Used:</strong> @layer, @container, :has(), color-mix(), subgrid, content-visibility, CSS nesting
+  </p>
+</footer>
+</body>
+</html>

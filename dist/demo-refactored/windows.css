@@ -1,0 +1,401 @@
+/**
+ * Windows 11 Demo — Refactored with Modern CSS (2024)
+ * 
+ * Features: @layer, @container, :has(), color-mix(), subgrid, 
+ * backdrop-filter, CSS nesting, content-visibility
+ */
+
+@layer win-reset, win-tokens, win-components, win-utilities;
+
+@layer win-tokens {
+  .windows-demo {
+    /* Windows 11 colors */
+    --win-blue: oklch(0.55 0.2 250);
+    --win-blue-hover: color-mix(in oklch, var(--win-blue), black 10%);
+    --win-surface: oklch(0.96 0 0);
+    --win-surface-alt: oklch(0.94 0 0);
+    --win-border: oklch(0.85 0 0);
+    
+    /* Mica effect simulation */
+    --win-mica: color-mix(in oklch, oklch(0.92 0.01 250), white 30%);
+    
+    /* Rounded corners - Windows 11 style */
+    --win-radius: 8px;
+    --win-radius-lg: 12px;
+    
+    /* Shadows */
+    --win-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    --win-shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+  }
+}
+
+@layer win-reset {
+  .windows-demo {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color-scheme: light;
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, oklch(0.7 0.1 250), oklch(0.5 0.15 200));
+      min-height: 100vh;
+      overflow: hidden;
+    }
+  }
+}
+
+@layer win-components {
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Desktop
+   * ──────────────────────────────────────────────────────────────────────── */
+  .win-desktop {
+    padding: var(--pad-lg);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    grid-auto-rows: 90px;
+    gap: var(--gutter-sm);
+    height: calc(100vh - 48px);
+    
+    & .desktop-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--gutter-xs);
+      padding: var(--pad-sm);
+      border-radius: var(--win-radius);
+      cursor: pointer;
+      transition: background var(--win-transition);
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      
+      &:hover {
+        background: color-mix(in oklch, white, transparent 85%);
+      }
+      
+      &:has(.icon-selected) {
+        background: color-mix(in oklch, var(--win-blue), transparent 70%);
+        outline: 1px solid color-mix(in oklch, white, transparent 50%);
+      }
+      
+      & .icon-graphic {
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      & .icon-label {
+        font-size: var(--text-xs);
+        text-align: center;
+        line-height: 1.2;
+        max-width: 100%;
+        word-wrap: break-word;
+      }
+    }
+  }
+  
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Taskbar
+   * ──────────────────────────────────────────────────────────────────────── */
+  .win-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: color-mix(in oklch, var(--win-surface), transparent 15%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid color-mix(in oklch, var(--win-border), transparent 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    content-visibility: auto;
+    contain: layout style;
+    
+    & .taskbar-center {
+      display: flex;
+      align-items: center;
+      gap: var(--gutter-xs);
+      
+      & .taskbar-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--win-radius);
+        cursor: pointer;
+        transition: all var(--win-transition);
+        font-size: 1.25rem;
+        
+        &:hover {
+          background: color-mix(in oklch, var(--win-border), transparent 70%);
+          transform: translateY(-2px);
+        }
+        
+        &:has(.running)::after {
+          content: '';
+          position: absolute;
+          bottom: 4px;
+          width: 6px;
+          height: 3px;
+          background: var(--win-blue);
+          border-radius: 2px;
+        }
+        
+        &:has(.active) {
+          background: color-mix(in oklch, var(--win-blue), transparent 80%);
+          
+          &::after {
+            width: 16px;
+          }
+        }
+      }
+    }
+    
+    & .taskbar-right {
+      position: absolute;
+      right: var(--pad-md);
+      display: flex;
+      align-items: center;
+      gap: var(--gutter-md);
+      
+      & .system-tray {
+        display: flex;
+        gap: var(--gutter-sm);
+        font-size: var(--text-sm);
+        color: var(--text-primary);
+        
+        & .tray-icon {
+          padding: var(--pad-xs);
+          border-radius: var(--win-radius);
+          cursor: pointer;
+          
+          &:hover {
+            background: color-mix(in oklch, var(--win-border), transparent 70%);
+          }
+        }
+      }
+      
+      & .clock {
+        text-align: right;
+        font-size: var(--text-xs);
+        line-height: 1.3;
+      }
+    }
+  }
+  
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Window
+   * ──────────────────────────────────────────────────────────────────────── */
+  .win-window {
+    position: absolute;
+    background: var(--win-surface);
+    border-radius: var(--win-radius-lg);
+    box-shadow: var(--win-shadow-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    min-height: 200px;
+    content-visibility: auto;
+    contain: layout style paint;
+    
+    /* Draggable title bar */
+    & .window-header {
+      height: 40px;
+      background: var(--win-surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--pad-sm);
+      border-bottom: 1px solid var(--win-border);
+      -webkit-app-region: drag;
+      
+      & .window-title {
+        display: flex;
+        align-items: center;
+        gap: var(--gutter-sm);
+        font-size: var(--text-sm);
+        font-weight: var(--font-medium);
+        
+        & .window-icon {
+          font-size: var(--text-base);
+        }
+      }
+      
+      & .window-controls {
+        display: flex;
+        -webkit-app-region: no-drag;
+        
+        & button {
+          width: 40px;
+          height: 32px;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background var(--win-transition);
+          
+          &:hover {
+            background: color-mix(in oklch, var(--win-border), transparent 70%);
+          }
+          
+          &.btn-close:hover {
+            background: var(--win-blue);
+            color: white;
+          }
+        }
+      }
+    }
+    
+    & .window-content {
+      flex: 1;
+      padding: var(--pad-md);
+      overflow: auto;
+      
+      /* Subgrid for form layout */
+      & .form-grid {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: var(--gutter-md);
+        align-items: center;
+        
+        & label {
+          font-size: var(--text-sm);
+          color: var(--text-secondary);
+        }
+        
+        & input, & select {
+          padding: var(--pad-sm) var(--pad-md);
+          border: 1px solid var(--win-border);
+          border-radius: var(--win-radius);
+          font-size: var(--text-base);
+          transition: border-color var(--win-transition), box-shadow var(--win-transition);
+          
+          &:focus {
+            outline: none;
+            border-color: var(--win-blue);
+            box-shadow: 0 0 0 2px color-mix(in oklch, var(--win-blue), transparent 80%);
+          }
+        }
+      }
+    }
+    
+    /* Resizer handles */
+    & .window-resizer {
+      position: absolute;
+      inset: -4px;
+      z-index: -1;
+    }
+  }
+  
+  /* ──────────────────────────────────────────────────────────────────────────
+   * Start Menu
+   * ──────────────────────────────────────────────────────────────────────── */
+  .win-start-menu {
+    position: fixed;
+    bottom: 56px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 560px;
+    max-height: 600px;
+    background: color-mix(in oklch, var(--win-surface), transparent 10%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--win-radius-lg);
+    box-shadow: var(--win-shadow-lg);
+    border: 1px solid color-mix(in oklch, var(--win-border), transparent 50%);
+    padding: var(--pad-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--win-transition);
+    z-index: 999;
+    
+    &.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    & .start-search {
+      margin-bottom: var(--marg-lg);
+      
+      & input {
+        width: 100%;
+        padding: var(--pad-sm) var(--pad-md);
+        border: 1px solid var(--win-border);
+        border-radius: var(--win-radius);
+        font-size: var(--text-base);
+        background: var(--win-surface);
+        
+        &:focus {
+          outline: none;
+          border-color: var(--win-blue);
+        }
+      }
+    }
+    
+    & .pinned-apps {
+      & h3 {
+        font-size: var(--text-sm);
+        margin: 0 0 var(--marg-md);
+        color: var(--text-secondary);
+      }
+      
+      & .app-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--gutter-md);
+        
+        & .app-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--gutter-xs);
+          padding: var(--pad-sm);
+          border-radius: var(--win-radius);
+          cursor: pointer;
+          transition: background var(--win-transition);
+          
+          &:hover {
+            background: color-mix(in oklch, var(--win-border), transparent 70%);
+          }
+          
+          & .app-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          & .app-name {
+            font-size: var(--text-xs);
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer win-utilities {
+  .windows-demo {
+    --win-transition: 150ms ease;
+    
+    & .text-primary { color: oklch(0.15 0 0); }
+    & .text-secondary { color: oklch(0.45 0 0); }
+  }
+}

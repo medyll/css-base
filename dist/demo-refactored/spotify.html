@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify — css-base Refactored Demo</title>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="./spotify.css">
+</head>
+<body class="spotify-demo">
+<div class="spotify-app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">🎵 Spotify</div>
+    
+    <nav class="nav-menu">
+      <a href="#" class="nav-item">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-text">Home</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-text">Search</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">📚</span>
+        <span class="nav-text">Your Library</span>
+      </a>
+    </nav>
+    
+    <div class="playlist-section">
+      <p class="playlist-title">Playlists</p>
+      <div class="playlist-list">
+        <div class="playlist-item">Liked Songs</div>
+        <div class="playlist-item">Daily Mix 1</div>
+        <div class="playlist-item">Discover Weekly</div>
+        <div class="playlist-item">Release Radar</div>
+        <div class="playlist-item">On Repeat</div>
+        <div class="playlist-item">Coding Focus</div>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-header">
+      <div class="playlist-cover">🎧</div>
+      <div class="playlist-info">
+        <p class="playlist-type">Playlist</p>
+        <h1 class="playlist-name">CSS Base Vibes</h1>
+        <p class="playlist-description">Modern CSS features set to music — @layer, @container, :has(), and more.</p>
+      </div>
+    </div>
+    
+    <div class="content-body">
+      <div class="actions">
+        <button class="play-btn">▶</button>
+        <button class="action-btn">♡ Follow</button>
+        <button class="action-btn">•••</button>
+      </div>
+      
+      <div class="track-list">
+        <div class="track-row">
+          <span class="track-number">1</span>
+          <div class="track-info">
+            <span class="track-title">Cascade Layers</span>
+            <span class="track-artist">The Selectors</span>
+          </div>
+          <span class="track-album">@layer Basics</span>
+          <span class="track-duration">3:45</span>
+        </div>
+        
+        <div class="track-row playing">
+          <span class="track-number">▶</span>
+          <div class="track-info">
+            <span class="track-title">Container Queries</span>
+            <span class="track-artist">Responsive Kids</span>
+          </div>
+          <span class="track-album">Modern Layout</span>
+          <span class="track-duration">4:12</span>
+        </div>
+        
+        <div class="track-row">
+          <span class="track-number">3</span>
+          <div class="track-info">
+            <span class="track-title">Has It All</span>
+            <span class="track-artist">Parent Selectors</span>
+          </div>
+          <span class="track-album">:has() Revolution</span>
+          <span class="track-duration">3:28</span>
+        </div>
+        
+        <div class="track-row">
+          <span class="track-number">4</span>
+          <div class="track-info">
+            <span class="track-title">Color Mixology</span>
+            <span class="track-artist">OKLCH Dreams</span>
+          </div>
+          <span class="track-album">Color Functions</span>
+          <span class="track-duration">2:56</span>
+        </div>
+        
+        <div class="track-row">
+          <span class="track-number">5</span>
+          <div class="track-info">
+            <span class="track-title">Subgrid Symphony</span>
+            <span class="track-artist">Grid Masters</span>
+          </div>
+          <span class="track-album">Layout Harmony</span>
+          <span class="track-duration">4:33</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Player Bar -->
+  <footer class="player-bar">
+    <div class="player-left">
+      <div class="now-playing">
+        <div class="album-art">🎵</div>
+        <div class="track-details">
+          <p class="track-name">Container Queries</p>
+          <p class="artist-name">Responsive Kids</p>
+        </div>
+      </div>
+      <button class="like-btn">♡</button>
+    </div>
+    
+    <div class="player-center">
+      <div class="player-controls">
+        <button class="control-btn">⏮</button>
+        <button class="play-pause-btn">⏸</button>
+        <button class="control-btn">⏭</button>
+      </div>
+      <div class="progress-bar">
+        <span>1:28</span>
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+        <span>4:12</span>
+      </div>
+    </div>
+    
+    <div class="player-right">
+      <span>🎤</span>
+      <div class="volume-slider">
+        <span>🔊</span>
+        <div class="volume-track">
+          <div class="volume-fill" style="width: 70%;"></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<style>
+  body::after {
+    content: 'Modern CSS: @layer, @container, :has(), color-mix(), subgrid';
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 12px;
+    border-radius: 12px;
+    pointer-events: none;
+  }
+</style>
+</body>
+</html>
