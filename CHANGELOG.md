@@ -1,5 +1,14 @@
 ﻿# Changelog
 
+## [0.5.2] - 2026-04-20
+**Bug Fixes:**
+- update version format to include patch in package.json
+
+**Chores:**
+- release v0.5.1 [skip ci]
+
+
+
 ## [0.1.34] - 2026-04-06
 **Chores:**
 - release v0.1.33 [skip ci]
