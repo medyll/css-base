@@ -4,6 +4,7 @@
  * Dark-first: near-black surface, Netflix red primary
  * light-dark() is driven by color-scheme, triggered by [data-theme]
  * Font: Barlow — geometric, slightly condensed, similar to Netflix Sans
+ * NEW: Demonstrates CSS @function and attr() utilities
  */
 
 /* Connect data-theme toggle → native color-scheme */
@@ -14,11 +15,21 @@
   /* Font: Barlow — geometric sans, similar to Netflix Sans */
   --font-sans: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Brand: Netflix red */
+  /* Brand: Netflix red using CSS @function for color manipulation */
   --color-primary:       oklch(0.52 0.24 27);   /* #E50914 */
-  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
-  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.28) c h);
-
+  
+  /* CSS @function examples for color states */
+  --color-primary-hover: var(--hover-state, var(--color-primary));
+  --color-primary-muted: var(--shade, var(--color-primary));
+  --color-primary-tint: var(--tint, var(--color-primary));
+  
+  /* Secondary color from harmony */
+  --color-secondary: var(--harmony-secondary, oklch(0.52 0.24 calc(27 + 30)));
+  --color-secondary-hover: var(--hover-state, var(--color-secondary));
+  
+  /* Complementary color for accents */
+  --color-accent: var(--harmony-complementary, oklch(0.52 0.24 207));
+  
   /* Surface seeds — light-dark() picks these automatically */
   --default-color-surface-light: oklch(0.14 0 0);   /* near-black (dark-first) */
   --default-color-surface-dark:  oklch(0.08 0 0);   /* deeper black */
@@ -31,4 +42,11 @@
   --radius-sm: 2px;
   --radius-md: 3px;
   --radius-lg: 4px;
+  
+  /* NEW: Elevation shadows using attr() */
+  --shadow-xs: 0 1px 2px 0 color-mix(in srgb, black 20%, transparent);
+  --shadow-sm: 0 2px 4px 0 color-mix(in srgb, black 15%, transparent);
+  --shadow-md: 0 4px 8px 0 color-mix(in srgb, black 12%, transparent);
+  --shadow-lg: 0 8px 16px 0 color-mix(in srgb, black 8%, transparent);
+  --shadow-xl: 0 16px 32px 0 color-mix(in srgb, black 6%, transparent);
 }

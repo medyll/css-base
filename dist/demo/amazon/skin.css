@@ -3,6 +3,7 @@
 /* Amazon skin — css-base token overrides
  * Light-first: white surface, Amazon orange primary, navy accents
  * Font: Source Sans 3 — humanist sans-serif, similar to Amazon Ember
+ * NEW: Demonstrates CSS @function and attr() utilities
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
@@ -12,13 +13,18 @@
   /* Font: Source Sans 3 — humanist sans, close to Amazon Ember */
   --font-sans: 'Source Sans 3', 'Amazon Ember', Arial, sans-serif;
 
-  /* Brand: Amazon orange */
+  /* Brand: Amazon orange with CSS @function for color states */
   --color-primary:       oklch(0.72 0.18 65);   /* #FF9900 */
-  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
-  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.20) c h);
-
-  /* Amazon navy for header/sidebar — accessed via --color-secondary */
-  --color-secondary: oklch(0.22 0.05 240);
+  --color-primary-hover: var(--hover-state, var(--color-primary));
+  --color-primary-muted: var(--tint, var(--color-primary));
+  --color-primary-tint: var(--tint, var(--color-primary));
+  
+  /* Secondary color from harmony */
+  --color-secondary: var(--harmony-secondary, oklch(0.72 0.18 calc(65 + 30)));
+  --color-secondary-hover: var(--hover-state, var(--color-secondary));
+  
+  /* Complementary for accents (blue) */
+  --color-accent: var(--harmony-complementary, oklch(0.22 0.05 240));
 
   /* Surface seeds — light default */
   --default-color-surface-light: oklch(1 0 0);          /* white */
@@ -32,4 +38,10 @@
   --radius-sm: 3px;
   --radius-md: 4px;
   --radius-lg: 6px;
+  
+  /* Elevation shadows for attr() */
+  --shadow-xs: 0 1px 2px 0 color-mix(in srgb, black 15%, transparent);
+  --shadow-sm: 0 2px 4px 0 color-mix(in srgb, black 12%, transparent);
+  --shadow-md: 0 4px 8px 0 color-mix(in srgb, black 10%, transparent);
+  --shadow-lg: 0 8px 16px 0 color-mix(in srgb, black 8%, transparent);
 }

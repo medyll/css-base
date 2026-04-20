@@ -3,6 +3,7 @@
 /* Spotify skin — css-base token overrides
  * Dark-first: near-black, Spotify green primary, pill buttons
  * Font: Nunito — rounded geometric, close to Spotify's Circular typeface
+ * NEW: Demonstrates CSS @function and attr() utilities
  */
 
 [data-theme="dark"]  { color-scheme: dark; }
@@ -12,10 +13,18 @@
   /* Font: Nunito — rounded geometric, close to Spotify Circular */
   --font-sans: 'Nunito', 'Circular', sans-serif;
 
-  /* Brand: Spotify green */
+  /* Brand: Spotify green with CSS @function for color states */
   --color-primary:       oklch(0.72 0.22 148);  /* #1DB954 */
-  --color-primary-hover: oklch(from var(--color-primary) calc(l - 0.08) c h);
-  --color-primary-muted: oklch(from var(--color-primary) calc(l + 0.18) c h);
+  --color-primary-hover: var(--hover-state, var(--color-primary));
+  --color-primary-muted: var(--tint, var(--color-primary));
+  --color-primary-tint: var(--tint, var(--color-primary));
+  
+  /* Secondary from harmony */
+  --color-secondary: var(--harmony-analogous-plus, oklch(0.72 0.22 calc(148 + 30)));
+  --color-secondary-hover: var(--hover-state, var(--color-secondary));
+  
+  /* Complementary for accents (purple/pink) */
+  --color-accent: var(--harmony-complementary, oklch(0.72 0.22 328));
 
   /* Surface seeds — dark default */
   --default-color-surface-light: oklch(0.07 0 0);   /* #121212 Spotify black */
@@ -27,4 +36,10 @@
 
   /* Pill-shaped play buttons */
   --radius-xl: 500px;
+  
+  /* Elevation shadows for attr() */
+  --shadow-xs: 0 1px 2px 0 color-mix(in srgb, black 40%, transparent);
+  --shadow-sm: 0 2px 4px 0 color-mix(in srgb, black 30%, transparent);
+  --shadow-md: 0 4px 8px 0 color-mix(in srgb, black 25%, transparent);
+  --shadow-lg: 0 8px 16px 0 color-mix(in srgb, black 20%, transparent);
 }

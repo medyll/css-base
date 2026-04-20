@@ -6,15 +6,17 @@
 <title>Amazon — css-base skin demo</title>
 <script src="../shared/theme-toggle.js"></script>
 <link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="../../functions.css">
+<link rel="stylesheet" href="../../attr.css">
 <link rel="stylesheet" href="./skin.css">
 </head>
 <body>
-<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
-  <div class="flex items-center gap-sm">
-    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);">css-base demos</a>
+<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);" data-elevation="sm">
+  <div class="flex items-center gap-sm" data-gap="sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none;color:var(--color-text);" data-color="text">css-base demos</a>
     <span style="color:var(--color-text-muted);">|</span>
     <a href="../netflix/" class="badge">Netflix</a>
-    <a href="../amazon/" class="badge badge-primary">Amazon</a>
+    <a href="../amazon/" class="badge badge-primary" data-bg="primary" data-color="surface">Amazon</a>
     <a href="../whatsapp/" class="badge">WhatsApp</a>
     <a href="../windows/" class="badge">Windows</a>
     <a href="../macos/" class="badge">macOS</a>
@@ -24,115 +26,115 @@
     <a href="../dashboard/" class="badge">Dashboard</a>
     <a href="../terminal/" class="badge">Terminal</a>
   </div>
-  <button class="btn btn-ghost" onclick="toggleTheme()">🌓</button>
+  <button class="btn btn-ghost" onclick="toggleTheme()" data-elevation="md" data-hover-state="lg">🌓</button>
 </nav>
 
-<!-- Amazon header -->
-<header style="background:var(--color-secondary,oklch(0.22 0.05 240));color:oklch(0.96 0 0);padding:var(--pad-sm) var(--pad-xl);">
-  <div class="flex items-center gap-md">
-    <span class="font-bold" style="font-size:1.4rem;color:var(--color-primary);">amazon</span>
+<!-- Amazon header with CSS @function colors -->
+<header style="background:var(--color-accent);color:oklch(0.96 0 0);padding:var(--pad-sm) var(--pad-xl);" data-elevation="md">
+  <div class="flex items-center gap-md" data-gap="md">
+    <span class="font-bold" style="font-size:1.4rem;color:var(--color-primary);" data-color="primary">amazon</span>
     <div class="flex-grow" style="max-width:600px;">
-      <div class="flex" style="border:2px solid var(--color-primary);border-radius:var(--radius-md);overflow:hidden;">
-        <input type="text" placeholder="Search Amazon..." class="input" style="flex:1;border:none;border-radius:0;" value="mechanical keyboard">
-        <button class="btn btn-primary" style="border-radius:0;">🔍</button>
+      <div class="flex" style="border:2px solid var(--color-primary);border-radius:var(--radius-md);overflow:hidden;" data-radius="md">
+        <input type="text" placeholder="Search Amazon..." class="input" style="flex:1;border:none;border-radius:0;" value="mechanical keyboard" data-pad="sm">
+        <button class="btn btn-primary" style="border-radius:0;" data-bg="primary" data-color="surface">🔍</button>
       </div>
     </div>
     <div class="flex items-center gap-sm" style="color:oklch(0.96 0 0);">
-      <button class="btn btn-ghost" style="color:oklch(0.96 0 0);">Account</button>
-      <button class="btn btn-ghost" style="color:oklch(0.96 0 0);">Returns</button>
-      <button class="btn btn-ghost" style="color:var(--color-primary);">🛒 Cart (3)</button>
+      <button class="btn btn-ghost" style="color:oklch(0.96 0 0);" data-elevation="sm" data-hover-state="md">Account</button>
+      <button class="btn btn-ghost" style="color:oklch(0.96 0 0);" data-elevation="sm" data-hover-state="md">Returns</button>
+      <button class="btn btn-ghost" style="color:var(--color-primary);" data-elevation="sm" data-color="primary">🛒 Cart (3)</button>
     </div>
   </div>
 </header>
 
-<!-- Breadcrumb -->
-<div style="padding:var(--pad-sm) var(--pad-xl);font-size:0.85rem;">
-  <span style="color:var(--color-primary);cursor:pointer;">Electronics</span> &rsaquo;
-  <span style="color:var(--color-primary);cursor:pointer;">Computer Accessories</span> &rsaquo;
-  <span>Keyboards</span>
+<!-- Breadcrumb with attr() -->
+<div style="padding:var(--pad-sm) var(--pad-xl);font-size:0.85rem;" data-pad="sm">
+  <span style="color:var(--color-primary);cursor:pointer;" data-color="primary">Electronics</span> &rsaquo;
+  <span style="color:var(--color-primary);cursor:pointer;" data-color="primary">Computer Accessories</span> &rsaquo;
+  <span data-color="text">Keyboards</span>
 </div>
 
-<div class="flex gap-lg" style="padding:0 var(--pad-xl) var(--pad-xl);align-items:flex-start;">
-  <!-- Filters -->
+<div class="flex gap-lg" style="padding:0 var(--pad-xl) var(--pad-xl);align-items:flex-start;" data-gap="lg">
+  <!-- Filters with attr() utilities -->
   <aside style="min-width:200px;max-width:220px;">
-    <div class="card p-md">
-      <p class="font-semibold mb-sm">Department</p>
-      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Electronics</p>
-      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Computers</p>
-      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Office Products</p>
+    <div class="card p-md" data-elevation="sm" data-pad="md">
+      <p class="font-semibold mb-sm" data-weight="semibold">Department</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;" data-color="primary">Electronics</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;" data-color="primary">Computers</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;" data-color="primary">Office Products</p>
     </div>
-    <div class="card p-md" style="margin-top:var(--marg-sm);">
-      <p class="font-semibold mb-sm">Avg. Customer Review</p>
-      <p class="text-sm">⭐⭐⭐⭐ &amp; Up</p>
-      <p class="text-sm">⭐⭐⭐ &amp; Up</p>
+    <div class="card p-md" style="margin-top:var(--marg-sm);" data-elevation="sm" data-pad="md">
+      <p class="font-semibold mb-sm" data-weight="semibold">Avg. Customer Review</p>
+      <p class="text-sm" data-text="sm">⭐⭐⭐⭐ &amp; Up</p>
+      <p class="text-sm" data-text="sm">⭐⭐⭐ &amp; Up</p>
     </div>
-    <div class="card p-md" style="margin-top:var(--marg-sm);">
-      <p class="font-semibold mb-sm">Price</p>
-      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">Under $25</p>
-      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">$25 – $50</p>
-      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">$50 – $100</p>
-      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;">$100 &amp; Above</p>
+    <div class="card p-md" style="margin-top:var(--marg-sm);" data-elevation="sm" data-pad="md">
+      <p class="font-semibold mb-sm" data-weight="semibold">Price</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;" data-color="primary">Under $25</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;" data-color="primary">$25 – $50</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;" data-color="primary">$50 – $100</p>
+      <p class="text-sm" style="color:var(--color-primary);cursor:pointer;" data-color="primary">$100 &amp; Above</p>
     </div>
   </aside>
 
-  <!-- Results -->
+  <!-- Results with CSS @function and attr() -->
   <main style="flex:1;">
-    <p class="text-muted text-sm mb-md">1–16 of over 2,000 results for <strong>"mechanical keyboard"</strong></p>
+    <p class="text-muted text-sm mb-md" data-color="muted" data-text="sm">1–16 of over 2,000 results for <strong>"mechanical keyboard"</strong></p>
     <div class="grid" data-columns="3" data-gap="md" style="grid-template-columns:repeat(3,1fr);">
-      <div class="card" data-elevation="sm">
-        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
-        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;">
-          <p class="font-semibold text-sm" style="margin:0;">Keychron K2 Wireless Mechanical Keyboard</p>
-          <p style="color:var(--color-primary);font-weight:bold;margin:0;">$89.99</p>
-          <p class="text-sm" style="margin:0;">⭐⭐⭐⭐⭐ (4,521)</p>
-          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+      <div class="card" data-elevation="sm" data-hover-state="md">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;" data-ratio="square">⌨️</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;" data-pad="md">
+          <p class="font-semibold text-sm" style="margin:0;" data-weight="semibold" data-text="sm">Keychron K2 Wireless Mechanical Keyboard</p>
+          <p style="color:var(--color-primary);font-weight:bold;margin:0;" data-color="primary">$89.99</p>
+          <p class="text-sm" style="margin:0;" data-text="sm">⭐⭐⭐⭐⭐ (4,521)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;" data-bg="primary" data-color="surface" data-elevation="sm">Add to Cart</button>
         </div>
       </div>
-      <div class="card" data-elevation="sm">
-        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
-        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;">
-          <p class="font-semibold text-sm" style="margin:0;">Logitech MX Keys Advanced Wireless</p>
-          <p style="color:var(--color-primary);font-weight:bold;margin:0;">$109.99</p>
-          <p class="text-sm" style="margin:0;">⭐⭐⭐⭐ (2,891)</p>
-          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+      <div class="card" data-elevation="sm" data-hover-state="md">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;" data-ratio="square">⌨️</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;" data-pad="md">
+          <p class="font-semibold text-sm" style="margin:0;" data-weight="semibold" data-text="sm">Logitech MX Keys Advanced Wireless</p>
+          <p style="color:var(--color-primary);font-weight:bold;margin:0;" data-color="primary">$109.99</p>
+          <p class="text-sm" style="margin:0;" data-text="sm">⭐⭐⭐⭐ (2,891)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;" data-bg="primary" data-color="surface" data-elevation="sm">Add to Cart</button>
         </div>
       </div>
-      <div class="card" data-elevation="sm">
-        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
-        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;">
-          <p class="font-semibold text-sm" style="margin:0;">Das Keyboard 4 Professional</p>
-          <span class="badge badge-error text-sm" style="align-self:flex-start;">Best Seller</span>
-          <p style="color:var(--color-primary);font-weight:bold;margin:0;">$169.00</p>
-          <p class="text-sm" style="margin:0;">⭐⭐⭐⭐⭐ (1,204)</p>
-          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+      <div class="card" data-elevation="sm" data-hover-state="md">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;" data-ratio="square">⌨️</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;" data-pad="md">
+          <p class="font-semibold text-sm" style="margin:0;" data-weight="semibold" data-text="sm">Das Keyboard 4 Professional</p>
+          <span class="badge badge-error text-sm" style="align-self:flex-start;" data-bg="error" data-color="surface">Best Seller</span>
+          <p style="color:var(--color-primary);font-weight:bold;margin:0;" data-color="primary">$169.00</p>
+          <p class="text-sm" style="margin:0;" data-text="sm">⭐⭐⭐⭐⭐ (1,204)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;" data-bg="primary" data-color="surface" data-elevation="sm">Add to Cart</button>
         </div>
       </div>
-      <div class="card" data-elevation="sm">
-        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
-        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;">
-          <p class="font-semibold text-sm" style="margin:0;">Anne Pro 2 60% Wireless Keyboard</p>
-          <p style="color:var(--color-primary);font-weight:bold;margin:0;">$79.00</p>
-          <p class="text-sm" style="margin:0;">⭐⭐⭐⭐ (3,105)</p>
-          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+      <div class="card" data-elevation="sm" data-hover-state="md">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;" data-ratio="square">⌨️</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;" data-pad="md">
+          <p class="font-semibold text-sm" style="margin:0;" data-weight="semibold" data-text="sm">Anne Pro 2 60% Wireless Keyboard</p>
+          <p style="color:var(--color-primary);font-weight:bold;margin:0;" data-color="primary">$79.00</p>
+          <p class="text-sm" style="margin:0;" data-text="sm">⭐⭐⭐⭐ (3,105)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;" data-bg="primary" data-color="surface" data-elevation="sm">Add to Cart</button>
         </div>
       </div>
-      <div class="card" data-elevation="sm">
-        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
-        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;">
-          <p class="font-semibold text-sm" style="margin:0;">Corsair K100 RGB Optical-Mechanical</p>
-          <span class="badge badge-warning text-sm" style="align-self:flex-start;">Limited Deal</span>
-          <p style="color:var(--color-primary);font-weight:bold;margin:0;">$199.99</p>
-          <p class="text-sm" style="margin:0;">⭐⭐⭐⭐⭐ (876)</p>
-          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+      <div class="card" data-elevation="sm" data-hover-state="md">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;" data-ratio="square">⌨️</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;" data-pad="md">
+          <p class="font-semibold text-sm" style="margin:0;" data-weight="semibold" data-text="sm">Corsair K100 RGB Optical-Mechanical</p>
+          <span class="badge badge-warning text-sm" style="align-self:flex-start;" data-bg="warning" data-color="surface">Limited Deal</span>
+          <p style="color:var(--color-primary);font-weight:bold;margin:0;" data-color="primary">$199.99</p>
+          <p class="text-sm" style="margin:0;" data-text="sm">⭐⭐⭐⭐⭐ (876)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;" data-bg="primary" data-color="surface" data-elevation="sm">Add to Cart</button>
         </div>
       </div>
-      <div class="card" data-elevation="sm">
-        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;">⌨️</div>
-        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;">
-          <p class="font-semibold text-sm" style="margin:0;">HHKB Professional Hybrid Type-S</p>
-          <p style="color:var(--color-primary);font-weight:bold;margin:0;">$349.00</p>
-          <p class="text-sm" style="margin:0;">⭐⭐⭐⭐⭐ (512)</p>
-          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;">Add to Cart</button>
+      <div class="card" data-elevation="sm" data-hover-state="md">
+        <div style="height:140px;background:var(--color-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:2rem;" data-ratio="square">⌨️</div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:4px;" data-pad="md">
+          <p class="font-semibold text-sm" style="margin:0;" data-weight="semibold" data-text="sm">HHKB Professional Hybrid Type-S</p>
+          <p style="color:var(--color-primary);font-weight:bold;margin:0;" data-color="primary">$349.00</p>
+          <p class="text-sm" style="margin:0;" data-text="sm">⭐⭐⭐⭐⭐ (512)</p>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--marg-sm);width:100%;" data-bg="primary" data-color="surface" data-elevation="sm">Add to Cart</button>
         </div>
       </div>
     </div>
