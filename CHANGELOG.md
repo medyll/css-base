@@ -1,5 +1,14 @@
 ﻿# Changelog
 
+## [0.6.2] - 2026-04-24
+**Bug Fixes:**
+- update SKILL.md for v0.6.0 release, enhancing descriptions and structure
+
+**Chores:**
+- release v0.6.1 [skip ci]
+
+
+
 ## [0.5.2] - 2026-04-20
 **Bug Fixes:**
 - update version format to include patch in package.json
