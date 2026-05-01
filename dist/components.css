@@ -1,5 +1,5 @@
 /* theme/components.css
- * Layer: theme.components
+ * Layer: components
  * Base component styles: headings, body text, inputs, buttons
  * 
  * This file defines styled HTML elements and base components:
@@ -12,7 +12,7 @@
  * - Tables (striped, compact)
  */
 
-@layer theme.components {
+@layer components {
 	/* ─── Headings ──
 	 * h1-h6 with text-box-trim for precise vertical alignment
 	 * Uses CSS logical properties and design tokens

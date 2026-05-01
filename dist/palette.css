@@ -1,5 +1,5 @@
 /* theme/palette.css
- * Layer: theme.palette
+ * Layer: theme
  * Colors, surfaces, shadows, technical dimensions
  *
  * This file defines the complete color system including:
@@ -13,7 +13,7 @@
  * Note: CSS functions (--shade, --tint, --alpha, etc.) are defined in functions.css
  */
 
-@layer theme.palette {
+@layer theme {
 	:root {
 		/* Color scheme: automatic light/dark mode via light-dark() */
 		color-scheme: light dark;
@@ -32,12 +32,12 @@
 		--color-primary: oklch(0.546 0.245 262.881);  /* #3b82f6 */
 
 		/* Secondary color: computed from primary using harmony function (+30 hue rotation) */
-		--color-secondary: --harmony-secondary(var(--color-primary));
+		--color-secondary: oklch(from var(--color-primary) l c calc(h + 30));
 
 		/* Complementary color: computed from primary (180 hue rotation)
 		 * Available for custom usage: color: var(--color-complementary);
 		 */
-		--color-complementary: --harmony-complementary(var(--color-primary));
+		--color-complementary: oklch(from var(--color-primary) l c calc(h + 180));
 		
 		/* ─── Color Variants ──
 		 * Derived colors for interactive states
@@ -62,8 +62,8 @@
 
 		/* Alternate surfaces: surface with shade (darker) */
 		--color-surface-alt: light-dark(
-			--shade(var(--default-color-surface-light), 3%),
-			--shade(var(--default-color-surface-dark), 5%)
+			color-mix(in srgb, var(--default-color-surface-light), black 3%),
+			color-mix(in srgb, var(--default-color-surface-dark), white 5%)
 		);
 
 		/* Raised surfaces: same as base (for cards, modals) */
@@ -77,14 +77,14 @@
 
 		/* Sunken surfaces: surface with more shade (inputs, inset zones) */
 		--color-surface-sunken: light-dark(
-			--shade(var(--default-color-surface-light), 7%),
-			--shade(var(--default-color-surface-dark), 25%)
+			color-mix(in srgb, var(--default-color-surface-light), black 7%),
+			color-mix(in srgb, var(--default-color-surface-dark), black 25%)
 		);
 
 		/* Hover state: surface with slight shade */
 		--color-surface-hover: light-dark(
-			--shade(var(--default-color-surface-light), 6%),
-			--shade(var(--default-color-surface-dark), 40%)
+			color-mix(in srgb, var(--default-color-surface-light), black 6%),
+			color-mix(in srgb, var(--default-color-surface-dark), white 40%)
 		);
 
 		/* Active/selected state: surface with primary tint */
@@ -146,22 +146,22 @@
 		);
 
 		/* Extra small shadow: 1px offset, 2px blur, 5% opacity - subtle elevation */
-		--shadow-xs: 0 1px 2px oklch(var(--shadow-color) / 0.05);
+		--shadow-xs: 0 1px 2px color-mix(in oklch, var(--shadow-color), transparent 95%);
 
 		/* Small shadow: 2px offset, 4px blur, 8% opacity - cards, buttons */
-		--shadow-sm: 0 2px 4px oklch(var(--shadow-color) / 0.08);
+		--shadow-sm: 0 2px 4px color-mix(in oklch, var(--shadow-color), transparent 92%);
 
 		/* Medium shadow: 4px offset, 8px blur, 12% opacity - default elevation */
-		--shadow-md: 0 4px 8px oklch(var(--shadow-color) / 0.12);
+		--shadow-md: 0 4px 8px color-mix(in oklch, var(--shadow-color), transparent 88%);
 
 		/* Large shadow: 8px offset, 24px blur, 16% opacity - dropdowns, modals */
-		--shadow-lg: 0 8px 24px oklch(var(--shadow-color) / 0.16);
+		--shadow-lg: 0 8px 24px color-mix(in oklch, var(--shadow-color), transparent 84%);
 
 		/* Extra large shadow: 12px offset, 32px blur, 20% opacity - floating panels */
-		--shadow-xl: 0 12px 32px oklch(var(--shadow-color) / 0.20);
+		--shadow-xl: 0 12px 32px color-mix(in oklch, var(--shadow-color), transparent 80%);
 
 		/* 2XL shadow: 16px offset, 48px blur, 25% opacity - maximum elevation */
-		--shadow-2xl: 0 16px 48px oklch(var(--shadow-color) / 0.25);
+		--shadow-2xl: 0 16px 48px color-mix(in oklch, var(--shadow-color), transparent 75%);
 		
 		/* ─── Technical Dimensions ──
 		 * Precise measurements for UI elements

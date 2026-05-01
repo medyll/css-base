@@ -5,6 +5,8 @@
  * Usage: <div data-rotate="45" data-opacity="0.8" data-shadow="lg">
  */
 
+@layer utilities {
+
 @supports (rotate: attr(x deg)) {
   
   /* ─── Rotation ── 
@@ -286,3 +288,5 @@
       box-shadow var(--transition-slow);
   }
 }
+
+} /* @layer utilities */

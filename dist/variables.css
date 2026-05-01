@@ -1,5 +1,5 @@
 /* theme/variables.css
- * Layer: theme.variables
+ * Layer: tokens
  * Base spacing scale and size scale
  *
  * This file defines the foundational spacing scale used throughout the design system.
@@ -8,7 +8,7 @@
  * Scale: 0.25rem (4px) increments following a 4px grid system
  */
 
-@layer theme.variables {
+@layer tokens {
 	:root {
 		/* ─── Spacing Scale (Gutter) ──
 		 * Base spacing values in rem units with pixel equivalents

@@ -1,5 +1,5 @@
 /* theme/reset.css
- * Layer: theme.reset
+ * Layer: reset
  * HTML resets and base styles
  * 
  * This file provides:
@@ -14,7 +14,7 @@
  * - Accessibility media queries (reduced motion, high contrast)
  */
 
-@layer theme.reset {
+@layer reset {
 	/* ─── Universal Reset ──
 	 * Apply border-box sizing and remove default margins/padding
 	 */

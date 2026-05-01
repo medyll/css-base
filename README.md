@@ -81,22 +81,25 @@ Import specific layers:
 
 ## Layer architecture
 
-The library uses `@layer` to enforce a strict cascade order:
-
 ```
-base
-theme.reset
-theme.theme
-theme.variables
-theme.tokens
-theme.typography
-theme.palette
-theme.components
-components
+reset < tokens < theme < components < utilities
 ```
 
-Styles in later layers win over earlier ones. Your own application styles should sit
-outside or above these layers to override without specificity hacks.
+| Layer | Contents |
+|-------|---------|
+| `reset` | Browser reset, base HTML element defaults |
+| `tokens` | Spacing scale, semantic tokens, typography variables |
+| `theme` | Color palette, surfaces, light/dark via `light-dark()` |
+| `components` | Styled elements: buttons, inputs, cards, alerts, tables |
+| `utilities` | Utility classes + `attr()` data-attribute utilities |
+
+Styles in later layers win over earlier ones. Your application styles placed **outside any layer** win over everything — no specificity hacks needed.
+
+To extend within the cascade:
+```css
+@import "@medyll/css-base";
+@layer my-overrides { /* wins over utilities */ }
+```
 
 ## CSS features used
 
@@ -143,7 +146,7 @@ Override these variables in `theme.css` to customize the design system:
 
 **Spacing** — `--gutter-xs` through `--gutter-3xl`, with semantic aliases `--pad-*` and `--marg-*`
 
-**Typography** — font families (`--font-sans`, `--font-mono`, `--font-serif`), size scale `--text-xs` to `--text-2xl`, weights, line heights, letter spacing
+**Typography** — font families (`--font-sans`, `--font-mono`, `--font-serif`), size scale `--text-xs` (11px) to `--text-5xl` (48px), weights `--font-normal` → `--font-black` (900), line heights, letter spacing
 
 **Colors** — `--color-primary`, `--color-surface`, `--color-text`, `--color-border`, status colors (`--color-success`, `--color-warning`, `--color-critical`, `--color-info`), and their computed variants
 
@@ -300,15 +303,12 @@ The `attr.css` layer enables dynamic styling directly via HTML attributes — no
 - `prefers-reduced-motion` support
 - `prefers-contrast: more` support for high contrast mode
 
-## Dark mode
+## Accessibility
 
-Dark mode is handled automatically via `light-dark()` and `color-scheme`. No class toggle required.
-To force a mode, set `color-scheme` on the root element:
+- `:focus-visible` for keyboard focus indicators
+- `prefers-reduced-motion` support
+- `prefers-contrast: more` support for high contrast mode
 
-```css
-:root { color-scheme: dark; }
-```
-  
----  
-  
-**Author:** Lebrun Meddy ([@medyll](https://github.com/medyll)) 
+---
+
+**Author:** Lebrun Meddy ([@medyll](https://github.com/medyll))

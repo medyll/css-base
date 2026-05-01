@@ -1,5 +1,5 @@
 /* theme/tokens.css
- * Layer: theme.tokens
+ * Layer: tokens
  * Semantic tokens derived from variables
  * 
  * This file maps raw spacing values to semantic token names:
@@ -12,7 +12,7 @@
  * - Breakpoints
  */
 
-@layer theme.tokens {
+@layer tokens {
   :root {
     /* ─── Semantic Padding ──
 		 * Derived from --gutter-* spacing scale in variables.css

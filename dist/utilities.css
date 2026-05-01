@@ -24,6 +24,8 @@
  * - Responsive utilities (sm, md, lg, xl, 2xl breakpoints)
  */
 
+@layer utilities {
+
 /* ── Display ──
  * Control element visibility and display type
  */
@@ -375,7 +377,7 @@
  */
 
 /* sm: 640px (small devices - landscape phones) */
-@media (min-width: var(--breakpoint-sm)) {
+@media (min-width: 640px) {
 	.sm\:flex { display: flex; }
 	.sm\:grid { display: grid; }
 	.sm\:hidden { display: none; }
@@ -391,7 +393,7 @@
 }
 
 /* md: 768px (medium devices - tablets) */
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 768px) {
 	.md\:flex { display: flex; }
 	.md\:grid { display: grid; }
 	.md\:hidden { display: none; }
@@ -409,7 +411,7 @@
 }
 
 /* lg: 1024px (large devices - laptops) */
-@media (min-width: var(--breakpoint-lg)) {
+@media (min-width: 1024px) {
 	.lg\:flex { display: flex; }
 	.lg\:grid { display: grid; }
 	.lg\:hidden { display: none; }
@@ -426,7 +428,7 @@
 }
 
 /* xl: 1280px (extra large - desktops) */
-@media (min-width: var(--breakpoint-xl)) {
+@media (min-width: 1280px) {
 	.xl\:flex { display: flex; }
 	.xl\:grid { display: grid; }
 	.xl\:hidden { display: none; }
@@ -436,9 +438,11 @@
 }
 
 /* 2xl: 1536px (2XL - large desktops) */
-@media (min-width: var(--breakpoint-2xl)) {
+@media (min-width: 1536px) {
 	.\32xl\:flex { display: flex; }
 	.\32xl\:grid { display: grid; }
 	.\32xl\:hidden { display: none; }
 	.\32xl\:gap-12 { gap: 3rem; }
 }
+
+} /* @layer utilities */

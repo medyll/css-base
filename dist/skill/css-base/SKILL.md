@@ -1,7 +1,7 @@
 ---
 name: css-base
 description: >-
-  MANDATORY on every project that uses HTML. Expert guide for @medyll/css-base (v0.6.0).
+  MANDATORY on every project that uses HTML. Expert guide for @medyll/css-base (v0.6.2).
   Activate for: writing CSS, styling components, layouts, tokens, colors, typography, dark mode,
   code review, refactoring raw CSS values, replacing inline styles, audit of existing code.
   Trigger on: "style this", "add CSS", "refactor CSS", "review this component", "which token",
@@ -10,11 +10,13 @@ description: >-
   Vue, Angular, PHP — any project that imports app.css.
 ---
 
-# @medyll/css-base — v0.6.0
+# @medyll/css-base — v0.6.2
 
 **npm:** [`@medyll/css-base`](https://www.npmjs.com/package/@medyll/css-base)
 
 **Browsers:** Chrome/Edge 125+ (baseline) · **139+** for `@function` and `attr()`
+
+**Token values:** [`references/tokens.md`](references/tokens.md) — source unique pour toutes les valeurs exactes
 
 ---
 
@@ -78,13 +80,29 @@ yarn add @medyll/css-base
 
 ## Layer Architecture
 
-```css
-@layer base, theme.reset, theme.theme, theme.variables, theme.tokens,
-       theme.typography, theme.palette, theme.components, utilities, attr;
+```
+reset < tokens < theme < components < utilities
 ```
 
-Custom app styles placed **outside any layer** override everything naturally.
-Wrap component styles in `@layer components { }` for proper cascade order.
+```css
+/* declared in app.css */
+@layer reset, tokens, theme, components, utilities;
+```
+
+- `reset` — browser reset + base HTML defaults
+- `tokens` — spacing, typography, motion variables
+- `theme` — color palette, surfaces, light/dark
+- `components` — styled elements, cards, alerts, tables
+- `utilities` — utility classes + `attr()` data attributes
+
+Custom styles placed **outside any layer** override everything. To integrate into the cascade, declare your layer after importing `app.css`:
+
+```css
+@import "@medyll/css-base";
+@layer my-overrides { /* wins over utilities */ }
+```
+
+Wrap component-level styles in `@layer components { }` to respect cascade order.
 
 ---
 
@@ -142,60 +160,35 @@ color: var(--color-text);  /* already handles both modes */
 
 ## Design Tokens
 
+> **Référence complète des valeurs :** [`references/tokens.md`](references/tokens.md)
+
 ### Theme seeds (only these need overriding to retheme)
+
 ```css
 :root {
-  --color-primary: oklch(0.6 0.2 280);
-  --default-font-size: 1rem;              /* default: 0.875rem */
-  --default-leading: 1.5;
-  --default-color-text-light: oklch(0.2 0.02 265);
-  --default-color-text-dark: oklch(0.962 0.003 264.542);
-  --default-color-surface-light: oklch(0.98 0.01 265);
-  --default-color-surface-dark: oklch(0.1 0 0);
+  --color-primary:               oklch(0.6 0.2 280);
+  --default-font-size:           0.875rem;  /* 14px base */
+  --default-leading:             1.5;
+  --default-color-text-light:    oklch(0.141 0.005 285.823);
+  --default-color-text-dark:     oklch(0.962 0.003 264.542);
+  --default-color-surface-light: oklch(1 0 0);
+  --default-color-surface-dark:  oklch(0.1 0 0);
 }
 ```
 
-### Colors
-- **Brand:** `--color-primary`, `--color-primary-hover`, `--color-primary-muted`, `--color-secondary`, `--color-complementary`
-- **Status:** `--color-success`, `--color-warning`, `--color-critical`, `--color-info`
-- **Text:** `--color-text`, `--color-text-muted`
-- **Border:** `--color-border`, `--color-border-strong`
-
-**Surface system:**
+### Surface system — quand utiliser quoi
 
 | Token | Use for |
 |-------|---------|
 | `--color-surface` | Page background |
 | `--color-surface-alt` | Sidebar, secondary panels |
 | `--color-surface-raised` | Cards, elevated containers |
-| `--color-surface-overlay` | Popovers, dropdowns |
+| `--color-surface-overlay` | Popovers, dropdowns + `backdrop-filter` |
 | `--color-surface-sunken` | Inputs, inset areas |
 | `--color-surface-hover` | Hover state background |
-| `--color-surface-active` | Active/pressed state |
+| `--color-surface-active` | Active/selected state (primary tint) |
 
-### Spacing (4px grid)
-`--gutter-xs` (4px) · `--gutter-sm` (8px) · `--gutter-md` (16px) · `--gutter-lg` (24px) · `--gutter-xl` (32px) · `--gutter-2xl` (48px) · `--gutter-3xl` (64px)
-
-Aliases: `--pad-*` · `--marg-*` · `--gap-*` (same values)
-
-### Typography
-- **Families:** `--font-sans`, `--font-mono`, `--font-serif`
-- **Sizes:** `--text-xs` (11px) → `--text-2xl` (24px), `--text-md` (16px) default
-- **Weights:** `--font-normal` (400) · `--font-medium` (500) · `--font-semibold` (600) · `--font-bold` (700)
-- **Line heights:** `--leading-none` (1) → `--leading-loose` (2)
-- **Letter spacing:** `--tracking-tight` · `--tracking-normal` · `--tracking-wide` · `--tracking-wider` · `--tracking-caps`
-
-### Other tokens
-- **Radius:** `--radius-xs` → `--radius-full` (9999px)
-- **Shadows:** `--shadow-xs` → `--shadow-2xl`
-- **Duration:** `--duration-fast` (100ms) · `--duration-normal` (150ms) · `--duration-slow` · `--duration-slower` · `--duration-shimmer` · `--duration-spin`
-- **Easing:** `--ease-in` · `--ease-out` · `--ease-in-out` · `--ease-bounce` · `--easing-default`
-- **Transitions:** `--transition-fast` · `--transition-normal` · `--transition-slow`
-- **Icons:** `--icon-size-xs` · `--icon-size-sm` · `--icon-size-md` · `--icon-size-lg`
-- **Layout:** `--header-height` (56px) · `--sidebar-width` (250px)
-- **Z-index:** `--z-dropdown` (100) · `--z-overlay` · `--z-modal` (500) · `--z-toast`
-- **Focus/Border:** `--focus-ring-width` · `--focus-ring-gap` · `--border-width`
-- **Scrollbar:** `--scrollbar-width` · `--scrollbar-height`
+⚠️ Override seeds (`--default-color-surface-*`), jamais les tokens computés (`--color-surface-*`).
 
 ---
 
@@ -218,35 +211,24 @@ document.documentElement.removeAttribute('data-theme'); // back to auto
 
 All wrapped in `@supports` — safe to use, silently ignored below 139.
 
-### Color manipulation
+> Liste complète des fonctions → [`references/tokens.md#css-function-chrome-139`](references/tokens.md)
+
 ```css
---shade(var(--color-primary), 20%)       /* darken — mix with black */
---tint(var(--color-primary), 30%)        /* lighten — mix with white */
---alpha(var(--color-primary), 0.5)       /* opacity */
---surface-tint(var(--color-primary))     /* 12% color overlay on surface */
---border-from(var(--color-primary))      /* derive border color (auto-darken) */
---border-alpha(var(--color-primary))     /* transparent border */
---hover-state(var(--color-primary))      /* hover state */
+/* Manipulation couleur */
+--shade(var(--color-primary), 20%)    /* darken */
+--tint(var(--color-primary), 30%)     /* lighten */
+--alpha(var(--color-primary), 0.5)    /* opacity */
+--hover-state(var(--color-primary))   /* -10% lightness */
+--border-from(var(--color-primary))   /* auto-darken for border */
+
+/* Palette depuis une seule couleur */
+--harmony-secondary(var(--color-primary))      /* +30° */
+--harmony-complementary(var(--color-primary))  /* +180° */
 ```
 
-### Color harmony (derive palette from single primary)
-```css
---harmony-secondary(--color)          /* +30° hue */
---harmony-secondary-soft(--color)     /* soft +30° */
---harmony-complementary(--color)      /* +180° */
---harmony-analogous-plus(--color)     /* +15° */
---harmony-analogous-minus(--color)    /* −15° */
---harmony-split-1(--color)            /* split-complementary 1 */
---harmony-split-2(--color)            /* split-complementary 2 */
---harmony-triad-1(--color)            /* triadic 1 */
---harmony-triad-2(--color)            /* triadic 2 */
---harmony-square-1(--color)           /* square 1 */
---harmony-square-2(--color)           /* square 2 */
---harmony-square-3(--color)           /* square 3 */
---harmony-tetradic-2(--color)         /* tetradic 2 */
-```
+**Fallback Chrome 125–138 :** `color-mix(in oklch, var(--color-primary), black 20%)`
 
-**Fallback <139:** `color-mix(in oklch, var(--color) 80%, black)`
+**Note :** `--color-secondary` et `--color-complementary` utilisent désormais la relative color syntax (Chrome 125+) — pas besoin de `@function` pour ces deux-là.
 
 ---
 
@@ -254,31 +236,7 @@ All wrapped in `@supports` — safe to use, silently ignored below 139.
 
 Dynamic styling via `data-*` attributes — no extra classes needed.
 
-| Attribute | Values | CSS property |
-|-----------|--------|-------------|
-| `data-columns` | integer | `grid-template-columns` |
-| `data-rows` | integer | `grid-template-rows` |
-| `data-subgrid` | boolean | subgrid |
-| `data-pad` | xs–3xl | `padding` |
-| `data-margin` | xs–3xl | `margin` |
-| `data-gap` | xs–3xl | `gap` |
-| `data-text` | xs–2xl | `font-size` |
-| `data-weight` | normal–bold | `font-weight` |
-| `data-radius` | sm, md, lg, xl, full | `border-radius` |
-| `data-color` | primary, success, warning, error, info, surface* | `color` |
-| `data-bg` | primary, success, warning, error, info, surface* | `background` |
-| `data-elevation` | xs–2xl | `box-shadow` |
-| `data-inset` | xs–2xl | inset `box-shadow` |
-| `data-blur` | sm, md, lg, xl | `filter: blur()` |
-| `data-opacity` | 0–1 | `opacity` |
-| `data-border` | none, sm, md, lg | border width |
-| `data-rotate` | degrees | `rotate` |
-| `data-scale` | number | `scale` |
-| `data-translate` | offset | `translate` |
-| `data-translate-x` | offset | X translate |
-| `data-translate-y` | offset | Y translate |
-| `data-ratio` | square, portrait, landscape, video, ultrawide, golden | `aspect-ratio` |
-| `data-zindex` | dropdown, overlay, modal, toast | `z-index` |
+> Table complète des attributs → [`references/tokens.md#attr-utilities-chrome-139`](references/tokens.md)
 
 ```html
 <div data-elevation="lg" data-pad="lg" data-radius="md">Card</div>
@@ -312,7 +270,7 @@ Dynamic styling via `data-*` attributes — no extra classes needed.
 
 **Interactive:** `.cursor-pointer` `.cursor-grab` `.cursor-not-allowed` · `.transition` `.transition-colors` · `.group` `.group-hover:*` · `.focus:ring`
 
-**Responsive prefixes:** `sm:` (640px) · `md:` (768px) · `lg:` (1024px) · `xl:` (1280px)
+**Responsive prefixes:** `sm:` (640px) · `md:` (768px) · `lg:` (1024px) · `xl:` (1280px) · `2xl:` (1536px)
 
 ---
 
@@ -448,8 +406,12 @@ When reviewing CSS or HTML in any project using this library:
 | Custom styles not overriding | Place outside `@layer` or use a later layer |
 | Surface color wrong | Override seeds (`--default-color-surface-*`), not `--color-surface` |
 | Error color not applying | Token is `--color-critical`, not `--color-error` |
-| CDN import fails | Check exact version: `cdn.jsdelivr.net/npm/@medyll/css-base@0.6.0/dist/app.css` |
+| CDN import fails | Use `cdn.jsdelivr.net/npm/@medyll/css-base/dist/app.css` (latest) |
 
 ---
 
-**References:** `dist/demo/SKINNING.md` · [npm](https://www.npmjs.com/package/@medyll/css-base) · `dist/metadata.json`
+**References:**
+- [`references/tokens.md`](references/tokens.md) — valeurs exactes de tous les tokens (couleurs, typographie, espacement, shadows, radius, @function, attr())
+- `dist/demo/SKINNING.md` — guide de skinning et overrides
+- `dist/metadata.json` — index machine-readable (layers, compat browser)
+- [npm](https://www.npmjs.com/package/@medyll/css-base)

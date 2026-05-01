@@ -17,29 +17,31 @@ Releases automated via GitHub Actions (`.github/workflows/publish.yml`): push to
 `app.css` declares layer order — **sequence is load-bearing**:
 
 ```
-base, theme.reset, theme.theme, theme.variables, theme.tokens, theme.typography, theme.palette, theme.components, utilities, attr
+reset < tokens < theme < components < utilities
 ```
 
-`theme.*` sub-layers nest inside a single `theme` layer. Later layers win. Application styles should sit **outside** all these layers to override without specificity hacks.
+Later layers win. Application styles placed outside/after all layers override everything without specificity hacks.
+
+To extend: declare your own layer after importing `app.css`, e.g. `@layer my-overrides { }`.
 
 ## Module Map
 
 All in `/dist/`, exported via `package.json` `exports`:
 
-| Module | Layer(s) | Notes |
-|--------|----------|-------|
+| Module | Layer | Notes |
+|--------|-------|-------|
 | `app.css` | — | Entry point, imports all in order |
-| `base.css` | `base` | HTML element defaults |
-| `reset.css` | `theme.reset` | Browser reset |
-| `theme.css` | `theme.theme` | `color-scheme`, `light-dark()` defaults |
-| `variables.css` | `theme.variables` | `--gutter-*`, `--size-*` scale (4px grid) |
-| `tokens.css` | `theme.tokens` | `--pad-*`, `--marg-*`, `--gap-*`, `--radius-*`, motion, z-index |
-| `typography.css` | `theme.typography` | Font families, `--text-*` scale, weights, line heights |
-| `palette.css` | `theme.palette` | OKLCH colors, `color-mix()` surfaces/shadows |
-| `functions.css` | `theme.*` | CSS `@function` — **Chrome 139+ only** |
-| `components.css` | `theme.components` | Cards, alerts, badges, tables |
+| `base.css` | `reset` | HTML element defaults |
+| `reset.css` | `reset` | Browser reset |
+| `theme.css` | `theme` | `color-scheme`, `light-dark()` defaults |
+| `variables.css` | `tokens` | `--gutter-*`, `--size-*` scale (4px grid) |
+| `tokens.css` | `tokens` | `--pad-*`, `--marg-*`, `--gap-*`, `--radius-*`, motion, z-index |
+| `typography.css` | `tokens` | Font families, `--text-*` scale, weights, line heights |
+| `palette.css` | `theme` | OKLCH colors, `color-mix()` surfaces/shadows |
+| `functions.css` | — | CSS `@function` inside `@supports` — **Chrome 139+ only** |
+| `components.css` | `components` | Cards, alerts, badges, tables |
 | `utilities.css` | `utilities` | Layout, spacing, color, responsive prefixes |
-| `attr.css` | `attr` | `attr()` data-attribute utilities — **Chrome 139+ only** |
+| `attr.css` | `utilities` | `attr()` data-attribute utilities — **Chrome 139+ only** |
 
 ## Key CSS Techniques
 
