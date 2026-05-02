@@ -1,5 +1,14 @@
 ﻿# Changelog
 
+## [0.6.12] - 2026-05-02
+**Chores:**
+- release v0.6.11 [skip ci]
+
+**Other:**
+- Merge branch 'main' of https://github.com/medyll/css-base
+
+
+
 ## [0.6.10] - 2026-05-01
 **Chores:**
 - release v0.6.9 [skip ci]
