@@ -60,14 +60,17 @@
 		 */
 		--color-surface: light-dark(var(--default-color-surface-light), var(--default-color-surface-dark));
 
-		/* Alternate surfaces: surface with shade (darker) */
+		/* Alternate surfaces: slightly elevated (sidebar, header, table header) */
 		--color-surface-alt: light-dark(
 			color-mix(in srgb, var(--default-color-surface-light), black 3%),
-			color-mix(in srgb, var(--default-color-surface-dark), white 5%)
+			var(--default-color-surface-dark-alt)
 		);
 
-		/* Raised surfaces: same as base (for cards, modals) */
-		--color-surface-raised: var(--color-surface);
+		/* Raised surfaces: more elevated (cards, modals, panels) */
+		--color-surface-raised: light-dark(
+			var(--default-color-surface-light),
+			var(--default-color-surface-dark-raised)
+		);
 
 		/* Overlay surfaces: surface with alpha */
 		--color-surface-overlay: light-dark(
@@ -93,6 +96,20 @@
 			color-mix(in srgb, var(--color-primary) 15%, var(--default-color-surface-dark))
 		);
 
+		/* Inverse surface: dark panel on light page / light panel on dark page
+		 * Use for: sidebar inverse (Slack), dark nav header (GitHub)
+		 */
+		--color-surface-inverse: light-dark(
+			var(--default-color-surface-dark-alt),
+			var(--default-color-surface-light)
+		);
+
+		/* Text on inverse surface */
+		--color-text-inverse: light-dark(
+			var(--default-color-text-dark),
+			var(--default-color-text-light)
+		);
+
 		/* ─── Status Colors ──
 		 * Semantic colors for feedback states (OKLCH)
 		 */
@@ -108,6 +125,12 @@
 
 		/* Info: blue - informational messages */
 		--color-info: var(--color-primary);
+
+		/* On-primary: text/icon color for use on --color-primary backgrounds */
+		--color-on-primary: white;
+
+		/* Warning emphasis: darkened warning for text-on-light contexts (oklch 0.705 fails contrast on white) */
+		--color-warning-emphasis: color-mix(in oklch, var(--color-warning), black 30%);
 
 		/* ─── Borders ──
 		 * Border colors derived from primary color with transparency

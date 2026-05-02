@@ -27,6 +27,9 @@
 		/* Base letter spacing: 0 (normal) - reference for tracking scale */
 		--default-tracking: 0;
 
+		/* Base font family: override per skin to change brand typography */
+		--font-family-base: var(--font-sans);
+
 		/* ─── Default Color Values ──
 		 * Base color values for light/dark mode
 		 * Used by palette.css to compute theme colors
@@ -38,6 +41,13 @@
 
 		/* Surface colors for light/dark modes */
 		--default-color-surface-light: oklch(1 0 0);             /* white */
-		--default-color-surface-dark: oklch(0.1 0 0);            /* dark */
+		--default-color-surface-dark: oklch(0.1 0 0);            /* dark base */
+
+		/* Dark surface elevation seeds — override for multi-level dark UIs
+		 * (e.g. Spotify: base 0.12 / highlight 0.16 / elevated 0.20)
+		 * Powers --color-surface-alt and --color-surface-raised in dark mode.
+		 */
+		--default-color-surface-dark-alt: oklch(0.14 0 0);       /* sidebar, header */
+		--default-color-surface-dark-raised: oklch(0.18 0 0);    /* cards, panels, player bar */
 	}
 }

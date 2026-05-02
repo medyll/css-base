@@ -9,10 +9,24 @@
 <link rel="stylesheet" href="./netflix.css">
 </head>
 <body class="netflix-demo">
-<!-- Navigation with :has() active states -->
-<nav class="netflix-nav">
-  <div class="nav-links">
-    <a href="../index.html" class="font-semibold">css-base demos</a>
+<!-- Shared Nav -->
+<nav class="flex items-center justify-between p-sm" style="border-bottom: var(--border-width) solid var(--color-border); background: var(--color-surface-alt);" data-elevation="sm">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none; color:var(--color-text);" data-color="text">css-base demos</a>
+    <span style="color: var(--color-text-muted);">|</span>
+    <a href="../netflix/netflix.html" class="badge badge-primary" data-bg="primary" data-color="surface">Netflix</a>
+    <a href="../amazon/amazon.html" class="badge">Amazon</a>
+    <a href="../whatsapp/whatsapp.html" class="badge">WhatsApp</a>
+    <a href="../windows/windows.html" class="badge">Windows</a>
+    <a href="../macos/macos.html" class="badge">macOS</a>
+    <a href="../spotify/spotify.html" class="badge">Spotify</a>
+    <a href="../slack/slack.html" class="badge">Slack</a>
+    <a href="../github/github.html" class="badge">GitHub</a>
+    <a href="../dashboard/dashboard.html" class="badge">Dashboard</a>
+    <a href="../terminal/terminal.html" class="badge">Terminal</a>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()" data-elevation="sm" data-hover-state="md">🌓 Theme</button>
+</nav>
     <span style="color:var(--color-text-muted);">|</span>
     <a href="./netflix.html" class="nav-section-active">Netflix</a>
     <a href="../amazon/">Amazon</a>

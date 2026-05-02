@@ -98,14 +98,23 @@
     --icon-size-md: 2rem; /* 32px - feature icons */
     --icon-size-lg: 3rem; /* 48px - hero icons */
 
+    /* ─── Blur Scale ──
+		 * backdrop-filter / filter blur values for glass/frosted surfaces
+		 * Usage: backdrop-filter: var(--blur-md);
+		 */
+    --blur-sm: blur(8px);   /* subtle frost (tooltips, thin panels) */
+    --blur-md: blur(16px);  /* standard glass (sidebars, cards) */
+    --blur-lg: blur(24px);  /* heavy frost (macOS menubar, Win11 taskbar) */
+
     /* ─── Z-Index Scale ──
 		 * Stacking order for layered UI elements
 		 * Usage: z-index: var(--z-modal);
 		 */
-    --z-dropdown: 100; /* dropdown menus, popovers */
-    --z-overlay: 200; /* modal backdrops, scrim overlays */
-    --z-modal: 500; /* modal dialogs */
-    --z-toast: 600; /* toast notifications */
+    --z-dropdown: 100;  /* dropdown menus, popovers */
+    --z-overlay: 200;   /* modal backdrops, scrim overlays */
+    --z-modal: 500;     /* modal dialogs */
+    --z-toast: 600;     /* toast notifications */
+    --z-chrome: 1000;   /* OS-level UI chrome (taskbar, dock, menubar) */
 
     /* ─── Default Easing ──
 		 * Standard easing for general use

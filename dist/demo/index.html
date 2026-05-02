@@ -3,128 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@medyll/css-base — Demo Hub</title>
-<link rel="stylesheet" href="../app.css">
-<script src="shared/theme-toggle.js"></script>
+<title>css-base — Refactored Demos</title>
+<script src="./shared/theme-toggle.js"></script>
+<link rel="stylesheet" href="../../app.css">
+<link rel="stylesheet" href="../../functions.css">
+<link rel="stylesheet" href="../../attr.css">
+<style>
+  .demo-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .demo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+</style>
 </head>
-<body style="background:var(--color-surface);color:var(--color-text);">
-<nav class="flex items-center justify-between p-sm" style="border-bottom:var(--border-width) solid var(--color-border);background:var(--color-surface-alt);">
-  <span class="font-semibold">css-base demos</span>
-  <button class="btn btn-ghost" onclick="toggleTheme()">🌓 Theme</button>
+<body>
+
+<!-- Top Nav -->
+<nav class="flex items-center justify-between p-sm" style="border-bottom: var(--border-width) solid var(--color-border); background: var(--color-surface-alt);" data-elevation="sm">
+  <div class="flex items-center gap-sm">
+    <a href="../index.html" class="font-semibold" style="text-decoration:none; color: var(--color-text);" data-color="text">css-base demos</a>
+    <span style="color: var(--color-text-muted);">|</span>
+    <span class="badge badge-primary">Refactored</span>
+  </div>
+  <button class="btn btn-ghost" onclick="toggleTheme()" data-elevation="sm" data-hover-state="md">🌓 Theme</button>
 </nav>
-<div style="max-width:1200px;margin:0 auto;padding:var(--pad-xl);">
-  <h1 style="font-size:2rem;font-weight:700;margin-bottom:var(--marg-sm);">@medyll/css-base — Skin Demos</h1>
-  <p style="font-size:1rem;color:var(--color-text-muted);margin-bottom:var(--marg-xl);">10 demos proving css-base works as a skinnable design system. Each uses only <code>app.css</code> + a <code>skin.css</code> variable override file.</p>
-  <div class="grid" data-columns="3" data-gap="lg" style="grid-template-columns:repeat(3,1fr);">
 
-    <a href="netflix/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.08 0 0) 0%,oklch(0.25 0.2 27) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.4rem;font-weight:900;color:oklch(0.52 0.24 27);letter-spacing:-1px;">NETFLIX</span>
-        <span class="badge badge-error" style="margin-left:auto;">Dark</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Hero banner, card carousels, dark UI with red accent.</p>
+<!-- Hero -->
+<header class="text-center" style="padding: var(--pad-xl) var(--pad-xl) var(--pad-lg);">
+  <h1 style="margin: 0 0 var(--marg-sm);">css-base Refactored Demos</h1>
+  <p class="text-lg" style="color: var(--color-text-muted); max-width: 640px; margin: 0 auto;">
+    Modern CSS skin showcase — @layer, @container, :has(), color-mix(), subgrid, CSS nesting, attr() utilities.
+    <strong>No JS frameworks. No build step.</strong>
+  </p>
+</header>
+
+<!-- Demo Grid -->
+<main style="padding: 0 var(--pad-xl) var(--pad-xl); max-width: 1280px; margin: 0 auto;">
+  <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--gap-lg);" data-gap="lg">
+
+    <!-- Netflix -->
+    <a href="./netflix/netflix.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: #000; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #E50914; font-size: 2rem; font-weight: 900; letter-spacing: -1px;">NETFLIX</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">Netflix</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Dark cinematic UI with hero banners, content rows, and hover-expand cards.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">dark mode</span>
+            <span class="badge">subgrid</span>
+            <span class="badge">:has()</span>
+          </div>
+        </div>
       </div>
     </a>
 
-    <a href="amazon/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.15 0.02 220) 0%,oklch(0.2 0.04 220) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.2rem;font-weight:700;color:oklch(0.85 0.18 80);">amazon</span>
-        <span class="badge badge-warning" style="margin-left:auto;">E-commerce</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Product grid, search bar, filters, deal banners.</p>
-      </div>
-    </a>
-
-    <a href="whatsapp/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.25 0.12 160) 0%,oklch(0.35 0.18 160) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.2rem;font-weight:700;color:white;">WhatsApp</span>
-        <span class="badge badge-success" style="margin-left:auto;">Messaging</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Contact list, chat bubbles, green accent.</p>
-      </div>
-    </a>
-
-    <a href="windows/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.45 0.15 240) 0%,oklch(0.60 0.18 230) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.5rem;">⊞</span>
-        <span style="font-size:1.1rem;font-weight:600;color:white;">Windows 11</span>
-        <span class="badge badge-primary" style="margin-left:auto;">Desktop</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Taskbar, start menu, windows, Mica blur.</p>
+    <!-- Amazon -->
+    <a href="./amazon/amazon.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: #131921; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #FF9900; font-size: 1.8rem; font-weight: 700;">amazon</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">Amazon</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            E-commerce layout with search bar, product grid, ratings, and lightning deals.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">grid</span>
+            <span class="badge">nesting</span>
+            <span class="badge">color-mix()</span>
+          </div>
+        </div>
       </div>
     </a>
 
-    <a href="macos/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.45 0.12 200) 0%,oklch(0.60 0.10 185) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.5rem;">🍎</span>
-        <span style="font-size:1.1rem;font-weight:600;color:white;">macOS</span>
-        <span class="badge badge-neutral" style="margin-left:auto;">Desktop</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Menu bar, dock, Finder windows, traffic lights.</p>
-      </div>
-    </a>
-
-    <a href="spotify/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.08 0 0) 0%,oklch(0.15 0.08 150) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.5rem;">🎵</span>
-        <span style="font-size:1.1rem;font-weight:700;color:oklch(0.72 0.25 150);">Spotify</span>
-        <span class="badge badge-success" style="margin-left:auto;">Music</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Playlist sidebar, album grid, player bar.</p>
+    <!-- WhatsApp -->
+    <a href="./whatsapp/whatsapp.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: #075E54; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #25D366; font-size: 2rem;">💬</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">WhatsApp</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Chat interface with message bubbles, contact sidebar, and read receipts.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">flexbox</span>
+            <span class="badge">@container</span>
+            <span class="badge">attr()</span>
+          </div>
+        </div>
       </div>
     </a>
 
-    <a href="slack/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.25 0.12 310) 0%,oklch(0.35 0.15 295) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.5rem;">#</span>
-        <span style="font-size:1.1rem;font-weight:700;color:white;">Slack</span>
-        <span class="badge badge-primary" style="margin-left:auto;">Workspace</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Aubergine sidebar, channels, message threads.</p>
-      </div>
-    </a>
-
-    <a href="github/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.12 0.01 250) 0%,oklch(0.20 0.02 250) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.5rem;">⬡</span>
-        <span style="font-size:1.1rem;font-weight:700;color:white;">GitHub</span>
-        <span class="badge badge-neutral" style="margin-left:auto;">Dev</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Repo page, file tree, issues, README panel.</p>
+    <!-- Windows 11 -->
+    <a href="./windows/windows.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #fff; font-size: 2rem;">⊞</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">Windows 11</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Fluent Design with mica-like surfaces, rounded corners, and centered taskbar.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">backdrop-filter</span>
+            <span class="badge">light-dark()</span>
+            <span class="badge">tokens</span>
+          </div>
+        </div>
       </div>
     </a>
 
-    <a href="dashboard/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.12 0.02 250) 0%,oklch(0.18 0.08 260) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.5rem;">📊</span>
-        <span style="font-size:1.1rem;font-weight:700;color:white;">Dashboard</span>
-        <span class="badge badge-primary" style="margin-left:auto;">Analytics</span>
-      </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">KPI cards, charts, data tables, sidebar nav.</p>
+    <!-- macOS -->
+    <a href="./macos/macos.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: linear-gradient(180deg, #1e1e1e, #2d2d2d); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #ccc; font-size: 2rem;">🍎</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">macOS</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Clean Apple aesthetic with toolbar, sidebar, and SF-style typography.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">typography</span>
+            <span class="badge">sidebar</span>
+            <span class="badge">toolbar</span>
+          </div>
+        </div>
       </div>
     </a>
 
-    <a href="terminal/index.html" class="card" style="text-decoration:none;color:var(--color-text);overflow:hidden;">
-      <div style="height:80px;background:linear-gradient(135deg,oklch(0.08 0 0) 0%,oklch(0.15 0.04 160) 100%);display:flex;align-items:center;padding:var(--pad-md);gap:var(--gap-sm);">
-        <span style="font-size:1.1rem;font-family:monospace;color:oklch(0.72 0.25 150);">$_</span>
-        <span style="font-size:1.1rem;font-weight:700;color:white;">Terminal</span>
-        <span class="badge badge-error" style="margin-left:auto;">CLI</span>
+    <!-- Spotify -->
+    <a href="./spotify/spotify.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: #121212; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #1DB954; font-size: 2rem;">🎵</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">Spotify</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Music player with sidebar nav, playlist grid, and now-playing bar.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">dark</span>
+            <span class="badge">accent color</span>
+            <span class="badge">sticky</span>
+          </div>
+        </div>
       </div>
-      <div class="card-body" style="padding:var(--pad-md);">
-        <p style="font-size:0.95rem;color:var(--color-text-muted);margin:0;">Command prompt, file manager, system monitor.</p>
+    </a>
+
+    <!-- Slack -->
+    <a href="./slack/slack.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: #4A154B; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #fff; font-size: 1.6rem; font-weight: 900;">slack</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">Slack</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Workspace layout with channel sidebar, message threads, and thread panel.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">sidebar</span>
+            <span class="badge">threads</span>
+            <span class="badge">responsive</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- GitHub -->
+    <a href="./github/github.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: #0d1117; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="color: #fff; font-size: 2rem;">🐙</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">GitHub</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Repo page with file browser, commit history, and contribution graph.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">tables</span>
+            <span class="badge">badges</span>
+            <span class="badge">dark mode</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Dashboard -->
+    <a href="./dashboard/dashboard.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: var(--color-surface-alt); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0;">
+          <span style="font-size: 2rem;">📊</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">Dashboard</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Analytics dashboard with stat cards, charts placeholder, and data tables.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">cards</span>
+            <span class="badge">tables</span>
+            <span class="badge">grid</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Terminal -->
+    <a href="./terminal/terminal.html" style="text-decoration: none; color: inherit;">
+      <div class="card demo-card" data-elevation="sm" data-hover-state="md">
+        <div style="height: 120px; background: #1a1b26; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md) var(--radius-md) 0 0; font-family: monospace;">
+          <span style="color: #a9b1d6; font-size: 1rem;">$ echo "hello"</span>
+        </div>
+        <div class="card-body">
+          <h3 style="margin: 0 0 var(--marg-xs);">Terminal</h3>
+          <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+            Terminal emulator with syntax highlighting, prompt styling, and output blocks.
+          </p>
+          <div class="flex gap-xs" style="margin-top: var(--marg-sm); flex-wrap: wrap;">
+            <span class="badge">monospace</span>
+            <span class="badge">syntax</span>
+            <span class="badge">code blocks</span>
+          </div>
+        </div>
       </div>
     </a>
 
   </div>
-</div>
+</main>
+
+<!-- Footer -->
+<footer style="padding: var(--pad-lg) var(--pad-xl); border-top: var(--border-width) solid var(--color-border); text-align: center;">
+  <p class="text-sm" style="color: var(--color-text-muted); margin: 0;">
+    <strong>css-base</strong> — Pure CSS design system. No build. No framework.
+  </p>
+  <p class="text-sm" style="color: var(--color-text-muted); margin: var(--marg-xs) 0 0;">
+    Browser floor: Chrome 125+. <code>functions.css</code> + <code>attr.css</code> → Chrome 139+.
+  </p>
+</footer>
+
 </body>
 </html>

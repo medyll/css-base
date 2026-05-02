@@ -23,6 +23,7 @@
 	 * Similar to Shadcn typography optimization
 	 */
 	body {
+		font-family: var(--font-family-base);
 		font-feature-settings:
 			'rlig' 1,
 			'calt' 1;
