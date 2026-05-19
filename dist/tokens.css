@@ -54,11 +54,11 @@
 		 * Corner rounding scale
 		 * Usage: border-radius: var(--radius-lg);
 		 */
-    --radius-xs: var(--size-xs); /* 4px - extra small panels, buttons */
-    --radius-sm: var(--size-sm); /* 8px - small panels, buttons */
-    --radius-md: var(--size-md); /* 16px - default panels, cards */
-    --radius-lg: var(--size-lg); /* 24px - medium panels, inputs */
-    --radius-xl: var(--size-xl); /* 32px - large panels */
+    --radius-xs: 2px;   /* 2px - extra small panels, buttons */
+    --radius-sm: 4px;   /* 4px - small panels, buttons */
+    --radius-md: 6px;   /* 6px - default panels, cards, inputs */
+    --radius-lg: 8px;   /* 8px - medium panels */
+    --radius-xl: 12px;  /* 12px - large panels */
     --radius-full: 9999px; /* circle/pill shape */
 
     /* ─── Motion / Duration ──
@@ -128,7 +128,7 @@
     --list-gap: var(--gutter-xs);           /* 4px - between items */
     --list-item-pad-y: var(--gutter-sm);    /* 8px */
     --list-item-pad-x: var(--gutter-md);    /* 16px */
-    --list-item-radius: var(--radius-sm);   /* 8px */
+    --list-item-radius: var(--radius-xs);   /* 2px */
     --list-item-gap: var(--gutter-sm);      /* 8px - icon ↔ label inside item */
 
     /* ─── Icon Button ──

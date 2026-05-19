@@ -168,23 +168,23 @@
 			oklch(from var(--color-text) 0.15 0 h)
 		);
 
-		/* Extra small shadow: 1px offset, 2px blur, 5% opacity - subtle elevation */
-		--shadow-xs: 0 1px 2px color-mix(in oklch, var(--shadow-color), transparent 95%);
+		/* Extra small shadow: 1px offset, 2px blur, 96% transparent - subtle elevation */
+		--shadow-xs: 0 1px 2px color-mix(in oklch, var(--shadow-color), transparent 96%);
 
-		/* Small shadow: 2px offset, 4px blur, 8% opacity - cards, buttons */
-		--shadow-sm: 0 2px 4px color-mix(in oklch, var(--shadow-color), transparent 92%);
+		/* Small shadow: 1px offset, 3px blur, 94% transparent - cards, buttons */
+		--shadow-sm: 0 1px 3px color-mix(in oklch, var(--shadow-color), transparent 94%);
 
-		/* Medium shadow: 4px offset, 8px blur, 12% opacity - default elevation */
-		--shadow-md: 0 4px 8px color-mix(in oklch, var(--shadow-color), transparent 88%);
+		/* Medium shadow: 2px offset, 4px blur, 92% transparent - default elevation */
+		--shadow-md: 0 2px 4px color-mix(in oklch, var(--shadow-color), transparent 92%);
 
-		/* Large shadow: 8px offset, 24px blur, 16% opacity - dropdowns, modals */
-		--shadow-lg: 0 8px 24px color-mix(in oklch, var(--shadow-color), transparent 84%);
+		/* Large shadow: 4px offset, 12px blur, 88% transparent - dropdowns, modals */
+		--shadow-lg: 0 4px 12px color-mix(in oklch, var(--shadow-color), transparent 88%);
 
-		/* Extra large shadow: 12px offset, 32px blur, 20% opacity - floating panels */
-		--shadow-xl: 0 12px 32px color-mix(in oklch, var(--shadow-color), transparent 80%);
+		/* Extra large shadow: 8px offset, 24px blur, 84% transparent - floating panels */
+		--shadow-xl: 0 8px 24px color-mix(in oklch, var(--shadow-color), transparent 84%);
 
-		/* 2XL shadow: 16px offset, 48px blur, 25% opacity - maximum elevation */
-		--shadow-2xl: 0 16px 48px color-mix(in oklch, var(--shadow-color), transparent 75%);
+		/* 2XL shadow: 12px offset, 32px blur, 80% transparent - maximum elevation */
+		--shadow-2xl: 0 12px 32px color-mix(in oklch, var(--shadow-color), transparent 80%);
 		
 		/* ─── Technical Dimensions ──
 		 * Precise measurements for UI elements
@@ -194,12 +194,12 @@
 		/* Default border width: 1px */
 		--border-width: 1px;
 
-		/* Focus ring: derived from spacing scale
-		 * --focus-ring-width: 2px visible ring (half of gutter-xs)
-		 * --focus-ring-gap: 3px gap from element
+		/* Focus ring: now handled directly in components with outline
+		 * (outline: 1.5px solid var(--color-primary); outline-offset: 1px;)
+		 * Kept here for backward compat if custom overrides need them.
 		 */
-		--focus-ring-width: calc(var(--gutter-xs) / 2); /* 2px */
-		--focus-ring-gap: calc(var(--gutter-xs) * 0.75); /* 3px */
+		--focus-ring-width: 1.5px;
+		--focus-ring-gap: 1px;
 
 		/* Custom scrollbar dimensions: derived from spacing scale */
 		--scrollbar-width: calc(var(--gutter-xs) * 1.5); /* 6px */

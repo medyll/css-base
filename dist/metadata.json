@@ -6,7 +6,7 @@
     {
       "file": "app.css",
       "description": "Entry point — declares all layers and imports everything",
-      "layers": ["base", "theme.reset", "theme.variables", "theme.tokens", "theme.typography", "theme.palette", "theme.components", "utilities", "workspace"]
+      "layers": ["base", "theme.reset", "theme.variables", "theme.tokens", "theme.typography", "theme.palette", "theme.components", "utilities"]
     },
     {
       "file": "base.css",
@@ -48,11 +48,7 @@
       "description": "Utility classes for layout, spacing, typography, color, and hover variants",
       "layer": "utilities"
     },
-    {
-      "file": "workspace.css",
-      "description": "Application shell layout and UI components (app-shell, cards, menus)",
-      "layer": "workspace"
-    }
+
   ],
   "compatibility": {
     "browsers": ["Chrome >= 125", "Edge >= 125"],

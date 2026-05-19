@@ -47,7 +47,7 @@
 		<!-- Header -->
 		<header class="demo-section">
 			<h1 class="demo-title" style="font-size: var(--text-2xl);">@medyll/css-base</h1>
-			<p class="text-gray-500">Modern CSS design system — Chrome/Edge 125+</p>
+			<p style="color: var(--color-text-muted);">Modern CSS design system — Chrome/Edge 125+</p>
 			<div class="demo-row" style="margin-top: var(--gutter-md);">
 				<button class="btn btn-primary">Primary</button>
 				<button class="btn">Default</button>
@@ -67,7 +67,7 @@
 				<h5>Heading 5 — The quick brown fox</h5>
 				<h6>Heading 6 — The quick brown fox</h6>
 				<p>This is a paragraph. The quick brown fox jumps over the lazy dog. <strong>Strong text</strong> and <em>emphasized text</em> are supported.</p>
-				<p class="text-gray-500">Muted text — color: var(--color-text-muted)</p>
+				<p style="color: var(--color-text-muted);">Muted text — color: var(--color-text-muted)</p>
 				<code>inline code</code>
 				<pre><pre style="margin:0"><code>/* Code block */
 function hello() {
@@ -138,7 +138,7 @@ function hello() {
 						<button class="btn-icon" aria-label="More">⋮</button>
 					</div>
 					<div class="card-body">
-						<p class="text-gray-500">Card content goes here. This is a sample card component.</p>
+						<p style="color: var(--color-text-muted);">Card content goes here. This is a sample card component.</p>
 					</div>
 					<div class="card-footer">
 						<button class="btn btn-ghost">Cancel</button>
@@ -150,7 +150,7 @@ function hello() {
 						<span>Another Card</span>
 					</div>
 					<div class="card-body">
-						<p class="text-gray-500">Cards can contain any content. They support headers, bodies, and footers.</p>
+						<p style="color: var(--color-text-muted);">Cards can contain any content. They support headers, bodies, and footers.</p>
 						<div class="demo-row" style="margin-top: var(--gutter-md);">
 							<span class="badge badge-primary">New</span>
 							<span class="badge badge-success">Active</span>
@@ -163,33 +163,123 @@ function hello() {
 		<!-- Forms -->
 		<section class="demo-section">
 			<h2 class="demo-title">Form Elements</h2>
-			<div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-				<div>
+
+			<div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+				<div class="form-control">
 					<label for="input-text">Text Input</label>
 					<input type="text" id="input-text" placeholder="Enter text...">
+					<span class="form-hint">This is a hint message.</span>
 				</div>
-				<div>
+
+				<div class="form-control">
 					<label for="input-email">Email</label>
 					<input type="email" id="input-email" placeholder="you@example.com">
 				</div>
-				<div>
+
+				<div class="form-control is-invalid">
+					<label for="input-error">Invalid Input</label>
+					<input type="text" id="input-error" value="wrong value">
+					<span class="form-error">This field is required.</span>
+				</div>
+
+				<div class="form-control is-valid">
+					<label for="input-valid">Valid Input</label>
+					<input type="text" id="input-valid" value="correct value">
+				</div>
+			</div>
+
+			<div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: var(--gutter-lg);">
+				<div class="form-control">
 					<label for="select">Select</label>
-					<select id="select">
+					<select id="select" class="form-select">
 						<option>Option 1</option>
 						<option>Option 2</option>
 						<option>Option 3</option>
 					</select>
 				</div>
-				<div>
+
+				<div class="form-control">
 					<label for="textarea">Textarea</label>
 					<textarea id="textarea" rows="3" placeholder="Enter message..."></textarea>
 				</div>
 			</div>
-			<div class="demo-row" style="margin-top: var(--gutter-md);">
-				<label><input type="checkbox"> Checkbox</label>
-				<label><input type="radio" name="radio"> Radio</label>
+
+			<div class="demo-row" style="margin-top: var(--gutter-lg);">
+				<div class="form-control">
+					<label>Input Group</label>
+					<div class="input-group">
+						<span class="input-group-text">@</span>
+						<input type="text" placeholder="username">
+					</div>
+				</div>
+
+				<div class="form-control">
+					<label>With Button</label>
+					<div class="input-group">
+						<input type="text" placeholder="Search...">
+						<button class="btn btn-primary">Go</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo-row" style="margin-top: var(--gutter-lg);">
+				<label class="form-check">
+					<input type="checkbox" checked>
+					<span>Checkbox checked</span>
+				</label>
+				<label class="form-check">
+					<input type="checkbox">
+					<span>Checkbox unchecked</span>
+				</label>
+				<label class="form-check">
+					<input type="radio" name="radio-demo" checked>
+					<span>Radio selected</span>
+				</label>
+				<label class="form-check">
+					<input type="radio" name="radio-demo">
+					<span>Radio unselected</span>
+				</label>
+			</div>
+
+			<div class="demo-row" style="margin-top: var(--gutter-lg);">
+				<label class="toggle">
+					<input type="checkbox">
+					<span class="toggle-slider"></span>
+					<span>Toggle off</span>
+				</label>
+				<label class="toggle">
+					<input type="checkbox" checked>
+					<span class="toggle-slider"></span>
+					<span>Toggle on</span>
+				</label>
+				<label class="toggle">
+					<input type="checkbox" disabled>
+					<span class="toggle-slider"></span>
+					<span>Toggle disabled</span>
+				</label>
+			</div>
+
+			<div class="demo-row" style="margin-top: var(--gutter-lg);">
+				<div class="form-file">
+					<input type="file" id="file-input">
+					<span class="form-file-label">Choose file...</span>
+				</div>
 				<label><input type="range" style="width: 150px;"> Range</label>
 			</div>
+
+			<fieldset class="form-fieldset" style="margin-top: var(--gutter-lg);">
+				<legend class="form-legend">Fieldset Group</legend>
+				<div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+					<div class="form-control">
+						<label>First Name</label>
+						<input type="text" placeholder="John">
+					</div>
+					<div class="form-control">
+						<label>Last Name</label>
+						<input type="text" placeholder="Doe">
+					</div>
+				</div>
+			</fieldset>
 		</section>
 
 		<!-- Table -->
@@ -261,10 +351,10 @@ function hello() {
 				<div>
 					<strong>Colors:</strong>
 					<div class="demo-row">
-						<span class="text-blue-600">.text-blue-600</span>
-						<span class="text-red-600">.text-red-600</span>
-						<span class="text-green-700">.text-green-700</span>
-						<span class="text-gray-500">.text-gray-500</span>
+						<span style="color: var(--color-primary);">.text-primary</span>
+						<span style="color: var(--color-critical);">.text-critical</span>
+						<span style="color: var(--color-success);">.text-success</span>
+						<span style="color: var(--color-text-muted);">.text-muted</span>
 					</div>
 				</div>
 			</div>
@@ -273,7 +363,7 @@ function hello() {
 		<!-- Responsive -->
 		<section class="demo-section">
 			<h2 class="demo-title">Responsive Utilities</h2>
-			<p class="text-gray-500 mb-4">Resize the window to see responsive classes in action.</p>
+			<p style="color: var(--color-text-muted); margin-bottom: var(--marg-md);">Resize the window to see responsive classes in action.</p>
 			<div class="demo-row">
 				<span class="badge sm:bg-blue-100">sm:</span>
 				<span class="badge md:bg-green-100">md:</span>
@@ -291,7 +381,7 @@ function hello() {
 		<!-- attr() Dynamic Styling -->
 		<section class="demo-section">
 			<h2 class="demo-title">attr() — Dynamic Styling</h2>
-			<p class="text-gray-500 mb-4">Chrome 139+ (CSS Values &amp; Units Level 5). No classes needed — just data attributes.</p>
+			<p style="color: var(--color-text-muted); margin-bottom: var(--marg-md);">Chrome 139+ (CSS Values &amp; Units Level 5). No classes needed — just data attributes.</p>
 			
 			<div class="demo-grid">
 				<!-- Rotation -->
@@ -476,7 +566,7 @@ function hello() {
 						<span>Subgrid</span>
 					</div>
 					<div class="card-body">
-						<p class="text-gray-500 mb-4">Nested grids align with parent columns.</p>
+						<p style="color: var(--color-text-muted); margin-bottom: var(--marg-md);">Nested grids align with parent columns.</p>
 						<div class="grid" data-columns="3" data-gap="md">
 							<div class="card" data-subgrid data-gap="sm">
 								<div class="card-header">Card 1</div>
@@ -531,10 +621,10 @@ function hello() {
 
 		<!-- Footer -->
 		<footer class="demo-section" style="border-bottom: none;">
-			<p class="text-gray-500 text-sm">
+			<p style="color: var(--color-text-muted); font-size: var(--text-sm);">
 				@medyll/css-base — Built with modern CSS features
 			</p>
-			<p class="text-xs text-gray-400">
+			<p style="font-size: var(--text-xs); color: var(--color-text-muted);">
 				Browser support: Chrome 125+ (attr(): Chrome 139+)
 			</p>
 		</footer>

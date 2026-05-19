@@ -41,7 +41,19 @@
   [data-elevation="lg"] { box-shadow: var(--shadow-lg); }
   [data-elevation="xl"] { box-shadow: var(--shadow-xl); }
   [data-elevation="2xl"] { box-shadow: var(--shadow-2xl); }
-  
+
+  /* ─── Hover Elevation ──
+   * Usage: data-hover-state="xs|sm|md|lg|xl|2xl"
+   * Example: data-hover-state="md" → box-shadow: var(--shadow-md) on :hover
+   * Increases elevation on mouse hover for interactive feedback
+   */
+  [data-hover-state="xs"]:hover { box-shadow: var(--shadow-xs); }
+  [data-hover-state="sm"]:hover { box-shadow: var(--shadow-sm); }
+  [data-hover-state="md"]:hover { box-shadow: var(--shadow-md); }
+  [data-hover-state="lg"]:hover { box-shadow: var(--shadow-lg); }
+  [data-hover-state="xl"]:hover { box-shadow: var(--shadow-xl); }
+  [data-hover-state="2xl"]:hover { box-shadow: var(--shadow-2xl); }
+
   /* ─── Inset Shadow ── 
    * Usage: data-inset="xs|sm|md|lg|xl|2xl"
    * Example: data-inset="md" → inner shadow (sunken effect)
@@ -125,7 +137,7 @@
   [data-weight="bold"] { font-weight: var(--font-bold, 700); }
   
   /* ─── Color ── 
-   * Usage: data-color="primary|secondary|success|warning|error|info|muted"
+   * Usage: data-color="primary|secondary|success|warning|error|info|muted|text|surface"
    * Example: data-color="error" → red error state color
    * Maps to semantic color tokens from palette.css
    */
@@ -136,6 +148,8 @@
   [data-color="error"] { color: var(--color-critical); }
   [data-color="info"] { color: var(--color-info); }
   [data-color="muted"] { color: var(--color-text-muted); }
+  [data-color="text"] { color: var(--color-text); }
+  [data-color="surface"] { color: var(--color-surface); }
   
   /* ─── Background ── 
    * Usage: data-bg="surface|surface-alt|surface-raised|primary|secondary|success|warning|error|info"
