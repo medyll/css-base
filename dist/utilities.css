@@ -186,29 +186,32 @@
 .rounded-full { border-radius: var(--radius-full); } /* Circle/pill */
 
 /* ── Background ──
- * Background color utilities using color-mix() for tints
+ * Semantic background utilities using design tokens.
+ * Use these — NOT named-color helpers — to stay theme-aware.
  */
-.bg-white        { background-color: #fff; }
-.bg-gray-50      { background-color: var(--color-surface-alt); }
-.bg-blue-50      { background-color: color-mix(in srgb, var(--color-primary) 8%, transparent); }
-.bg-blue-100     { background-color: color-mix(in srgb, var(--color-primary) 15%, transparent); }
-.bg-orange-100   { background-color: color-mix(in srgb, #f97316 15%, transparent); }
-.bg-green-100    { background-color: color-mix(in srgb, #10b981 15%, transparent); }
+.bg-surface       { background-color: var(--color-surface); }
+.bg-surface-alt   { background-color: var(--color-surface-alt); }
+.bg-surface-raised { background-color: var(--color-surface-raised); }
+.bg-surface-sunken { background-color: var(--color-surface-sunken); }
+.bg-surface-hover { background-color: var(--color-surface-hover); }
+.bg-primary       { background-color: var(--color-primary); }
+.bg-primary-soft  { background-color: color-mix(in srgb, var(--color-primary) 10%, transparent); }
+.bg-success-soft  { background-color: color-mix(in srgb, var(--color-success) 10%, transparent); }
+.bg-warning-soft  { background-color: color-mix(in srgb, var(--color-warning) 10%, transparent); }
+.bg-critical-soft { background-color: color-mix(in srgb, var(--color-critical) 10%, transparent); }
+.bg-transparent   { background-color: transparent; }
 
 /* ── Text color ──
- * Text color utilities with opacity variants
+ * Semantic text color utilities tied to design tokens.
  */
-.text-gray-400   { color: var(--color-text-muted); }
-.text-gray-500   { color: var(--color-text-muted); }
-.text-gray-600   { color: color-mix(in srgb, var(--color-text) 70%, transparent); }
-.text-blue-600   { color: var(--color-primary); }
-.text-blue-700   { color: var(--color-primary-hover); }
-.text-orange-600 { color: #ea580c; }
-.text-green-700  { color: #047857; }
-.text-red-400    { color: color-mix(in srgb, var(--color-critical) 70%, transparent); }
-.text-red-600    { color: var(--color-critical); }
-.text-red-700    { color: color-mix(in srgb, var(--color-critical) 80%, transparent); }
-.text-white      { color: #fff; }
+.text          { color: var(--color-text); }
+.text-muted    { color: var(--color-text-muted); }
+.text-inverse  { color: var(--color-text-inverse); }
+.text-primary  { color: var(--color-primary); }
+.text-success  { color: var(--color-success); }
+.text-warning  { color: var(--color-warning-emphasis); }
+.text-critical { color: var(--color-critical); }
+.text-on-primary { color: var(--color-on-primary); }
 
 /* ── Typography ──
  * Font size, weight, transform, spacing, and text utilities
@@ -251,20 +254,15 @@
 .transition-colors { transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast); }
 
 /* ── Hover variants ──
- * Background and text color changes on hover
+ * Semantic hover utilities using design tokens
  */
-.hover\:bg-gray-100:hover  { background-color: color-mix(in srgb, var(--color-text) 5%, transparent); }
-.hover\:bg-gray-300:hover  { background-color: color-mix(in srgb, var(--color-text) 15%, transparent); }
-.hover\:bg-blue-100:hover  { background-color: color-mix(in srgb, var(--color-primary) 15%, transparent); }
-.hover\:bg-blue-700:hover  { background-color: var(--color-primary-hover); }
-.hover\:bg-purple-100:hover { background-color: color-mix(in srgb, #a855f7 15%, transparent); }
-.hover\:bg-purple-700:hover { background-color: #7e22ce; }
-.hover\:bg-red-500:hover   { background-color: color-mix(in srgb, var(--color-critical) 80%, transparent); }
-.hover\:bg-red-600:hover   { background-color: var(--color-critical); }
-.hover\:text-blue-600:hover { color: var(--color-primary); }
-.hover\:text-red-600:hover  { color: var(--color-critical); }
-.hover\:text-red-700:hover  { color: color-mix(in srgb, var(--color-critical) 80%, transparent); }
-.hover\:text-purple-600:hover { color: #9333ea; }
+.hover\:bg-surface-hover:hover { background-color: var(--color-surface-hover); }
+.hover\:bg-surface-active:hover { background-color: var(--color-surface-active); }
+.hover\:bg-primary:hover       { background-color: var(--color-primary); }
+.hover\:bg-primary-hover:hover { background-color: var(--color-primary-hover); }
+.hover\:bg-critical:hover      { background-color: var(--color-critical); }
+.hover\:text-primary:hover     { color: var(--color-primary); }
+.hover\:text-critical:hover    { color: var(--color-critical); }
 
 /* ── Group hover ──
  * Child element visibility when parent is hovered
@@ -337,29 +335,8 @@
 /* ── Border additions ──
  * Additional border utilities
  */
-.rounded-sm      { border-radius: var(--radius-xs, 2px); }
-.border-gray-200 { border-color: var(--color-border); }
-.border-purple-200 { border-color: color-mix(in srgb, #a855f7 30%, transparent); }
-
-/* ── Background additions ──
- * Additional background color utilities
- */
-.bg-red-50      { background-color: color-mix(in srgb, var(--color-critical) 8%, transparent); }
-.bg-red-500     { background-color: var(--color-critical); }
-.bg-gray-100    { background-color: color-mix(in srgb, var(--color-text) 8%, transparent); }
-.bg-gray-200    { background-color: color-mix(in srgb, var(--color-text) 14%, transparent); }
-.bg-slate-100   { background-color: color-mix(in srgb, #64748b 10%, transparent); }
-.bg-purple-50   { background-color: color-mix(in srgb, #a855f7 6%, transparent); }
-.bg-purple-100  { background-color: color-mix(in srgb, #a855f7 14%, transparent); }
-.bg-purple-300  { background-color: color-mix(in srgb, #a855f7 45%, transparent); }
-
-/* ── Text color additions ──
- * Additional text color utilities
- */
-.text-gray-300   { color: color-mix(in srgb, var(--color-text) 40%, transparent); }
-.text-purple-400 { color: color-mix(in srgb, #a855f7 65%, transparent); }
-.text-purple-600 { color: #9333ea; }
-.text-purple-700 { color: #7e22ce; }
+.rounded-sm    { border-radius: var(--radius-xs, 2px); }
+.border-strong { border-color: var(--color-border-strong); }
 
 /* ── List ──
  * List style utilities

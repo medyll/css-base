@@ -121,6 +121,30 @@
 		 */
     --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
 
+    /* ─── List / Item ──
+		 * Tokens for list, menu, navigation items
+		 * Usage: padding: var(--list-item-pad); gap: var(--list-gap);
+		 */
+    --list-gap: var(--gutter-xs);           /* 4px - between items */
+    --list-item-pad-y: var(--gutter-sm);    /* 8px */
+    --list-item-pad-x: var(--gutter-md);    /* 16px */
+    --list-item-radius: var(--radius-sm);   /* 8px */
+    --list-item-gap: var(--gutter-sm);      /* 8px - icon ↔ label inside item */
+
+    /* ─── Icon Button ──
+		 * Square button size for icon-only buttons (close, toggle, etc.)
+		 */
+    --icon-button-size: 2rem;               /* 32px */
+    --icon-button-size-sm: 1.5rem;          /* 24px */
+    --icon-button-size-lg: 2.5rem;          /* 40px */
+
+    /* ─── Field / Form ──
+		 * Form layout tokens
+		 */
+    --field-gap: var(--gutter-sm);          /* 8px - between fields */
+    --field-label-width: max-content;       /* default grid label col */
+    --form-grid-gap: var(--gutter-sm);      /* 8px */
+
     /* ─── Breakpoints ──
 		 * Responsive design breakpoints (min-width)
 		 * Usage: @media (min-width: --breakpoint-lg) { ... }

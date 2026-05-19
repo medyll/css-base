@@ -1,7 +1,7 @@
 ---
 name: css-base
 description: >-
-  MANDATORY on every project that uses HTML. Expert guide for @medyll/css-base (v0.6.2).
+  MANDATORY on every project that uses HTML. Expert guide for @medyll/css-base (v0.7.0).
   Activate for: writing CSS, styling components, layouts, tokens, colors, typography, dark mode,
   code review, refactoring raw CSS values, replacing inline styles, audit of existing code.
   Trigger on: "style this", "add CSS", "refactor CSS", "review this component", "which token",
@@ -10,7 +10,7 @@ description: >-
   Vue, Angular, PHP — any project that imports app.css.
 ---
 
-# @medyll/css-base — v0.6.2
+# @medyll/css-base — v0.7.0
 
 **npm:** [`@medyll/css-base`](https://www.npmjs.com/package/@medyll/css-base)
 
@@ -276,9 +276,46 @@ Dynamic styling via `data-*` attributes — no extra classes needed.
 
 ## Components
 
-**Buttons:** `.btn`
+### Decision Tree — which component for what
 
-**Cards:**
+```
+You need to display…                  → Use
+─────────────────────────────────────────────────────
+A clickable list of items             → .list .list-item
+A grid of records/cards               → .list.list-grid
+A vertical menu (sidebar nav)         → .list.list-stack
+A bordered list (settings rows)       → .list.list-bordered
+A form (label + input pairs)          → .form > .field
+A form with labels above              → .form.form-stack
+A bar of buttons / search             → .toolbar
+A surface container                   → .panel
+A page/section heading                → .section-header
+A "nothing here yet" placeholder      → .empty-state
+A standalone box w/ shadow            → .card
+A status pill                         → .badge
+An informational banner               → .alert
+Tabular data                          → .table
+Page navigation                       → .pagination
+```
+
+If a component fits — use it. **Do not reinvent.** No ad-hoc `ul { list-style: none; padding: 0; }` blocks in component files.
+
+---
+
+### Buttons
+
+```html
+<button>Default</button>
+<button class="btn-primary">Primary</button>
+<button class="btn-ghost">Ghost</button>
+<button class="btn-danger">Destructive</button>
+<button class="btn-sm">Small</button>
+<button class="btn-icon" aria-label="Close">✕</button>
+<button class="btn-icon btn-sm" aria-label="More">⋯</button>
+```
+
+### Cards
+
 ```html
 <div class="card">
   <div class="card-header">Title</div>
@@ -287,15 +324,261 @@ Dynamic styling via `data-*` attributes — no extra classes needed.
 </div>
 ```
 
-**Alerts:** `.alert` · `.alert-info` · `.alert-success` · `.alert-warning` · `.alert-error`
+### List / List Item
 
-**Badges:** `.badge` · `.badge-primary` · `.badge-success` · `.badge-warning` · `.badge-error` · `.badge-neutral`
+Generic clickable list. Combine variants: `.list-stack` (default vertical), `.list-row` (horizontal), `.list-grid` (auto-fill), `.list-bordered`, `.list-compact`.
 
-**Tables:**
 ```html
-<div class="table-container">
-  <table class="table table-striped">...</table>
+<ul class="list list-stack" role="list">
+  <li class="list-item is-active">
+    <span class="list-item-icon">📁</span>
+    <div class="list-item-content">
+      <div class="list-item-title">Projects</div>
+      <div class="list-item-meta">12 items</div>
+    </div>
+    <span class="list-item-trail">›</span>
+  </li>
+  <li class="list-item">Plain item</li>
+</ul>
+
+<!-- Grid of cards -->
+<ul class="list list-grid" role="list" style="--list-grid-min: 200px;">
+  <li class="list-item">Card 1</li>
+</ul>
+
+<!-- Settings-style bordered list -->
+<ul class="list list-bordered" role="list">…</ul>
+```
+
+States: `.is-active` / `aria-current="page"` (selected) · `.is-disabled` / `aria-disabled="true"`.
+
+### Form / Field
+
+Two-column grid (label | control). Wrap each pair in `.field` (uses `display: contents`).
+
+```html
+<form class="form">
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" type="text">
+  </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" type="email">
+  </div>
+</form>
+
+<!-- Labels above controls -->
+<form class="form form-stack">
+  <div class="field-stack">
+    <label>Name</label>
+    <input>
+  </div>
+</form>
+
+<!-- Inline row of fields -->
+<div class="form form-inline">
+  <input type="search" placeholder="Search…">
+  <button class="btn-primary">Go</button>
 </div>
+```
+
+### Toolbar
+
+```html
+<div class="toolbar toolbar-stretch">
+  <input type="search" placeholder="Search">
+  <div class="toolbar-spacer"></div>
+  <button class="btn-icon" aria-label="Filter">⚙</button>
+  <span class="toolbar-separator"></span>
+  <button class="btn-primary">New</button>
+</div>
+```
+
+### Panel / Section Header
+
+```html
+<section class="panel panel-bordered">
+  <header class="section-header section-header-bordered">
+    <h3>Recent activity</h3>
+    <a href="#">See all</a>
+  </header>
+  <ul class="list list-bordered" role="list">…</ul>
+</section>
+```
+
+### Empty State
+
+```html
+<div class="empty-state">
+  <div class="empty-state-icon">📭</div>
+  <p class="empty-state-title">No projects yet</p>
+  <p class="empty-state-text">Create your first project to get started.</p>
+  <button class="btn-primary">New project</button>
+</div>
+```
+
+### Pagination
+
+```html
+<nav class="pagination" aria-label="Pagination">
+  <button class="btn btn-sm">‹ Prev</button>
+  <span class="pagination-info">Page 1 of 4</span>
+  <button class="btn btn-sm">Next ›</button>
+</nav>
+```
+
+### Alerts, Badges, Tables
+
+```html
+<div class="alert alert-info">…</div>
+<div class="alert alert-success">…</div>
+<div class="alert alert-warning">…</div>
+<div class="alert alert-error">…</div>
+
+<span class="badge badge-primary">New</span>
+<span class="badge badge-success">Done</span>
+
+<div class="table-container">
+  <table class="table table-striped">…</table>
+</div>
+```
+
+---
+
+## Anti-patterns — STOP doing these
+
+```html
+<!-- ❌ DO NOT: ad-hoc list reset in every component -->
+<style>
+  ul { list-style: none; padding: 0; margin: 0; }
+  li:hover { background: #f5f5f5; }
+</style>
+
+<!-- ✅ DO: use .list / .list-item -->
+<ul class="list list-stack" role="list">
+  <li class="list-item">…</li>
+</ul>
+```
+
+```svelte
+<!-- ❌ DO NOT: :global(.form) — leaks across components -->
+<style>:global(.form) { display: grid; grid-template-columns: max-content 1fr; }</style>
+
+<!-- ✅ DO: use .form component -->
+<form class="form">…</form>
+```
+
+```html
+<!-- ❌ DO NOT: hardcoded grid magic numbers -->
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem;">
+
+<!-- ✅ DO: use .list-grid + token override -->
+<ul class="list list-grid" role="list" style="--list-grid-min: 180px;">
+```
+
+```html
+<!-- ❌ DO NOT: emoji button without normalization -->
+<button style="background:none;border:none;font-size:1.5rem;">✕</button>
+
+<!-- ✅ DO: btn-icon variant -->
+<button class="btn-icon" aria-label="Close">✕</button>
+```
+
+```html
+<!-- ❌ DO NOT: hex/rgb colors -->
+<div style="color: #6b7280; border: 1px solid #e0e0e0;">
+
+<!-- ✅ DO: tokens -->
+<div style="color: var(--color-text-muted); border: var(--border-width) solid var(--color-border);">
+```
+
+```html
+<!-- ❌ DO NOT: Tailwind-style named colors (removed in 0.7.0) -->
+<div class="bg-purple-100 text-blue-600">
+
+<!-- ✅ DO: semantic utilities -->
+<div class="bg-primary-soft text-primary">
+```
+
+```html
+<!-- ❌ DO NOT: invent .menu / .nav-list / .sidebar-list per component -->
+<!-- ✅ DO: compose .list + variants -->
+```
+
+---
+
+## Recipes
+
+### Sidebar navigation
+
+```html
+<aside class="panel panel-flush" style="width: 240px;">
+  <nav>
+    <header class="section-header">
+      <h3>Workspace</h3>
+    </header>
+    <ul class="list list-stack" role="list">
+      <li class="list-item is-active">
+        <span class="list-item-icon">🏠</span>
+        <div class="list-item-content">Home</div>
+      </li>
+      <li class="list-item">
+        <span class="list-item-icon">📁</span>
+        <div class="list-item-content">Projects</div>
+      </li>
+    </ul>
+  </nav>
+</aside>
+```
+
+### Records grid (data list)
+
+```html
+<header class="toolbar toolbar-stretch">
+  <input type="search" placeholder="Filter records…">
+  <button class="btn-primary">New record</button>
+</header>
+
+<ul class="list list-grid" role="list" style="--list-grid-min: 220px;">
+  {#each items as item}
+    <li class="list-item panel panel-bordered">
+      <div class="list-item-content">
+        <div class="list-item-title">{item.name}</div>
+        <div class="list-item-meta">{item.meta}</div>
+      </div>
+    </li>
+  {/each}
+</ul>
+
+{#if items.length === 0}
+  <div class="empty-state">
+    <div class="empty-state-icon">📭</div>
+    <p class="empty-state-title">No records</p>
+  </div>
+{/if}
+```
+
+### Form layout
+
+```html
+<form class="form">
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" required>
+  </div>
+  <div class="field">
+    <label for="status">Status</label>
+    <select id="status">…</select>
+  </div>
+  <div class="field">
+    <span></span>
+    <div class="toolbar toolbar-end" style="padding:0;">
+      <button type="button" class="btn-ghost">Cancel</button>
+      <button type="submit" class="btn-primary">Save</button>
+    </div>
+  </div>
+</form>
 ```
 
 ---

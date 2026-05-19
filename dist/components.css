@@ -198,8 +198,26 @@
 			cursor: not-allowed;
 		}
 
+		/* ─── Size variants ── */
+
+		/* Small button: tighter padding, smaller text */
+		&.btn-sm {
+			padding: calc(var(--pad-xs) * 0.5) var(--pad-sm);
+			font-size: var(--text-xs);
+		}
+
+		/* Icon button: square, no padding, fixed size */
+		&.btn-icon {
+			width: var(--icon-button-size);
+			height: var(--icon-button-size);
+			padding: 0;
+			flex-shrink: 0;
+			&.btn-sm { width: var(--icon-button-size-sm); height: var(--icon-button-size-sm); }
+			&.btn-lg { width: var(--icon-button-size-lg); height: var(--icon-button-size-lg); }
+		}
+
 		/* ─── Button Variants ── */
-		
+
 		/* Primary: filled blue button for main actions */
 		&.btn-primary {
 			background: var(--color-primary);
@@ -524,3 +542,248 @@
 		}
 	}
 }
+
+/* ─── List / List Item ────────────────────────────────
+ * Generic vertical or grid list with clickable items.
+ * Pair with <ul role="list"> or <div class="list">.
+ * Variants: .list-grid (auto-fill grid), .list-stack (column), .list-row, .list-bordered, .list-compact
+ * Item states: .is-active / aria-current, .is-disabled / aria-disabled
+ */
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--list-gap);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&.list-stack { flex-direction: column; }
+	&.list-row   { flex-direction: row; flex-wrap: wrap; }
+
+	&.list-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(var(--list-grid-min, 220px), 1fr));
+		gap: var(--gutter-md);
+	}
+
+	&.list-bordered {
+		gap: 0;
+		& > .list-item {
+			border-radius: 0;
+			border-bottom: var(--border-width) solid var(--color-border);
+			&:last-child { border-bottom: none; }
+		}
+	}
+
+	&.list-compact > .list-item {
+		padding: calc(var(--list-item-pad-y) * 0.5) var(--list-item-pad-x);
+	}
+}
+
+.list-item {
+	display: flex;
+	align-items: center;
+	gap: var(--list-item-gap);
+	padding: var(--list-item-pad-y) var(--list-item-pad-x);
+	border-radius: var(--list-item-radius);
+	color: var(--color-text);
+	text-decoration: none;
+	cursor: pointer;
+	transition: background var(--transition-fast), color var(--transition-fast);
+
+	&:hover { background: var(--color-surface-hover); }
+	&:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: -2px;
+	}
+	&.is-active,
+	&[aria-current='page'],
+	&[aria-current='true'] {
+		background: var(--color-surface-active);
+		color: var(--color-primary);
+	}
+	&.is-disabled,
+	&[aria-disabled='true'] {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	& > .list-item-icon {
+		flex-shrink: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--icon-size-sm);
+		height: var(--icon-size-sm);
+		color: var(--color-text-muted);
+	}
+	& > .list-item-content {
+		flex: 1;
+		min-width: 0;
+	}
+	& .list-item-title {
+		font-weight: var(--font-medium);
+		font-size: var(--text-sm);
+	}
+	& .list-item-meta {
+		color: var(--color-text-muted);
+		font-size: var(--text-xs);
+	}
+	& > .list-item-trail {
+		flex-shrink: 0;
+		color: var(--color-text-muted);
+		font-size: var(--text-xs);
+	}
+}
+
+/* ─── Form / Field ────────────────────────────────────
+ * Two-column grid form: label | control.
+ * Variants: .form-stack (label above), .form-inline (row of fields)
+ * Wrap each pair in .field (uses display:contents to pass through grid).
+ */
+.form {
+	display: grid;
+	grid-template-columns: var(--field-label-width, max-content) 1fr;
+	gap: var(--form-grid-gap);
+	align-items: center;
+
+	&.form-stack {
+		grid-template-columns: 1fr;
+		align-items: stretch;
+	}
+
+	&.form-inline {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--gutter-sm);
+		align-items: center;
+	}
+}
+
+.field {
+	display: contents;
+}
+
+.field-stack {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gutter-xs);
+}
+
+/* ─── Toolbar ─────────────────────────────────────────
+ * Horizontal control bar. Variants: -stretch, -end, -center, -wrap
+ */
+.toolbar {
+	display: flex;
+	align-items: center;
+	gap: var(--gutter-sm);
+	padding: var(--pad-xs) var(--pad-sm);
+
+	&.toolbar-stretch { justify-content: space-between; }
+	&.toolbar-end     { justify-content: flex-end; }
+	&.toolbar-center  { justify-content: center; }
+	&.toolbar-wrap    { flex-wrap: wrap; }
+
+	& > .toolbar-separator {
+		width: var(--border-width);
+		height: 1.5rem;
+		background: var(--color-border);
+	}
+	& > .toolbar-spacer { flex: 1; }
+}
+
+/* ─── Panel ───────────────────────────────────────────
+ * Surface container. Variants: -raised, -sunken, -bordered, -flush
+ */
+.panel {
+	background: var(--color-surface);
+	border-radius: var(--radius-md);
+	padding: var(--pad-md);
+
+	&.panel-raised   { background: var(--color-surface-raised); box-shadow: var(--shadow-sm); }
+	&.panel-sunken   { background: var(--color-surface-sunken); }
+	&.panel-bordered { border: var(--border-width) solid var(--color-border); }
+	&.panel-flush    { padding: 0; }
+}
+
+/* ─── Section header ─────────────────────────────────
+ * Small uppercase heading + optional action group.
+ * Variants: .section-header-lg, .section-header-bordered
+ */
+.section-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--gutter-sm);
+	padding: var(--pad-xs) 0;
+	margin-bottom: var(--marg-sm);
+
+	& > :first-child {
+		font-size: var(--text-xs);
+		font-weight: var(--font-semibold);
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-wide);
+		color: var(--color-text-muted);
+		margin: 0;
+	}
+
+	&.section-header-lg > :first-child {
+		font-size: var(--text-md);
+		text-transform: none;
+		letter-spacing: var(--tracking-normal);
+		color: var(--color-text);
+	}
+
+	&.section-header-bordered {
+		border-bottom: var(--border-width) solid var(--color-border);
+		padding-bottom: var(--pad-xs);
+	}
+}
+
+/* ─── Empty state ────────────────────────────────────
+ * Placeholder when no data.
+ */
+.empty-state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gutter-sm);
+	padding: var(--pad-xl) var(--pad-md);
+	color: var(--color-text-muted);
+	text-align: center;
+
+	& .empty-state-icon {
+		font-size: var(--text-3xl);
+		opacity: 0.6;
+	}
+	& .empty-state-title {
+		font-size: var(--text-base);
+		font-weight: var(--font-semibold);
+		color: var(--color-text);
+		margin: 0;
+	}
+	& .empty-state-text {
+		font-size: var(--text-sm);
+		margin: 0;
+		max-width: 32ch;
+	}
+}
+
+/* ─── Pagination ─────────────────────────────────────
+ * Page navigation: prev / info / next
+ */
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gutter-md);
+	padding: var(--pad-sm) 0;
+
+	& .pagination-info {
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+		font-variant-numeric: tabular-nums;
+	}
+}
+

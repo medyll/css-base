@@ -95,6 +95,16 @@
 		overflow-wrap: break-word;
 	}
 
+	/* ─── Lists ──
+	 * Reset list styling when role="list" is set (semantic intent: it's a list of items, not a bullet list)
+	 * Native <ul>/<ol> without role="list" keep browser bullets/numbers
+	 */
+	[role='list'] {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
 	/* ─── Links ──
 	 * Primary color, no underline by default
 	 */

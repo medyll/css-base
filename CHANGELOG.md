@@ -1,5 +1,29 @@
 ﻿# Changelog
 
+## [0.7.0] - 2026-05-19
+**Features:**
+- New components: `.list` / `.list-item` (variants: `-stack`, `-row`, `-grid`, `-bordered`, `-compact`; item parts: `-icon`, `-content`, `-title`, `-meta`, `-trail`; states: `.is-active`, `aria-current`, `.is-disabled`)
+- New components: `.form` / `.field` / `.field-stack` (grid label/control, `-stack`, `-inline` variants)
+- New components: `.toolbar` (`-stretch`, `-end`, `-center`, `-wrap`), `.toolbar-separator`, `.toolbar-spacer`
+- New components: `.panel` (`-raised`, `-sunken`, `-bordered`, `-flush`)
+- New components: `.section-header` (`-lg`, `-bordered`)
+- New components: `.empty-state` (with `.empty-state-icon` / `-title` / `-text`)
+- New components: `.pagination` (with `.pagination-info`)
+- New button variants: `.btn-sm`, `.btn-icon` (sized via `--icon-button-size*`)
+- Reset: `[role="list"]` resets list-style/padding/margin (semantic-aware)
+- Tokens: `--list-gap`, `--list-item-pad-x/y`, `--list-item-radius`, `--list-item-gap`, `--icon-button-size{,-sm,-lg}`, `--field-gap`, `--field-label-width`, `--form-grid-gap`
+
+**Breaking:**
+- Removed Tailwind-style named-color utilities: `.bg-purple-*`, `.text-purple-*`, `.bg-orange-*`, `.text-orange-*`, `.bg-green-100`, `.text-green-700`, `.bg-gray-50/100/200`, `.text-gray-300/400/500/600`, `.bg-blue-*`, `.text-blue-*`, `.text-red-*`, `.bg-red-*`, `.bg-slate-100`, `.bg-white`, `.text-white`, named-color `.hover\:*`
+- Replaced with semantic equivalents: `.bg-surface*`, `.bg-primary{,-soft}`, `.bg-success-soft`, `.bg-warning-soft`, `.bg-critical-soft`, `.text-muted`, `.text-primary`, `.text-success`, `.text-warning`, `.text-critical`, `.text-on-primary`, `.text-inverse`
+
+**Migration:**
+- `.bg-purple-100` → use status soft (`.bg-primary-soft`) or define brand token
+- `.text-blue-600` → `.text-primary`
+- `.text-red-600` → `.text-critical`
+- `.bg-gray-50` → `.bg-surface-alt`
+- `.hover\:bg-gray-100` → `.hover\:bg-surface-hover`
+
 ## [0.6.10] - 2026-05-01
 **Chores:**
 - release v0.6.9 [skip ci]
