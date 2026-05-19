@@ -1,5 +1,14 @@
 ﻿# Changelog
 
+## [0.7.2] - 2026-05-19
+**Chores:**
+- release v0.7.1 [skip ci]
+
+**Other:**
+- Merge branch 'main' of https://github.com/medyll/css-base
+
+
+
 ## [0.7.0] - 2026-05-19
 **Features:**
 - New components: `.list` / `.list-item` (variants: `-stack`, `-row`, `-grid`, `-bordered`, `-compact`; item parts: `-icon`, `-content`, `-title`, `-meta`, `-trail`; states: `.is-active`, `aria-current`, `.is-disabled`)
