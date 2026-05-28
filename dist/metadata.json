@@ -1,70 +1,84 @@
-﻿{
-  "name": "css-base",
-  "version": "1.0.0",
-  "description": "Modern CSS design system library",
+{
+  "name": "@medyll/css-base",
+  "version": "0.7.4",
+  "description": "Pure CSS design system library",
+  "layers": ["reset", "tokens", "theme", "components", "utilities"],
   "files": [
     {
       "file": "app.css",
-      "description": "Entry point — declares all layers and imports everything",
-      "layers": ["base", "theme.reset", "theme.variables", "theme.tokens", "theme.typography", "theme.palette", "theme.components", "utilities"]
+      "description": "Entry point — declares layer order and imports the full system"
     },
     {
       "file": "base.css",
-      "description": "HTML resets and font defaults",
-      "layer": "base"
+      "description": "HTML element defaults and base document styling",
+      "layer": "reset"
     },
     {
       "file": "reset.css",
-      "description": "HTML resets and base styles",
-      "layer": "theme.reset"
+      "description": "Browser reset and low-level element normalization",
+      "layer": "reset"
+    },
+    {
+      "file": "theme.css",
+      "description": "Theme seed tokens: default font, text, and surface values",
+      "layer": "theme"
     },
     {
       "file": "variables.css",
-      "description": "Base spacing scale",
-      "layer": "theme.variables"
+      "description": "Raw spacing and size scale",
+      "layer": "tokens"
     },
     {
       "file": "tokens.css",
-      "description": "Semantic tokens (padding, margins, radius, motion, z-index)",
-      "layer": "theme.tokens"
+      "description": "Semantic spacing, radius, motion, blur, and z-index tokens",
+      "layer": "tokens"
     },
     {
       "file": "typography.css",
-      "description": "Font families, sizes, weights, line heights, letter spacing",
-      "layer": "theme.typography"
+      "description": "Font families, text scale, line heights, weights, and tracking",
+      "layer": "tokens"
+    },
+    {
+      "file": "functions.css",
+      "description": "CSS @function helpers for color manipulation and harmony generation",
+      "layer": null,
+      "minChromium": 139
     },
     {
       "file": "palette.css",
-      "description": "Colors, surfaces, shadows, technical dimensions",
-      "layer": "theme.palette"
+      "description": "Semantic colors, surfaces, borders, shadows, and color scheme",
+      "layer": "theme"
     },
     {
       "file": "components.css",
-      "description": "Base components (headings, inputs, buttons) and @function declarations",
-      "layer": "theme.components"
+      "description": "Styled elements and components such as buttons, cards, forms, lists, panels, and tables",
+      "layer": "components"
     },
     {
       "file": "utilities.css",
-      "description": "Utility classes for layout, spacing, typography, color, and hover variants",
+      "description": "Layout, spacing, typography, color, state, and responsive utility classes",
       "layer": "utilities"
     },
-
+    {
+      "file": "attr.css",
+      "description": "Attribute-driven utilities via attr() for spacing, typography, transforms, and effects",
+      "layer": "utilities",
+      "minChromium": 139
+    }
   ],
   "compatibility": {
-    "browsers": ["Chrome >= 125", "Edge >= 125"],
+    "baselineBrowsers": ["Chrome >= 125", "Edge >= 125"],
+    "enhancedBrowsers": ["Chromium >= 139 for @function and attr()"],
     "features": [
       "@layer",
-      "CSS Nesting",
+      "CSS nesting",
       "color-mix()",
       "light-dark()",
-      "relative color syntax (hsl/oklch from)",
-      "CSS Anchor Positioning",
-      "text-box-trim / text-box-edge",
+      "relative color syntax",
       "subgrid",
-      "text-wrap: balance",
-      "@function (CSS Values Level 5) — Chromium 139+",
-      "prefers-contrast",
-      "prefers-reduced-motion"
+      "text-box-trim / text-box-edge",
+      "@function (Chromium 139+)",
+      "attr() typed utilities (Chromium 139+)"
     ]
   }
 }

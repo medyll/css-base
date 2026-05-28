@@ -1,7 +1,7 @@
 ---
 name: css-base
 description: >-
-  MANDATORY on every project that uses HTML. Expert guide for @medyll/css-base (v0.7.0).
+  MANDATORY on every project that uses HTML. Expert guide for @medyll/css-base (v0.7.4).
   Activate for: writing CSS, styling components, layouts, tokens, colors, typography, dark mode,
   code review, refactoring raw CSS values, replacing inline styles, audit of existing code.
   Trigger on: "style this", "add CSS", "refactor CSS", "review this component", "which token",
@@ -10,7 +10,7 @@ description: >-
   Vue, Angular, PHP — any project that imports app.css.
 ---
 
-# @medyll/css-base — v0.7.0
+# @medyll/css-base — v0.7.4
 
 **npm:** [`@medyll/css-base`](https://www.npmjs.com/package/@medyll/css-base)
 
@@ -28,7 +28,8 @@ NEVER  write media queries for dark mode — use light-dark()
 NEVER  use --color-error — correct token is --color-critical
 NEVER  override computed tokens (--color-surface-*) — override seeds only
 NEVER  write z-index integers — use --z-dropdown / --z-overlay / --z-modal / --z-toast
-ALWAYS wrap custom styles in @layer components { }
+ALWAYS put authored component CSS in @layer components { } by default
+ALWAYS use a later layer or outside all layers only for intentional global overrides
 ALWAYS use CSS nesting (&) for states and variants
 ALWAYS prefer attr() data attributes over utility classes for dynamic values (139+)
 ALWAYS use OKLCH for custom colors
@@ -95,14 +96,30 @@ reset < tokens < theme < components < utilities
 - `components` — styled elements, cards, alerts, tables
 - `utilities` — utility classes + `attr()` data attributes
 
-Custom styles placed **outside any layer** override everything. To integrate into the cascade, declare your layer after importing `app.css`:
+### Default authoring rule for LLMs
+
+When generating custom CSS, use this rule unless the prompt explicitly says "override utilities" or "global override":
+
+```css
+@import "@medyll/css-base";
+
+@layer components {
+  .your-component {
+    /* default place for authored CSS */
+  }
+}
+```
+
+### When to leave the default
+
+Custom styles placed **outside any layer** override everything. A custom layer declared after importing `app.css` also wins over the built-in layers:
 
 ```css
 @import "@medyll/css-base";
 @layer my-overrides { /* wins over utilities */ }
 ```
 
-Wrap component-level styles in `@layer components { }` to respect cascade order.
+Use that only when you intentionally need to beat utilities or patch global behavior.
 
 ---
 
@@ -250,25 +267,23 @@ Dynamic styling via `data-*` attributes — no extra classes needed.
 
 ## Utility Classes
 
-**Layout:** `.flex` `.grid` `.block` `.inline-flex` `.inline-grid` `.relative` `.absolute` `.sticky` `.hidden`
+Use utilities for one-off composition. If you need repeated styling or semantic structure, prefer components or custom CSS in `@layer components`.
 
-**Flex:** `.flex-col` `.flex-row` `.flex-wrap` `.items-center` `.items-start` `.items-end` `.items-stretch` `.justify-between` `.justify-center` `.justify-start` `.justify-end` `.flex-1` `.flex-none` `.grow` `.shrink-0`
+**Layout:** `.flex` `.grid` `.block` `.inline-flex` `.hidden` `.relative` `.absolute` `.sticky`
 
-**Grid:** `.grid-cols-1`–`.grid-cols-6` · `.col-span-*` · `.col-span-full`
+**Flex / Grid:** `.flex-col` `.flex-row` `.flex-wrap` `.items-center` `.items-start` `.items-end` `.items-stretch` `.justify-between` `.justify-center` `.justify-start` `.justify-end` `.flex-1` `.flex-none` `.shrink-0` `.col-span-full`
 
-**Spacing:** `.p-*` `.m-*` `.gap-*` (xs–3xl) · `.px-*` `.py-*` `.mx-auto`
+**Spacing:** `.gap-*` (xs–3xl) · `.p-*` `.px-*` `.py-*` · `.m-*` `.mt-*` `.mb-*` `.mr-*` `.ml-*` `.ml-auto`
 
-**Sizing:** `.w-full` `.h-full` `.min-h-screen` `.max-w-full`
+**Sizing / Overflow:** `.w-full` `.h-full` `.h-screen` `.min-h-0` `.min-w-0` `.max-w-full` · `.overflow-hidden` `.overflow-auto` `.overflow-x-auto` `.overflow-y-auto`
 
-**Typography:** `.font-sans/mono/serif` · `.text-xs`–`.text-2xl` · `.font-normal/medium/semibold/bold` · `.text-center` `.text-right` `.truncate` `.whitespace-nowrap` `.uppercase` `.tabular-nums` `.line-clamp-*`
+**Typography:** `.text` `.text-muted` `.text-inverse` `.text-primary` `.text-success` `.text-warning` `.text-critical` `.text-on-primary` · `.text-xs` `.text-sm` `.text-base` · `.font-mono` `.font-normal` `.font-medium` `.font-semibold` `.font-bold` · `.text-center` `.text-right` `.truncate` `.whitespace-nowrap` `.uppercase` `.tabular-nums`
 
-**Colors:** `.bg-primary` `.bg-surface` `.bg-surface-raised` · `.text-primary` `.text-muted` `.text-success` `.text-warning` `.text-critical`
+**Surfaces / Borders / Effects:** `.bg-surface` `.bg-surface-alt` `.bg-surface-raised` `.bg-surface-sunken` `.bg-surface-hover` `.bg-primary` `.bg-primary-soft` `.bg-success-soft` `.bg-warning-soft` `.bg-critical-soft` `.bg-transparent` · `.border` `.border-b/t/l/r` `.border-none` `.border-strong` · `.rounded` `.rounded-sm` `.rounded-md` `.rounded-lg` `.rounded-full` · `.shadow` `.shadow-lg`
 
-**Borders:** `.border` `.border-b/t/l/r` `.border-none` · `.rounded` `.rounded-sm/md/lg/full` · `.shadow` `.shadow-lg`
+**Interaction:** `.cursor-pointer` `.cursor-grab` `.cursor-grabbing` `.cursor-not-allowed` · `.opacity-0` `.opacity-80` · `.transition-colors` · `.pointer-events-none` `.pointer-events-auto`
 
-**State/Visibility:** `.opacity-0` `.opacity-80` · `.pointer-events-none` `.pointer-events-auto` · `.overflow-hidden` `.overflow-auto` `.overflow-x-auto` `.overflow-y-auto`
-
-**Interactive:** `.cursor-pointer` `.cursor-grab` `.cursor-not-allowed` · `.transition` `.transition-colors` · `.group` `.group-hover:*` · `.focus:ring`
+**Helpers:** `.group` `.group-hover:flex` · `.list-disc` · `.space-y-2`
 
 **Responsive prefixes:** `sm:` (640px) · `md:` (768px) · `lg:` (1024px) · `xl:` (1280px) · `2xl:` (1536px)
 
@@ -289,6 +304,13 @@ A form (label + input pairs)          → .form > .field
 A form with labels above              → .form.form-stack
 A bar of buttons / search             → .toolbar
 A surface container                   → .panel
+A label + control + hint/error block  → .form-control
+A prefixed/suffixed input             → .input-group
+A checkbox/radio row                  → .form-check
+A toggle switch                       → .toggle
+A grouped form section                → .form-fieldset
+A styled select                       → .form-select
+A file picker wrapper                 → .form-file
 A page/section heading                → .section-header
 A "nothing here yet" placeholder      → .empty-state
 A standalone box w/ shadow            → .card
@@ -426,6 +448,33 @@ Two-column grid (label | control). Wrap each pair in `.field` (uses `display: co
   <span class="pagination-info">Page 1 of 4</span>
   <button class="btn btn-sm">Next ›</button>
 </nav>
+```
+
+### Form extras
+
+```html
+<div class="form-control is-invalid">
+  <label for="email">Email</label>
+  <input id="email" type="email" aria-invalid="true">
+  <p class="form-hint">We never share it.</p>
+  <p class="form-error">Invalid email.</p>
+</div>
+
+<div class="input-group">
+  <span class="input-group-text">@</span>
+  <input type="text" placeholder="username">
+</div>
+
+<label class="form-check">
+  <input type="checkbox">
+  <span>Remember me</span>
+</label>
+
+<label class="toggle">
+  <input type="checkbox">
+  <span class="toggle-slider"></span>
+  <span>Enable sync</span>
+</label>
 ```
 
 ### Alerts, Badges, Tables
@@ -672,7 +721,7 @@ When reviewing CSS or HTML in any project using this library:
 - [ ] `z-index: <number>` → replace with `--z-*` token
 - [ ] Dark mode media queries → replace with `light-dark()` or `var(--color-*)`
 - [ ] Inline `style=""` attributes → replace with `data-*` attributes (139+) or utility classes
-- [ ] Custom CSS outside layers → wrap in `@layer components { }`
+- [ ] Authored custom CSS defaults to `@layer components { }`; outside layers or later layers only for intentional overrides
 - [ ] `--color-error` usage → rename to `--color-critical`
 - [ ] Computed token overrides (`--color-surface`) → move to seed tokens
 - [ ] Hardcoded hex/rgb colors → convert to OKLCH or use existing token
@@ -686,7 +735,7 @@ When reviewing CSS or HTML in any project using this library:
 | Dark mode not working | Use `light-dark()` or set `data-theme` on `<html>` |
 | `attr()` has no effect | Chrome 139+ only — use utility classes as fallback |
 | `@function` not resolving | Chrome 139+ — fallback: `color-mix(in oklch, ...)` |
-| Custom styles not overriding | Place outside `@layer` or use a later layer |
+| Custom styles not overriding | If you authored CSS in `@layer components`, remember `utilities` wins after it; move the rule to a later custom layer or outside all layers only if that override is intentional |
 | Surface color wrong | Override seeds (`--default-color-surface-*`), not `--color-surface` |
 | Error color not applying | Token is `--color-critical`, not `--color-error` |
 | CDN import fails | Use `cdn.jsdelivr.net/npm/@medyll/css-base/dist/app.css` (latest) |
