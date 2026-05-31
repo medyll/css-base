@@ -28,13 +28,18 @@ NEVER  write media queries for dark mode — use light-dark()
 NEVER  use --color-error — correct token is --color-critical
 NEVER  override computed tokens (--color-surface-*) — override seeds only
 NEVER  write z-index integers — use --z-dropdown / --z-overlay / --z-modal / --z-toast
+ALWAYS use components for semantic structures (forms, lists, cards, tables)
+ALWAYS use attr() data attributes for detail tuning (pad, radius, elevation, text size)
+ALWAYS use utility classes for layout and lightweight text/weight helpers
+PREFER components or attr() for surfaces, colors, borders, and shadows; use the listed utilities only for isolated overrides or legacy code
 ALWAYS put authored component CSS in @layer components { } by default
-ALWAYS use a later layer or outside all layers only for intentional global overrides
+ALWAYS use a later layer or outside all layers only when you must override utilities, patch third-party styles, or apply a framework-level reset
 ALWAYS use CSS nesting (&) for states and variants
-ALWAYS prefer attr() data attributes over utility classes for dynamic values (139+)
 ALWAYS use OKLCH for custom colors
 ALWAYS check this skill before generating any CSS
 ```
+
+Decision order: 1) if a named component fits, use it; 2) otherwise use attr() for pad, radius, elevation, and text tuning; 3) use utility classes for layout plus simple text/weight helpers; 4) use `@layer components` for states, pseudo-elements, missing components, or broader overrides.
 
 ---
 
@@ -98,14 +103,25 @@ reset < tokens < theme < components < utilities
 
 ### Default authoring rule for LLMs
 
-When generating custom CSS, use this rule unless the prompt explicitly says "override utilities" or "global override":
+**Components + attr() for styling. Utilities for layout and lightweight text/weight helpers.** Prefer components or attr() for surfaces, colors, borders, and shadows.
+
+```html
+<!-- ✅ PREFER: component + attr() for details, utilities for layout only -->
+<div class="flex flex-col gap-md">
+  <div class="card" data-pad="lg" data-radius="lg">
+    <h2 class="text-lg font-semibold">Title</h2>
+    <p class="text-muted">Clean, semantic markup.</p>
+  </div>
+</div>
+```
 
 ```css
+/* ✅ FALLBACK: custom CSS only when components + attr() aren't enough */
 @import "@medyll/css-base";
 
 @layer components {
   .your-component {
-    /* default place for authored CSS */
+    /* only for states, pseudo-elements, complex behavior */
   }
 }
 ```
@@ -119,7 +135,7 @@ Custom styles placed **outside any layer** override everything. A custom layer d
 @layer my-overrides { /* wins over utilities */ }
 ```
 
-Use that only when you intentionally need to beat utilities or patch global behavior.
+Use that only when you must override utilities, patch third-party styles, or apply a framework-level reset.
 
 ---
 
@@ -161,15 +177,15 @@ color: light-dark(var(--default-color-text-light), var(--default-color-text-dark
 color: var(--color-text);  /* already handles both modes */
 ```
 
-### Class soup → semantic tokens
+### Class soup → components + attr()
 ```html
-<!-- BEFORE -->
+<!-- BEFORE (utility-class soup) -->
 <div class="p-4 rounded-lg shadow-lg bg-white border border-gray-200">
 
-<!-- AFTER (utility classes) -->
+<!-- AFTER (component — PREFERRED for semantic structure) -->
 <div class="card">
 
-<!-- AFTER (attr, 139+) -->
+<!-- AFTER (attr, 139+ — for detail tuning on any element) -->
 <div data-pad="md" data-radius="lg" data-elevation="lg" data-bg="surface-raised">
 ```
 
@@ -251,7 +267,7 @@ All wrapped in `@supports` — safe to use, silently ignored below 139.
 
 ## attr() Utilities (Chrome 139+)
 
-Dynamic styling via `data-*` attributes — no extra classes needed.
+Dynamic styling via `data-*` attributes — no extra classes needed. If the browser target is unspecified, generate the `data-*` attributes as the primary pattern and include a utility fallback in a `@supports not (attr(data-pad type(<length>)))` block.
 
 > Table complète des attributs → [`references/tokens.md#attr-utilities-chrome-139`](references/tokens.md)
 
@@ -267,7 +283,60 @@ Dynamic styling via `data-*` attributes — no extra classes needed.
 
 ## Utility Classes
 
-Use utilities for one-off composition. If you need repeated styling or semantic structure, prefer components or custom CSS in `@layer components`.
+**LLM RULE:** Utilities are for **layout, typography, and simple state helpers**. Surface, color, border, and shadow utilities exist, but use them only for isolated overrides or legacy code; prefer components or `attr()` data attributes first.
+
+### Decision guide (reference)
+
+| Need | Use |
+|------|-----|
+| Layout flow | `.flex` `.grid` `.block` `.hidden` |
+| Positioning | `.relative` `.absolute` `.sticky` |
+| Flex direction / wrap | `.flex-col` `.flex-row` `.flex-wrap` |
+| Alignment | `.items-*` `.justify-*` `.text-center` |
+| Gap (spacing between items) | `.gap-*` |
+| Padding / margin details | `data-pad` / `data-margin` attr() |
+| Surfaces / colors / borders | Prefer Component (`.card`, `.panel`) or `data-bg` / `data-radius` / `data-elevation` attr() first; use the listed utilities only for isolated overrides |
+| Typography details | `data-text` / `data-weight` / `data-color` attr() |
+| Repeated semantic structure | Component (`.card`, `.form`, `.list`) |
+| Hover states, `::before`, animations | Custom CSS in `@layer components` |
+
+### Sober composition examples
+
+```html
+<!-- Layout with utilities, styling with component + attr() -->
+<div class="flex flex-col gap-lg">
+  <div class="card" data-pad="lg">
+    <h2 class="text-lg font-semibold">Title</h2>
+    <p class="text-muted">Content here.</p>
+  </div>
+</div>
+
+<!-- Grid layout with gap, cards handle their own surfaces -->
+<div class="grid gap-md" style="--grid-cols: 3;">
+  <div class="card" data-pad="md">
+    <div class="text-xl font-bold">1,234</div>
+    <div class="text-muted text-sm">Users</div>
+  </div>
+  <div class="card" data-pad="md">
+    <div class="text-xl font-bold">56</div>
+    <div class="text-muted text-sm">Projects</div>
+  </div>
+  <div class="card" data-pad="md">
+    <div class="text-xl font-bold">99.9%</div>
+    <div class="text-muted text-sm">Uptime</div>
+  </div>
+</div>
+
+<!-- Toolbar: layout via utilities, buttons via component -->
+<div class="toolbar toolbar-stretch">
+  <input type="search" placeholder="Search">
+  <div class="toolbar-spacer"></div>
+  <button class="btn-icon" aria-label="Filter">⚙</button>
+  <button class="btn-primary">New</button>
+</div>
+```
+
+### Full reference
 
 **Layout:** `.flex` `.grid` `.block` `.inline-flex` `.hidden` `.relative` `.absolute` `.sticky`
 
@@ -287,11 +356,13 @@ Use utilities for one-off composition. If you need repeated styling or semantic 
 
 **Responsive prefixes:** `sm:` (640px) · `md:` (768px) · `lg:` (1024px) · `xl:` (1280px) · `2xl:` (1536px)
 
+Use responsive prefixes for layout overrides at breakpoints, for example `lg:flex-row`. For custom component CSS, write breakpoint logic with `@media (width >= 768px)` inside `@layer components`. Never use responsive prefixes on surface, color, or border utilities.
+
 ---
 
 ## Components
 
-### Decision Tree — which component for what
+### Decision Tree — which component for what (reference)
 
 ```
 You need to display…                  → Use
@@ -321,6 +392,8 @@ Page navigation                       → .pagination
 ```
 
 If a component fits — use it. **Do not reinvent.** No ad-hoc `ul { list-style: none; padding: 0; }` blocks in component files.
+
+If no existing component covers your structure, author a new component class in `@layer components {}` using design tokens. Name it semantically (e.g. `.timeline`, `.kanban-card`). Do not approximate with utility class stacks.
 
 ---
 
@@ -498,6 +571,22 @@ Two-column grid (label | control). Wrap each pair in `.field` (uses `display: co
 ## Anti-patterns — STOP doing these
 
 ```html
+<!-- ❌ DO NOT: utility soup — stacking classes for surfaces, colors, borders -->
+<div class="flex flex-col gap-lg p-xl bg-surface-raised rounded-lg shadow border">
+  <h3 class="text-lg font-semibold mb-sm">Title</h3>
+  <p class="text-muted">Too many utility classes.</p>
+</div>
+
+<!-- ✅ DO: component handles surfaces, utilities handle layout only -->
+<div class="flex flex-col gap-lg">
+  <div class="card" data-pad="xl">
+    <h3 class="text-lg font-semibold">Title</h3>
+    <p class="text-muted">Clean markup.</p>
+  </div>
+</div>
+```
+
+```html
 <!-- ❌ DO NOT: ad-hoc list reset in every component -->
 <style>
   ul { list-style: none; padding: 0; margin: 0; }
@@ -543,7 +632,7 @@ Two-column grid (label | control). Wrap each pair in `.field` (uses `display: co
 ```
 
 ```html
-<!-- ❌ DO NOT: Tailwind-style named colors (removed in 0.7.0) -->
+<!-- ❌ DO NOT: named color utilities -- use semantic utilities -->
 <div class="bg-purple-100 text-blue-600">
 
 <!-- ✅ DO: semantic utilities -->
@@ -558,6 +647,73 @@ Two-column grid (label | control). Wrap each pair in `.field` (uses `display: co
 ---
 
 ## Recipes
+
+### Landing section (layout utilities + component)
+
+```html
+<section class="flex flex-col items-center justify-center p-xl">
+  <h1 class="text-2xl font-bold mb-md">Build something great</h1>
+  <p class="text-muted mb-lg">Clean, component-driven markup.</p>
+  <div class="flex gap-md">
+    <button class="btn-primary">Get started</button>
+    <button class="btn-ghost">Learn more</button>
+  </div>
+</section>
+```
+
+### Responsive dashboard layout (layout utilities + components + attr())
+
+```html
+<div class="flex flex-col lg:flex-row gap-lg p-lg">
+  <!-- Sidebar -->
+  <aside class="panel panel-bordered" style="flex-basis: 240px;">
+    <nav>
+      <header class="section-header">
+        <h3>Workspace</h3>
+      </header>
+      <ul class="list list-stack" role="list">
+        <li class="list-item is-active">
+          <span class="list-item-icon">📊</span>
+          <div class="list-item-content">Dashboard</div>
+        </li>
+        <li class="list-item">
+          <span class="list-item-icon">📁</span>
+          <div class="list-item-content">Projects</div>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex flex-col gap-lg flex-1">
+    <header class="toolbar toolbar-stretch">
+      <input type="search" placeholder="Search…">
+      <button class="btn-primary btn-sm">New</button>
+    </header>
+
+    <!-- Stats row -->
+    <div class="grid gap-md" style="--grid-cols: 3;">
+      <div class="card" data-pad="md">
+        <div class="text-xl font-bold">1,234</div>
+        <div class="text-muted text-sm">Users</div>
+      </div>
+      <div class="card" data-pad="md">
+        <div class="text-xl font-bold">56</div>
+        <div class="text-muted text-sm">Projects</div>
+      </div>
+      <div class="card" data-pad="md">
+        <div class="text-xl font-bold">99.9%</div>
+        <div class="text-muted text-sm">Uptime</div>
+      </div>
+    </div>
+
+    <!-- Data table -->
+    <div class="table-container">
+      <table class="table table-striped">…</table>
+    </div>
+  </main>
+</div>
+```
 
 ### Sidebar navigation
 
@@ -660,6 +816,41 @@ Guide: `dist/demo/SKINNING.md`
 
 ## Common Patterns
 
+**Card row (layout utility + component + attr()):**
+```html
+<div class="grid gap-lg" style="--grid-cols: 3;">
+  <div class="card" data-pad="lg">
+    <h3 class="text-lg font-semibold mb-sm">Feature</h3>
+    <p class="text-muted">Description here.</p>
+    <button class="btn-ghost mt-md">Learn more →</button>
+  </div>
+</div>
+```
+
+**Centered modal (layout utility + component + attr()):**
+```html
+<div class="fixed inset-0 flex items-center justify-center modal-shell">
+  <div class="card modal-card" data-pad="xl" data-radius="lg" data-elevation="lg">
+    <h2 class="text-lg font-semibold mb-md">Confirm action</h2>
+    <p class="text-muted mb-lg">Are you sure?</p>
+    <div class="flex justify-end gap-sm">
+      <button class="btn-ghost">Cancel</button>
+      <button class="btn-danger">Delete</button>
+    </div>
+  </div>
+</div>
+
+@layer components {
+  .modal-shell {
+    z-index: var(--z-modal);
+  }
+
+  .modal-card {
+    max-width: 480px;
+  }
+}
+```
+
 **Sidebar layout:**
 ```css
 @layer components {
@@ -717,6 +908,8 @@ Guide: `dist/demo/SKINNING.md`
 
 When reviewing CSS or HTML in any project using this library:
 
+- [ ] Utility soup (stacked classes for surfaces/colors/borders) → replace with component + attr()
+- [ ] Layout done with custom CSS → replace with layout utilities (`.flex`, `.grid`, `.gap-*`)
 - [ ] Raw px/rem/color values → replace with tokens
 - [ ] `z-index: <number>` → replace with `--z-*` token
 - [ ] Dark mode media queries → replace with `light-dark()` or `var(--color-*)`
@@ -734,6 +927,7 @@ When reviewing CSS or HTML in any project using this library:
 |---------|-----|
 | Dark mode not working | Use `light-dark()` or set `data-theme` on `<html>` |
 | `attr()` has no effect | Chrome 139+ only — use utility classes as fallback |
+| Component classes not applying in Angular/Vue SFC | Import `app.css` in the global stylesheet, not inside a component. For Angular, prefer global stylesheet import; use `ViewEncapsulation.None` only as a last resort. |
 | `@function` not resolving | Chrome 139+ — fallback: `color-mix(in oklch, ...)` |
 | Custom styles not overriding | If you authored CSS in `@layer components`, remember `utilities` wins after it; move the rule to a later custom layer or outside all layers only if that override is intentional |
 | Surface color wrong | Override seeds (`--default-color-surface-*`), not `--color-surface` |
