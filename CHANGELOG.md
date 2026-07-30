@@ -1,5 +1,11 @@
 ﻿# Changelog
 
+## [0.7.11] - 2026-07-30
+**CI/CD:**
+- configure git identity before release, drop redundant bump
+
+
+
 ## [0.7.10] - 2026-05-31
 **Chores:**
 - release v0.7.9 [skip ci]
