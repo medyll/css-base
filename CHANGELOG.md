@@ -1,5 +1,11 @@
 ﻿# Changelog
 
+## [0.7.12] - 2026-07-30
+**CI/CD:**
+- use NPM_TOKEN secret for registry auth
+
+
+
 ## [0.7.11] - 2026-07-30
 **CI/CD:**
 - configure git identity before release, drop redundant bump
