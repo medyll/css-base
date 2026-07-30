@@ -1,5 +1,11 @@
 ﻿# Changelog
 
+## [0.7.13] - 2026-07-30
+**CI/CD:**
+- trigger release run with corrected NPM_TOKEN
+
+
+
 ## [0.7.12] - 2026-07-30
 **CI/CD:**
 - use NPM_TOKEN secret for registry auth
