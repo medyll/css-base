@@ -20,6 +20,10 @@
 	h1, h2, h3, h4, h5, h6 {
 		text-box-trim: trim-both; /* Remove leading/trailing half-leading space */
 		text-box-edge: cap alphabetic; /* Align to cap height and baseline */
+		/* Even out line lengths so a heading never drops a single short word
+		   onto its last line. Browsers cap balancing at a few lines, so the
+		   cost is bounded; unsupported browsers just wrap normally. */
+		text-wrap: balance;
 		/* trim removes leading → box collapses to cap-height (< line-height).
 		   Without restored margin, trimmed boxes butt/overlap in tight layouts
 		   (cards, grids). Margin now defines the real gap. */
@@ -70,6 +74,9 @@
 		text-box-trim: trim-both;
 		text-box-edge: cap alphabetic;
 		margin-block-end: var(--marg-md);
+		/* pretty (not balance) for body copy: avoids orphans without the
+		   line-count ceiling balance imposes on long text */
+		text-wrap: pretty;
 	}
 
 	/* trimmed boxes have no leading to absorb a trailing margin — drop it on
@@ -158,6 +165,14 @@
 		&:disabled {
 			opacity: 0.5;
 			cursor: not-allowed;
+		}
+		/* Grow to fit content instead of scrolling inside a fixed box.
+		 * Replaces the usual scrollHeight-resizing JS. Progressive
+		 * enhancement: unsupported browsers keep the default sizing.
+		 * min-block-size keeps a sane floor once sizing follows content. */
+		&:is(textarea) {
+			field-sizing: content;
+			min-block-size: calc(var(--text-base) * var(--leading-normal) * 3);
 		}
 		&[readonly] {
 			background: var(--color-surface);
@@ -274,7 +289,6 @@
 	select {
 		cursor: pointer;
 	}
-}
 
 /* ─── CSS Functions (CSS Values Level 5) ──
  * Note: All CSS functions are now defined in functions.css
@@ -1054,4 +1068,67 @@
 		border-color: var(--color-border-strong);
 	}
 }
+/* end @layer components — every component rule above is now layered.
+   Rules left outside a layer beat the utilities layer, which breaks the
+   documented components < utilities order. */
+}
 
+
+/* ─── Overlay Entry / Exit ─────────────────────────────
+ * Layer: components
+ *
+ * Native [popover] and <dialog> toggle `display`, which historically made
+ * enter/exit transitions impossible without JS. Two features fix that:
+ *   - transition-behavior: allow-discrete  → lets display/overlay animate
+ *   - @starting-style                      → supplies the "before open" state
+ *
+ * Applies to native elements only, so it costs nothing until a consumer uses
+ * <dialog> or popover=""; no new component class is introduced.
+ */
+@layer components {
+	[popover],
+	dialog {
+		/* overlay must be in the list or the element leaves the top layer
+		   immediately and the exit transition is never seen */
+		transition:
+			opacity var(--transition-normal),
+			display var(--transition-normal) allow-discrete,
+			overlay var(--transition-normal) allow-discrete;
+		opacity: 1;
+
+		&:not(:popover-open):not([open]) {
+			opacity: 0;
+		}
+
+		@starting-style {
+			&:is(:popover-open, [open]) {
+				opacity: 0;
+			}
+		}
+	}
+
+	/* Backdrop fades with its dialog rather than snapping in */
+	dialog::backdrop,
+	[popover]::backdrop {
+		background: color-mix(in oklch, var(--shadow-color), transparent 60%);
+		transition:
+			opacity var(--transition-normal),
+			display var(--transition-normal) allow-discrete,
+			overlay var(--transition-normal) allow-discrete;
+		opacity: 1;
+
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
+	/* Respect reduced-motion: keep the state change, drop the animation */
+	@media (prefers-reduced-motion: reduce) {
+		[popover],
+		dialog,
+		dialog::backdrop,
+		[popover]::backdrop {
+			transition-duration: 0s;
+		}
+	}
+}
