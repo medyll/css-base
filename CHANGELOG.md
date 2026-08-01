@@ -1,5 +1,11 @@
 ﻿# Changelog
 
+## [0.7.14] - 2026-08-01
+**Bug Fixes:**
+- resolve --text-base collision in spotify skin; update metadata
+
+
+
 ## [0.7.13] - 2026-07-30
 **CI/CD:**
 - trigger release run with corrected NPM_TOKEN
