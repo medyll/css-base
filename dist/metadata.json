@@ -1,6 +1,6 @@
 {
   "name": "@medyll/css-base",
-  "version": "0.7.4",
+  "version": "0.7.13",
   "description": "Pure CSS design system library",
   "layers": ["reset", "tokens", "theme", "components", "utilities"],
   "files": [
@@ -20,22 +20,22 @@
     },
     {
       "file": "theme.css",
-      "description": "Theme seed tokens: default font, text, and surface values",
+      "description": "Theme seed tokens: default font, text, and surface values. Registers them with @property",
       "layer": "theme"
     },
     {
       "file": "variables.css",
-      "description": "Raw spacing and size scale",
+      "description": "Raw spacing and size scale. Registers them with @property",
       "layer": "tokens"
     },
     {
       "file": "tokens.css",
-      "description": "Semantic spacing, radius, motion, blur, and z-index tokens",
+      "description": "Semantic spacing, radius, motion, blur, and z-index tokens. Registers them with @property",
       "layer": "tokens"
     },
     {
       "file": "typography.css",
-      "description": "Font families, text scale, line heights, weights, and tracking",
+      "description": "Font families, text scale, line heights, weights, and tracking. Registers them with @property",
       "layer": "tokens"
     },
     {
@@ -46,12 +46,12 @@
     },
     {
       "file": "palette.css",
-      "description": "Semantic colors, surfaces, borders, shadows, and color scheme",
+      "description": "Semantic colors, surfaces, borders, shadows, and color scheme. Registers colors with @property; --color-on-primary upgrades to contrast-color() where supported",
       "layer": "theme"
     },
     {
       "file": "components.css",
-      "description": "Styled elements and components such as buttons, cards, forms, lists, panels, and tables",
+      "description": "Styled elements and components such as buttons, cards, forms, lists, panels, and tables. Also carries native [popover]/<dialog> enter-exit transitions",
       "layer": "components"
     },
     {
@@ -69,16 +69,38 @@
   "compatibility": {
     "baselineBrowsers": ["Chrome >= 125", "Edge >= 125"],
     "enhancedBrowsers": ["Chromium >= 139 for @function and attr()"],
+    "notes": [
+      "minChromium values are Chromium/Edge shipping versions; Firefox and Safari differ and are not tracked here.",
+      "'required' features must be present for the system to render as designed. 'enhancement' features degrade gracefully and never leave the UI broken."
+    ],
     "features": [
-      "@layer",
-      "CSS nesting",
-      "color-mix()",
-      "light-dark()",
-      "relative color syntax",
-      "subgrid",
-      "text-box-trim / text-box-edge",
-      "@function (Chromium 139+)",
-      "attr() typed utilities (Chromium 139+)"
+      { "feature": "@layer", "tier": "required", "minChromium": 99 },
+      { "feature": "CSS nesting", "tier": "required", "minChromium": 112 },
+      { "feature": "color-mix()", "tier": "required", "minChromium": 111 },
+      { "feature": "light-dark()", "tier": "required", "minChromium": 123 },
+      { "feature": "relative color syntax", "tier": "required", "minChromium": 119 },
+      { "feature": "@property", "tier": "required", "minChromium": 85,
+        "note": "Types every design token. Without it tokens still resolve, but invalid overrides are no longer caught and token transitions do not interpolate." },
+      { "feature": "@container", "tier": "required", "minChromium": 105 },
+      { "feature": ":has()", "tier": "required", "minChromium": 105 },
+      { "feature": "subgrid", "tier": "required", "minChromium": 117 },
+      { "feature": "content-visibility", "tier": "enhancement", "minChromium": 85 },
+      { "feature": "text-box-trim / text-box-edge", "tier": "enhancement", "minChromium": 133,
+        "note": "Above the stated 125 floor. Unsupported browsers keep default half-leading, so headings sit slightly lower — visual only." },
+      { "feature": "text-wrap: balance", "tier": "enhancement", "minChromium": 114,
+        "note": "Headings. Falls back to normal wrapping." },
+      { "feature": "text-wrap: pretty", "tier": "enhancement", "minChromium": 117,
+        "note": "Body copy. Falls back to normal wrapping." },
+      { "feature": "@starting-style", "tier": "enhancement", "minChromium": 117,
+        "note": "Entry animation for [popover] and <dialog>. Without it they appear instantly." },
+      { "feature": "transition-behavior: allow-discrete", "tier": "enhancement", "minChromium": 117,
+        "note": "Pairs with @starting-style so display and overlay can animate." },
+      { "feature": "field-sizing: content", "tier": "enhancement", "minChromium": 123,
+        "note": "Textarea auto-grow. Unsupported browsers keep a fixed box with a scrollbar." },
+      { "feature": "contrast-color()", "tier": "enhancement", "minChromium": null,
+        "note": "Exact Chromium version not verified; gated behind @supports in palette.css. Without support --color-on-primary stays the hardcoded white. Resolves against :root only." },
+      { "feature": "@function", "tier": "enhancement", "minChromium": 139 },
+      { "feature": "attr() typed utilities", "tier": "enhancement", "minChromium": 139 }
     ]
   }
 }

@@ -20,7 +20,7 @@
     --spotify-elevated: oklch(0.2 0 0);
     
     /* Text */
-    --text-base: oklch(1 0 0);
+    --spotify-text-primary: oklch(1 0 0);
     --text-subdued: oklch(0.7 0 0);
     --text-disabled: oklch(0.45 0 0);
     
@@ -41,7 +41,7 @@
     body {
       margin: 0;
       background: var(--spotify-black);
-      color: var(--text-base);
+      color: var(--spotify-text-primary);
       height: 100vh;
       overflow: hidden;
     }
@@ -85,7 +85,7 @@
     & .logo {
       font-size: var(--text-xl);
       font-weight: var(--font-bold);
-      color: var(--text-base);
+      color: var(--spotify-text-primary);
       display: flex;
       align-items: center;
       gap: var(--gutter-sm);
@@ -108,11 +108,11 @@
         font-weight: var(--font-semibold);
         
         &:hover {
-          color: var(--text-base);
+          color: var(--spotify-text-primary);
         }
         
         &:has(.active) {
-          color: var(--text-base);
+          color: var(--spotify-text-primary);
           background: var(--spotify-highlight);
         }
         
@@ -151,7 +151,7 @@
           transition: all var(--spotify-transition);
           
           &:hover {
-            color: var(--text-base);
+            color: var(--spotify-text-primary);
           }
         }
       }
@@ -253,8 +253,8 @@
           transition: all var(--spotify-transition);
           
           &:hover {
-            border-color: var(--text-base);
-            color: var(--text-base);
+            border-color: var(--spotify-text-primary);
+            color: var(--spotify-text-primary);
           }
         }
       }
@@ -301,7 +301,7 @@
             gap: var(--gutter-xs);
             
             & .track-title {
-              color: var(--text-base);
+              color: var(--spotify-text-primary);
               font-size: var(--text-base);
               font-weight: var(--font-medium);
             }
@@ -386,7 +386,7 @@
         transition: color var(--spotify-transition);
         
         &:hover {
-          color: var(--text-base);
+          color: var(--spotify-text-primary);
         }
       }
     }
@@ -413,7 +413,7 @@
           transition: all var(--spotify-transition);
           
           &:hover {
-            color: var(--text-base);
+            color: var(--spotify-text-primary);
             transform: scale(1.1);
           }
         }
@@ -422,7 +422,7 @@
           width: 36px;
           height: 36px;
           border-radius: 50%;
-          background: var(--text-base);
+          background: var(--spotify-text-primary);
           color: var(--spotify-black);
           display: flex;
           align-items: center;
@@ -455,7 +455,7 @@
           & .progress-fill {
             width: 35%;
             height: 100%;
-            background: var(--text-base);
+            background: var(--spotify-text-primary);
             border-radius: 2px;
             position: relative;
             
@@ -467,7 +467,7 @@
               transform: translateY(-50%);
               width: 12px;
               height: 12px;
-              background: var(--text-base);
+              background: var(--spotify-text-primary);
               border-radius: 50%;
               opacity: 0;
               transition: opacity var(--spotify-transition);
@@ -504,7 +504,7 @@
           & .volume-fill {
             width: 70%;
             height: 100%;
-            background: var(--text-base);
+            background: var(--spotify-text-primary);
             border-radius: 2px;
           }
         }
