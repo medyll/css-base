@@ -9,6 +9,23 @@
  * These values are used by other theme files to compute derived tokens.
  */
 
+/* ─── Typed Token Registration ──
+ * Seed values consumed by palette.css and typography.css to derive the rest
+ * of the system. Typing them here means a bad seed in a skin degrades to the
+ * default instead of cascading a broken value through every derived token.
+ */
+@property --default-font-size { syntax: "<length>"; inherits: true; initial-value: 16px; }
+@property --default-leading { syntax: "<number>"; inherits: true; initial-value: 1.5; }
+@property --default-font-weight { syntax: "<number>"; inherits: true; initial-value: 400; }
+@property --default-tracking { syntax: "<length>"; inherits: true; initial-value: 0px; }
+
+@property --default-color-text-light { syntax: "<color>"; inherits: true; initial-value: oklch(0.141 0.005 285.823); }
+@property --default-color-text-dark { syntax: "<color>"; inherits: true; initial-value: oklch(0.962 0.003 264.542); }
+@property --default-color-surface-light { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0); }
+@property --default-color-surface-dark { syntax: "<color>"; inherits: true; initial-value: oklch(0.1 0 0); }
+@property --default-color-surface-dark-alt { syntax: "<color>"; inherits: true; initial-value: oklch(0.14 0 0); }
+@property --default-color-surface-dark-raised { syntax: "<color>"; inherits: true; initial-value: oklch(0.18 0 0); }
+
 @layer theme {
 	:root {
 		/* ─── Default Font Properties ──

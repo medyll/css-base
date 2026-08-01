@@ -10,6 +10,50 @@
  * - Letter spacing (--tracking-*)
  */
 
+/* ─── Typed Token Registration ──
+ * --text-* are FONT SIZES, not colours. Registering them as <length> makes
+ * that contract enforceable: a skin assigning a colour to --text-base now
+ * degrades to the initial value instead of silently producing an invalid
+ * font-size.
+ *
+ * Deliberately NOT registered: --font-sans / --font-mono / --font-serif /
+ * --font-family-base. Custom property syntax cannot express a font stack
+ * (comma-separated family list with quoted names), so any registration
+ * would reject the real values.
+ */
+@property --text-xs { syntax: "<length>"; inherits: true; initial-value: 11px; }
+@property --text-sm { syntax: "<length>"; inherits: true; initial-value: 13px; }
+@property --text-base { syntax: "<length>"; inherits: true; initial-value: 14px; }
+@property --text-md { syntax: "<length>"; inherits: true; initial-value: 16px; }
+@property --text-lg { syntax: "<length>"; inherits: true; initial-value: 18px; }
+@property --text-xl { syntax: "<length>"; inherits: true; initial-value: 20px; }
+@property --text-2xl { syntax: "<length>"; inherits: true; initial-value: 24px; }
+@property --text-3xl { syntax: "<length>"; inherits: true; initial-value: 32px; }
+@property --text-4xl { syntax: "<length>"; inherits: true; initial-value: 40px; }
+@property --text-5xl { syntax: "<length>"; inherits: true; initial-value: 48px; }
+
+@property --leading-none { syntax: "<number>"; inherits: true; initial-value: 1; }
+@property --leading-tight { syntax: "<number>"; inherits: true; initial-value: 1.25; }
+@property --leading-snug { syntax: "<number>"; inherits: true; initial-value: 1.375; }
+@property --leading-normal { syntax: "<number>"; inherits: true; initial-value: 1.5; }
+@property --leading-relaxed { syntax: "<number>"; inherits: true; initial-value: 1.625; }
+@property --leading-loose { syntax: "<number>"; inherits: true; initial-value: 2; }
+
+@property --font-normal { syntax: "<number>"; inherits: true; initial-value: 400; }
+@property --font-medium { syntax: "<number>"; inherits: true; initial-value: 500; }
+@property --font-semibold { syntax: "<number>"; inherits: true; initial-value: 600; }
+@property --font-bold { syntax: "<number>"; inherits: true; initial-value: 700; }
+@property --font-black { syntax: "<number>"; inherits: true; initial-value: 900; }
+
+/* initial-value must be computationally independent, so em is not allowed
+ * here even though the real values below are em-based. 0px is only the
+ * fallback when an override is invalid. */
+@property --tracking-tight { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --tracking-normal { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --tracking-wide { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --tracking-wider { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --tracking-caps { syntax: "<length>"; inherits: true; initial-value: 0px; }
+
 @layer tokens {
 	:root {
 		/* ─── Font Families ──

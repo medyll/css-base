@@ -12,6 +12,83 @@
  * - Breakpoints
  */
 
+/* ─── Typed Token Registration ──
+ * See variables.css for the rationale. Spacing and radius accept
+ * <length-percentage> so skins can override with % where it makes sense.
+ *
+ * Deliberately NOT registered: --ease-*, --easing-default, --transition-*,
+ * --blur-*, --field-label-width. CSS custom property syntax has no type for
+ * easing functions, filter functions or shorthand value lists, so registering
+ * them would reject valid values.
+ */
+@property --pad-xs { syntax: "<length-percentage>"; inherits: true; initial-value: 4px; }
+@property --pad-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 8px; }
+@property --pad-md { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
+@property --pad-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 24px; }
+@property --pad-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 32px; }
+@property --pad-2xl { syntax: "<length-percentage>"; inherits: true; initial-value: 48px; }
+@property --pad-3xl { syntax: "<length-percentage>"; inherits: true; initial-value: 64px; }
+
+@property --gap-xs { syntax: "<length-percentage>"; inherits: true; initial-value: 4px; }
+@property --gap-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 8px; }
+@property --gap-md { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
+@property --gap-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 24px; }
+@property --gap-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 32px; }
+@property --gap-2xl { syntax: "<length-percentage>"; inherits: true; initial-value: 48px; }
+@property --gap-3xl { syntax: "<length-percentage>"; inherits: true; initial-value: 64px; }
+
+@property --marg-xs { syntax: "<length-percentage>"; inherits: true; initial-value: 4px; }
+@property --marg-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 8px; }
+@property --marg-md { syntax: "<length-percentage>"; inherits: true; initial-value: 16px; }
+@property --marg-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 24px; }
+@property --marg-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 32px; }
+@property --marg-2xl { syntax: "<length-percentage>"; inherits: true; initial-value: 48px; }
+@property --marg-3xl { syntax: "<length-percentage>"; inherits: true; initial-value: 64px; }
+
+@property --radius-xs { syntax: "<length-percentage>"; inherits: true; initial-value: 2px; }
+@property --radius-sm { syntax: "<length-percentage>"; inherits: true; initial-value: 4px; }
+@property --radius-md { syntax: "<length-percentage>"; inherits: true; initial-value: 6px; }
+@property --radius-lg { syntax: "<length-percentage>"; inherits: true; initial-value: 8px; }
+@property --radius-xl { syntax: "<length-percentage>"; inherits: true; initial-value: 12px; }
+@property --radius-full { syntax: "<length-percentage>"; inherits: true; initial-value: 9999px; }
+
+@property --duration-fast { syntax: "<time>"; inherits: true; initial-value: 100ms; }
+@property --duration-normal { syntax: "<time>"; inherits: true; initial-value: 150ms; }
+@property --duration-slow { syntax: "<time>"; inherits: true; initial-value: 200ms; }
+@property --duration-slower { syntax: "<time>"; inherits: true; initial-value: 300ms; }
+@property --duration-shimmer { syntax: "<time>"; inherits: true; initial-value: 1.5s; }
+@property --duration-spin { syntax: "<time>"; inherits: true; initial-value: 1s; }
+
+@property --icon-size-xs { syntax: "<length>"; inherits: true; initial-value: 8px; }
+@property --icon-size-sm { syntax: "<length>"; inherits: true; initial-value: 20px; }
+@property --icon-size-md { syntax: "<length>"; inherits: true; initial-value: 32px; }
+@property --icon-size-lg { syntax: "<length>"; inherits: true; initial-value: 48px; }
+
+@property --z-dropdown { syntax: "<integer>"; inherits: true; initial-value: 100; }
+@property --z-overlay { syntax: "<integer>"; inherits: true; initial-value: 200; }
+@property --z-modal { syntax: "<integer>"; inherits: true; initial-value: 500; }
+@property --z-toast { syntax: "<integer>"; inherits: true; initial-value: 600; }
+@property --z-chrome { syntax: "<integer>"; inherits: true; initial-value: 1000; }
+
+@property --list-gap { syntax: "<length>"; inherits: true; initial-value: 4px; }
+@property --list-item-pad-y { syntax: "<length>"; inherits: true; initial-value: 8px; }
+@property --list-item-pad-x { syntax: "<length>"; inherits: true; initial-value: 16px; }
+@property --list-item-radius { syntax: "<length-percentage>"; inherits: true; initial-value: 2px; }
+@property --list-item-gap { syntax: "<length>"; inherits: true; initial-value: 8px; }
+
+@property --icon-button-size { syntax: "<length>"; inherits: true; initial-value: 32px; }
+@property --icon-button-size-sm { syntax: "<length>"; inherits: true; initial-value: 24px; }
+@property --icon-button-size-lg { syntax: "<length>"; inherits: true; initial-value: 40px; }
+
+@property --field-gap { syntax: "<length>"; inherits: true; initial-value: 8px; }
+@property --form-grid-gap { syntax: "<length>"; inherits: true; initial-value: 8px; }
+
+@property --breakpoint-sm { syntax: "<length>"; inherits: true; initial-value: 640px; }
+@property --breakpoint-md { syntax: "<length>"; inherits: true; initial-value: 768px; }
+@property --breakpoint-lg { syntax: "<length>"; inherits: true; initial-value: 1024px; }
+@property --breakpoint-xl { syntax: "<length>"; inherits: true; initial-value: 1280px; }
+@property --breakpoint-2xl { syntax: "<length>"; inherits: true; initial-value: 1536px; }
+
 @layer tokens {
   :root {
     /* ─── Semantic Padding ──

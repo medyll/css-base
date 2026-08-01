@@ -8,6 +8,31 @@
  * Scale: 0.25rem (4px) increments following a 4px grid system
  */
 
+/* ─── Typed Token Registration ──
+ * @property gives these tokens a type, so an invalid override from a skin
+ * falls back to initial-value instead of poisoning every rule that uses it.
+ *
+ * Declared outside @layer: registration is global and not layer-scoped.
+ * inherits: true is required — these are set on :root and read everywhere.
+ * initial-value must be computationally independent, hence px literals
+ * (no var(), no rem/em). It is only a fallback; :root below sets real values.
+ */
+@property --gutter-xs { syntax: "<length>"; inherits: true; initial-value: 4px; }
+@property --gutter-sm { syntax: "<length>"; inherits: true; initial-value: 8px; }
+@property --gutter-md { syntax: "<length>"; inherits: true; initial-value: 16px; }
+@property --gutter-lg { syntax: "<length>"; inherits: true; initial-value: 24px; }
+@property --gutter-xl { syntax: "<length>"; inherits: true; initial-value: 32px; }
+@property --gutter-2xl { syntax: "<length>"; inherits: true; initial-value: 48px; }
+@property --gutter-3xl { syntax: "<length>"; inherits: true; initial-value: 64px; }
+
+@property --size-xs { syntax: "<length>"; inherits: true; initial-value: 4px; }
+@property --size-sm { syntax: "<length>"; inherits: true; initial-value: 8px; }
+@property --size-md { syntax: "<length>"; inherits: true; initial-value: 16px; }
+@property --size-lg { syntax: "<length>"; inherits: true; initial-value: 24px; }
+@property --size-xl { syntax: "<length>"; inherits: true; initial-value: 32px; }
+@property --size-2xl { syntax: "<length>"; inherits: true; initial-value: 48px; }
+@property --size-3xl { syntax: "<length>"; inherits: true; initial-value: 64px; }
+
 @layer tokens {
 	:root {
 		/* ─── Spacing Scale (Gutter) ──

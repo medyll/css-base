@@ -13,6 +13,49 @@
  * Note: CSS functions (--shade, --tint, --alpha, etc.) are defined in functions.css
  */
 
+/* ─── Typed Token Registration ──
+ * Registering colours as <color> is what makes them animatable: a transition
+ * on a var()-driven colour does not interpolate unless the property is typed.
+ *
+ * Deliberately NOT registered: --shadow-xs..--shadow-2xl. Custom property
+ * syntax has no <shadow> type, so registering them would reject every value.
+ */
+@property --color-text { syntax: "<color>"; inherits: true; initial-value: black; }
+@property --color-text-muted { syntax: "<color>"; inherits: true; initial-value: gray; }
+@property --color-text-inverse { syntax: "<color>"; inherits: true; initial-value: white; }
+
+@property --color-primary { syntax: "<color>"; inherits: true; initial-value: oklch(0.546 0.245 262.881); }
+@property --color-primary-hover { syntax: "<color>"; inherits: true; initial-value: oklch(0.466 0.245 262.881); }
+@property --color-primary-muted { syntax: "<color>"; inherits: true; initial-value: oklch(0.826 0.245 262.881); }
+@property --color-secondary { syntax: "<color>"; inherits: true; initial-value: oklch(0.546 0.245 292.881); }
+@property --color-complementary { syntax: "<color>"; inherits: true; initial-value: oklch(0.546 0.245 82.881); }
+@property --color-on-primary { syntax: "<color>"; inherits: true; initial-value: white; }
+
+@property --color-surface { syntax: "<color>"; inherits: true; initial-value: white; }
+@property --color-surface-alt { syntax: "<color>"; inherits: true; initial-value: oklch(0.97 0 0); }
+@property --color-surface-raised { syntax: "<color>"; inherits: true; initial-value: white; }
+@property --color-surface-overlay { syntax: "<color>"; inherits: true; initial-value: oklch(1 0 0 / 0.85); }
+@property --color-surface-sunken { syntax: "<color>"; inherits: true; initial-value: oklch(0.93 0 0); }
+@property --color-surface-hover { syntax: "<color>"; inherits: true; initial-value: oklch(0.94 0 0); }
+@property --color-surface-active { syntax: "<color>"; inherits: true; initial-value: oklch(0.95 0.02 262.881); }
+@property --color-surface-inverse { syntax: "<color>"; inherits: true; initial-value: oklch(0.14 0 0); }
+
+@property --color-success { syntax: "<color>"; inherits: true; initial-value: oklch(0.627 0.194 149.214); }
+@property --color-warning { syntax: "<color>"; inherits: true; initial-value: oklch(0.705 0.213 79.98); }
+@property --color-warning-emphasis { syntax: "<color>"; inherits: true; initial-value: oklch(0.55 0.16 79.98); }
+@property --color-critical { syntax: "<color>"; inherits: true; initial-value: oklch(0.637 0.237 25.331); }
+@property --color-info { syntax: "<color>"; inherits: true; initial-value: oklch(0.546 0.245 262.881); }
+
+@property --color-border { syntax: "<color>"; inherits: true; initial-value: oklch(0.85 0.04 265 / 0.35); }
+@property --color-border-strong { syntax: "<color>"; inherits: true; initial-value: oklch(0.75 0.06 265 / 0.6); }
+@property --shadow-color { syntax: "<color>"; inherits: true; initial-value: oklch(0.25 0.01 0); }
+
+@property --border-width { syntax: "<length>"; inherits: true; initial-value: 1px; }
+@property --focus-ring-width { syntax: "<length>"; inherits: true; initial-value: 1.5px; }
+@property --focus-ring-gap { syntax: "<length>"; inherits: true; initial-value: 1px; }
+@property --scrollbar-width { syntax: "<length>"; inherits: true; initial-value: 6px; }
+@property --scrollbar-height { syntax: "<length>"; inherits: true; initial-value: 6px; }
+
 @layer theme {
 	:root {
 		/* Color scheme: automatic light/dark mode via light-dark() */
@@ -126,11 +169,15 @@
 		/* Info: blue - informational messages */
 		--color-info: var(--color-primary);
 
-		/* On-primary: text/icon color for use on --color-primary backgrounds */
+		/* On-primary: text/icon color for use on --color-primary backgrounds.
+		 * Hardcoded white is wrong for any skin whose primary is light
+		 * (yellow, lime, pale accents) — the label goes unreadable. */
 		--color-on-primary: white;
 
-		/* Warning emphasis: darkened warning for text-on-light contexts (oklch 0.705 fails contrast on white) */
-		--color-warning-emphasis: color-mix(in oklch, var(--color-warning), black 30%);
+		/* Warning emphasis: darkened warning for text-on-light contexts (oklch 0.705 fails contrast on white)
+		 * Relative syntax drops lightness only; mixing toward black also pulled
+		 * chroma down, muddying the amber. Hue and chroma now survive. */
+		--color-warning-emphasis: oklch(from var(--color-warning) calc(l - 0.15) c h);
 
 		/* ─── Borders ──
 		 * Border colors derived from primary color with transparency
@@ -217,5 +264,26 @@
 
 	[data-theme="dark"] {
 		color-scheme: dark;
+	}
+
+	/* ─── Automatic Contrast ──
+	 * contrast-color() picks black or white against the given background,
+	 * so --color-on-primary stays legible whatever a skin sets as primary.
+	 *
+	 * Gated behind @supports because the fallback matters: without support
+	 * the declaration would be dropped and the hardcoded white above stays,
+	 * which is the current (working) behaviour rather than a broken one.
+	 * Progressive enhancement — no skin change required.
+	 *
+	 * Scope caveat: this resolves against :root, so it tracks a skin
+	 * overriding --color-primary at :root (the documented way to skin).
+	 * Overriding --color-primary on a subtree does NOT recompute
+	 * --color-on-primary there — the subtree inherits the already-computed
+	 * root value. Set --color-on-primary explicitly in that case.
+	 */
+	@supports (color: contrast-color(white)) {
+		:root {
+			--color-on-primary: contrast-color(var(--color-primary));
+		}
 	}
 }
