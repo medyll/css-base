@@ -1,5 +1,11 @@
 ﻿# Changelog
 
+## [0.7.15] - 2026-09-27
+**Chores:**
+- update claude local settings
+
+
+
 ## [0.7.14] - 2026-08-01
 **Bug Fixes:**
 - resolve --text-base collision in spotify skin; update metadata
