@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "mcp__plugin_context-mode_context-mode__ctx_execute_file"
+      "mcp__plugin_context-mode_context-mode__ctx_execute_file",
+      "Bash(gh run *)",
+      "Bash(gh api *)",
+      "Bash(npm view *)",
+      "Bash(node -p \"require\\('D:/development/css-base/package.json'\\).version\")",
+      "Bash(gh secret *)"
     ]
   }
 }
